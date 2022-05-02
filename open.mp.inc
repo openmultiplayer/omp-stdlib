@@ -198,3 +198,9 @@ public const __OPEN_MP_VERSION = 0;
 	#error cannot read from file: "omp_textdraw"
 #endif
 
+#tryinclude "omp_menu"
+#tryinclude <omp_menu>
+#if !defined _INC_omp_menu
+	#error cannot read from file: "omp_menu"
+#endif
+
