@@ -204,3 +204,9 @@ public const __OPEN_MP_VERSION = 0;
 	#error cannot read from file: "omp_menu"
 #endif
 
+#tryinclude "omp_pickup"
+#tryinclude <omp_pickup>
+#if !defined _INC_omp_pickup
+	#error cannot read from file: "omp_pickup"
+#endif
+

@@ -38,6 +38,10 @@
 const Menu:INVALID_MENU                        = Menu:0xFF;
 #define INVALID_MENU                           (Menu:0xFF)
 
+#if MAX_MENUS < Menu:1 || MAX_MENUS > Menu:128
+	#error MAX_MENUS must be >= 1 and <= 128
+#endif
+
 /**
  * <library>omp_menu</library>
  * <summary>Creates a menu.</summary>
