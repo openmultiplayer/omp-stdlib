@@ -333,3 +333,29 @@ forward OnPickupStreamIn(pickupid, playerid);
  */
 forward OnPickupStreamOut(pickupid, playerid);
 
+/**
+ * <summary>Called when a pickup enters the visual range of a player.</summary>
+ * <param name="playerid">The ID of the player that picked up the pickup</param>
+ * <param name="pickupid">The ID of the pickup, returned by CreatePickup</param>
+ * <seealso name="CreatePickup" />
+ * <seealso name="DestroyPickup" />
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnPlayerPickupStreamIn(pickupid, playerid);
+
+/**
+ * <summary>Called when a pickup leaves the visual range of a player.</summary>
+ * <param name="playerid">The ID of the player that picked up the pickup</param>
+ * <param name="pickupid">The ID of the pickup, returned by CreatePickup</param>
+ * <seealso name="CreatePickup" />
+ * <seealso name="DestroyPickup" />
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnPlayerPickupStreamOut(pickupid, playerid);
+
