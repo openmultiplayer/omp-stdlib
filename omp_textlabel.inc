@@ -81,7 +81,6 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   If <paramref name="text" /> is empty, the server/clients next to the text might crash!<br />
  *   If the virtualWorld is set as <b><c>-1</c></b> the text will not appear.
@@ -105,7 +104,6 @@ native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z,
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> if the 3D text label was deleted, otherwise <b><c>0</c></b>.</returns>
  */
 native bool:Delete3DTextLabel(Text3D:textid);
@@ -125,7 +123,6 @@ native bool:Delete3DTextLabel(Text3D:textid);
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns>
  * <b><c>1</c></b>: The function executed successfully.<br />
  * <b><c>0</c></b>: The function failed to execute.  This means the player and/or label do not exist.
@@ -148,7 +145,6 @@ native bool:Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Fl
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b>
  * and will not work in earlier versions!</remarks>
  */
 native bool:Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
@@ -166,7 +162,6 @@ native bool:Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, F
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
 native bool:Update3DTextLabelText(Text3D:textid, colour, const text[]);
@@ -251,7 +246,6 @@ native bool:Get3DTextLabelAttachedData(Text3D:textid, &parentPlayerid, &parentVe
  * <seealso name="Update3DTextLabelText" />
  * <seealso name="DeletePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  * <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
  * <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if
@@ -270,7 +264,6 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Floa
  * <seealso name="Update3DTextLabelText" />
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="UpdatePlayer3DTextLabelText" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  This means the label specified doesn't exist.
@@ -292,7 +285,6 @@ native bool:DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
  * <seealso name="Update3DTextLabelText" />
  * <seealso name="CreatePlayer3DTextLabel" />
  * <seealso name="DeletePlayer3DTextLabel" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
 native bool:UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
