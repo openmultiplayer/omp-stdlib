@@ -108,7 +108,7 @@ native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z,
  * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> if the 3D text label was deleted, otherwise <b><c>0</c></b>.</returns>
  */
-native Delete3DTextLabel(Text3D:textid);
+native bool:Delete3DTextLabel(Text3D:textid);
 
 /**
  * <library>omp_textlabel</library>
@@ -131,7 +131,7 @@ native Delete3DTextLabel(Text3D:textid);
  * <b><c>0</c></b>: The function failed to execute.  This means the player and/or label do not exist.
  * </returns>
  */
-native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
+native bool:Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /**
  * <library>omp_textlabel</library>
@@ -151,7 +151,7 @@ native Attach3DTextLabelToPlayer(Text3D:textid, parentid, Float:offsetX, Float:o
  * <remarks>Attach3DTextLabelToPlayer was added in SA-MP 0.3a 	This function was added in <b>SA-MP 0.3a</b>
  * and will not work in earlier versions!</remarks>
  */
-native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
+native bool:Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ);
 
 /**
  * <library>omp_textlabel</library>
@@ -169,7 +169,67 @@ native Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, Float:
  * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
-native Update3DTextLabelText(Text3D:textid, colour, const text[]);
+native bool:Update3DTextLabelText(Text3D:textid, colour, const text[]);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:IsValid3DTextLabel(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Is3DTextLabelStreamedIn(playerid, Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof(text));
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Get3DTextLabelColor(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Get3DTextLabelPos(Text3D:textid, &Float:x, &Float:y, &Float:z);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Float:Get3DTextLabelDrawDistance(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Set3DTextLabelDrawDistance(Text3D:textid, Float:drawDistance);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Get3DTextLabelLOS(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Set3DTextLabelLOS(Text3D:textid, bool:enable);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Get3DTextLabelVirtualWorld(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Set3DTextLabelVirtualWorld(Text3D:textid, virtualWorld);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:Get3DTextLabelAttachedData(Text3D:textid, &parentPlayerid, &parentVehicleid);
 
 /**
  * <library>omp_textlabel</library>
@@ -216,7 +276,7 @@ native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Floa
  *   <b><c>0</c></b>: The function failed to execute.  This means the label specified doesn't exist.
  * </returns>
  */
-native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
+native bool:DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
 
 /**
  * <library>omp_textlabel</library>
@@ -235,5 +295,55 @@ native DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
  * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
-native UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
+native bool:UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:IsValidPlayer3DTextLabel(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len = sizeof (text));
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Float:y, &Float:z);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:GetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
 
