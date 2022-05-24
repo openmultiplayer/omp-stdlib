@@ -1,10 +1,10 @@
-#if defined _INC_omp_textdaw
+#if defined _INC_omp_textdraw
 	#endinput
 #endif
-#define _INC_omp_textdaw
+#define _INC_omp_textdraw
 
 /**
- * <library name="omp_textdaw" summary="open.mp text draw functions.">
+ * <library name="omp_textdraw" summary="open.mp text draw functions.">
  *   <license>
  *     (c) Copyright 2022, open.mp team.
  *   </license>
@@ -22,7 +22,7 @@
 #pragma tabsize 4
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 #if defined MAX_TEXT_DRAWS
 	const Text:__MAX_TEXT_DRAWS                = MAX_TEXT_DRAWS;
@@ -33,13 +33,13 @@
 #endif
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
 #define INVALID_TEXT_DRAW                      (Text:0xFFFF)
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 #if defined MAX_PLAYER_TEXT_DRAWS
 	const PlayerText:__MAX_PLAYER_TEXT_DRAWS   = MAX_PLAYER_TEXT_DRAWS;
@@ -50,7 +50,7 @@ const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
 #endif
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
 #define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
@@ -66,7 +66,7 @@ const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
 /// <p/>
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Text draw font</summary>
  */
 #define TEXT_DRAW_FONT: __TAG(TEXT_DRAW_FONT):
@@ -84,7 +84,7 @@ static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return __TEXT_DRAW_FONT; }
 /// <p/>
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Text draw alignment</summary>
  */
 #define TEXT_DRAW_ALIGN: __TAG(TEXT_DRAW_ALIGN):
@@ -98,7 +98,7 @@ enum TEXT_DRAW_ALIGN:__TEXT_DRAW_ALIGN
 static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Creates a textdraw.  Textdraws are, as the name implies, text (mainly - there can be boxes,
  * sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
  * <param name="x">The x (left/right) coordinate to create the textdraw at</param>
@@ -136,14 +136,14 @@ static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 native Text:TextDrawCreate(Float:x, Float:y, const string[]);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Destroys a previously-created textdraw.</summary>
  * <param name="textid">The ID of the textdraw to destroy.  Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
  */
 native bool:TextDrawDestroy(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the width and height of the letters.</summary>
  * <param name="textid">The TextDraw to change</param>
  * <param name="width">Width of a char</param>
@@ -162,7 +162,7 @@ native bool:TextDrawDestroy(Text:textid);
 native bool:TextDrawLetterSize(Text:textid, Float:width, Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Change the size of a textdraw (box if <a href="#TextDrawUseBox">TextDrawUseBox</a> is enabled
  * and/or clickable area for use with <a href="#TextDrawSetSelectable">TextDrawSetSelectable</a>).</summary>
  * <param name="textid">The TextDraw to set the size of</param>
@@ -196,7 +196,7 @@ native bool:TextDrawLetterSize(Text:textid, Float:width, Float:height);
 native bool:TextDrawTextSize(Text:textid, Float:width, Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Set the alignment of text in a text draw.</summary>
  * <param name="textid">The ID of the textdraw to set the alignment of</param>
  * <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
@@ -207,7 +207,7 @@ native bool:TextDrawTextSize(Text:textid, Float:width, Float:height);
 native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the text colour of a textdraw.</summary>
  * <param name="textid">The ID of the textdraw to change the colour of.</param>
  * <param name="textColour">The colour to set the textdraw to</param>
@@ -219,7 +219,7 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
 native bool:TextDrawColor(Text:textid, textColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Toggle whether a textdraw uses a box or not.</summary>
  * <param name="textid">The ID of the text textdraw to toggle the box of</param>
  * <param name="enableBox"><b><c>1</c></b> to show a box or <b><c>0</c></b> to not show a box</param>
@@ -233,7 +233,7 @@ native bool:TextDrawColor(Text:textid, textColour);
 native bool:TextDrawUseBox(Text:textid, bool:enableBox);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Adjusts the text box colour (only used if <a href="#TextDrawUseBox">TextDrawUseBox</a> 'use'
  * parameter is <b><c>1</c></b>).</summary>
  * <param name="textid">The TextDraw to change</param>
@@ -246,7 +246,7 @@ native bool:TextDrawUseBox(Text:textid, bool:enableBox);
 native bool:TextDrawBoxColor(Text:textid, boxColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the size of a textdraw's text's shadow.</summary>
  * <param name="textid">The ID of the textdraw to set the shadow size of</param>
  * <param name="shadowSize">The size of the shadow. <b><c>1</c></b> is generally used for a normal shadow
@@ -263,7 +263,7 @@ native bool:TextDrawBoxColor(Text:textid, boxColour);
 native bool:TextDrawSetShadow(Text:textid, shadowSize);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the thickness of a textdraw's text's outline. <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a>
  * can be used to change the colour.</summary>
  * <param name="textid">The ID of the text draw to set the outline thickness of</param>
@@ -275,7 +275,7 @@ native bool:TextDrawSetShadow(Text:textid, shadowSize);
 native bool:TextDrawSetOutline(Text:textid, outlineSize);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Adjusts the text draw area background colour (the outline/shadow - NOT the box.  For box
  * colour, see <a href="#TextDrawBoxColor">TextDrawBoxColor</a>).</summary>
  * <param name="textid">The ID of the textdraw to set the background colour of</param>
@@ -291,7 +291,7 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
 native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Changes the text font.</summary>
  * <param name="textid">The TextDraw to change</param>
  * <param name="font">There are four font styles, see
@@ -306,7 +306,7 @@ native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
 native bool:TextDrawFont(Text:textid, TEXT_DRAW_FONT:font);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Appears to scale text spacing to a proportional ratio.  Useful when using <a href="#TextDrawLetterSize">TextDrawLetterSize</a>
  * to ensure the text has even character spacing.</summary>
  * <param name="textid">The ID of the textdraw to set the proportionality of</param>
@@ -321,7 +321,7 @@ native bool:TextDrawFont(Text:textid, TEXT_DRAW_FONT:font);
 native bool:TextDrawSetProportional(Text:textid, bool:proportional);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets whether a textdraw can be selected (clicked on) or not.</summary>
  * <param name="textid">The ID of the textdraw to make selectable</param>
  * <param name="selectable"><b><c>1</c></b> to make it selectable, or <b><c>0</c></b> to make it not selectable</param>
@@ -332,7 +332,7 @@ native bool:TextDrawSetProportional(Text:textid, bool:proportional);
 native bool:TextDrawSetSelectable(Text:textid, bool:selectable);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Shows a textdraw for a specific player.</summary>
  * <param name="playerid">The ID of the player to show the textdraw for</param>
  * <param name="textid">The ID of the textdraw to show.  Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
@@ -347,7 +347,7 @@ native bool:TextDrawSetSelectable(Text:textid, bool:selectable);
 native bool:TextDrawShowForPlayer(playerid, Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Hides a textdraw for a specific player.</summary>
  * <param name="playerid">The ID of the player that the textdraw should be hidden for</param>
  * <param name="textid">The ID of the textdraw to hide</param>
@@ -358,7 +358,7 @@ native bool:TextDrawShowForPlayer(playerid, Text:textid);
 native bool:TextDrawHideForPlayer(playerid, Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Shows a textdraw for all players.</summary>
  * <param name="textid">The ID of the textdraw to show.  Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
  * <seealso name="TextDrawShowForPlayer" />
@@ -372,7 +372,7 @@ native bool:TextDrawHideForPlayer(playerid, Text:textid);
 native bool:TextDrawShowForAll(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Hides a text draw for all players.</summary>
  * <param name="textid">The ID of the textdraw to hide (returned by <a href="#TextDrawCreate">TextDrawCreate</a>)</param>
  * <seealso name="TextDrawShowForPlayer" />
@@ -382,7 +382,7 @@ native bool:TextDrawShowForAll(Text:textid);
 native bool:TextDrawHideForAll(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Changes the text on a textdraw.</summary>
  * <param name="textid">The TextDraw to change</param>
  * <param name="string">The new string for the TextDraw</param>
@@ -392,7 +392,7 @@ native bool:TextDrawHideForAll(Text:textid);
 native bool:TextDrawSetString(Text:textid, const string[]);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Set the model for a textdraw model preview.</summary>
  * <param name="textid">The textdraw ID that will display the 3D preview</param>
  * <param name="model">The GTA SA or SA:MP model ID to display</param>
@@ -404,7 +404,7 @@ native bool:TextDrawSetString(Text:textid, const string[]);
 native bool:TextDrawSetPreviewModel(Text:textid, model);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the rotation and zoom of a 3D model preview textdraw.</summary>
  * <param name="rotationX">The x rotation value</param>
  * <param name="rotationY">The y rotation value</param>
@@ -417,7 +417,7 @@ native bool:TextDrawSetPreviewModel(Text:textid, model);
 native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY, Float:rotationZ, Float:zoom = 1.0);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
  * that vehicle.</summary>
  * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
@@ -429,7 +429,7 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Creates a textdraw for a single player.  This can be used as a way around the <a href="#TextDrawCreate">global</a>
  * text-draw limit.</summary>
  * <param name="playerid">The ID of the player to create the textdraw for</param>
@@ -483,7 +483,7 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const string[]);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Destroy a player-textdraw.</summary>
  * <param name="playerid">The ID of the player who's player-textdraw to destroy</param>
  * <param name="textid">The ID of the textdraw to destroy</param>
@@ -506,7 +506,7 @@ native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const string[
 native bool:PlayerTextDrawDestroy(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the width and height of the letters in a player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the letter size of</param>
  * <param name="textid">The ID of the player-textdraw to change the letter size of</param>
@@ -535,7 +535,7 @@ native bool:PlayerTextDrawDestroy(playerid, PlayerText:textid);
 native bool:PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Change the size of a player-textdraw (box if <a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a>
  * is enabled and/or clickable area for use with <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>).</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the size of</param>
@@ -581,7 +581,7 @@ native bool:PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, F
 native bool:PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Set the text alignment of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the alignment of</param>
  * <param name="textid">The ID of the player-textdraw to set the alignment of</param>
@@ -607,7 +607,7 @@ native bool:PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Flo
 native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN:alignment);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the text colour of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
  * <param name="textid">The TextDraw to change</param>
@@ -633,7 +633,7 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
 native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Toggle the box on a player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose textdraw to toggle the box of</param>
  * <param name="textid">The ID of the player-textdraw to toggle the box of</param>
@@ -657,7 +657,7 @@ native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
 native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the colour of a textdraw's box (<a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a>).</summary>
  * <param name="playerid">The ID of the player whose textdraw to set the box colour of</param>
  * <param name="textid">The ID of the player textdraw to set the box colour of</param>
@@ -681,7 +681,7 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
 native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Show a player-textdraw to the player it was created for.</summary>
  * <param name="playerid">The ID of the player to show the textdraw for</param>
  * <param name="textid">The ID of the textdraw to show</param>
@@ -705,7 +705,7 @@ native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
 native bool:PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Set the outline of a player-textdraw.  The outline colour cannot be changed unless
  * <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>
  * is used.</summary>
@@ -731,7 +731,7 @@ native bool:PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
 native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Adjust the background colour of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the background colour of</param>
  * <param name="textid">The ID of the player-textdraw to set the background colour of</param>
@@ -758,7 +758,7 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
 native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Change the font of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to change the font of</param>
  * <param name="textid">The ID of the player-textdraw to change the font of</param>
@@ -784,7 +784,7 @@ native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroun
 native bool:PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Appears to scale text spacing to a proportional ratio.  Useful when using
  * <a href="#PlayerTextDrawLetterSize">PlayerTextDrawLetterSize</a>
  * to ensure the text has even character spacing.</summary>
@@ -810,7 +810,7 @@ native bool:PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font)
 native bool:PlayerTextDrawSetProportional(playerid, PlayerText:textid, bool:proportional);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Toggles whether a player-textdraw can be selected or not.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to set the selectability of</param>
  * <param name="textid">The ID of the player-textdraw to set the selectability of</param>
@@ -827,7 +827,7 @@ native bool:PlayerTextDrawSetProportional(playerid, PlayerText:textid, bool:prop
 native bool:PlayerTextDrawSetSelectable(playerid, PlayerText:textid, bool:selectable);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Show a player-textdraw to the player it was created for.</summary>
  * <param name="playerid">The ID of the player to show the textdraw for</param>
  * <param name="textid">The ID of the textdraw to show</param>
@@ -850,7 +850,7 @@ native bool:PlayerTextDrawSetSelectable(playerid, PlayerText:textid, bool:select
 native bool:PlayerTextDrawShow(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Hide a player-textdraw from the player it was created for.</summary>
  * <param name="playerid">The ID of the player to hide the textdraw for</param>
  * <param name="textid">The ID of the textdraw to hide</param>
@@ -873,7 +873,7 @@ native bool:PlayerTextDrawShow(playerid, PlayerText:textid);
 native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Change the text of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player who's textdraw string to set</param>
  * <param name="textid">The ID of the textdraw to change</param>
@@ -900,7 +900,7 @@ native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
 native bool:PlayerTextDrawSetString(playerid, PlayerText:textid, const string[]);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets a player textdraw 2D preview sprite of a specified model ID.</summary>
  * <param name="playerid">The PlayerTextDraw player ID</param>
  * <param name="textid">The textdraw ID that will display the 3D preview</param>
@@ -920,7 +920,7 @@ native bool:PlayerTextDrawSetString(playerid, PlayerText:textid, const string[])
 native bool:PlayerTextDrawSetPreviewModel(playerid, PlayerText:textid, model);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Sets the rotation and zoom of a 3D model preview player-textdraw.</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to change</param>
  * <param name="textid">The ID of the player-textdraw to change</param>
@@ -940,7 +940,7 @@ native bool:PlayerTextDrawSetPreviewModel(playerid, PlayerText:textid, model);
 native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to change</param>
  * <param name="textid">The ID of the player's player-textdraw to change</param>
@@ -958,207 +958,207 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
 native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:IsValidTextDraw(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:IsTextDrawVisibleForPlayer(playerid, Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetString(Text:textid, string[], stringSize = sizeof (string));
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawSetPos(Text:textid, Float:x, Float:y);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetLetterSize(Text:textid, &Float:width, &Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetTextSize(Text:textid, &Float:width, &Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetColor(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetBoxColor(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetBackgroundColor(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetShadow(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetOutline(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TEXT_DRAW_FONT:TextDrawGetFont(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawIsBox(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawIsProportional(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawIsSelectable(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TEXT_DRAW_ALIGN:TextDrawGetAlignment(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TextDrawGetPreviewModel(Text:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:TextDrawSetStringForPlayer(Text:textid, playerid, const string[], {Float,_}:...);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:IsValidPlayerTextDraw(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:IsPlayerTextDrawVisible(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetString(playerid, PlayerText:textid, string[], stringSize = sizeof (string));
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawSetPos(playerid, PlayerText:textid, Float:x, Float:y);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetLetterSize(playerid, PlayerText:textid, &Float:width, &Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetTextSize(playerid, PlayerText:textid, &Float:width, &Float:height);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetShadow(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetOutline(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TEXT_DRAW_FONT:PlayerTextDrawGetFont(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawIsBox(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawIsProportional(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawIsSelectable(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native TEXT_DRAW_ALIGN:PlayerTextDrawGetAlignment(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native PlayerTextDrawGetPreviewModel(playerid, PlayerText:textid);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
 
 /**
- * <library>omp_textdaw</library>
+ * <library>omp_textdraw</library>
  */
 native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
 
