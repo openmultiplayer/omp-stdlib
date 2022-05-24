@@ -320,12 +320,24 @@ native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Fl
 /**
  * <library>omp_textlabel</library>
  */
+#pragma deprecated Use `GetPlayer3DTextLabelDrawDistance`
 native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
 
 /**
  * <library>omp_textlabel</library>
  */
+native Float:GetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
 native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
 
 /**
  * <library>omp_textlabel</library>
@@ -340,10 +352,27 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
 /**
  * <library>omp_textlabel</library>
  */
+#pragma deprecated Use `GetPlayer3DTextLabelVirtualWorld`
 native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
 
 /**
  * <library>omp_textlabel</library>
  */
+native GetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+//native SetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid, virtualWorld);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+#pragma deprecated Use `GetPlayer3DTextLabelAttachedData`
 native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
 
