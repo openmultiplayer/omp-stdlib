@@ -28,6 +28,8 @@
  * <summary>PVar enumeration</summary>
  */
 #define VARTYPE: __TAG(VARTYPE):
+#define SERVER_VARTYPE: __TAG(VARTYPE):
+#define PLAYER_VARTYPE: __TAG(VARTYPE):
 enum VARTYPE:__VARTYPE
 {
 	VARTYPE_NONE,
