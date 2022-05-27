@@ -102,6 +102,15 @@ public const __OPEN_MP_VERSION = 0;
 
 #define OPEN_MP_TAGS {Float, _}
 
+
+/**
+ * <summary>
+ *   An invalid value (<c>-1</c>) as a boolean for some natives (most notably
+ *   the vehicle param ones) that can skip `true`/`false` parameters.
+ * </summary>
+ */
+const bool:undef = bool:-1;
+
 // Try many places to get the latest version.
 
 #tryinclude "..\pawn-stdlib\console"
