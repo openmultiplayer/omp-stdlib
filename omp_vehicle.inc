@@ -1050,35 +1050,154 @@ native GetVehicleVirtualWorld(vehicleid);
  */
 native bool:IsValidVehicle(vehicleid);
 
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetPlayerLastSyncedVehicleID(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetPlayerLastSyncedTrailerID(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:spawnZ, &Float:angle, &colour1 = 0, &colour2 = 0);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:GetVehicleColor(vehicleid, &colour1, &colour2;
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehiclePaintjob(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleInterior(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:GetVehicleNumberPlate(vehicleid, plate[], len = sizeof(plate));
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleRespawnDelay(vehicleid, respawnDelay);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleRespawnDelay(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleOccupiedTick(vehicleid, ticks);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleOccupiedTick(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleRespawnTick(vehicleid, ticks);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleRespawnTick(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleLastDriver(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleCab(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:HasVehicleBeenOccupied(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleBeenOccupied(vehicleid, bool:occupied);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:IsVehicleOccupied(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:IsVehicleDead(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleDead(vehicleid, bool:dead);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:SetVehicleParamsSirenState(vehicleid, bool:enabled);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:ToggleVehicleSirenEnabled(vehicleid, bool:enabled);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:IsVehicleSirenEnabled(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:GetVehicleMatrix(vehicleid, &Float:rightX, &Float:rightY, &Float:rightZ, &Float:upX, &Float:upY, &Float:upZ, &Float:atX, &Float:atY, &Float:atZ);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleModelCount(modelid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleModelsUsed();
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:HideVehicle(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:ShowVehicle(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native bool:IsVehicleHidden(vehicleid);
 
 /**
@@ -1359,3 +1478,4 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
  */
 forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
 
+99
