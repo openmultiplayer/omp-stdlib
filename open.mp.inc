@@ -100,6 +100,8 @@ public const __OPEN_MP_VERSION = 0;
 #endif
 #define __LESS __TAG
 
+#define OPEN_MP_TAGS {Float, _}
+
 // Try many places to get the latest version.
 
 #tryinclude "..\pawn-stdlib\console"
@@ -186,10 +188,22 @@ public const __OPEN_MP_VERSION = 0;
 	#error cannot read from file: "omp_gangzone"
 #endif
 
+#tryinclude "omp_menu"
+#tryinclude <omp_menu>
+#if !defined _INC_omp_menu
+	#error cannot read from file: "omp_menu"
+#endif
+
 #tryinclude "omp_object"
 #tryinclude <omp_object>
 #if !defined _INC_omp_object
 	#error cannot read from file: "omp_object"
+#endif
+
+#tryinclude "omp_pickup"
+#tryinclude <omp_pickup>
+#if !defined _INC_omp_pickup
+	#error cannot read from file: "omp_pickup"
 #endif
 
 #tryinclude "omp_textdraw"
@@ -198,15 +212,21 @@ public const __OPEN_MP_VERSION = 0;
 	#error cannot read from file: "omp_textdraw"
 #endif
 
-#tryinclude "omp_menu"
-#tryinclude <omp_menu>
-#if !defined _INC_omp_menu
-	#error cannot read from file: "omp_menu"
+#tryinclude "omp_textlabel"
+#tryinclude <omp_textlabel>
+#if !defined _INC_omp_textlabel
+	#error cannot read from file: "omp_textlabel"
 #endif
 
-#tryinclude "omp_pickup"
-#tryinclude <omp_pickup>
-#if !defined _INC_omp_pickup
-	#error cannot read from file: "omp_pickup"
+#tryinclude "omp_variable"
+#tryinclude <omp_variable>
+#if !defined _INC_omp_variable
+	#error cannot read from file: "omp_variable"
+#endif
+
+#tryinclude "omp_vehicle"
+#tryinclude <omp_vehicle>
+#if !defined _INC_omp_vehicle
+	#error cannot read from file: "omp_vehicle"
 #endif
 
