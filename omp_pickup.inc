@@ -153,7 +153,7 @@ native bool:DestroyPickup(pickup);
  * <seealso name="GivePlayerMoney" />
  * <seealso name="OnPlayerDeath" />
  */
-#pragma deprecated Use `CreatePickup`.
+#pragma deprecated Use `CreatePickup`
 native void:SetDeathDropAmount(amount);
 
 /**

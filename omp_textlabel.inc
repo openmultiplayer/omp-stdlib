@@ -67,7 +67,7 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
  * <library>omp_textlabel</library>
  * <summary>Creates a 3D Text Label at a specific location in the world.</summary>
  * <param name="text">The initial text string.  May be optionally formatted.</param>
- * <param name="colour">The text Color, as an integer or hex in <b>RGBA</b> colour format</param>
+ * <param name="colour">The text colour, as an integer or hex in <b>RGBA</b> colour format</param>
  * <param name="x">x-Coordinate</param>
  * <param name="y">y-Coordinate</param>
  * <param name="z">z-Coordinate</param>
@@ -184,7 +184,13 @@ native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof(text));
 /**
  * <library>omp_textlabel</library>
  */
+#pragma deprecated Use `Get3DTextLabelColour`
 native Get3DTextLabelColor(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native Get3DTextLabelColour(Text3D:textid);
 
 /**
  * <library>omp_textlabel</library>
@@ -302,7 +308,13 @@ native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len 
 /**
  * <library>omp_textlabel</library>
  */
+#pragma deprecated Use `GetPlayer3DTextLabelColour`
 native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
+native GetPlayer3DTextLabelColour(playerid, PlayerText3D:textid);
 
 /**
  * <library>omp_textlabel</library>

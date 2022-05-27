@@ -129,7 +129,7 @@ native GetPlayerDialogID(playerid);
  *   The ID, or <b><c>INVALID_DIALOG_ID</c></b> if there's no player or open dialog.<br />
  * </returns>
  */
-#pragma deprecated Use `GetPlayerDialogID`.
+#pragma deprecated Use `GetPlayerDialogID`
 native GetPlayerDialog(playerid);
 
 /**

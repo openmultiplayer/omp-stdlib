@@ -211,7 +211,7 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * <summary>Sets the text colour of a textdraw.</summary>
  * <param name="textid">The ID of the textdraw to change the colour of.</param>
  * <param name="textColour">The colour to set the textdraw to</param>
- * <remarks>You can also use GameText Colors in TextDraws.</remarks>
+ * <remarks>You can also use GameText colours in TextDraws.</remarks>
  * <remarks>If the TextDraw is already shown, it must be re-shown (<a href="#TextDrawShowForAll">TextDrawShowForAll</a>/<a
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
@@ -224,7 +224,7 @@ native bool:TextDrawColor(Text:textid, textColour);
  * <summary>Sets the text colour of a textdraw.</summary>
  * <param name="textid">The ID of the textdraw to change the colour of.</param>
  * <param name="textColour">The colour to set the textdraw to</param>
- * <remarks>You can also use GameText Colors in TextDraws.</remarks>
+ * <remarks>You can also use GameText colours in TextDraws.</remarks>
  * <remarks>If the TextDraw is already shown, it must be re-shown (<a href="#TextDrawShowForAll">TextDrawShowForAll</a>/<a
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
@@ -465,8 +465,8 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
  * that vehicle.</summary>
  * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
- * <param name="colour1">The primary Color ID to set the vehicle to</param>
- * <param name="colour2">The secondary Color ID to set the vehicle to</param>
+ * <param name="colour1">The primary colour ID to set the vehicle to</param>
+ * <param name="colour2">The secondary colour ID to set the vehicle to</param>
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
@@ -494,9 +494,9 @@ native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2);
  * <param name="y">y-Coordinate</param>
  * <param name="string">The text in the textdraw.  May be optionally formatted.</param>
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -545,9 +545,9 @@ native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const string[
  * <param name="playerid">The ID of the player who's player-textdraw to destroy</param>
  * <param name="textid">The ID of the textdraw to destroy</param>
  * <seealso name="CreatePlayerTextDraw" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -571,9 +571,9 @@ native bool:PlayerTextDrawDestroy(playerid, PlayerText:textid);
  * <param name="height">Height of a char</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawTextSize" />
@@ -603,9 +603,9 @@ native bool:PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, F
  * <a href="#TextDrawCreate">TextDrawCreate</a></param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -645,9 +645,9 @@ native bool:PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Flo
  * <param name="alignment"><b><c>1</c></b>-left <b><c>2</c></b>-centered <b><c>3</c></b>-right</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
  * <seealso name="PlayerTextDrawTextSize" />
@@ -671,8 +671,8 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
  * <param name="textColour">The colour in hexadecimal format</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -724,9 +724,9 @@ native bool:PlayerTextDrawColour(playerid, PlayerText:textid, textColour);
  * <param name="boxEnabled"><b><c>1</c></b> to use a box or <b><c>0</c></b> to not use a box</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -748,8 +748,8 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
  * <param name="boxColour">The colour to set.  Alpha (transparency) is supported</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -798,9 +798,9 @@ native bool:PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour);
  * <seealso name="PlayerTextDrawHide" />
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -823,9 +823,9 @@ native bool:PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
  * <param name="outlineSize">The thickness of the outline</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -847,8 +847,8 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  * <param name="backgroundColour">The colour that the textdraw should be set to</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -904,9 +904,9 @@ native bool:PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgrou
  * <a href="https://open.mp/docs/scripting/functions/TextDrawFont">https://open.mp/docs/scripting/functions/TextDrawFont</a></param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawLetterSize" />
  * <seealso name="PlayerTextDrawTextSize" />
@@ -930,9 +930,9 @@ native bool:PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font)
  * <param name="proportional"><b><c>1</c></b> to enable proportionality, <b><c>0</c></b> to disable</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -971,9 +971,9 @@ native bool:PlayerTextDrawSetSelectable(playerid, PlayerText:textid, bool:select
  * <seealso name="PlayerTextDrawHide" />
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -994,9 +994,9 @@ native bool:PlayerTextDrawShow(playerid, PlayerText:textid);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -1017,9 +1017,9 @@ native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
  * <param name="string">The new string for the TextDraw.  May be optionally formatted.</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
- * <seealso name="PlayerTextDrawColor" />
- * <seealso name="PlayerTextDrawBoxColor" />
- * <seealso name="PlayerTextDrawBackgroundColor" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
  * <seealso name="PlayerTextDrawAlignment" />
  * <seealso name="PlayerTextDrawFont" />
  * <seealso name="PlayerTextDrawLetterSize" />
@@ -1280,13 +1280,13 @@ native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y
 /**
  * <library>omp_textdraw</library>
  */
-#pragma deprecated Use `PlayerTextDrawGetColour`.
+#pragma deprecated Use `PlayerTextDrawGetColour`
 native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-#pragma deprecated Use `PlayerTextDrawGetBoxColour`.
+#pragma deprecated Use `PlayerTextDrawGetBoxColour`
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
 
 /**
@@ -1302,7 +1302,7 @@ native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid);
 /**
  * <library>omp_textdraw</library>
  */
-#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`.
+#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`
 native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
 
 /**

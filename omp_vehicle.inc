@@ -579,9 +579,9 @@ native bool:RemoveVehicleComponent(vehicleid, componentid);
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">Color
+ * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
  * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">Color
+ * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
  * ID</a></param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehicleRespray" />
@@ -593,14 +593,35 @@ native bool:RemoveVehicleComponent(vehicleid, componentid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
+#pragma deprecated Use `ChangeVehicleColours`
 native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Change a vehicle's primary and secondary colours.</summary>
+ * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
+ * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * ID</a></param>
+ * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * ID</a></param>
+ * <seealso name="ChangeVehiclePaintjob" />
+ * <seealso name="OnVehicleRespray" />
+ * <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all.
+ *  A few (cement, squallo) have 4 colours, of which 2 can not currently be changed.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  The vehicle's colour was successfully changed.<br
+ * />
+ *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
+ * </returns>
+ */
+native bool:ChangeVehicleColours(vehicleid, colour1, colour2);
 
 /**
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's paintjob (for plain colours see <a href="#ChangeVehicleColor">ChangeVehicleColor</a>).</summary>
  * <param name="vehicleid">The ID of the vehicle to change the paintjob of</param>
  * <param name="paintjobid">The ID of the Paintjob to apply.  Use <b><c>3</c></b> to remove a paintjob</param>
- * <seealso name="ChangeVehicleColor" />
+ * <seealso name="ChangeVehicleColours" />
  * <seealso name="OnVehiclePaintjob" />
  * <remarks>
  *   <b>Known Bugs:</b><br />
@@ -722,7 +743,7 @@ native GetVehicleTrailer(vehicleid);
  * <param name="vehicleid">The ID of the vehicle to set the number plate of</param>
  * <param name="numberPlate">The text that should be displayed on the number plate</param>
  * <seealso name="SetVehicleToRespawn" />
- * <seealso name="ChangeVehicleColor" />
+ * <seealso name="ChangeVehicleColours" />
  * <seealso name="ChangeVehiclePaintjob" />
  * <remarks>You can use colour embedding on the number plate text.</remarks>
  * <remarks>
@@ -1071,7 +1092,13 @@ native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, 
 /**
  * <library>omp_vehicle</library>
  */
+#pragma deprecated Use `GetVehicleColours`
 native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native bool:GetVehicleColours(vehicleid, &colour1, &colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1387,7 +1414,7 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
  * <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
  * <param name="paintjobid">The ID of the new paintjob</param>
  * <seealso name="ChangeVehiclePaintjob" />
- * <seealso name="ChangeVehicleColor" />
+ * <seealso name="ChangeVehicleColours" />
  * <seealso name="OnVehicleRespray" />
  * <seealso name="OnVehicleMod" />
  * <remarks>This callback is not called by <a href="#ChangeVehiclePaintjob">ChangeVehiclePaintjob</a>.</remarks>
@@ -1401,13 +1428,13 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
 forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
 
 /**
- * <summary>This callback is called when a player exits a mod shop, even if the colors weren't changed.
+ * <summary>This callback is called when a player exits a mod shop, even if the colours weren't changed.
  *  Watch out, the name is ambiguous, Pay 'n' Spray shops don't call this callback.</summary>
  * <param name="playerid">The ID of the player that is driving the vehicle</param>
  * <param name="vehicleid">The ID of the vehicle that was resprayed</param>
- * <param name="colour1">The color that the vehicle's primary color was changed to</param>
- * <param name="colour2">The color that the vehicle's secondary color was changed to</param>
- * <seealso name="ChangeVehicleColor" />
+ * <param name="colour1">The colour that the vehicle's primary colour was changed to</param>
+ * <param name="colour2">The colour that the vehicle's secondary colour was changed to</param>
+ * <seealso name="ChangeVehicleColours" />
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehiclePaintjob" />
  * <seealso name="OnVehicleMod" />

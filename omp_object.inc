@@ -401,7 +401,7 @@ native bool:IsObjectMoving(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-#pragma deprecated Use `BeginObjectEditing`.
+#pragma deprecated Use `BeginObjectEditing`
 native bool:EditObject(playerid, objectid);
 
 /**
@@ -440,7 +440,7 @@ native bool:BeginObjectEditing(playerid, objectid);
  *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
  * </returns>
  */
-#pragma deprecated Use `BeginPlayerObjectEditing`.
+#pragma deprecated Use `BeginPlayerObjectEditing`
 native bool:EditPlayerObject(playerid, objectid);
 
 /**
@@ -472,7 +472,7 @@ native bool:BeginPlayerObjectEditing(playerid, objectid);
  * <seealso name="CancelEdit" />
  * <seealso name="OnPlayerSelectObject" />
  */
-#pragma deprecated Use `BeginObjectSelecting`.
+#pragma deprecated Use `BeginObjectSelecting`
 native bool:SelectObject(playerid);
 
 /**
@@ -497,7 +497,7 @@ native bool:BeginObjectSelecting(playerid);
  * <seealso name="EditPlayerObject" />
  * <seealso name="EditAttachedObject" />
  */
-#pragma deprecated Use `EndObjectEditing`.
+#pragma deprecated Use `EndObjectEditing`
 native bool:CancelEdit(playerid);
 
 /**
@@ -962,7 +962,7 @@ native Float:GetObjectMoveSpeed(objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-#pragma deprecated Use `GetObjectMovingTargetPos`.
+#pragma deprecated Use `GetObjectMovingTargetPos`
 native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
 
 /**

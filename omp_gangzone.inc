@@ -254,13 +254,13 @@ native IsGangZoneVisibleForPlayer(playerid, zoneid);
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use GangZoneGetColourForPlayer.
+#pragma deprecated Use `GangZoneGetColourForPlayer`
 native GangZoneGetColorForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use GangZoneGetFlashColourForPlayer.
+#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
 native GangZoneGetFlashColorForPlayer(playerid, zoneid);
 
 /**
@@ -339,13 +339,13 @@ native IsPlayerGangZoneVisible(playerid, zoneid);
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use PlayerGangZoneGetColour.
+#pragma deprecated Use `PlayerGangZoneGetColour`
 native PlayerGangZoneGetColor(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use PlayerGangZoneGetFlashColour.
+#pragma deprecated Use `PlayerGangZoneGetFlashColour`
 native PlayerGangZoneGetFlashColor(playerid, zoneid);
 
 /**
