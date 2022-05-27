@@ -37,7 +37,7 @@
  * </remarks>
  * <returns>Returns index (starting at <b><c>1</c></b>) of the database connection .</returns>
  */
-native DB:DB_Open(const name[]) = db_open;
+native DB:DB_Open(const name[]);
 
 /**
  * <library>omp_database</library>
@@ -57,7 +57,7 @@ native DB:db_open(const name[]);
  * not open.
  * </returns>
  */
-native bool:DB_Close(DB:db) = db_close;
+native bool:DB_Close(DB:db);
 
 /**
  * <library>omp_database</library>
@@ -73,7 +73,7 @@ native bool:db_close(DB:db);
  * <remarks><b>Always</b> free the result by using <a href="#db_free_result">db_free_result</a>!</remarks>
  * <returns>The query result index (<b>starting at 1</b>).</returns>
  */
-native DBResult:DB_ExecuteQuery(DB:db, const query[], OPEN_MP_TAGS:...) = db_query;
+native DBResult:DB_ExecuteQuery(DB:db, const query[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_database</library>
@@ -88,7 +88,7 @@ native DBResult:db_query(DB:db, const query[]);
  * <returns>If <b><c>DBResult:dbhandle</c></b> is a valid handle, it returns <b><c>1</c></b>, otherwise
  * <b><c>0</c></b> if <b><c>DBResult:dbhandle</c></b> is a <b><c>NULL</c></b> reference.</returns>
  */
-native bool:DB_FreeResultSet(DBResult:result) = db_free_result;
+native bool:DB_FreeResultSet(DBResult:result);
 
 /**
  * <library>omp_database</library>
@@ -104,7 +104,7 @@ native bool:db_free_result(DBResult:result);
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>The number of rows in the result.</returns>
  */
-native DB_GetRowCount(DBResult:result) = db_num_rows;
+native DB_GetRowCount(DBResult:result);
 
 /**
  * <library>omp_database</library>
@@ -121,7 +121,7 @@ native db_num_rows(DBResult:result);
  * <returns>Returns <b><c>1</c></b> on success, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the last row is reached.</returns>
  */
-native bool:DB_SelectNextRow(DBResult:result) = db_next_row;
+native bool:DB_SelectNextRow(DBResult:result);
 
 /**
  * <library>omp_database</library>
@@ -137,7 +137,7 @@ native bool:db_next_row(DBResult:result);
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>The number of fields in the result.</returns>
  */
-native DB_GetFieldCount(DBResult:result) = db_num_fields;
+native DB_GetFieldCount(DBResult:result);
 
 /**
  * <library>omp_database</library>
@@ -157,7 +157,7 @@ native db_num_fields(DBResult:result);
  * <returns>Returns <b><c>1</c></b>, if the function was successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native bool:DB_GetFieldName(DBResult:result, field, output[], size = sizeof (output)) = db_field_name;
+native bool:DB_GetFieldName(DBResult:result, field, output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
@@ -177,7 +177,7 @@ native bool:db_field_name(DBResult:result, field, output[], size = sizeof (outpu
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native bool:DB_GetFieldString(DBResult:result, field, output[], size = sizeof (output)) = db_get_field;
+native bool:DB_GetFieldString(DBResult:result, field, output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
@@ -194,7 +194,7 @@ native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as integer (number).</returns>
  */
-native DB_GetFieldInt(DBResult:result, field = 0) = db_get_field_int;
+native DB_GetFieldInt(DBResult:result, field = 0);
 
 /**
  * <library>omp_database</library>
@@ -211,7 +211,7 @@ native db_get_field_int(DBResult:result, field = 0);
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as floating point number.</returns>
  */
-native Float:DB_GetFieldFloat(DBResult:result, field = 0) = db_get_field_float;
+native Float:DB_GetFieldFloat(DBResult:result, field = 0);
 
 /**
  * <library>omp_database</library>
@@ -231,7 +231,7 @@ native Float:db_get_field_float(DBResult:result, field = 0);
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native bool:DB_GetFieldStringByName(DBResult:result, const field[], output[], size = sizeof (output)) = db_get_field_assoc;
+native bool:DB_GetFieldStringByName(DBResult:result, const field[], output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
@@ -248,7 +248,7 @@ native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = 
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as integer (number).</returns>
  */
-native DB_GetFieldIntByName(DBResult:result, const field[]) = db_get_field_assoc_int;
+native DB_GetFieldIntByName(DBResult:result, const field[]);
 
 /**
  * <library>omp_database</library>
@@ -265,7 +265,7 @@ native db_get_field_assoc_int(DBResult:result, const field[]);
  * <a href="#db_open">db_open</a>.  But it's protected against <b><c>NULL</c></b> references</remarks>
  * <returns>Retrieved value as floating point number.</returns>
  */
-native Float:DB_GetFieldFloatByName(DBResult:result, const field[]) = db_get_field_assoc_float;
+native Float:DB_GetFieldFloatByName(DBResult:result, const field[]);
 
 /**
  * <library>omp_database</library>
@@ -279,7 +279,7 @@ native Float:db_get_field_assoc_float(DBResult:result, const field[]);
  * <param name="db">The index of the database connection (returned by <a href="#db_open">db_open</a>)</param>
  * <returns>Returns the memory handle for a specified database.</returns>
  */
-native DB_GetMemHandle(DB:db) = db_get_mem_handle;
+native DB_GetMemHandle(DB:db);
 
 /**
  * <library>omp_database</library>
@@ -293,7 +293,7 @@ native db_get_mem_handle(DB:db);
  * <param name="result">The index of the query (returned by <a href="#db_query">db_query</a>)</param>
  * <returns>Returns the memory handle for a specified query.</returns>
  */
-native DB_GetLegacyDBResult(DBResult:result) = db_get_result_mem_handle;
+native DB_GetLegacyDBResult(DBResult:result);
 
 /**
  * <library>omp_database</library>
@@ -304,7 +304,7 @@ native db_get_result_mem_handle(DBResult:result);
 /**
  * <library>omp_database</library>
  */
-native DB_GetDatabaseConnectionCount() = db_debug_openfiles;
+native DB_GetDatabaseConnectionCount();
 
 /**
  * <library>omp_database</library>
@@ -315,7 +315,7 @@ native db_debug_openfiles();
 /**
  * <library>omp_database</library>
  */
-native DB_GetDatabaseResultSetCount() = db_debug_openresults;
+native DB_GetDatabaseResultSetCount();
 
 /**
  * <library>omp_database</library>
