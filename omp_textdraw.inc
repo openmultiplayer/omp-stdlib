@@ -216,7 +216,20 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
+#pragma deprecated Use `TextDrawColour`
 native bool:TextDrawColor(Text:textid, textColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Sets the text colour of a textdraw.</summary>
+ * <param name="textid">The ID of the textdraw to change the colour of.</param>
+ * <param name="textColour">The colour to set the textdraw to</param>
+ * <remarks>You can also use GameText Colors in TextDraws.</remarks>
+ * <remarks>If the TextDraw is already shown, it must be re-shown (<a href="#TextDrawShowForAll">TextDrawShowForAll</a>/<a
+ * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
+ * effect.</remarks>
+ */
+native bool:TextDrawColour(Text:textid, textColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -243,7 +256,21 @@ native bool:TextDrawUseBox(Text:textid, bool:enableBox);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
+#pragma deprecated Use `TextDrawBoxColour`
 native bool:TextDrawBoxColor(Text:textid, boxColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Adjusts the text box colour (only used if <a href="#TextDrawUseBox">TextDrawUseBox</a> 'use'
+ * parameter is <b><c>1</c></b>).</summary>
+ * <param name="textid">The TextDraw to change</param>
+ * <param name="boxColour">The colour (<b>RGBA</b>)</param>
+ * <remarks>If you want to change the boxcolour of a textdraw that is already shown, you don't have
+ * to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * after modifying the textdraw and the change will be visible.</remarks>
+ */
+native bool:TextDrawBoxColour(Text:textid, boxColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -288,7 +315,24 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
+#pragma deprecated Use `TextDrawBackgroundColour`
 native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Adjusts the text draw area background colour (the outline/shadow - NOT the box.  For box
+ * colour, see <a href="#TextDrawBoxColour">TextDrawBoxColour</a>).</summary>
+ * <param name="textid">The ID of the textdraw to set the background colour of</param>
+ * <param name="backgroundColour">The colour that the textdraw should be set to</param>
+ * <remarks>If <a href="#TextDrawSetOutline">TextDrawSetOutline</a> is used with size &gt; <b><c>0</c></b>,
+ * the outline colour will match the colour used in <a href="#TextDrawBackgroundColour">TextDrawBackgroundColour</a>.
+ *  Changing the value of colour seems to alter the colour used in <a href="#TextDrawColour">TextDrawColour</a></remarks>
+ * <remarks>If you want to change the background colour of a textdraw that is already shown, you don't
+ * have to recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/
+ * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
+ * after modifying the textdraw and the change will be visible.</remarks>
+ */
+native bool:TextDrawBackgroundColour(Text:textid, backgroundColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -426,7 +470,20 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
+#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
+ * that vehicle.</summary>
+ * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
+ * <param name="colour1">The primary Colour ID to set the vehicle to</param>
+ * <param name="colour2">The secondary Colour ID to set the vehicle to</param>
+ * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
+ * for this function to have effect.</remarks>
+ */
+native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2);
 
 /**
  * <library>omp_textdraw</library>
@@ -630,7 +687,34 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
+#pragma deprecated Use `PlayerTextDrawColour`
 native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Sets the text colour of a player-textdraw.</summary>
+ * <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
+ * <param name="textid">The TextDraw to change</param>
+ * <param name="textColour">The colour in hexadecimal format</param>
+ * <seealso name="CreatePlayerTextDraw" />
+ * <seealso name="PlayerTextDrawDestroy" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
+ * <seealso name="PlayerTextDrawAlignment" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="PlayerTextDrawLetterSize" />
+ * <seealso name="PlayerTextDrawTextSize" />
+ * <seealso name="PlayerTextDrawSetOutline" />
+ * <seealso name="PlayerTextDrawSetShadow" />
+ * <seealso name="PlayerTextDrawSetProportional" />
+ * <seealso name="PlayerTextDrawUseBox" />
+ * <seealso name="PlayerTextDrawSetString" />
+ * <seealso name="PlayerTextDrawShow" />
+ * <seealso name="PlayerTextDrawHide" />
+ * <remarks>You can also use Gametext colours in textdraws.</remarks>
+ * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
+ */
+native bool:PlayerTextDrawColour(playerid, PlayerText:textid, textColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -678,7 +762,32 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
+#pragma deprecated Use `PlayerTextDrawBoxColour`
 native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Sets the colour of a textdraw's box (<a href="#PlayerTextDrawUseBox">PlayerTextDrawUseBox</a>).</summary>
+ * <param name="playerid">The ID of the player whose textdraw to set the box colour of</param>
+ * <param name="textid">The ID of the player textdraw to set the box colour of</param>
+ * <param name="boxColour">The colour to set.  Alpha (transparency) is supported</param>
+ * <seealso name="CreatePlayerTextDraw" />
+ * <seealso name="PlayerTextDrawDestroy" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBackgroundColour" />
+ * <seealso name="PlayerTextDrawAlignment" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="PlayerTextDrawLetterSize" />
+ * <seealso name="PlayerTextDrawTextSize" />
+ * <seealso name="PlayerTextDrawSetOutline" />
+ * <seealso name="PlayerTextDrawSetShadow" />
+ * <seealso name="PlayerTextDrawSetProportional" />
+ * <seealso name="PlayerTextDrawUseBox" />
+ * <seealso name="PlayerTextDrawSetString" />
+ * <seealso name="PlayerTextDrawShow" />
+ * <seealso name="PlayerTextDrawHide" />
+ */
+native bool:PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -755,7 +864,35 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
  */
+#pragma deprecated Use `PlayerTextDrawBackgroundColour`
 native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Adjust the background colour of a player-textdraw.</summary>
+ * <param name="playerid">The ID of the player whose player-textdraw to set the background colour of</param>
+ * <param name="textid">The ID of the player-textdraw to set the background colour of</param>
+ * <param name="backgroundColour">The colour that the textdraw should be set to</param>
+ * <seealso name="CreatePlayerTextDraw" />
+ * <seealso name="PlayerTextDrawDestroy" />
+ * <seealso name="PlayerTextDrawColour" />
+ * <seealso name="PlayerTextDrawBoxColour" />
+ * <seealso name="PlayerTextDrawAlignment" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="PlayerTextDrawLetterSize" />
+ * <seealso name="PlayerTextDrawTextSize" />
+ * <seealso name="PlayerTextDrawSetOutline" />
+ * <seealso name="PlayerTextDrawSetShadow" />
+ * <seealso name="PlayerTextDrawSetProportional" />
+ * <seealso name="PlayerTextDrawUseBox" />
+ * <seealso name="PlayerTextDrawSetString" />
+ * <seealso name="PlayerTextDrawShow" />
+ * <seealso name="PlayerTextDrawHide" />
+ * <remarks>If <a href="#PlayerTextDrawSetOutline">PlayerTextDrawSetOutline</a> is used with size &gt;
+ * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColour">PlayerTextDrawBackgroundColour</a>.
+ *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColour">PlayerTextDrawColour</a></remarks>
+ */
+native bool:PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -955,7 +1092,26 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
+#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`
 native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
+ * <param name="playerid">The ID of the player whose player-textdraw to change</param>
+ * <param name="textid">The ID of the player's player-textdraw to change</param>
+ * <param name="colour1">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
+ * the vehicle's primary colour to</param>
+ * <param name="colour2">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
+ * the vehicle's secondary colour to</param>
+ * <seealso name="PlayerTextDrawSetPreviewModel" />
+ * <seealso name="PlayerTextDrawSetPreviewRot" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="OnPlayerClickPlayerTextDraw" />
+ * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
+ * a vehicle in order for this function to have effect.</remarks>
+ */
+native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2);
 
 /**
  * <library>omp_textdraw</library>
@@ -995,17 +1151,35 @@ native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `TextDrawGetColour`
 native TextDrawGetColor(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `TextDrawGetBoxColour`
 native TextDrawGetBoxColor(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `TextDrawGetBackgroundColour`
 native TextDrawGetBackgroundColor(Text:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native TextDrawGetColour(Text:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native TextDrawGetBoxColour(Text:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native TextDrawGetBackgroundColour(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -1055,7 +1229,13 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `TextDrawGetPreviewVehicleColours`
 native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2);
 
 /**
  * <library>omp_textdraw</library>
@@ -1100,17 +1280,35 @@ native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `PlayerTextDrawGetColour`.
 native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `PlayerTextDrawGetBoxColour`.
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
+native PlayerTextDrawGetColour(playerid, PlayerText:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`.
 native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -1160,7 +1358,13 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 /**
  * <library>omp_textdraw</library>
  */
+#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`
 native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ */
+native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2);
 
 /**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
