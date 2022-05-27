@@ -1071,7 +1071,7 @@ native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleColor(vehicleid, &colour1, &colour2;
+native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1086,7 +1086,7 @@ native GetVehicleInterior(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleNumberPlate(vehicleid, plate[], len = sizeof(plate));
+native bool:GetVehicleNumberPlate(vehicleid, plate[], len = sizeof (plate));
 
 /**
  * <library>omp_vehicle</library>
