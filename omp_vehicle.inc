@@ -1143,8 +1143,6 @@ native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VE
  */
 native bool:GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
-// Virtual Worlds
-
 /**
  * <library>omp_vehicle</library>
  * <summary>Sets the 'virtual world' of a vehicle.  Players will only be able to see vehicles in their
@@ -1168,6 +1166,12 @@ native GetVehicleVirtualWorld(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>Returns some data.  What data?</summary>
+ */
+native LANDING_GEAR_STATE:GetVehicleLandingGearState(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
  * <summary>Check if a vehicle ID is valid.</summary>
  * <param name="vehicleid">The ID of the vehicle to check</param>
  * <seealso name="CreateVehicle" />
@@ -1175,6 +1179,25 @@ native GetVehicleVirtualWorld(vehicleid);
  * <returns>true or false.</returns>
  */
 native bool:IsValidVehicle(vehicleid);
+
+/**
+ * <library>a_samp</library>
+ * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
+ * <remarks>This function was removed in <b>SA-MP 0.3</b>.  Tire popping is enabled by default.  If
+ * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
+ * OnVehicleDamageStatusUpdate</a>.</remarks>
+ */
+#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
+native void:EnableTirePopping(bool:enable); // deprecated function
+
+/**
+ * <library>a_samp</library>
+ * <summary>Enable friendly fire for team vehicles.  Players will be unable to damage teammates' vehicles
+ * (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
+ * <seealso name="SetPlayerTeam" />
+ * <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
+ */
+native void:EnableVehicleFriendlyFire();
 
 /**
  * <library>omp_vehicle</library>
@@ -1256,6 +1279,36 @@ native GetVehicleRespawnTick(vehicleid);
  * <library>omp_vehicle</library>
  */
 native GetVehicleLastDriver(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetVehicleDriver(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native bool:IsPlayerInModShop(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetPlayerSirenState(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetPlayerLandingGearState(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetPlayerHydraReactorAngle(playerid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native Float:GetPlayerTrainSpeed(playerid);
 
 /**
  * <library>omp_vehicle</library>
