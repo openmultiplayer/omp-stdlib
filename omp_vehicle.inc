@@ -736,8 +736,6 @@ native GetVehicleTrailer(vehicleid);
  *   Some vehicle models has a backward number plate, e.g.  Boxville (498) (as an alternative to this
  * vehicle you can use vehicle model ID 609, which is a duplicated Boxville (aka Boxburg), but with
  * a regular number plate).<br />
- *   This function only works in versions <b>0.2.1</b>, <b>0.2.2</b>, <b>0.2x</b> and <b>0.3c</b> (and
- * beyond).
  * </remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />

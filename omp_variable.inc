@@ -86,7 +86,7 @@ native GetSVarInt(const svar[]);
  * <library>omp_variable</library>
  * <summary>Set a string server variable.</summary>
  * <param name="svar">The name of the server variable</param>
- * <param name="value">The string to be set</param>
+ * <param name="value">The string to be set.  May be optionally formatted.</param>
  * <seealso name="SetSVarInt" />
  * <seealso name="GetSVarInt" />
  * <seealso name="GetSVarString" />
@@ -98,7 +98,7 @@ native GetSVarInt(const svar[]);
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native bool:SetSVarString(const svar[], const value[]);
+native bool:SetSVarString(const svar[], const value[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_variable</library>
@@ -258,7 +258,7 @@ native GetPVarInt(playerid, const pvar[]);
  * <summary>Saves a string into a player variable.</summary>
  * <param name="playerid">The ID of the player whose player variable will be set</param>
  * <param name="pvar">The name of the player variable</param>
- * <param name="value">The string you want to save in the player variable</param>
+ * <param name="value">The string you want to save in the player variable.  May be optionally formatted.</param>
  * <seealso name="SetPVarInt" />
  * <seealso name="GetPVarInt" />
  * <seealso name="GetPVarString" />
@@ -266,7 +266,7 @@ native GetPVarInt(playerid, const pvar[]);
  * <seealso name="GetPVarFloat" />
  * <seealso name="DeletePVar" />
  */
-native SetPVarString(playerid, const pvar[], const value[]);
+native SetPVarString(playerid, const pvar[], const value[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_variable</library>

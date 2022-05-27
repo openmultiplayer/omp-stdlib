@@ -60,7 +60,7 @@ const MAX_DIALOG                               = 32768;
  * <param name="title">The title at the top of the dialog.  The length of the title can not exceed
  * more than 64 characters before it starts to cut off</param>
  * <param name="body">The text to display in the main dialog.  Use <b><c>\n</c></b> to start a new line
- * and <b><c>\t</c></b> to tabulate</param>
+ * and <b><c>\t</c></b> to tabulate.  May be optionally formatted.</param>
  * <param name="button1">The text on the left button</param>
  * <param name="button2">The text on the right button.  Leave it blank ( "" ) to hide it</param>
  * <seealso name="TextDrawShowForPlayer" />
@@ -73,7 +73,7 @@ const MAX_DIALOG                               = 32768;
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.<br />
  * </returns>
  */
-native bool:ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const title[], const body[], const button1[], const button2[]);
+native bool:ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const title[], const body[], const button1[], const button2[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_dialog</library>

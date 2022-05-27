@@ -45,7 +45,7 @@ const Menu:INVALID_MENU                        = Menu:0xFF;
 /**
  * <library>omp_menu</library>
  * <summary>Creates a menu.</summary>
- * <param name="title">The title for the new menu</param>
+ * <param name="title">The title for the new menu.  May be optionally formatted.</param>
  * <param name="columns">How many colums shall the new menu have</param>
  * <param name="x">The x position of the menu (640x460 canvas - <b><c>0</c></b> would put the menu at
  * the far left)</param>
@@ -72,7 +72,7 @@ const Menu:INVALID_MENU                        = Menu:0xFF;
  * in total.</remarks>
  * <returns>The ID of the new menu or <b><c>-1</c></b> on failure.</returns>
  */
-native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:column1width, Float:column2width = 0.0);
+native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:column1width, Float:column2width = 0.0, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_menu</library>
@@ -92,7 +92,7 @@ native bool:DestroyMenu(Menu:menuid);
  * <summary>Adds an item to a specified menu.</summary>
  * <param name="menuid">The menu ID to add an item to</param>
  * <param name="column">The column to add the item to</param>
- * <param name="text">The text for the new menu item</param>
+ * <param name="text">The text for the new menu item.  May be optionally formatted.</param>
  * <remarks>
  *   <ul>
  *     <li>Crashes when passed an invalid menu ID.</li>
@@ -111,14 +111,14 @@ native bool:DestroyMenu(Menu:menuid);
  * <seealso name="OnPlayerSelectedMenuRow" />
  * <seealso name="OnPlayerExitedMenu" />
  */
-native AddMenuItem(Menu:menuid, column, const text[]);
+native AddMenuItem(Menu:menuid, column, const text[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_menu</library>
  * <summary>Sets the caption of a column in a menu.</summary>
  * <param name="menuid">ID of the menu to change</param>
  * <param name="column">The column (<b><c>0</c></b> or <b><c>1</c></b>) to set the header of</param>
- * <param name="heading">The caption text for the column</param>
+ * <param name="heading">The caption text for the column.  May be optionally formatted.</param>
  * <seealso name="AddMenuItem" />
  * <seealso name="CreateMenu" />
  * <seealso name="OnPlayerSelectedMenuRow" />
@@ -127,7 +127,7 @@ native AddMenuItem(Menu:menuid, column, const text[]);
  *  The 13th object of a menu would replace the header of the column which is correctly set with this
  * function.</remarks>
  */
-native bool:SetMenuColumnHeader(Menu:menuid, column, const heading[]);
+native bool:SetMenuColumnHeader(Menu:menuid, column, const heading[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_menu</library>

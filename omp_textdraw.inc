@@ -103,7 +103,7 @@ static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
  * sprites and model previews (skins/vehicles/weapons/objects too) that is drawn on a player's screens.</summary>
  * <param name="x">The x (left/right) coordinate to create the textdraw at</param>
  * <param name="y">The y (up/down) coordinate to create the textdraw at</param>
- * <param name="string">The text that will appear in the textdraw</param>
+ * <param name="string">The text that will appear in the textdraw.  May be optionally formatted.</param>
  * <remarks>
  *   If you choose values for y that are less than 1, the first text row will be invisible and only
  * the shadow is visible.<br />
@@ -133,7 +133,7 @@ static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
  * 255th character. </remarks>
  * <returns>The ID of the created textdraw.  Textdraw IDs start at <b><c>0</c></b>.</returns>
  */
-native Text:TextDrawCreate(Float:x, Float:y, const string[]);
+native Text:TextDrawCreate(Float:x, Float:y, const string[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>
@@ -385,11 +385,11 @@ native bool:TextDrawHideForAll(Text:textid);
  * <library>omp_textdraw</library>
  * <summary>Changes the text on a textdraw.</summary>
  * <param name="textid">The TextDraw to change</param>
- * <param name="string">The new string for the TextDraw</param>
+ * <param name="string">The new string for the TextDraw.  May be optionally formatted.</param>
  * <remarks>There are limits to the length of textdraw strings - see <a href="https://open.mp/docs/scripting/resources/limits">here</a>
  * for more info.</remarks>
  */
-native bool:TextDrawSetString(Text:textid, const string[]);
+native bool:TextDrawSetString(Text:textid, const string[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>
@@ -435,7 +435,7 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  * <param name="playerid">The ID of the player to create the textdraw for</param>
  * <param name="x">x-Coordinate</param>
  * <param name="y">y-Coordinate</param>
- * <param name="string">The text in the textdraw</param>
+ * <param name="string">The text in the textdraw.  May be optionally formatted.</param>
  * <seealso name="PlayerTextDrawDestroy" />
  * <seealso name="PlayerTextDrawColor" />
  * <seealso name="PlayerTextDrawBoxColor" />
@@ -480,7 +480,7 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  * <remarks>Player-textdraws are automatically destroyed when a player disconnects.</remarks>
  * <returns>The ID of the created textdraw.</returns>
  */
-native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const string[]);
+native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const string[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>
@@ -877,7 +877,7 @@ native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
  * <summary>Change the text of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player who's textdraw string to set</param>
  * <param name="textid">The ID of the textdraw to change</param>
- * <param name="string">The new string for the TextDraw</param>
+ * <param name="string">The new string for the TextDraw.  May be optionally formatted.</param>
  * <seealso name="CreatePlayerTextDraw" />
  * <seealso name="PlayerTextDrawDestroy" />
  * <seealso name="PlayerTextDrawColor" />
@@ -897,7 +897,7 @@ native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
  * for more info.</remarks>
  * <remarks>You don't have to show the TextDraw again in order to apply the changes.</remarks>
  */
-native bool:PlayerTextDrawSetString(playerid, PlayerText:textid, const string[]);
+native bool:PlayerTextDrawSetString(playerid, PlayerText:textid, const string[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>

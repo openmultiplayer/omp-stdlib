@@ -66,7 +66,7 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 /**
  * <library>omp_textlabel</library>
  * <summary>Creates a 3D Text Label at a specific location in the world.</summary>
- * <param name="text">The initial text string</param>
+ * <param name="text">The initial text string.  May be optionally formatted.</param>
  * <param name="colour">The text Color, as an integer or hex in <b>RGBA</b> colour format</param>
  * <param name="x">x-Coordinate</param>
  * <param name="y">y-Coordinate</param>
@@ -91,7 +91,7 @@ const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
  * <returns>The ID of the newly created 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the 3D
  * Text Label limit (<b><c>MAX_3DTEXT_GLOBAL</c></b>) was reached.</returns>
  */
-native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld, bool:testLOS = false);
+native Text3D:Create3DTextLabel(const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, virtualWorld, bool:testLOS = false, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textlabel</library>
@@ -154,7 +154,7 @@ native bool:Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, F
  * <summary>Updates a 3D Text Label text and colour.</summary>
  * <param name="textid">The 3D Text Label you want to update</param>
  * <param name="colour">The colour the 3D Text Label should have from now on</param>
- * <param name="text">The new text which the 3D Text Label should have from now on</param>
+ * <param name="text">The new text which the 3D Text Label should have from now on.  May be optionally formatted.</param>
  * <seealso name="Create3DTextLabel" />
  * <seealso name="Delete3DTextLabel" />
  * <seealso name="Attach3DTextLabelToPlayer" />
@@ -164,7 +164,7 @@ native bool:Attach3DTextLabelToVehicle(Text3D:textid, parentid, Float:offsetX, F
  * <seealso name="UpdatePlayer3DTextLabelText" />
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
-native bool:Update3DTextLabelText(Text3D:textid, colour, const text[]);
+native bool:Update3DTextLabelText(Text3D:textid, colour, const text[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textlabel</library>
@@ -230,7 +230,7 @@ native bool:Get3DTextLabelAttachedData(Text3D:textid, &parentPlayerid, &parentVe
  * <library>omp_textlabel</library>
  * <summary>Creates a 3D Text Label only for a specific player.</summary>
  * <param name="playerid">The player which should see the newly created 3DText Label</param>
- * <param name="text">The text to display</param>
+ * <param name="text">The text to display.  May be optionally formatted.</param>
  * <param name="colour">The text colour</param>
  * <param name="x">x Coordinate (or offset if attached)</param>
  * <param name="y">y Coordinate (or offset if attached)</param>
@@ -251,7 +251,7 @@ native bool:Get3DTextLabelAttachedData(Text3D:textid, &parentPlayerid, &parentVe
  * <returns>The ID of the newly created Player 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if
  * the Player 3D Text Label limit (<b><c>MAX_3DTEXT_PLAYER</c></b>) was reached.</returns>
  */
-native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false);
+native PlayerText3D:CreatePlayer3DTextLabel(playerid, const text[], colour, Float:x, Float:y, Float:z, Float:drawDistance, parentPlayerid = INVALID_PLAYER_ID, parentVehicleid = INVALID_VEHICLE_ID, bool:testLOS = false, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textlabel</library>
@@ -277,7 +277,7 @@ native bool:DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
  * <param name="playerid">The ID of the player for which the 3D Text Label was created</param>
  * <param name="textid">The 3D Text Label you want to update</param>
  * <param name="colour">The colour the 3D Text Label should have from now on</param>
- * <param name="text">The new text which the 3D Text Label should have from now on</param>
+ * <param name="text">The new text which the 3D Text Label should have from now on.  May be optionally formatted.</param>
  * <seealso name="Create3DTextLabel" />
  * <seealso name="Delete3DTextLabel" />
  * <seealso name="Attach3DTextLabelToPlayer" />
@@ -287,7 +287,7 @@ native bool:DeletePlayer3DTextLabel(playerid, PlayerText3D:textid);
  * <seealso name="DeletePlayer3DTextLabel" />
  * <remarks>If <paramref name="text" /> is empty, the server/clients next to the text might crash!</remarks>
  */
-native bool:UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[]);
+native bool:UpdatePlayer3DTextLabelText(playerid, PlayerText3D:textid, colour, const text[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textlabel</library>

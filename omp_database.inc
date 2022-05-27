@@ -69,11 +69,11 @@ native bool:db_close(DB:db);
  * <library>omp_database</library>
  * <summary>This function is used to execute an SQL query on an opened SQLite database.</summary>
  * <param name="db">The database handle to query</param>
- * <param name="query">The query to execute</param>
+ * <param name="query">The query to execute.  May be optionally formatted.</param>
  * <remarks><b>Always</b> free the result by using <a href="#db_free_result">db_free_result</a>!</remarks>
  * <returns>The query result index (<b>starting at 1</b>).</returns>
  */
-native DBResult:DB_ExecuteQuery(DB:db, const query[]) = db_query;
+native DBResult:DB_ExecuteQuery(DB:db, const query[], OPEN_MP_TAGS:...) = db_query;
 
 /**
  * <library>omp_database</library>

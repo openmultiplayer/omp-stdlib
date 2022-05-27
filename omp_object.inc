@@ -803,7 +803,7 @@ native bool:SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, 
  * <library>omp_object</library>
  * <summary>Replace the texture of an object with text.</summary>
  * <param name="objectid">The ID of the object to replace the texture of with text</param>
- * <param name="text">The text to show on the object. (MAX <b>2048</b> characters)</param>
+ * <param name="text">The text to show on the object. (MAX <b>2048</b> characters).  May be optionally formatted</param>
  * <param name="materialIndex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
  * <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
  * <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
@@ -847,14 +847,14 @@ native bool:SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, 
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_object</library>
  * <summary>Replace the texture of a player object with text.</summary>
  * <param name="playerid">The ID of the player whose player object to set the text of</param>
  * <param name="objectid">The ID of the object on which to place the text</param>
- * <param name="text">The text to set</param>
+ * <param name="text">The text to set.  May be optionally formatted</param>
  * <param name="materialIndex">The material index to replace with text (optional=<b><c>0</c></b>)</param>
  * <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
  * <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
@@ -894,7 +894,7 @@ native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJ
  *   </ul>
  * </remarks>
  */
-native bool:SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native bool:SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_object</library>
