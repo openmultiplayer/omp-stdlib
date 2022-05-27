@@ -111,8 +111,93 @@ enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 	VEHICLE_MODEL_INFO_WHEELSMID,
 	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
 	VEHICLE_MODEL_INFO_REAR_BUMPER_Z
+	VEHICLE_MODEL_INFO_FRONT_SEAT              = VEHICLE_MODEL_INFO_FRONTSEAT,
+	VEHICLE_MODEL_INFO_REAR_SEAT,
+	VEHICLE_MODEL_INFO_PETROL_CAP,
+	VEHICLE_MODEL_INFO_WHEELS_FRONT,
+	VEHICLE_MODEL_INFO_WHEELS_REAR,
+	VEHICLE_MODEL_INFO_WHEELS_MID,
 }
 static stock VEHICLE_MODEL_INFO:_@VEHICLE_MODEL_INFO() { return __VEHICLE_MODEL_INFO; }
+
+///
+
+/**
+ * <library>omp_vehicle</library>
+ */
+#define VEHICLE_PANEL_STATUS: __TAG(VEHICLE_PANEL_STATUS):
+enum VEHICLE_PANEL_STATUS:__VEHICLE_PANEL_STATUS
+{
+	VEHICLE_PANEL_STATUS_NONE                  = 0
+}
+static stock VEHICLE_PANEL_STATUS:_@VEHICLE_PANEL_STATUS() { return __VEHICLE_PANEL_STATUS; }
+
+///
+
+/**
+ * <library>omp_vehicle</library>
+ */
+#define VEHICLE_DOOR_STATUS: __TAG(VEHICLE_DOOR_STATUS):
+enum VEHICLE_DOOR_STATUS:__VEHICLE_DOOR_STATUS (<<= 1)
+{
+	VEHICLE_DOOR_STATUS_NONE                   = 0,
+	VEHICLE_DOOR_STATUS_BONNET_OPEN            = 0x00000001,
+	VEHICLE_DOOR_STATUS_BONNET_DAMAGED,
+	VEHICLE_DOOR_STATUS_BONNET_MISSING,
+	VEHICLE_DOOR_STATUS_HOOD_OPEN              = VEHICLE_DOOR_STATUS_BONNET_OPEN,
+	VEHICLE_DOOR_STATUS_HOOD_DAMAGED,
+	VEHICLE_DOOR_STATUS_HOOD_MISSING,
+	VEHICLE_DOOR_STATUS_BOOT_OPEN              = 0x00000100,
+	VEHICLE_DOOR_STATUS_BOOT_DAMAGED,
+	VEHICLE_DOOR_STATUS_BOOT_MISSING,
+	VEHICLE_DOOR_STATUS_TRUCK_OPEN             = VEHICLE_DOOR_STATUS_BOOT_OPEN,
+	VEHICLE_DOOR_STATUS_TRUCK_DAMAGED,
+	VEHICLE_DOOR_STATUS_TRUCK_MISSING,
+	VEHICLE_DOOR_STATUS_FRONT_LEFT_OPEN        = 0x00010000,
+	VEHICLE_DOOR_STATUS_FRONT_LEFT_DAMAGED,
+	VEHICLE_DOOR_STATUS_FRONT_LEFT_MISSING,
+	VEHICLE_DOOR_STATUS_DRIVER_OPEN            = VEHICLE_DOOR_STATUS_FRONT_LEFT_OPEN,
+	VEHICLE_DOOR_STATUS_DRIVER_DAMAGED,
+	VEHICLE_DOOR_STATUS_DRIVER_MISSING,
+	VEHICLE_DOOR_STATUS_FRONT_RIGHT_OPEN       = 0x01000000,
+	VEHICLE_DOOR_STATUS_FRONT_RIGHT_DAMAGED,
+	VEHICLE_DOOR_STATUS_FRONT_RIGHT_MISSING,
+	VEHICLE_DOOR_STATUS_PASSENGER_OPEN         = VEHICLE_DOOR_STATUS_FRONT_RIGHT_OPEN,
+	VEHICLE_DOOR_STATUS_PASSENGER_DAMAGED,
+	VEHICLE_DOOR_STATUS_PASSENGER_MISSING
+}
+static stock VEHICLE_DOOR_STATUS:_@VEHICLE_DOOR_STATUS() { return __VEHICLE_DOOR_STATUS; }
+
+///
+
+/**
+ * <library>omp_vehicle</library>
+ */
+#define VEHICLE_LIGHT_STATUS: __TAG(VEHICLE_LIGHT_STATUS):
+enum VEHICLE_LIGHT_STATUS:__VEHICLE_LIGHT_STATUS
+{
+	VEHICLE_LIGHT_STATUS_FRONT_LEFT_BROKEN     = 1,
+	VEHICLE_LIGHT_STATUS_FRONT_RIGHT_BROKEN    = 4,
+	VEHICLE_LIGHT_STATUS_DRIVER_BROKEN         = VEHICLE_LIGHT_STATUS_FRONT_LEFT_BROKEN,
+	VEHICLE_LIGHT_STATUS_PASSENGER_BROKEN      = VEHICLE_LIGHT_STATUS_FRONT_RIGHT_BROKEN,
+	VEHICLE_LIGHT_STATUS_REAR_BROKEN           = 1024
+}
+static stock VEHICLE_LIGHT_STATUS:_@VEHICLE_LIGHT_STATUS() { return __VEHICLE_LIGHT_STATUS; }
+
+///
+
+/**
+ * <library>omp_vehicle</library>
+ */
+#define VEHICLE_TYRE_STATUS: __TAG(VEHICLE_TYRE_STATUS):
+enum VEHICLE_TYRE_STATUS:__VEHICLE_TYRE_STATUS
+{
+	VEHICLE_TYRE_STATUS_FRONT_LEFT_POPPED      = 8,
+	VEHICLE_TYRE_STATUS_FRONT_RIGHT_POPPED     = 2,
+	VEHICLE_TYRE_STATUS_REAR_LEFT_POPPED       = 4,
+	VEHICLE_TYRE_STATUS_REAR_RIGHT_POPPED      = 1
+}
+static stock VEHICLE_TYRE_STATUS:_@VEHICLE_TYRE_STATUS() { return __VEHICLE_TYRE_STATUS; }
 
 /**
  * <library>omp_vehicle</library>
@@ -549,7 +634,7 @@ native bool:LinkVehicleToInterior(vehicleid, interiorid);
  * can be found <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">here</a>.</summary>
  * <param name="vehicleid">The ID of the vehicle to add the component to.  Not to be confused with <a
  * href="http://wiki.sa-mp.com/wiki/Confuse_modelid">modelid</a></param>
- * <param name="componentid">The <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">ID of the component</a>
+ * <param name="component">The <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">ID of the component</a>
  * to add to the vehicle</param>
  * <returns>
  *   <ul>
@@ -565,13 +650,13 @@ native bool:LinkVehicleToInterior(vehicleid, interiorid);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:AddVehicleComponent(vehicleid, componentid);
+native bool:AddVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
  * <summary>Remove a component from a vehicle.</summary>
  * <param name="vehicleid">ID of the vehicle</param>
- * <param name="componentid">ID of the <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component</a>
+ * <param name="component">ID of the <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component</a>
  * to remove</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="GetVehicleComponentInSlot" />
@@ -579,7 +664,7 @@ native bool:AddVehicleComponent(vehicleid, componentid);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:RemoveVehicleComponent(vehicleid, componentid);
+native bool:RemoveVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
@@ -626,7 +711,7 @@ native bool:ChangeVehicleColours(vehicleid, colour1, colour2);
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's paintjob (for plain colours see <a href="#ChangeVehicleColor">ChangeVehicleColor</a>).</summary>
  * <param name="vehicleid">The ID of the vehicle to change the paintjob of</param>
- * <param name="paintjobid">The ID of the Paintjob to apply.  Use <b><c>3</c></b> to remove a paintjob</param>
+ * <param name="paintjob">The ID of the Paintjob to apply.  Use <b><c>3</c></b> to remove a paintjob</param>
  * <seealso name="ChangeVehicleColours" />
  * <seealso name="OnVehiclePaintjob" />
  * <remarks>
@@ -637,7 +722,7 @@ native bool:ChangeVehicleColours(vehicleid, colour1, colour2);
  * <returns>This function always returns <b><c>1</c></b> (success), even if the vehicle passed is not
  * created.</returns>
  */
-native bool:ChangeVehiclePaintjob(vehicleid, paintjobid);
+native bool:ChangeVehiclePaintjob(vehicleid, paintjob);
 
 /**
  * <library>omp_vehicle</library>
@@ -849,6 +934,22 @@ native CARMODTYPE:GetVehicleComponentType(component);
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>
+ * Get random colour indexes that are valid for the given vehicle model.
+ * </summary>
+ */
+native GetRandomCarColPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>
+ * Convert a car colour index to a HEX colour (RGBA).
+ * </summary>
+ */
+native CarColIndexToColour(index, alpha = 0xFF);
+
+/**
+ * <library>omp_vehicle</library>
  * <summary>Fully repairs a vehicle, including visual damage (bumps, dents, scratches, popped tires
  * etc.).</summary>
  * <param name="vehicleid">The ID of the vehicle to repair</param>
@@ -920,7 +1021,7 @@ native bool:SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
  * <param name="panels">A variable to store the panel damage data in, passed by reference</param>
  * <param name="doors">A variable to store the door damage data in, passed by reference</param>
  * <param name="lights">A variable to store the light damage data in, passed by reference</param>
- * <param name="tires">A variable to store the tire damage data in, passed by reference</param>
+ * <param name="tires">A variable to store the tyre damage data in, passed by reference</param>
  * <seealso name="UpdateVehicleDamageStatus" />
  * <seealso name="SetVehicleHealth" />
  * <seealso name="GetVehicleHealth" />
@@ -963,7 +1064,7 @@ native bool:SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native bool:GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
+native bool:GetVehicleDamageStatus(vehicleid, &VEHICLE_PANEL_STATUS:panels, &VEHICLE_DOOR_STATUS:doors, &VEHICLE_LIGHT_STATUS:lights, &VEHICLE_TYRE_STATUS:tyres);
 
 /**
  * <library>omp_vehicle</library>
@@ -973,7 +1074,7 @@ native bool:GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
  * <param name="panels">A set of bits containing the panel damage status</param>
  * <param name="doors">A set of bits containing the door damage status</param>
  * <param name="lights">A set of bits containing the light damage status</param>
- * <param name="tires">A set of bits containing the tire damage status</param>
+ * <param name="tires">A set of bits containing the tyre damage status</param>
  * <seealso name="SetVehicleHealth" />
  * <seealso name="GetVehicleHealth" />
  * <seealso name="RepairVehicle" />
@@ -1012,7 +1113,7 @@ native bool:GetVehicleDamageStatus(vehicleid, &panels, &doors, &lights, &tires);
  *   </ul>
  * </remarks>
  */
-native bool:UpdateVehicleDamageStatus(vehicleid, panels, doors, lights, tires);
+native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VEHICLE_DOOR_STATUS:doors, VEHICLE_LIGHT_STATUS:lights, VEHICLE_TYRE_STATUS:tires);
 
 /**
  * <library>omp_vehicle</library>
@@ -1381,7 +1482,7 @@ forward OnVehicleDeath(vehicleid, killerid);
  * <summary>This callback is called when a vehicle is modded.</summary>
  * <param name="playerid">The ID of the driver of the vehicle</param>
  * <param name="vehicleid">The ID of the vehicle which is modded</param>
- * <param name="componentid">The ID of the component which was added to the vehicle</param>
+ * <param name="component">The ID of the component which was added to the vehicle</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="OnEnterExitModShop" />
  * <seealso name="OnVehiclePaintjob" />
@@ -1394,7 +1495,7 @@ forward OnVehicleDeath(vehicleid, killerid);
  * from seeing it.
  * </returns>
  */
-forward OnVehicleMod(playerid, vehicleid, componentid);
+forward OnVehicleMod(playerid, vehicleid, component);
 
 /**
  * <summary>This callback is called when a player enters or exits a mod shop.</summary>
@@ -1418,7 +1519,7 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
  * is not called when the player buys the paintjob.</summary>
  * <param name="playerid">The ID of the player that changed the paintjob of their vehicle</param>
  * <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
- * <param name="paintjobid">The ID of the new paintjob</param>
+ * <param name="paintjob">The ID of the new paintjob</param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="ChangeVehicleColours" />
  * <seealso name="OnVehicleRespray" />
@@ -1431,7 +1532,7 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
  * from seeing it.
  * </returns>
  */
-forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
+forward OnVehiclePaintjob(playerid, vehicleid, paintjob);
 
 /**
  * <summary>This callback is called when a player exits a mod shop, even if the colours weren't changed.
