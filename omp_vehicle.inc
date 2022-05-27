@@ -76,6 +76,7 @@ static stock CARMODTYPE:_@CARMODTYPE() { return __CARMODTYPE; }
 
 ///
 
+// Backwards-compatibility.
 #define VEHICLE_PARAMS: bool:
 
 /**
@@ -373,7 +374,7 @@ native bool:SetVehicleZAngle(vehicleid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The player and/or vehicle specified do not exist.
  * </returns>
  */
-native bool:SetVehicleParamsForPlayer(vehicleid, playerid, VEHICLE_PARAMS:objective = undef, VEHICLE_PARAMS:doors = VEHICLE_PARAMS_UNSET);
+native bool:SetVehicleParamsForPlayer(vehicleid, playerid, bool:objective = undef, bool:doors = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -415,7 +416,7 @@ native bool:ManualVehicleEngineAndLights();
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:lights = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:alarm = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:doors = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:bonnet = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:boot = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:objective = VEHICLE_PARAMS_UNSET);
+native bool:SetVehicleParamsEx(vehicleid, bool:engine = undef, bool:lights = undef, bool:alarm = undef, bool:doors = undef, bool:bonnet = undef, bool:boot = undef, bool:objective = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -432,7 +433,7 @@ native bool:SetVehicleParamsEx(vehicleid, VEHICLE_PARAMS:engine = VEHICLE_PARAMS
  * <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b>
  * ('unset').</remarks>
  */
-native bool:GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:lights = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:alarm = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:doors = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:bonnet = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:boot = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:objective = VEHICLE_PARAMS_UNSET);
+native bool:GetVehicleParamsEx(vehicleid, &bool:engine = undef, &bool:lights = undef, &bool:alarm = undef, &bool:doors = undef, &bool:bonnet = undef, &bool:boot = undef, &bool:objective = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -441,7 +442,7 @@ native bool:GetVehicleParamsEx(vehicleid, &VEHICLE_PARAMS:engine = VEHICLE_PARAM
  * <seealso name="OnVehicleSirenStateChange" />
  * <returns><b><c>-1</c></b> if unset (off), <b><c>0</c></b> if off, <b><c>1</c></b> if on</returns>
  */
-native VEHICLE_PARAMS:GetVehicleParamsSirenState(vehicleid);
+native bool:GetVehicleParamsSirenState(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -460,7 +461,7 @@ native VEHICLE_PARAMS:GetVehicleParamsSirenState(vehicleid);
  * <seealso name="GetVehicleParamsCarWindows" />
  * <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
  */
-native bool:SetVehicleParamsCarDoors(vehicleid, VEHICLE_PARAMS:frontLeft = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:frontRight = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:rearLeft = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:rearRight = VEHICLE_PARAMS_UNSET);
+native bool:SetVehicleParamsCarDoors(vehicleid, bool:frontLeft = undef, bool:frontRight = undef, bool:rearLeft = undef, bool:rearRight = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -476,7 +477,7 @@ native bool:SetVehicleParamsCarDoors(vehicleid, VEHICLE_PARAMS:frontLeft = VEHIC
  * <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b>
  * if closed, <b><c>1</c></b> if open.</remarks>
  */
-native bool:GetVehicleParamsCarDoors(vehicleid, &VEHICLE_PARAMS:frontLeft = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:frontRight = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:rearLeft = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:rearRight = VEHICLE_PARAMS_UNSET);
+native bool:GetVehicleParamsCarDoors(vehicleid, &bool:frontLeft = undef, &bool:frontRight = undef, &bool:rearLeft = undef, &bool:rearRight = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -494,7 +495,7 @@ native bool:GetVehicleParamsCarDoors(vehicleid, &VEHICLE_PARAMS:frontLeft = VEHI
  * <seealso name="GetVehicleParamsCarDoors" />
  * <seealso name="GetVehicleParamsCarWindows" />
  */
-native bool:SetVehicleParamsCarWindows(vehicleid, VEHICLE_PARAMS:frontLeft = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:frontRight = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:rearLeft = VEHICLE_PARAMS_UNSET, VEHICLE_PARAMS:rearRight = VEHICLE_PARAMS_UNSET);
+native bool:SetVehicleParamsCarWindows(vehicleid, bool:frontLeft = undef, bool:frontRight = undef, bool:rearLeft = undef, bool:rearRight = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -511,7 +512,7 @@ native bool:SetVehicleParamsCarWindows(vehicleid, VEHICLE_PARAMS:frontLeft = VEH
  * if closed, <b><c>1</c></b> if open.</remarks>
  * <returns>The vehicle's windows state is stored in the specified variables.</returns>
  */
-native bool:GetVehicleParamsCarWindows(vehicleid, &VEHICLE_PARAMS:frontLeft = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:frontRight = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:rearLeft = VEHICLE_PARAMS_UNSET, &VEHICLE_PARAMS:rearRight = VEHICLE_PARAMS_UNSET);
+native bool:GetVehicleParamsCarWindows(vehicleid, &bool:frontLeft = undef, &bool:frontRight = undef, &bool:rearLeft = undef, &bool:rearRight = undef);
 
 /**
  * <library>omp_vehicle</library>
@@ -1188,7 +1189,7 @@ native bool:SetVehicleDead(vehicleid, bool:dead);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleParamsSirenState(vehicleid, VEHICLE_PARAMS:enabled);
+native bool:SetVehicleParamsSirenState(vehicleid, bool:enabled);
 
 /**
  * <library>omp_vehicle</library>
