@@ -1352,6 +1352,7 @@ native bool:ToggleVehicleSirenEnabled(vehicleid, bool:enabled);
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>Turn the siren for a vehicle on or off.</summary>
  */
 native bool:IsVehicleSirenEnabled(vehicleid);
 
