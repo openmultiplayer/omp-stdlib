@@ -1202,12 +1202,12 @@ native void:EnableVehicleFriendlyFire();
 /**
  * <library>omp_vehicle</library>
  */
-native GetPlayerLastSyncedVehicleID(playerid);
+forward GetPlayerLastSyncedVehicleID(playerid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native GetPlayerLastSyncedTrailerID(playerid);
+forward GetPlayerLastSyncedTrailerID(playerid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1258,7 +1258,7 @@ native GetVehicleRespawnDelay(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleOccupiedTick(vehicleid, ticks);
+forward bool:SetVehicleOccupiedTick(vehicleid, ticks);
 
 /**
  * <library>omp_vehicle</library>
@@ -1268,7 +1268,7 @@ native GetVehicleOccupiedTick(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleRespawnTick(vehicleid, ticks);
+forward bool:SetVehicleRespawnTick(vehicleid, ticks);
 
 /**
  * <library>omp_vehicle</library>
@@ -1323,7 +1323,7 @@ native bool:HasVehicleBeenOccupied(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleBeenOccupied(vehicleid, bool:occupied);
+forward bool:SetVehicleBeenOccupied(vehicleid, bool:occupied);
 
 /**
  * <library>omp_vehicle</library>
@@ -1338,7 +1338,7 @@ native bool:IsVehicleDead(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleDead(vehicleid, bool:dead);
+forward bool:SetVehicleDead(vehicleid, bool:dead);
 
 /**
  * <library>omp_vehicle</library>
@@ -1373,17 +1373,17 @@ native GetVehicleModelsUsed();
 /**
  * <library>omp_vehicle</library>
  */
-native bool:HideVehicle(vehicleid);
+forward bool:HideVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:ShowVehicle(vehicleid);
+forward bool:ShowVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:IsVehicleHidden(vehicleid);
+forward bool:IsVehicleHidden(vehicleid);
 
 /**
  * <summary>This callback is called when a player sent a trailer update.</summary>
