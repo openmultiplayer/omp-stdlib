@@ -235,3 +235,77 @@ native SendPlayerMessageToAllf(senderid, const message[], OPEN_MP_TAGS:...) = Se
 #pragma deprecated Use `SendRconCommand`
 native SendRconCommandf(const command[], OPEN_MP_TAGS:...) = SendRconCommand;
 
+/**
+ * <library>a_samp</library>
+ * <summary>Sets the world time (for all players) to a specific hour.</summary>
+ * <param name="hour">The hour to set (<b><c>0</c></b>-<b><c>23</c></b>)</param>
+ * <seealso name="SetPlayerTime" />
+ * <seealso name="SetWeather" />
+ * <seealso name="SetGravity" />
+ * <remarks>To set the minutes and/or to set the time for individual players, see <a href="#SetPlayerTime">SetPlayerTime</a>.</remarks>
+ * <remarks>This function is only relevant for players that do not use a passing clock - see <a href="#TogglePlayerClock">
+ * TogglePlayerClock</a>.</remarks>
+ */
+native void:SetWorldTime(hour);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Get the name of a weapon.</summary>
+ * <param name="weaponid">The ID of the weapon to get the name of</param>
+ * <param name="weapon">An array to store the weapon's name in, passed by reference</param>
+ * <param name="len">The maximum length of the weapon name to store.</param>
+ * <seealso name="GetPlayerWeapon" />
+ * <seealso name="AllowInteriorWeapons" />
+ * <seealso name="GivePlayerWeapon" />
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
+ * </returns>
+ */
+native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+
+/**
+ * <library>a_samp</library>
+ * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
+ * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b>
+ * to disable weapons in interiors</param>
+ * <remarks>This function does not work in the current SA:MP version!</remarks>
+ * <seealso name="SetPlayerInterior" />
+ * <seealso name="GetPlayerInterior" />
+ * <seealso name="OnPlayerInteriorChange" />
+ */
+#pragma deprecated Use `OnPlayerInteriorChange`.
+native void:AllowInteriorWeapons(bool:allow);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Set the world weather for all players.</summary>
+ * <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
+ * <seealso name="SetPlayerWeather" />
+ * <seealso name="SetGravity" />
+ * <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change
+ * over time, instead of changing instantly.</remarks>
+ */
+native void:SetWeather(weatherid);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Get the currently set gravity.</summary>
+ * <seealso name="SetGravity" />
+ * <returns>The current set gravity (as a float).</returns>
+ */
+native Float:GetGravity();
+
+/**
+ * <library>a_samp</library>
+ * <summary>Set the gravity for all players.</summary>
+ * <param name="gravity">The value that the gravity should be set to (between -50 and 50)</param>
+ * <seealso name="GetGravity" />
+ * <seealso name="SetWeather" />
+ * <seealso name="SetWorldTime" />
+ * <remarks>Default gravity is <b><c>0.008</c></b>.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>, even when it fails to execute if the gravity
+ * is out of the limits (lower than <b><c>-50.0</c></b> or higher than <b><c>+50.0</c></b>).</returns>
+ */
+native void:SetGravity(Float:gravity);
+
