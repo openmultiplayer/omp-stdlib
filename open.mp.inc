@@ -109,7 +109,7 @@ public const __OPEN_MP_VERSION = 0;
  *   the vehicle param ones) that can skip `true`/`false` parameters.
  * </summary>
  */
-const bool:undef = bool:-1;
+const bool:undefined = bool:-1;
 
 // Try many places to get the latest version.
 
