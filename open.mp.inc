@@ -86,21 +86,32 @@ public const __OPEN_MP_VERSION = 0;
 // Optionally stricter tags.
 #if defined NO_TAGS
 	#define __TAG(%0) _
+	#define OPEN_MP_TAGS {Float, _}
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) E_%0
+	#define OPEN_MP_TAGS {Float, _}
 #else // if defined WEAK_TAGS
 	#define __TAG(%0) e_%0
 	#define WEAK_TAGS
+	#define OPEN_MP_TAGS {Float, _}
 #endif
-#if defined MORE_TAGS
-	#define __MORE(%0) __TAG(%0)
-#else
-	#define __MORE(%0) _
-	#define LESS_TAGS
-#endif
-#define __LESS __TAG
 
-#define OPEN_MP_TAGS {Float, _}
+// Disable the symbol length warning.
+#pragma warning push
+#pragma warning disable 200
+
+// Define a symbol and check another one.  They're the same when truncated.
+#define __COMPILER_SYMBOL_NAME_CHECK_1F
+#if defined __COMPILER_SYMBOL_NAME_CHECK_1F@
+	#define __COMPILER_sNAMEMAX (31)
+	#define OPEN_MP_LONG_NAMES (0)
+#else
+	#define __COMPILER_sNAMEMAX (63)
+	#define OPEN_MP_LONG_NAMES (1)
+#endif
+
+// Maybe re-enable the symbol length warning.
+#pragma warning pop
 
 /**
  * <summary>
