@@ -358,7 +358,7 @@ native bool:DestroyObject(objectid);
  * the x, y or z will not rotate the object. </remarks>
  * <returns>The time it will take for the object to move in milliseconds.</returns>
  */
-native bool:MoveObject(objectid, Float:targetX, Float:targetX, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
+native bool:MoveObject(objectid, Float:targetX, Float:targetY, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
 
 /**
  * <library>omp_object</library>

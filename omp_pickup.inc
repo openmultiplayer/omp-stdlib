@@ -169,7 +169,7 @@ native bool:IsPickupStreamedIn(playerid, pickupid);
 /**
  * <library>omp_pickup</library>
  */
-native bool:GetPickupPos(pickupid, &Float:x, &Float:y, &Float:y);
+native bool:GetPickupPos(pickupid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_pickup</library>

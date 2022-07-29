@@ -102,7 +102,6 @@ public const __OPEN_MP_VERSION = 0;
 
 #define OPEN_MP_TAGS {Float, _}
 
-
 /**
  * <summary>
  *   An invalid value (<c>-1</c>) as a boolean for some natives (most notably
@@ -161,6 +160,14 @@ const bool:undefined = bool:-1;
 	#error cannot read from file: "time"
 #endif
 
+/// <p/>
+
+#tryinclude "omp_player"
+#tryinclude <omp_player>
+#if !defined _INC_omp_player
+	#error cannot read from file: "omp_player"
+#endif
+
 #tryinclude "omp_actor"
 #tryinclude <omp_actor>
 #if !defined _INC_omp_actor
@@ -173,6 +180,7 @@ const bool:undefined = bool:-1;
 	#error cannot read from file: "omp_checkpoint"
 #endif
 
+// Relies on `omp_player`
 #tryinclude "omp_class"
 #tryinclude <omp_class>
 #if !defined _INC_omp_class
@@ -195,6 +203,12 @@ const bool:undefined = bool:-1;
 #tryinclude <omp_gangzone>
 #if !defined _INC_omp_gangzone
 	#error cannot read from file: "omp_gangzone"
+#endif
+
+#tryinclude "omp_http"
+#tryinclude <omp_http>
+#if !defined _INC_omp_http
+	#error cannot read from file: "omp_http"
 #endif
 
 #tryinclude "omp_menu"
@@ -221,12 +235,6 @@ const bool:undefined = bool:-1;
 	#error cannot read from file: "omp_textdraw"
 #endif
 
-#tryinclude "omp_textlabel"
-#tryinclude <omp_textlabel>
-#if !defined _INC_omp_textlabel
-	#error cannot read from file: "omp_textlabel"
-#endif
-
 #tryinclude "omp_variable"
 #tryinclude <omp_variable>
 #if !defined _INC_omp_variable
@@ -237,5 +245,12 @@ const bool:undefined = bool:-1;
 #tryinclude <omp_vehicle>
 #if !defined _INC_omp_vehicle
 	#error cannot read from file: "omp_vehicle"
+#endif
+
+// Relies on `omp_vehicle`.
+#tryinclude "omp_textlabel"
+#tryinclude <omp_textlabel>
+#if !defined _INC_omp_textlabel
+	#error cannot read from file: "omp_textlabel"
 #endif
 

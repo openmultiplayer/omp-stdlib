@@ -1,7 +1,7 @@
-#if defined _INC_omp_variable
+#if defined _INC_omp_vehicle
 	#endinput
 #endif
-#define _INC_omp_variable
+#define _INC_omp_vehicle
 
 /**
  * <library name="omp_variable" summary="open.mp vehicle functions.">
@@ -110,7 +110,7 @@ enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 	VEHICLE_MODEL_INFO_WHEELSREAR,
 	VEHICLE_MODEL_INFO_WHEELSMID,
 	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
-	VEHICLE_MODEL_INFO_REAR_BUMPER_Z
+	VEHICLE_MODEL_INFO_REAR_BUMPER_Z,
 	VEHICLE_MODEL_INFO_FRONT_SEAT              = VEHICLE_MODEL_INFO_FRONTSEAT,
 	VEHICLE_MODEL_INFO_REAR_SEAT,
 	VEHICLE_MODEL_INFO_PETROL_CAP,
@@ -1664,4 +1664,3 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
  */
 forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
 
-99
