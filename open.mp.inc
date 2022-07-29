@@ -89,10 +89,12 @@ public const __OPEN_MP_VERSION = 0;
 	#define OPEN_MP_TAGS {Float, _}
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) E_%0
+	// TODO: Add all the other tags.
 	#define OPEN_MP_TAGS {Float, _}
 #else // if defined WEAK_TAGS
 	#define __TAG(%0) e_%0
 	#define WEAK_TAGS
+	// TODO: Add all the other tags.
 	#define OPEN_MP_TAGS {Float, _}
 #endif
 
