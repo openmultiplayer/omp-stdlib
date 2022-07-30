@@ -253,6 +253,12 @@ const bool:undefined = bool:-1;
 	#error cannot read from file: "omp_menu"
 #endif
 
+#tryinclude "omp_netstats"
+#tryinclude <omp_netstats>
+#if !defined _INC_omp_netstats
+	#error cannot read from file: "omp_netstats"
+#endif
+
 #tryinclude "omp_object"
 #tryinclude <omp_object>
 #if !defined _INC_omp_object
