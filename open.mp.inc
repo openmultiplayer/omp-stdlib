@@ -207,6 +207,12 @@ const bool:undefined = bool:-1;
 
 /// <p/>
 
+#tryinclude "omp_core"
+#tryinclude <omp_core>
+#if !defined _INC_omp_core
+	#error cannot read from file: "omp_core"
+#endif
+
 #tryinclude "omp_player"
 #tryinclude <omp_player>
 #if !defined _INC_omp_player

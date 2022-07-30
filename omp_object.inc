@@ -101,6 +101,19 @@ enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
 }
 static stock OBJECT_MATERIAL_TEXT_ALIGN:_@OBJECT_MATERIAL_TEXT_ALIGN() { return __OBJECT_MATERIAL_TEXT_ALIGN; }
 
+/// <p/>
+/**
+ * <library>omp_object</library>
+ */
+#define EDIT_RESPONSE: __TAG(EDIT_RESPONSE):
+enum EDIT_RESPONSE:__EDIT_RESPONSE
+{
+	EDIT_RESPONSE_CANCEL,
+	EDIT_RESPONSE_FINAL,
+	EDIT_RESPONSE_UPDATE
+}
+static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
+
 /**
  * <library>omp_object</library>
  * <summary>Creates an object at specified coordinates in the game world.</summary>
@@ -1267,9 +1280,6 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
  *   It is always called first in filterscripts.
  * </returns>
  */
-#if !defined EDIT_RESPONSE
-	#define EDIT_RESPONSE: _:
-#endif
 forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
@@ -1299,9 +1309,6 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respo
  *   It is always called first in filterscripts.
  * </returns>
  */
-#if !defined EDIT_RESPONSE
-	#define EDIT_RESPONSE: _:
-#endif
 forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, Float:scaleX, Float:scaleY, Float:scaleZ);
 
 /**

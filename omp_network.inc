@@ -468,3 +468,58 @@ native gpci(playerid, serial[], len = sizeof (serial));
  */
 native GPCI(playerid, serial[], len = sizeof (serial)) = gpci;
 
+/**
+ * <library>omp_network</library>
+ * <summary>Get the specified player's IP address and store it in a string.</summary>
+ * <param name="playerid">The ID of the player to get the IP address of</param>
+ * <param name="ip">An array into which to store the player's IP address, passed by reference</param>
+ * <param name="len">The maximum length of the IP address (recommended 16)</param>
+ * <seealso name="NetStats_GetIpPort" />
+ * <seealso name="GetPlayerName" />
+ * <seealso name="GetPlayerPing" />
+ * <seealso name="GetPlayerVersion" />
+ * <seealso name="OnIncomingConnection" />
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnPlayerDisconnect" />
+ * <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>
+ * because the player is already disconnected.  It will return an invalid IP (<b><c>255.255.255.255</c></b>).
+ *  Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under
+ * <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
+ * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
+ */
+native GetPlayerIp(playerid, ip[], len = sizeof (ip));
+
+/**
+ * <library>omp_network</library>
+ * <summary>Get the ping of a player.  The ping measures the amount of time it takes for the server
+ * to 'ping' the client and for the client to send the message back.</summary>
+ * <param name="playerid">The ID of the player to get the ping of</param>
+ * <seealso name="GetPlayerIp" />
+ * <seealso name="GetPlayerName" />
+ * <seealso name="GetPlayerVersion" />
+ * <remarks>Player's ping may be <b><c>65535</c></b> for a while after a player connects</remarks>
+ * <returns>The current ping of the player (expressed in milliseconds).</returns>
+ */
+native GetPlayerPing(playerid);
+
+/**
+ * <library>omp_network</library>
+ * <summary>Perform a memory check on the client.</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <param name="type">The type of check to perform</param>
+ * <param name="memoryAddress">The base address to check</param>
+ * <param name="memoryOffset">The offset from the base address</param>
+ * <param name="byteCount">The number of bytes to check</param>
+ */
+native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
+
+/**
+ * <summary>This callback is called when a SendClientCheck request comletes</summary>
+ * <param name="playerid">The ID of the player checked</param>
+ * <param name="actionid">The type of check performed</param>
+ * <param name="memaddr">The address requested</param>
+ * <param name="retndata">The result of the check</param>
+ * <seealso name="SendClientCheck" />
+ */
+forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
+

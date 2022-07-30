@@ -173,7 +173,7 @@ native bool:SpawnPlayer(playerid);
  * <seealso name="GetPlayerTeam" />
  * <seealso name="SetPlayerTeam" />
  */
-native bool:SetTeamCount(count);
+forward bool:SetTeamCount(count);
 
 /**
  * <library>omp_class</library>

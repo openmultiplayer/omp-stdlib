@@ -682,18 +682,6 @@ native void:SetNameTagDrawDistance(Float:distance);
 
 /**
  * <library>omp_core</library>
- * <summary>This function is used to change the amount of teams used in the gamemode.  It has no obvious
- * way of being used, but can help to indicate the number of teams used for better (more effective)
- * internal handling.  This function should only be used in the <a href="#OnGameModeInit">OnGameModeInit</a>
- * callback.  Important: You can pass 2 billion here if you like, this function has no effect at all.</summary>
- * <param name="count">Number of teams the gamemode knows</param>
- * <seealso name="GetPlayerTeam" />
- * <seealso name="SetPlayerTeam" />
- */
-forward void:SetTeamCount(count);
-
-/**
- * <library>omp_core</library>
  * <summary>Set the world weather for all players.</summary>
  * <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
  * <seealso name="SetPlayerWeather" />
@@ -877,4 +865,26 @@ forward E_SERVER_RULE_FLAGS:GetServerRuleFlags(const rule[]);
  * <library>omp_core</library>
  */
 native GetRunningTimers();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the animation library/name for the index.</summary>
+ * <param name="index">The animation index, returned by <a href="#GetPlayerAnimationIndex">GetPlayerAnimationIndex</a></param>
+ * <param name="animationLibrary">String variable that stores the animation library</param>
+ * <param name="len1">Size of the string that stores the animation library</param>
+ * <param name="animationName">String variable that stores the animation name</param>
+ * <param name="len2">Size of the string that stores the animation name</param>
+ * <seealso name="GetPlayerAnimationIndex" />
+ * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
+ */
+native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName));
+
+/**
+ * <library>omp_core</library>
+ * <summary>Enables or disables stunt bonuses for all players.  If enabled, players will receive monetary
+ * rewards when performing a stunt in a vehicle (e.g.  a wheelie).</summary>
+ * <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
+ * <seealso name="EnableStuntBonusForPlayer" />
+ */
+native EnableStuntBonusForAll(bool:enable);
 

@@ -1389,6 +1389,36 @@ native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1
 #endif
 
 /**
+ * <library>omp_textdraw</library>
+ * <summary>Display the cursor and allow the player to select a textdraw.</summary>
+ * <param name="playerid">The ID of the player that should be able to select a textdraw</param>
+ * <param name="hoverColour">The colour of the textdraw when hovering over with mouse (<b>RGBA</b>)</param>
+ * <seealso name="CancelSelectTextDraw" />
+ * <seealso name="TextDrawSetSelectable" />
+ * <seealso name="PlayerTextDrawSetSelectable" />
+ * <seealso name="OnPlayerClickTextDraw" />
+ * <seealso name="OnPlayerClickPlayerTextDraw" />
+ * <remarks><a href="#TextDrawSetSelectable">TextDrawSetSelectable</a> or
+ * <a href="#PlayerTextDrawSetSelectable">PlayerTextDrawSetSelectable</a>
+ * MUST be used first, to allow a textdraw to be selectable.</remarks>
+ * <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
+ */
+native SelectTextDraw(playerid, hoverColour); // enables the mouse so the player can select a textdraw
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Cancel textdraw selection with the mouse.</summary>
+ * <param name="playerid">The ID of the player that should be the textdraw selection disabled</param>
+ * <seealso name="SelectTextDraw" />
+ * <seealso name="TextDrawSetSelectable" />
+ * <seealso name="OnPlayerClickTextDraw" />
+ * <remarks>This function calls <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a> with <b><c>INVALID_TEXT_DRAW</c></b>
+ * (<b><c>65535</c></b>).  Using this function inside <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a>
+ * without catching this case will cause clients to go into an infinite loop.</remarks>
+ */
+native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mouse
+
+/**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
  * the Escape key.</summary>
  * <param name="playerid">The ID of the player that clicked on the textdraw</param>
