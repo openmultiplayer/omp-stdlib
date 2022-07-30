@@ -25,6 +25,10 @@
  * <library>omp_textdraw</library>
  */
 #if defined MAX_TEXT_DRAWS
+	#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
+		#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
+	#endif
+
 	const Text:__MAX_TEXT_DRAWS                = MAX_TEXT_DRAWS;
 	#define __MAX_TEXT_DRAWS
 #else
@@ -42,6 +46,10 @@ const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
  * <library>omp_textdraw</library>
  */
 #if defined MAX_PLAYER_TEXT_DRAWS
+	#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
+		#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
+	#endif
+
 	const PlayerText:__MAX_PLAYER_TEXT_DRAWS   = MAX_PLAYER_TEXT_DRAWS;
 	#define __MAX_PLAYER_TEXT_DRAWS
 #else
@@ -55,16 +63,7 @@ const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
 #define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
 
-#if MAX_TEXT_DRAWS < Text:1 || MAX_TEXT_DRAWS > Text:2048
-	#error MAX_TEXT_DRAWS must be >= 1 and <= 2048
-#endif
-
-#if MAX_PLAYER_TEXT_DRAWS < PlayerText:1 || MAX_PLAYER_TEXT_DRAWS > PlayerText:256
-	#error MAX_PLAYER_TEXT_DRAWS must be >= 1 and <= 256
-#endif
-
 /// <p/>
-
 /**
  * <library>omp_textdraw</library>
  * <summary>Text draw font</summary>
@@ -82,7 +81,6 @@ enum TEXT_DRAW_FONT:__TEXT_DRAW_FONT
 static stock TEXT_DRAW_FONT:_@TEXT_DRAW_FONT() { return __TEXT_DRAW_FONT; }
 
 /// <p/>
-
 /**
  * <library>omp_textdraw</library>
  * <summary>Text draw alignment</summary>

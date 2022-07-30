@@ -17,10 +17,24 @@
  * </library>
  */
 
-#pragma tabsize 4
-
 /// <p/>
 
+#pragma tabsize 4
+
+/**
+ * <library>omp_dialog</library>
+ */
+const INVALID_DIALOG_ID                        = -1;
+#define INVALID_DIALOG_ID                      (-1)
+
+/**
+ * <library>omp_dialog</library>
+ * <remarks>Any show dialogs must have an ID lower than this.</remarks>
+ */
+const MAX_DIALOG                               = 32768;
+#define MAX_DIALOG                             (32768)
+
+/// <p/>
 /**
  * <library>omp_dialog</library>
  * <summary>Player GUI dialog</summary>
@@ -36,19 +50,6 @@ enum DIALOG_STYLE:__DIALOG_STYLE
 	DIALOG_STYLE_TABLIST_HEADERS
 }
 static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
-
-/**
- * <library>omp_dialog</library>
- */
-const INVALID_DIALOG_ID                        = -1;
-#define INVALID_DIALOG_ID                      (-1)
-
-/**
- * <library>omp_dialog</library>
- * <remarks>Any show dialogs must have an ID lower than this.</remarks>
- */
-const MAX_DIALOG                               = 32768;
-#define MAX_DIALOG                             (32768)
 
 /**
  * <library>omp_dialog</library>

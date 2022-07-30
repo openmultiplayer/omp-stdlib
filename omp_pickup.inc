@@ -25,6 +25,10 @@
  * <library>omp_pickup</library>
  */
 #if defined MAX_PICKUPS
+	#if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
+		#error MAX_PICKUPS must be >= 1 and <= 4096
+	#endif
+
 	const __MAX_PICKUPS                        = MAX_PICKUPS;
 	#define __MAX_PICKUPS
 #else
@@ -37,10 +41,6 @@
  */
 const INVALID_PICKUP                           = -1;
 #define INVALID_PICKUP                         (-1)
-
-#if MAX_PICKUPS < 1 || MAX_PICKUPS > 4096
-	#error MAX_PICKUPS must be >= 1 and <= 4096
-#endif
 
 /**
  * <library>omp_pickup</library>

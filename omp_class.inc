@@ -17,9 +17,9 @@
  * </library>
  */
 
-#pragma tabsize 4
-
 /// <p/>
+
+#pragma tabsize 4
 
 /**
  * <library>omp_class</library>

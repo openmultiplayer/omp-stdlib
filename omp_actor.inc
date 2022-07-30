@@ -21,14 +21,18 @@
  * </library>
  */
 
-#pragma tabsize 4
-
 /// <p/>
+
+#pragma tabsize 4
 
 /**
  * <library>omp_actor</library>
  */
 #if defined MAX_ACTORS
+	#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
+		#error MAX_ACTORS must be >= 1 and <= 1000
+	#endif
+
 	const __MAX_ACTORS                         = MAX_ACTORS;
 	#define __MAX_ACTORS
 #else
@@ -41,10 +45,6 @@
  */
 const INVALID_ACTOR_ID                         = 0xFFFF;
 #define INVALID_ACTOR_ID                       0xFFFF
-
-#if MAX_ACTORS < 1 || MAX_ACTORS > 1000
-	#error MAX_ACTORS must be >= 1 and <= 1000
-#endif
 
 /**
  * <library>omp_actor</library>

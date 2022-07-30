@@ -25,6 +25,10 @@
  * <library>omp_textlabel</library>
  */
 #if defined MAX_3DTEXT_GLOBAL
+	#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
+		#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
+	#endif
+
 	const Text3D:__MAX_3DTEXT_GLOBAL           = MAX_3DTEXT_GLOBAL;
 	#define __MAX_3DTEXT_GLOBAL
 #else
@@ -36,6 +40,10 @@
  * <library>omp_textlabel</library>
  */
 #if defined MAX_3DTEXT_PLAYER
+	#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
+		#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
+	#endif
+
 	const PlayerText3D:__MAX_3DTEXT_PLAYER     = MAX_3DTEXT_PLAYER;
 	#define __MAX_3DTEXT_PLAYER
 #else
@@ -54,14 +62,6 @@ const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
  */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
 #define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
-
-#if MAX_3DTEXT_GLOBAL < Text3D:1 || MAX_3DTEXT_GLOBAL > Text3D:1024
-	#error MAX_3DTEXT_GLOBAL must be >= 1 and <= 1024
-#endif
-
-#if MAX_3DTEXT_PLAYER < PlayerText3D:1 || MAX_3DTEXT_PLAYER > PlayerText3D:1024
-	#error MAX_3DTEXT_PLAYER must be >= 1 and <= 1024
-#endif
 
 /**
  * <library>omp_textlabel</library>

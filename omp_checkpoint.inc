@@ -17,10 +17,11 @@
  * </library>
  */
 
+/// <p/>
+
 #pragma tabsize 4
 
 /// <p/>
-
 /**
  * <library>omp_checkpoint</library>
  */
@@ -38,8 +39,6 @@ enum CP_TYPE:__CP_TYPE
 	CP_TYPE_AIR_BOBBING                    = 8
 }
 static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
-
-/// <p/>
 
 /**
  * <library>omp_checkpoint</library>

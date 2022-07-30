@@ -29,6 +29,10 @@
  * <library>omp_object</library>
  */
 #if defined MAX_OBJECTS
+	#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
+		#error MAX_OBJECTS must be >= 1 and <= 2000
+	#endif
+
 	const __MAX_OBJECTS                        = MAX_OBJECTS;
 	#define __MAX_OBJECTS
 #else
@@ -42,12 +46,7 @@
 const INVALID_OBJECT_ID                        = 0xFFFF;
 #define INVALID_OBJECT_ID                      0xFFFF
 
-#if MAX_OBJECTS < 1 || MAX_OBJECTS > 2000
-	#error MAX_OBJECTS must be >= 1 and <= 2000
-#endif
-
 /// <p/>
-
 /**
  * <library>omp_object</library>
  */
@@ -60,7 +59,6 @@ enum SELECT_OBJECT:__SELECT_OBJECT
 static stock SELECT_OBJECT:_@SELECT_OBJECT() { return __SELECT_OBJECT; }
 
 /// <p/>
-
 /**
  * <library>omp_object</library>
  */
@@ -85,7 +83,6 @@ enum OBJECT_MATERIAL_SIZE:__OBJECT_MATERIAL_SIZE (+= 10)
 static stock OBJECT_MATERIAL_SIZE:_@OBJECT_MATERIAL_SIZE() { return __OBJECT_MATERIAL_SIZE; }
 
 /// <p/>
-
 /**
  * <library>omp_object</library>
  */

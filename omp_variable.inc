@@ -22,7 +22,6 @@
 #pragma tabsize 4
 
 /// <p/>
-
 /**
  * <library>omp_variable</library>
  * <summary>PVar enumeration</summary>

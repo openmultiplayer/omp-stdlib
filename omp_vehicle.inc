@@ -21,11 +21,14 @@
 
 #pragma tabsize 4
 
-/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
 #if defined MAX_VEHICLES
+	#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
+		#error MAX_VEHICLES must be >= 1 and <= 2000
+	#endif
+
 	const __MAX_VEHICLES                       = MAX_VEHICLES;
 	#define __MAX_VEHICLES
 #else
@@ -33,21 +36,13 @@
 	#define MAX_VEHICLES                       2000
 #endif
 
-// Invalids
 /**
  * <library>omp_vehicle</library>
  */
 const INVALID_VEHICLE_ID                       = 0xFFFF;
 #define INVALID_VEHICLE_ID                     0xFFFF
 
-// Checks
-#if MAX_VEHICLES < 1 || MAX_VEHICLES > 2000
-	#error MAX_VEHICLES must be >= 1 and <= 2000
-#endif
-
-// Enums
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
@@ -74,8 +69,6 @@ enum CARMODTYPE:__CARMODTYPE
 }
 static stock CARMODTYPE:_@CARMODTYPE() { return __CARMODTYPE; }
 
-///
-
 // Backwards-compatibility.
 #define VEHICLE_PARAMS: bool:
 
@@ -94,8 +87,7 @@ const bool:VEHICLE_PARAMS_OFF = false;
  */
 const bool:VEHICLE_PARAMS_ON = true;
 
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
@@ -120,8 +112,7 @@ enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 }
 static stock VEHICLE_MODEL_INFO:_@VEHICLE_MODEL_INFO() { return __VEHICLE_MODEL_INFO; }
 
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
@@ -132,8 +123,7 @@ enum VEHICLE_PANEL_STATUS:__VEHICLE_PANEL_STATUS
 }
 static stock VEHICLE_PANEL_STATUS:_@VEHICLE_PANEL_STATUS() { return __VEHICLE_PANEL_STATUS; }
 
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
@@ -168,8 +158,7 @@ enum VEHICLE_DOOR_STATUS:__VEHICLE_DOOR_STATUS (<<= 1)
 }
 static stock VEHICLE_DOOR_STATUS:_@VEHICLE_DOOR_STATUS() { return __VEHICLE_DOOR_STATUS; }
 
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */
@@ -184,8 +173,7 @@ enum VEHICLE_LIGHT_STATUS:__VEHICLE_LIGHT_STATUS
 }
 static stock VEHICLE_LIGHT_STATUS:_@VEHICLE_LIGHT_STATUS() { return __VEHICLE_LIGHT_STATUS; }
 
-///
-
+/// <p/>
 /**
  * <library>omp_vehicle</library>
  */

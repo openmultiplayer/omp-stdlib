@@ -3,11 +3,25 @@
 #endif
 #define _INC_open_mp_stdilb
 
+/**
+ * <library name="open.mp" summary="open.mp includes entry point.">
+ *   <license>
+ *     (c) Copyright 2022, open.mp team.
+ *   </license>
+ *   <summary pawndoc="true">
+ *     This library uses the enhanced <em>pawndoc.xsl</em> from
+ *     <a href="https://github.com/pawn-lang/pawndoc">pawn-lang/pawndoc</a>.
+ *     This XSL has features such as library and markdown support, and will not
+ *     render this message when used.
+ *   </summary>
+ * </library>
+ */
+
+/// <p/>
+
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 #define OPEN_MP_CONST_CORRECT
-
-/// <p/>
 
 /**
  *   <remarks>

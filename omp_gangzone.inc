@@ -25,6 +25,10 @@
  * <library>omp_gangzone</library>
  */
 #if defined MAX_GANG_ZONES
+	#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
+		#error MAX_GANG_ZONES must be >= 1 and <= 1024
+	#endif
+
 	const __MAX_GANG_ZONES                     = MAX_GANG_ZONES;
 	#define __MAX_GANG_ZONES
 #else
@@ -37,10 +41,6 @@
  */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 #define INVALID_GANG_ZONE                      0xFFFFFFFF
-
-#if MAX_GANG_ZONES < 1 || MAX_GANG_ZONES > 1024
-	#error MAX_GANG_ZONES must be >= 1 and <= 1024
-#endif
 
 /**
  * <library>omp_gangzone</library>

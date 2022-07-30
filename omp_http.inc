@@ -17,13 +17,11 @@
  * </library>
  */
 
+/// <p/>
+
 #pragma tabsize 4
-#define SAMP_CONST_CORRECT
 
 /// <p />
-
-///
-
 /**
  * <library>omp_http</library>
  * <summary>HTTP request types</summary>
@@ -37,8 +35,7 @@ enum HTTP_METHOD:__HTTP_METHOD
 }
 static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 
-///
-
+/// <p/>
 /**
  * <library>omp_http</library>
  * <summary>HTTP error response codes</summary>
@@ -98,6 +95,5 @@ static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
  * 	 </code>
  * </example>
  */
-#pragma deprecated Use literally anything else, like the requests plugin/component.
 native HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]);
 
