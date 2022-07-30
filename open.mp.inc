@@ -22,6 +22,7 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 #define OPEN_MP_CONST_CORRECT
+#define _samp_included
 
 /**
  *   <remarks>
@@ -139,20 +140,7 @@ const bool:undefined = bool:-1;
 
 // Try many places to get the latest version.
 
-#tryinclude "..\pawn-stdlib\console"
-#tryinclude "..\pawn-stdlib\core"
-#tryinclude "..\pawn-stdlib\file"
-#tryinclude "..\pawn-stdlib\float"
-#tryinclude "..\pawn-stdlib\string"
-#tryinclude "..\pawn-stdlib\time"
-
-#tryinclude <pawn-stdlib\console>
-#tryinclude <pawn-stdlib\core>
-#tryinclude <pawn-stdlib\file>
-#tryinclude <pawn-stdlib\float>
-#tryinclude <pawn-stdlib\string>
-#tryinclude <pawn-stdlib\time>
-
+#tryinclude "args"
 #tryinclude "console"
 #tryinclude "core"
 #tryinclude "file"
@@ -160,12 +148,33 @@ const bool:undefined = bool:-1;
 #tryinclude "string"
 #tryinclude "time"
 
+#tryinclude <args>
 #tryinclude <console>
 #tryinclude <core>
 #tryinclude <file>
 #tryinclude <float>
 #tryinclude <string>
 #tryinclude <time>
+
+#tryinclude "..\pawn-stdlib\args"
+#tryinclude "..\pawn-stdlib\console"
+#tryinclude "..\pawn-stdlib\core"
+#tryinclude "..\pawn-stdlib\file"
+#tryinclude "..\pawn-stdlib\float"
+#tryinclude "..\pawn-stdlib\string"
+#tryinclude "..\pawn-stdlib\time"
+
+#tryinclude <pawn-stdlib\args>
+#tryinclude <pawn-stdlib\console>
+#tryinclude <pawn-stdlib\core>
+#tryinclude <pawn-stdlib\file>
+#tryinclude <pawn-stdlib\float>
+#tryinclude <pawn-stdlib\string>
+#tryinclude <pawn-stdlib\time>
+
+// No `args` check - it is optional.
+
+// No `console` check - it is optional.
 
 #if !defined _core_included
 	#error cannot read from file: "core"
