@@ -118,13 +118,22 @@ public const __OPEN_MP_VERSION = 0;
 #pragma warning disable 200
 
 // Define a symbol and check another one.  They're the same when truncated.
-#define __COMPILER_SYMBOL_NAME_CHECK_1F
-#if defined __COMPILER_SYMBOL_NAME_CHECK_1F@
-	#define __COMPILER_sNAMEMAX (31)
-	#define OPEN_MP_LONG_NAMES (0)
-#else
-	#define __COMPILER_sNAMEMAX (63)
-	#define OPEN_MP_LONG_NAMES (1)
+#if !defined __COMPILER_sNAMEMAX
+	#define __COMPILER_SYMBOL_NAME_CHECK_1F
+	#if defined __COMPILER_SYMBOL_NAME_CHECK_1F@
+		#define __COMPILER_sNAMEMAX (31)
+		#define OPEN_MP_LONG_NAMES (0)
+	#endif
+#endif
+#if !defined __COMPILER_sNAMEMAX
+	#define __COMPILER_SYMBOL_NAME_CHECK_3F_________padding_________padding
+	#if defined __COMPILER_SYMBOL_NAME_CHECK_3F_________padding_________padding@
+		#define __COMPILER_sNAMEMAX (63)
+		#define OPEN_MP_LONG_NAMES (1)
+	#endif
+#endif
+#if !defined __COMPILER_sNAMEMAX
+	#error Unknown compiler max symbol length.
 #endif
 
 // Maybe re-enable the symbol length warning.
