@@ -478,7 +478,13 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2);
+#if OPEN_MP_LONG_NAMES
+	native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2);
+#else
+	static stock __TextDrawSetPreviewVehCol()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textdraw</library>
@@ -1103,7 +1109,13 @@ native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1,
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
-native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2);
+#if OPEN_MP_LONG_NAMES
+	native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2);
+#else
+	static stock __PlayerTextDrawSetPreviewVehCo()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textdraw</library>
@@ -1227,7 +1239,13 @@ native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
 /**
  * <library>omp_textdraw</library>
  */
-native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2);
+#if OPEN_MP_LONG_NAMES
+	native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2);
+#else
+	static stock __TextDrawGetPreviewVehCol()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textdraw</library>
@@ -1300,7 +1318,13 @@ native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid);
+#if OPEN_MP_LONG_NAMES
+	native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid);
+#else
+	static stock __PlayerTextDrawGetBackgroundCo()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textdraw</library>
@@ -1356,7 +1380,13 @@ native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1
 /**
  * <library>omp_textdraw</library>
  */
-native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2);
+#if OPEN_MP_LONG_NAMES
+	native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2);
+#else
+	static stock __PlayerTextDrawGetPreviewVehCo()
+	{
+	}
+#endif
 
 /**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with

@@ -330,7 +330,13 @@ native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
 /**
  * <library>omp_textlabel</library>
  */
-native Float:GetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid);
+#if OPEN_MP_LONG_NAMES
+	native Float:GetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid);
+#else
+	static stock __GetPlayer3DTextLabelDrawDist()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textlabel</library>
@@ -341,7 +347,13 @@ native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:dr
 /**
  * <library>omp_textlabel</library>
  */
-native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
+#if OPEN_MP_LONG_NAMES
+	native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
+#else
+	static stock __SetPlayer3DTextLabelDrawDist()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textlabel</library>
@@ -362,12 +374,24 @@ native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
 /**
  * <library>omp_textlabel</library>
  */
-native GetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid);
+#if OPEN_MP_LONG_NAMES
+	native GetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid);
+#else
+	static stock __GetPlayer3DTextLabelVirtualW()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textlabel</library>
  */
-//native SetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid, virtualWorld);
+#if OPEN_MP_LONG_NAMES
+	forward SetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid, virtualWorld);
+#else
+	static stock __SetPlayer3DTextLabelVirtualW()
+	{
+	}
+#endif
 
 /**
  * <library>omp_textlabel</library>
@@ -378,5 +402,11 @@ native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentP
 /**
  * <library>omp_textlabel</library>
  */
-native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
+#if OPEN_MP_LONG_NAMES
+	native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
+#else
+	static stock __GetPlayer3DTextLabelAttached()
+	{
+	}
+#endif
 

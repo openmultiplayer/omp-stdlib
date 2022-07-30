@@ -94,21 +94,26 @@ const bool:VEHICLE_PARAMS_ON = true;
 #define VEHICLE_MODEL_INFO: __TAG(VEHICLE_MODEL_INFO):
 enum VEHICLE_MODEL_INFO:__VEHICLE_MODEL_INFO
 {
-	VEHICLE_MODEL_INFO_SIZE                    = 1,
-	VEHICLE_MODEL_INFO_FRONTSEAT,
-	VEHICLE_MODEL_INFO_REARSEAT,
-	VEHICLE_MODEL_INFO_PETROLCAP,
-	VEHICLE_MODEL_INFO_WHEELSFRONT,
-	VEHICLE_MODEL_INFO_WHEELSREAR,
-	VEHICLE_MODEL_INFO_WHEELSMID,
-	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
-	VEHICLE_MODEL_INFO_REAR_BUMPER_Z,
-	VEHICLE_MODEL_INFO_FRONT_SEAT              = VEHICLE_MODEL_INFO_FRONTSEAT,
+	VEHICLE_MODEL_INFO_SIZE = 1,
+	VEHICLE_MODEL_INFO_FRONT_SEAT,
 	VEHICLE_MODEL_INFO_REAR_SEAT,
 	VEHICLE_MODEL_INFO_PETROL_CAP,
 	VEHICLE_MODEL_INFO_WHEELS_FRONT,
 	VEHICLE_MODEL_INFO_WHEELS_REAR,
 	VEHICLE_MODEL_INFO_WHEELS_MID,
+	// First so we don't have trailing commas.
+#if OPEN_MP_LONG_NAMES
+	VEHICLE_MODEL_INFO_FRONT_BUMPER_Z,
+	VEHICLE_MODEL_INFO_REAR_BUMPER_Z,
+#endif
+	VEHICLE_MODEL_INFO_FRONTSEAT = VEHICLE_MODEL_INFO_FRONT_SEAT,
+	VEHICLE_MODEL_INFO_REARSEAT,
+	VEHICLE_MODEL_INFO_PETROLCAP,
+	VEHICLE_MODEL_INFO_WHEELSFRONT,
+	VEHICLE_MODEL_INFO_WHEELSREAR,
+	VEHICLE_MODEL_INFO_WHEELSMID,
+	VEHICLE_MODEL_INFO_FRONT_BUMPER,
+	VEHICLE_MODEL_INFO_REAR_BUMPER,
 }
 static stock VEHICLE_MODEL_INFO:_@VEHICLE_MODEL_INFO() { return __VEHICLE_MODEL_INFO; }
 
@@ -131,6 +136,7 @@ static stock VEHICLE_PANEL_STATUS:_@VEHICLE_PANEL_STATUS() { return __VEHICLE_PA
 enum VEHICLE_DOOR_STATUS:__VEHICLE_DOOR_STATUS (<<= 1)
 {
 	VEHICLE_DOOR_STATUS_NONE                   = 0,
+#if OPEN_MP_LONG_NAMES
 	VEHICLE_DOOR_STATUS_BONNET_OPEN            = 0x00000001,
 	VEHICLE_DOOR_STATUS_BONNET_DAMAGED,
 	VEHICLE_DOOR_STATUS_BONNET_MISSING,
@@ -154,7 +160,33 @@ enum VEHICLE_DOOR_STATUS:__VEHICLE_DOOR_STATUS (<<= 1)
 	VEHICLE_DOOR_STATUS_FRONT_RIGHT_MISSING,
 	VEHICLE_DOOR_STATUS_PASSENGER_OPEN         = VEHICLE_DOOR_STATUS_FRONT_RIGHT_OPEN,
 	VEHICLE_DOOR_STATUS_PASSENGER_DAMAGED,
-	VEHICLE_DOOR_STATUS_PASSENGER_MISSING
+	VEHICLE_DOOR_STATUS_PASSENGER_MISSING,
+#endif
+	CARDOOR_NONE                   = 0,
+	CARDOOR_BONNET_OPEN            = 0x00000001,
+	CARDOOR_BONNET_DAMAGED,
+	CARDOOR_BONNET_MISSING,
+	CARDOOR_HOOD_OPEN              = CARDOOR_BONNET_OPEN,
+	CARDOOR_HOOD_DAMAGED,
+	CARDOOR_HOOD_MISSING,
+	CARDOOR_BOOT_OPEN              = 0x00000100,
+	CARDOOR_BOOT_DAMAGED,
+	CARDOOR_BOOT_MISSING,
+	CARDOOR_TRUCK_OPEN             = CARDOOR_BOOT_OPEN,
+	CARDOOR_TRUCK_DAMAGED,
+	CARDOOR_TRUCK_MISSING,
+	CARDOOR_FRONT_LEFT_OPEN        = 0x00010000,
+	CARDOOR_FRONT_LEFT_DAMAGED,
+	CARDOOR_FRONT_LEFT_MISSING,
+	CARDOOR_DRIVER_OPEN            = CARDOOR_FRONT_LEFT_OPEN,
+	CARDOOR_DRIVER_DAMAGED,
+	CARDOOR_DRIVER_MISSING,
+	CARDOOR_FRONT_RIGHT_OPEN       = 0x01000000,
+	CARDOOR_FRONT_RIGHT_DAMAGED,
+	CARDOOR_FRONT_RIGHT_MISSING,
+	CARDOOR_PASSENGER_OPEN         = CARDOOR_FRONT_RIGHT_OPEN,
+	CARDOOR_PASSENGER_DAMAGED,
+	CARDOOR_PASSENGER_MISSING
 }
 static stock VEHICLE_DOOR_STATUS:_@VEHICLE_DOOR_STATUS() { return __VEHICLE_DOOR_STATUS; }
 
@@ -165,11 +197,18 @@ static stock VEHICLE_DOOR_STATUS:_@VEHICLE_DOOR_STATUS() { return __VEHICLE_DOOR
 #define VEHICLE_LIGHT_STATUS: __TAG(VEHICLE_LIGHT_STATUS):
 enum VEHICLE_LIGHT_STATUS:__VEHICLE_LIGHT_STATUS
 {
+#if OPEN_MP_LONG_NAMES
 	VEHICLE_LIGHT_STATUS_FRONT_LEFT_BROKEN     = 1,
 	VEHICLE_LIGHT_STATUS_FRONT_RIGHT_BROKEN    = 4,
 	VEHICLE_LIGHT_STATUS_DRIVER_BROKEN         = VEHICLE_LIGHT_STATUS_FRONT_LEFT_BROKEN,
 	VEHICLE_LIGHT_STATUS_PASSENGER_BROKEN      = VEHICLE_LIGHT_STATUS_FRONT_RIGHT_BROKEN,
-	VEHICLE_LIGHT_STATUS_REAR_BROKEN           = 1024
+	VEHICLE_LIGHT_STATUS_REAR_BROKEN           = 1024,
+#endif
+	CARLIGHT_FRONT_LEFT_BROKEN     = 1,
+	CARLIGHT_FRONT_RIGHT_BROKEN    = 4,
+	CARLIGHT_DRIVER_BROKEN         = CARLIGHT_FRONT_LEFT_BROKEN,
+	CARLIGHT_PASSENGER_BROKEN      = CARLIGHT_FRONT_RIGHT_BROKEN,
+	CARLIGHT_REAR_BROKEN           = 1024
 }
 static stock VEHICLE_LIGHT_STATUS:_@VEHICLE_LIGHT_STATUS() { return __VEHICLE_LIGHT_STATUS; }
 
@@ -180,12 +219,27 @@ static stock VEHICLE_LIGHT_STATUS:_@VEHICLE_LIGHT_STATUS() { return __VEHICLE_LI
 #define VEHICLE_TYRE_STATUS: __TAG(VEHICLE_TYRE_STATUS):
 enum VEHICLE_TYRE_STATUS:__VEHICLE_TYRE_STATUS
 {
+#if OPEN_MP_LONG_NAMES
 	VEHICLE_TYRE_STATUS_FRONT_LEFT_POPPED      = 8,
 	VEHICLE_TYRE_STATUS_FRONT_RIGHT_POPPED     = 2,
 	VEHICLE_TYRE_STATUS_REAR_LEFT_POPPED       = 4,
-	VEHICLE_TYRE_STATUS_REAR_RIGHT_POPPED      = 1
+	VEHICLE_TYRE_STATUS_REAR_RIGHT_POPPED      = 1,
+	VEHICLE_TIRE_STATUS_FRONT_LEFT_POPPED      = 8,
+	VEHICLE_TIRE_STATUS_FRONT_RIGHT_POPPED     = 2,
+	VEHICLE_TIRE_STATUS_REAR_LEFT_POPPED       = 4,
+	VEHICLE_TIRE_STATUS_REAR_RIGHT_POPPED      = 1,
+#endif
+	CARTYRE_FRONT_LEFT_POPPED      = 8,
+	CARTYRE_FRONT_RIGHT_POPPED     = 2,
+	CARTYRE_REAR_LEFT_POPPED       = 4,
+	CARTYRE_REAR_RIGHT_POPPED      = 1,
+	CARTIRE_FRONT_LEFT_POPPED      = 8,
+	CARTIRE_FRONT_RIGHT_POPPED     = 2,
+	CARTIRE_REAR_LEFT_POPPED       = 4,
+	CARTIRE_REAR_RIGHT_POPPED      = 1
 }
 static stock VEHICLE_TYRE_STATUS:_@VEHICLE_TYRE_STATUS() { return __VEHICLE_TYRE_STATUS; }
+#define VEHICLE_TIRE_STATUS VEHICLE_TYRE_STATUS
 
 /**
  * <library>omp_vehicle</library>
@@ -1179,15 +1233,6 @@ native bool:IsValidVehicle(vehicleid);
 native void:EnableTirePopping(bool:enable); // deprecated function
 
 /**
- * <library>a_samp</library>
- * <summary>Enable friendly fire for team vehicles.  Players will be unable to damage teammates' vehicles
- * (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
- * <seealso name="SetPlayerTeam" />
- * <remarks>This function was added in <b>SA-MP 0.3x</b> and will not work in earlier versions!</remarks>
- */
-native void:EnableVehicleFriendlyFire();
-
-/**
  * <library>omp_vehicle</library>
  */
 forward GetPlayerLastSyncedVehicleID(playerid);
@@ -1373,6 +1418,14 @@ forward bool:ShowVehicle(vehicleid);
  * <library>omp_vehicle</library>
  */
 forward bool:IsVehicleHidden(vehicleid);
+
+/**
+ * <library>a_samp</library>
+ * <summary>Enable friendly fire for team vehicles.  Players will be unable to damage teammates' vehicles
+ * (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
+ * <seealso name="SetPlayerTeam" />
+ */
+native void:EnableVehicleFriendlyFire();
 
 /**
  * <summary>This callback is called when a player sent a trailer update.</summary>
@@ -1625,17 +1678,17 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
  * <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
  * <param name="passenger_seat">The ID of the seat if the player is a passenger.  0=not in vehicle,
  * 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc.  with many passenger seats</param>
- * <param name="new_x">The new X coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ * <param name="new_x">The new X coordinate of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
- * <param name="new_y">The new Y coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ * <param name="new_y">The new Y coordinate of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
- * <param name="new_z">The new Z coordinate of the vehicle.  This parameter was added in <b>0.3z</b>.
+ * <param name="new_z">The new Z coordinate of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
- * <param name="vel_x">The new X velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ * <param name="vel_x">The new X velocity of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
- * <param name="vel_y">The new Y velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ * <param name="vel_y">The new Y velocity of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
- * <param name="vel_z">The new Z velocity of the vehicle.  This parameter was added in <b>0.3z R4</b>.
+ * <param name="vel_z">The new Z velocity of the vehicle.</b>
  *  Leave it out if using an earlier version</param>
  * <seealso name="OnTrailerUpdate" />
  * <remarks>This callback is called very frequently per second per unoccupied vehicle.  You should refrain
