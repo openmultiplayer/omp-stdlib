@@ -88,6 +88,20 @@ enum WEAPON:__WEAPON
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
+/// <p/>
+/**
+ * <library>omp_core</library>
+ * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
+ */
+#define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
+enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
+{
+	PLAYER_MARKERS_MODE_OFF,
+	PLAYER_MARKERS_MODE_GLOBAL,
+	PLAYER_MARKERS_MODE_STREAMED
+}
+static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
+
 /**
  * <library>omp_core</library>
  * <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
@@ -989,6 +1003,18 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
  * <seealso name="EnableStuntBonusForPlayer" />
  */
 native EnableStuntBonusForAll(bool:enable);
+
+/**
+ * <library>omp_core</library>
+ * <param name="seconds">The delay between loading main scripts, in seconds.</param>
+ */
+native SetModeRestartTime(Float:seconds);
+
+/**
+ * <library>omp_core</library>
+ * <returns>The delay between loading main scripts, in seconds.</returns>
+ */
+native Float:GetModeRestartTime();
 
 /**
  * <summary>This callback is triggered when the gamemode starts.</summary>

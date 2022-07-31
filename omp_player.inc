@@ -138,20 +138,6 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 /// <p/>
 /**
  * <library>omp_player</library>
- * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
- */
-#define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
-enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
-{
-	PLAYER_MARKERS_MODE_OFF,
-	PLAYER_MARKERS_MODE_GLOBAL,
-	PLAYER_MARKERS_MODE_STREAMED
-}
-static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
-
-/// <p/>
-/**
- * <library>omp_player</library>
  */
 #define SPECIAL_ACTION: __TAG(SPECIAL_ACTION):
 enum SPECIAL_ACTION:__SPECIAL_ACTION
