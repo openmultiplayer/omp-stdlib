@@ -289,7 +289,7 @@ native bool:IsPickupHiddenForPlayer(playerid, pickupid);
 /**
  * <library>omp_pickup</library>
  */
-native native Float:GetVehicleTrainSpeed(vehicleid);
+native Float:GetVehicleTrainSpeed(vehicleid);
 
 /**
  * <summary>Called when a player picks up a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
