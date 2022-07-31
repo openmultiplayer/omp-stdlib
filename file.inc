@@ -328,7 +328,7 @@ native bool:fattrib(const filename[], timestamp = 0, attrib = 0x0F);
  * <param name="size">The maximum size of parameter name (optional=<b><c>sizeof (name)</c></b>)</param>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
-native bool:fmatch(filename[], const pattern[], index = 0, size = sizeof (name));
+native bool:fmatch(filename[], const pattern[], index = 0, size = sizeof (filename));
 
 /**
  * <library>file</library>
@@ -452,4 +452,9 @@ native bool:dcreate(const name[]) = fcreatedir;
  */
 #pragma deprecated Use `frename`.
 native bool:drename(const oldname[], const newname[]) = frename;
+
+/**
+ * <library>file</library>
+ */
+native bool:ftouch(const filename[]);
 
