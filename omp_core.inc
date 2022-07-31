@@ -22,6 +22,73 @@
 #pragma tabsize 4
 
 /**
+ * <library>a_samp</library>
+ */
+const INVALID_TIMER                            = 0;
+#define INVALID_TIMER                          0
+
+/// <p/>
+/**
+ * <library>open.mp</library>
+ * <summary>Weapons</summary>
+ */
+#define WEAPON: __TAG(WEAPON):
+enum WEAPON:__WEAPON
+{
+	WEAPON_FIST,
+	WEAPON_BRASSKNUCKLE,
+	WEAPON_GOLFCLUB,
+	WEAPON_NITESTICK,
+	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
+	WEAPON_KNIFE,
+	WEAPON_BAT,
+	WEAPON_SHOVEL,
+	WEAPON_POOLSTICK,
+	WEAPON_KATANA,
+	WEAPON_CHAINSAW,
+	WEAPON_DILDO,
+	WEAPON_DILDO2,
+	WEAPON_VIBRATOR,
+	WEAPON_VIBRATOR2,
+	WEAPON_FLOWER,
+	WEAPON_CANE,
+	WEAPON_GRENADE,
+	WEAPON_TEARGAS,
+	WEAPON_MOLTOV,
+	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
+	WEAPON_COLT45                              = 22,
+	WEAPON_SILENCED,
+	WEAPON_DEAGLE,
+	WEAPON_SHOTGUN,
+	WEAPON_SAWEDOFF,
+	WEAPON_SHOTGSPA,
+	WEAPON_UZI,
+	WEAPON_MP5,
+	WEAPON_AK47,
+	WEAPON_M4,
+	WEAPON_TEC9,
+	WEAPON_RIFLE,
+	WEAPON_SNIPER,
+	WEAPON_ROCKETLAUNCHER,
+	WEAPON_HEATSEEKER,
+	WEAPON_FLAMETHROWER,
+	WEAPON_MINIGUN,
+	WEAPON_SATCHEL,
+	WEAPON_BOMB,
+	WEAPON_SPRAYCAN,
+	WEAPON_FIREEXTINGUISHER,
+	WEAPON_CAMERA,
+	WEAPON_NIGHT_VISION_GOGGLES,
+	WEAPON_THERMAL_GOGGLES,
+	WEAPON_PARACHUTE,
+	WEAPON_VEHICLE                             = 49,
+	WEAPON_DROWN                               = 53,
+	WEAPON_COLLISION,
+	WEAPON_SPLAT                               = WEAPON_COLLISION,
+}
+static stock WEAPON:_@WEAPON() { return __WEAPON; }
+
+/**
  * <library>omp_core</library>
  * <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
  * <param name="string">The string to print</param>
@@ -30,8 +97,8 @@
 #if defined _console_included
 	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
 	// in the output, unattached to any function.  So make a function.
-	native a_samp_unused_print(const string[]);
-	#define a_samp_unused_print
+	native __open_mp_unused_print(const string[]);
+	#define __open_mp_unused_print
 #else
 	native print(const string[]);
 #endif
@@ -72,8 +139,8 @@
 #if defined _console_included
 	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
 	// in the output, unattached to any function.  So make a function.
-	native a_samp_unused_printf(const format[], OPEN_MP_TAGS:...);
-	#define a_samp_unused_printf
+	native __open_mp_unused_printf(const format[], OPEN_MP_TAGS:...);
+	#define __open_mp_unused_printf
 #else
 	native printf(const format[], OPEN_MP_TAGS:...);
 #endif
@@ -81,6 +148,41 @@
 #if !defined _console_included
 	#define _console_included
 #endif
+
+/**
+ * <library>omp_core</library>
+ * <summary>Formats a string to include variables and other strings inside it.</summary>
+ * <param name="output">The string to output the result to</param>
+ * <param name="len">The maximum length output can contain</param>
+ * <param name="format">The format string</param>
+ * <param name="">Indefinite number of arguments of any tag</param>
+ * <seealso name="print" />
+ * <seealso name="printf" />
+ * <remarks>This function doesn't support <a href="#strpack">packed strings</a>.</remarks>
+ * <remarks>
+ *   <b>Format Specifiers:</b><br />
+ *   <ul>
+ *     <li><b><c>%i</c></b> - integer (whole number)</li>
+ *     <li><b><c>%d</c></b> - integer (whole number).</li>
+ *     <li><b><c>%s</c></b> - string</li>
+ *     <li><b><c>%f</c></b> - floating-point number (Float: tag)</li>
+ *     <li><b><c>%c</c></b> - ASCII character</li>
+ *     <li><b><c>%x</c></b> - hexadecimal number</li>
+ *     <li><b><c>%b</c></b> - binary number</li>
+ *     <li><b><c>%%</c></b> - literal <b><c>%</c></b></li>
+ *     <li><b><c>%q</c></b> - escape a text for SQLite. (Added in <b>0.3.7 R2</b>)</li>
+ *   </ul>
+ * </remarks>
+ * <remarks>The values for the placeholders follow in the exact same order as parameters in the call.
+ *  For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer
+ * variable, which is the person's age.</remarks>
+ * <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder
+ * code.  This number indicates the field width; if the size of the parameter to print at the position
+ * of the placeholder is smaller than the field width, the field is expanded with spaces.  To cut the
+ * number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between
+ * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
+ */
+native format(output[], len = sizeof (output), const format[], {Float, _}:...);
 
 /**
  * <library>omp_core</library>
@@ -887,4 +989,63 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
  * <seealso name="EnableStuntBonusForPlayer" />
  */
 native EnableStuntBonusForAll(bool:enable);
+
+/**
+ * <summary>This callback is triggered when the gamemode starts.</summary>
+ * <seealso name="OnGameModeExit" />
+ * <seealso name="OnFilterScriptInit" />
+ * <seealso name="OnFilterScriptExit" />
+ * <remarks>This function can also be used in a filterscript to detect if the gamemode changes with
+ * RCON commands like changemode or gmx, as changing the gamemode does not reload a filterscript.</remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnGameModeInit();
+
+/**
+ * <summary>This callback is called when a gamemode ends, either through 'gmx', the server being shut
+ * down, or <a href="#GameModeExit">GameModeExit</a>.</summary>
+ * <seealso name="OnGameModeInit" />
+ * <seealso name="OnFilterScriptExit" />
+ * <seealso name="OnFilterScriptInit" />
+ * <seealso name="GameModeExit" />
+ * <remarks>This function can also be used in a filterscript to detect if the gamemode changes with
+ * RCON commands like changemode or gmx, as changing the gamemode does not reload a filterscript.</remarks>
+ * <remarks>When using OnGameModeExit in conjunction with the 'rcon gmx' console command keep in mind
+ * there is a potential for client bugs to occur an example of this is excessive
+ * <a href="#RemoveBuildingForPlayer">RemoveBuildingForPlayer</a>
+ * calls during OnGameModeInit which could result in a client crash. </remarks>
+ * <remarks>This callback will NOT be called if the server crashes or the process is killed by other
+ * means, such as using the Linux kill command or pressing the close-button on the Windows console.
+ * </remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnGameModeExit();
+
+/**
+ * <summary>This callback is called when a filterscript is initialized (loaded).  It is only called
+ * inside the filterscript which is starting.</summary>
+ * <seealso name="OnFilterScriptExit" />
+ * <seealso name="OnGameModeInit" />
+ * <seealso name="OnGameModeExit" />
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnFilterScriptInit();
+
+/**
+ * <summary>This callback is called when a filterscript is unloaded.  It is only called inside the filterscript
+ * which is unloaded.</summary>
+ * <seealso name="OnFilterScriptInit" />
+ * <seealso name="OnGameModeInit" />
+ * <seealso name="OnGameModeExit" />
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnFilterScriptExit();
 

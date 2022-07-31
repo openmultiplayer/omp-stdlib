@@ -52,6 +52,20 @@ enum CONNECTION_STATUS:__CONNSTAT
 }
 static stock CONNECTION_STATUS:_@CONNECTION_STATUS() { return __CONNSTAT; }
 
+/// <p/>
+/**
+ * <library>omp_network</library>
+ * <summary>Artwork/NetModels</summary>
+ */
+#define DOWNLOAD_REQUEST: __TAG(DOWNLOAD_REQUEST):
+enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
+{
+	DOWNLOAD_REQUEST_EMPTY,
+	DOWNLOAD_REQUEST_MODEL_FILE,
+	DOWNLOAD_REQUEST_TEXTURE_FILE
+}
+static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return __DOWNLOAD_REQUEST; }
+
 /**
  * <library>omp_network</library>
  * <summary>Kicks a player from the server.  They will have to quit the game and re-connect if they
@@ -522,4 +536,66 @@ native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
  * <seealso name="SendClientCheck" />
  */
 forward OnClientCheckResponse(playerid, actionid, memaddr, retndata);
+
+/**
+ * <summary>This callback is called when someone attempts to log in to RCON in-game; successful or not.</summary>
+ * <param name="ip">The IP of the player that tried to log in to RCON</param>
+ * <param name="password">The password used to login with</param>
+ * <param name="success"><b><c>0</c></b> if the password was incorrect or <b><c>1</c></b> if it was
+ * correct</param>
+ * <seealso name="OnRconCommand" />
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="SendRconCommand" />
+ * <remarks>This callback is only called when /rcon login is used in-game. </remarks>
+ * <remarks>This callback is only called when the player is not yet logged in.  When the player is logged
+ * in, <a href="#OnRconCommand">OnRconCommand</a> is called instead.</remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnRconLoginAttempt(ip[], password[], success);
+
+/**
+ * <summary>This callback is called when a player finishes downloading custom models.  For more information
+ * on how to add custom models to your server, see <a href="http://forum.sa-mp.com/showthread.php?t=644105">the
+ * release thread</a> and <a href="http://forum.sa-mp.com/showthread.php?t=644123">this tutorial</a>.</summary>
+ * <param name="playerid">The ID of the player that finished downloading custom models</param>
+ * <param name="virtualworld">The ID of the virtual world the player finished downloading custom models
+ * for</param>
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnPlayerDisconnect" />
+ * <seealso name="OnIncomingConnection" />
+ * <remarks>This callback is called every time a player changes virtual worlds, even if there are no
+ * custom models present in that world.</remarks>
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnPlayerFinishedDownloading(playerid, virtualworld);
+
+/**
+ */
+forward OnPlayerRequestDownload(playerid, type, crc);
+
+/**
+ * <summary>This callback is called when a command is sent through the server console, remote RCON,
+ * or via the in-game "/rcon command".</summary>
+ * <param name="cmd">A string containing the command that was typed, as well as any passed parameters</param>
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="OnRconLoginAttempt" />
+ * <remarks>You will need to include this callback in a loaded filterscript for it to work in the gamemode!</remarks>
+ * <remarks>"/rcon" is not included in "cmd" when a player types a command. </remarks>
+ * <remarks>If you use the <a href="#print">print</a> function here, it will send a message to the player
+ * who typed the command in-game as well as the log.</remarks>
+ * <remarks>This callback is not called when the player is not logged in as RCON admin. </remarks>
+ * <remarks>When the player is not logged in as RCON admin and uses <b>/rcon login</b>, this callback
+ * will not be called and <a href="#OnRconLoginAttempt">OnRconLoginAttempt</a> is called instead.  However,
+ * when the player is logged in as RCON admin, the use of this command will call this callback. </remarks>
+ * <returns>
+ *   <b><c>0</c></b> if the command was not processed, it will be passed to another script or <b><c>1</c></b>
+ * if the command was processed, will not be passed to other scripts.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks gamemode from
+ * seeing it.
+ * </returns>
+ */
+forward OnRconCommand(cmd[]);
 

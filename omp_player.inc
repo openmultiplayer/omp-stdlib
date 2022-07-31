@@ -233,67 +233,6 @@ static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
 
 /// <p/>
 /**
- * <library>open.mp</library>
- * <summary>Weapons</summary>
- */
-#define WEAPON: __TAG(WEAPON):
-enum WEAPON:__WEAPON
-{
-	WEAPON_FIST,
-	WEAPON_BRASSKNUCKLE,
-	WEAPON_GOLFCLUB,
-	WEAPON_NITESTICK,
-	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
-	WEAPON_KNIFE,
-	WEAPON_BAT,
-	WEAPON_SHOVEL,
-	WEAPON_POOLSTICK,
-	WEAPON_KATANA,
-	WEAPON_CHAINSAW,
-	WEAPON_DILDO,
-	WEAPON_DILDO2,
-	WEAPON_VIBRATOR,
-	WEAPON_VIBRATOR2,
-	WEAPON_FLOWER,
-	WEAPON_CANE,
-	WEAPON_GRENADE,
-	WEAPON_TEARGAS,
-	WEAPON_MOLTOV,
-	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
-	WEAPON_COLT45                              = 22,
-	WEAPON_SILENCED,
-	WEAPON_DEAGLE,
-	WEAPON_SHOTGUN,
-	WEAPON_SAWEDOFF,
-	WEAPON_SHOTGSPA,
-	WEAPON_UZI,
-	WEAPON_MP5,
-	WEAPON_AK47,
-	WEAPON_M4,
-	WEAPON_TEC9,
-	WEAPON_RIFLE,
-	WEAPON_SNIPER,
-	WEAPON_ROCKETLAUNCHER,
-	WEAPON_HEATSEEKER,
-	WEAPON_FLAMETHROWER,
-	WEAPON_MINIGUN,
-	WEAPON_SATCHEL,
-	WEAPON_BOMB,
-	WEAPON_SPRAYCAN,
-	WEAPON_FIREEXTINGUISHER,
-	WEAPON_CAMERA,
-	WEAPON_NIGHT_VISION_GOGGLES,
-	WEAPON_THERMAL_GOGGLES,
-	WEAPON_PARACHUTE,
-	WEAPON_VEHICLE                             = 49,
-	WEAPON_DROWN                               = 53,
-	WEAPON_COLLISION,
-	WEAPON_SPLAT                               = WEAPON_COLLISION,
-}
-static stock WEAPON:_@WEAPON() { return __WEAPON; }
-
-/// <p/>
-/**
  * <library>omp_player</library>
  * <summary>Keys</summary>
  */
@@ -2959,4 +2898,254 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
  * <remarks>Doesn't work</remarks>
  */
 forward OnScriptCash(playerid, amount, source);
+
+/**
+ * <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map
+ * (by right-clicking).</summary>
+ * <param name="playerid">The ID of the player that placed a target/waypoint</param>
+ * <param name="fX">The X float coordinate where the player clicked</param>
+ * <param name="fY">The Y float coordinate where the player clicked</param>
+ * <param name="fZ">The Z float coordinate where the player clicked (inaccurate - see note below)</param>
+ * <seealso name="SetPlayerPos" />
+ * <seealso name="SetPlayerPosFindZ" />
+ * <seealso name="GetPlayerPos" />
+ * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
+ * <remarks>The Z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player;
+ * use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more
+ * accurate Z coordinate.</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
+
+/**
+ * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
+ * the Escape key.</summary>
+ * <param name="playerid">The ID of the player that clicked on the textdraw</param>
+ * <param name="clickedid">The ID of the clicked textdraw. <b><c>INVALID_TEXT_DRAW</c></b> if selection
+ * was cancelled</param>
+ * <seealso name="OnPlayerClickPlayerTextDraw" />
+ * <seealso name="OnPlayerClickPlayer" />
+ * <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
+ * <remarks>The clickable area is defined by <a href="#TextDrawTextSize">TextDrawTextSize</a>.  The
+ * x and y parameters passed to that function must not be zero or negative. </remarks>
+ * <remarks>Do not use <a href="#CancelSelectTextDraw">CancelSelectTextDraw</a> unconditionally within
+ * this callback.  This results in an infinite loop. </remarks>
+ * <returns>
+ *   Returning <b><c>1</c></b> in this callback will prevent it being called in other scripts.  This
+ * should be used to signal that the textdraw on which they clicked was 'found' and no further processing
+ * is needed.  You should return <b><c>0</c></b> if the textdraw on which they clicked wasn't found,
+ * just like in <a href="#OnPlayerCommandText">OnPlayerCommandText</a>.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there also blocks other
+ * scripts from seeing it.
+ * </returns>
+ */
+forward OnPlayerClickTextDraw(playerid, Text:clickedid);
+
+/**
+ * <summary>This callback is called when an IP address attempts a connection to the server.  To block
+ * incoming connections, use <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
+ * <param name="playerid">The ID of the player attempting to connect</param>
+ * <param name="ip_address">The IP address of the player attempting to connect</param>
+ * <param name="port">The port of the attempted connection</param>
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnPlayerDisconnect" />
+ * <seealso name="OnPlayerFinishedDownloading" />
+ * <seealso name="BlockIpAddress" />
+ * <seealso name="UnBlockIpAddress" />
+ * <remarks> 	This callback was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
+ * <returns>
+ *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnIncomingConnection(playerid, ip_address[], port);
+
+/**
+ * <summary>This callback is called every time a client/player updates the server with their status.
+ *  It is often used to create custom callbacks for client updates that aren't actively tracked by the
+ * server, such as health or armor updates or players switching weapons.</summary>
+ * <param name="playerid">ID of the player sending an update packet</param>
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>This callback is called, on average, 30 times per second, per player; only use it when you
+ * know what it's meant for (or more importantly what it's NOT meant for). </remarks>
+ * <remarks>The frequency with which this callback is called for each player varies, depending on what
+ * the player is doing.  Driving or shooting will trigger a lot more updates than idling. </remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Update from this player will not be replicated to other clients.<br />
+ *   <b><c>1</c></b> - Indicates that this update can be processed normally and sent to other players.<br
+ * />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerUpdate(playerid);
+
+/**
+ * <summary>Called when a player changes interior.  Can be triggered by SetPlayerInterior or when a
+ * player enter/exits a building.</summary>
+ * <param name="playerid">The playerid who changed interior</param>
+ * <param name="newinteriorid">The interior the player is now in</param>
+ * <param name="oldinteriorid">The interior the player was in before</param>
+ * <seealso name="SetPlayerInterior" />
+ * <seealso name="GetPlayerInterior" />
+ * <seealso name="LinkVehicleToInterior" />
+ * <seealso name="OnPlayerStateChange" />
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
+
+/**
+ * <summary>This callback is called when the state of any supported key is changed (pressed/released).
+ *  Directional keys do not trigger OnPlayerKeyStateChange (up/down/left/right).</summary>
+ * <param name="playerid">The ID of the player that pressed or released a key</param>
+ * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
+ * <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see
+ * <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
+ * <seealso name="GetPlayerKeys" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>
+ *   Useful macros:<br />
+ *   <code>
+ *     // HOLDING(keys)<br />
+ *     #define HOLDING(%0) ((newkeys &amp; (%0)) == (%0))<br />
+ *     <br />
+ *     // PRESSED(keys)<br />
+ *     #define PRESSED(%0) (((newkeys &amp; (%0)) == (%0)) &amp;&amp; ((oldkeys &amp; (%0)) != (%0)))<br
+ * />
+ *     <br />
+ *     // PRESSING(keyVariable, keys)<br />
+ *     #define PRESSING(%0,%1) (%0 &amp; (%1))<br />
+ *     <br />
+ *     // RELEASED(keys)<br />
+ *     #define RELEASED(%0) (((newkeys &amp; (%0)) != (%0)) &amp;&amp; ((oldkeys &amp; (%0)) == (%0)))<br
+ * />
+ *   </code>
+ * </remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in gamemode.
+ * </returns>
+ */
+forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
+
+/**
+ * <summary>This callback is called when a player changes state.  For example, when a player changes
+ * from being the driver of a vehicle to being on-foot.</summary>
+ * <param name="playerid">The ID of the player that changed state</param>
+ * <param name="newstate">The player's new state</param>
+ * <param name="oldstate">The player's previous state</param>
+ * <seealso name="OnPlayerInteriorChange" />
+ * <seealso name="GetPlayerState" />
+ * <seealso name="GetPlayerSpecialAction" />
+ * <seealso name="SetPlayerSpecialAction" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>
+ *   <b>States:</b><br />
+ *   <ul>
+ *     <li><b><c>PLAYER_STATE_NONE</c></b> - empty (while initializing)</li>
+ *     <li><b><c>PLAYER_STATE_ONFOOT</c></b> - player is on foot</li>
+ *     <li><b><c>PLAYER_STATE_DRIVER</c></b> - player is the driver of a vehicle</li>
+ *     <li><b><c>PLAYER_STATE_PASSENGER</c></b> - player is passenger of a vehicle</li>
+ *     <li><b><c>PLAYER_STATE_WASTED</c></b> - player is dead or on class selection</li>
+ *     <li><b><c>PLAYER_STATE_SPAWNED</c></b> - player is spawned</li>
+ *     <li><b><c>PLAYER_STATE_SPECTATING</c></b> - player is spectating</li>
+ *     <li><b><c>PLAYER_STATE_EXIT_VEHICLE</c></b> - player exits a vehicle</li>
+ *     <li><b><c>PLAYER_STATE_ENTER_VEHICLE_DRIVER</c></b> - player enters a vehicle as driver</li>
+ *     <li><b><c>PLAYER_STATE_ENTER_VEHICLE_PASSENGER</c></b> - player enters a vehicle as passenger
+ * </li>
+ *   </ul>
+ * </remarks>
+ * <returns>
+ *   This callback does not handle returns.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+
+/**
+ * <summary>Called when a player sends a chat message.</summary>
+ * <param name="playerid">The ID of the player who typed the text</param>
+ * <param name="text">The text the player typed</param>
+ * <seealso name="OnPlayerCommandText" />
+ * <seealso name="SendPlayerMessageToPlayer" />
+ * <seealso name="SendPlayerMessageToAll" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   Returning <b><c>0</c></b> in this callback will stop the text from being sent to all players.<br
+ * />
+ *   It is always called first in filterscripts so returning <b><c>0</c></b> there blocks other scripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnPlayerText(playerid, text[]);
+
+/**
+ * <summary>This callback is called when a player enters a command into the client chat window.  Commands
+ * are anything that start with a forward slash, e.g. <c>/help</c>.</summary>
+ * <param name="playerid">The ID of the player that entered a command</param>
+ * <param name="cmdtext">The command that was entered (including the forward slash)</param>
+ * <seealso name="OnPlayerText" />
+ * <seealso name="OnRconCommand" />
+ * <seealso name="SendRconCommand" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   Return <b><c>1</c></b> if the command was processed, otherwise <b><c>0</c></b>; If the command
+ * was not found both in filterscripts and in gamemode, the player will be received a message: <em>SERVER:
+ * Unknown command</em>.<br />
+ *   It is always called first in filterscripts so returning <b><c>1</c></b> there blocks other scripts
+ * from seeing it.
+ * </returns>
+ */
+forward OnPlayerCommandText(playerid, cmdtext[]);
+
+/**
+ * <summary>This callback is called when a player connects to the server.</summary>
+ * <param name="playerid">The ID of the player that connected</param>
+ * <seealso name="OnPlayerDisconnect" />
+ * <seealso name="OnIncomingConnection" />
+ * <seealso name="OnPlayerFinishedDownloading" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerConnect(playerid);
+
+/**
+ * <summary>This callback is called when a player disconnects from the server.</summary>
+ * <param name="playerid">The ID of the player that disconnected</param>
+ * <param name="reason">The reason for the disconnection.  See table below</param>
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnIncomingConnection" />
+ * <seealso name="OnPlayerFinishedDownloading" />
+ * <remarks>This callback can also be called by NPC.</remarks>
+ * <remarks>Some functions might not work correctly when used in this callback because the player is
+ * already disconnected when the callback is called.  This means that you can't get unambiguous information
+ * from functions like <a href="#GetPlayerIp">GetPlayerIp</a> and <a href="#GetPlayerPos">GetPlayerPos</a>.</remarks>
+ * <remarks>
+ *   <b>Reasons:</b><br />
+ *   <ul>
+ *     <li><b><c>0</c></b> - timeout/Crash - the player's connection was lost.  Either their game crashed
+ * or their network had a fault.</li>
+ *     <li><b><c>1</c></b> - quit - the player purposefully quit, either using the <b><c>/quit (/q)</c></b>
+ * command or via the pause menu.</li>
+ *     <li><b><c>2</c></b> - kick/ban - the player was kicked or banned by the server.</li>
+ *   </ul>
+ * </remarks>
+ * <returns>
+ *   <b><c>0</c></b> - Will prevent other filterscripts from receiving this callback.<br />
+ *   <b><c>1</c></b> - Indicates that this callback will be passed to the next filterscript.<br />
+ *   It is always called first in filterscripts.
+ * </returns>
+ */
+forward OnPlayerDisconnect(playerid, reason);
 
