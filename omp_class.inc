@@ -189,6 +189,22 @@ forward bool:SetTeamCount(count);
 native bool:ForceClassSelection(playerid);
 
 /**
+ * <library>omp_class</library>
+ * <summary>Returns the number of classes defined.</summary>
+ */
+native GetAvailableClasses();
+
+/**
+ * <library>omp_class</library>
+ */
+native GetPlayerClass(classid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
+
+/**
+ * <library>omp_class</library>
+ */
+native EditPlayerClass(classid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
+
+/**
  * <summary>Called when a player changes class at class selection (and when class selection first appears).</summary>
  * <param name="playerid">The ID of the player that changed class</param>
  * <param name="classid">The ID of the current class being viewed (returned by <a href="#AddPlayerClass">AddPlayerClass</a>)</param>

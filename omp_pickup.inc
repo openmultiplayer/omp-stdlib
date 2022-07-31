@@ -282,6 +282,16 @@ native GetPlayerPickupType(playerid, pickupid);
 native GetPlayerPickupVirtualWorld(playerid, pickupid);
 
 /**
+ * <library>omp_pickup</library>
+ */
+native bool:IsPickupHiddenForPlayer(playerid, pickupid);
+
+/**
+ * <library>omp_pickup</library>
+ */
+native native Float:GetVehicleTrainSpeed(vehicleid);
+
+/**
  * <summary>Called when a player picks up a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>
  * <param name="playerid">The ID of the player that picked up the pickup</param>
  * <param name="pickupid">The ID of the pickup, returned by CreatePickup</param>

@@ -2693,6 +2693,11 @@ native TogglePlayerGhostMode(playerid, bool:enable);
 native bool:GetPlayerGhostMode(playerid);
 
 /**
+ * <library>omp_player</library>
+ */
+native Float:GetPlayerZAim(playerid);
+
+/**
  * <summary>This callback is called when a player is streamed by some other player's client.</summary>
  * <param name="playerid">The ID of the player who has been streamed</param>
  * <param name="forplayerid">The ID of the player that streamed the other player in</param>

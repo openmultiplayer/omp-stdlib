@@ -1010,9 +1010,10 @@ native bool:GetObjectSyncRotation(objectid);
 
 /**
  * <library>omp_object</library>
- * <summary></summary>
+ * <remarks>This is NOT a boolean return.</remarks>
+ * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native bool:IsObjectMaterialSlotUsed(objectid, materialIndex);
+native _:IsObjectMaterialSlotUsed(objectid, materialIndex);
 
 /**
  * <library>omp_object</library>
@@ -1076,9 +1077,10 @@ native GetPlayerObjectSyncRotation(playerid, objectid);
 
 /**
  * <library>omp_object</library>
- * <summary></summary>
+ * <remarks>This is NOT a boolean return.</remarks>
+ * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native bool:IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
+native _:IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
 
 /**
  * <library>omp_object</library>

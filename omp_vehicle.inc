@@ -1350,6 +1350,12 @@ native GetVehicleCab(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
+ * <remarks>As in "one who tows", not "tall building".</remarks>
+ */
+native GetVehicleTower(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
  */
 native bool:HasVehicleBeenOccupied(vehicleid);
 
@@ -1418,6 +1424,16 @@ forward bool:ShowVehicle(vehicleid);
  * <library>omp_vehicle</library>
  */
 forward bool:IsVehicleHidden(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+forward bool:GetVehicleSirenState(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+forward GetVehicleHydraReactorAngle(vehicleid);
 
 /**
  * <library>a_samp</library>
