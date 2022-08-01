@@ -231,7 +231,15 @@ native flength(File:handle);
  * <param name="handle">The file handle returned by <a href="#fopen">fopen</a> or <a href="#ftemp">ftemp</a></param>
  * <remarks>Actually just calls <c>flength</c> as that has to force a flush to be accurate.</remarks>
  */
-native fflush(File:handle) = flength;
+stock bool:fflush(File:handle)
+{
+	if (handle)
+	{
+		flength(handle);
+		return true;
+	}
+	return false;
+}
 
 /**
  * <library>file</library>
