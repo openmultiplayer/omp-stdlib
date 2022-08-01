@@ -18,9 +18,9 @@
  * </library>
  */
 
-#pragma library Args
-
 /// <p/>
+
+#pragma library Args
 
 /**
  * <library>args</library>

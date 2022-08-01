@@ -18,9 +18,9 @@
  * </library>
  */
 
-#pragma library String
-
 /// <p/>
+
+#pragma library String
 
 /**
  * <library>string</library>

@@ -18,9 +18,9 @@
  * </library>
  */
 
-#pragma library DGram
-
 /// <p/>
+
+#pragma library DGram
 
 /**
  * <library>datagram</library>

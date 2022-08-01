@@ -18,8 +18,8 @@
  * </library>
  */
 
+/// <p/>
+
 #include <core>
 #include <console>
-
-/// <p/>
 

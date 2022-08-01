@@ -18,9 +18,9 @@
  * </library>
  */
 
-#pragma library Core
-
 /// <p/>
+
+#pragma library Core
 
 /**
  * <library>core</library>

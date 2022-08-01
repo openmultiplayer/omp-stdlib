@@ -18,9 +18,9 @@
  * </library>
  */
 
-#pragma library Console
-
 /// <p/>
+
+#pragma library Console
 
 /**
  * <library>console</library>

@@ -18,9 +18,6 @@
  * </library>
  */
 
-#include "core"
-#include "string"
-
 /// <p/>
 
 #pragma library File
