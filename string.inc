@@ -287,58 +287,6 @@ native bool:ispacked(const string[]);
 
 /**
  * <library>string</library>
- */
-native __strformat(dest, maxlength, const format[], {Float, _}:...) = format;
-
-/**
- * <library>string</library>
- */
-native __strpack(dest, const source, maxlength) = strpack;
-
-/**
- * <library>string</library>
- */
-stock __strgetdest;
-
-/**
- * <library>string</library>
- */
-stock __strmaxlength;
-
-/**
- * <library>string</library>
- * <remarks>
- * This function exists to convert a string (<c>dest[]</c>) to its own address.  The address is
- * passed to a special declaration of the native which takes a number instead of a string.  This
- * essentially lies to the compiler and allows you to pass a string by address instead of having the
- * compiler push the reference for you.  However, a tiny bit of assembly is required here just to
- * bypass the other part of the compiler preventing you from getting addresses.
- * <p/>
- * It also takes the length, just so that a default value can be set on it and <c>_</c> given as the
- * length parameter.
- * </remarks>
- */
-stock __strsetdest(dest[], maxlength = sizeof (dest))
-{
-	// Get a pointer.
-	#emit LOAD.S.pri        dest
-	#emit STOR.pri          __strgetdest
-	__strmaxlength = maxlength;
-}
-
-/**
- * <library>string</library>
- * <remarks>
- * Exists purely to resolve a default value.
- * </remarks>
- */
-stock bool:__strpacked(bool:pack = true)
-{
-	return pack;
-}
-
-/**
- * <library>string</library>
  * <summary>Convert values to text.</summary>
  * <param name="dest">The string that will contain the formatted result.</param>
  * <param name="size">The maximum number of <em>cells</em> that the dest parameter can hold. This value includes the zero terminator.</param>
@@ -373,38 +321,8 @@ stock bool:__strpacked(bool:pack = true)
  * </remarks>
  * <returns>This function always returns 0.</returns>
  */
-static stock strformat(dest[], size = sizeof (dest), bool:pack = true, const format[], {Fixed, Float, _}:...)
-{
-	// For documentation only.
-	return 0.
-}
-
-// Uses `__strgetdest` and `__strmaxlength` to avoid using macro parameters multiple times.  These are the
-// destination array and its length, as addresses not arrays.  Hence `__strformat` and `__strpack`
-// take addresses not arrays.
-#define strformat(%0,%1,%2,%3) (__strsetdest(%0, %1), __strformat(__strgetdest, __strmaxlength, %3), __strpacked(%2) && __strpack(__strgetdest, __strgetdest, __strmaxlength))
-// This is a macro not a stock because forwarding all variable parameters is not easy.  But would
-// look something like this, if there wasn't a bug with `SYSREQ.C` and otherwise unused natives:
-//stock strformat(dest[], size = sizeof (dest), bool:pack = true, const format[], {Float, _}:...)
-//{
-//	static ret;
-//	#emit LOAD.S.pri       16
-//	#emit LOAD.S.pri       20
-//	#emit POP.alt
-//	#emit SCTRL 5
-//	#emit POP.pri
-//	#emit STOR.pri         ret
-//	#emit POP.pri
-//	#emit ADD.C            0xFFFFFFFC
-//	#emit POP.alt
-//	#emit SWAP.alt
-//	#emit PUSH.pri
-//	#emit SYSREQ.C         format
-//	#emit PUSH ret
-//	#emit LCTRL            5
-//	#emit PUSH.pri
-//	#emit RETN
-//}
+#pragma deprecated Use `format`.
+native strformat(dest[], size = sizeof (dest), bool:pack = true, const format[], {Fixed, Float, _}:...);
 
 /**
  * <library>string</library>
