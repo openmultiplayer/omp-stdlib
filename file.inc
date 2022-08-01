@@ -227,6 +227,14 @@ native flength(File:handle);
 
 /**
  * <library>file</library>
+ * <summary>Flush a file to disk (ensure all writes are complete).</summary>
+ * <param name="handle">The file handle returned by <a href="#fopen">fopen</a> or <a href="#ftemp">ftemp</a></param>
+ * <remarks>Actually just calls <c>flength</c> as that has to force a flush to be accurate.</remarks>
+ */
+native fflush(File:handle) = flength;
+
+/**
+ * <library>file</library>
  * <summary>Checks if a specific file exists in the <b><c>/scriptfiles</c></b> directory.</summary>
  * <param name="filename">The name of the file</param>
  * <returns>1 if the file exists, 0 otherwise.</returns>
