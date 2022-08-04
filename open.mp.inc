@@ -147,6 +147,9 @@ public const __OPEN_MP_VERSION = 0;
 			// End the function with no value returned.
 		}
 	#endif
+	// The parameters are not used in this code, the entire stack is instead
+	// forwarded to the native.  Hence the `disable 203` below so that we don't
+	// get loads of warnings in native declarations.
 	
 	#define native%9void:%0(%1); native __%0() = %0; stock %0(%1) { __emit(POP.pri, STOR.pri __gFrame, POP.pri, STOR.pri __gRet, SYSREQ.C __%0, PUSH __gRet, PUSH __gFrame); }
 #endif
