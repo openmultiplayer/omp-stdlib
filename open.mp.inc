@@ -112,35 +112,47 @@ public const __OPEN_MP_VERSION = 0;
 	#define OPEN_MP_TAGS {Float, _}
 #endif
 
+// Optionally use `void:` tags on natives, ensure they don't return anything.
 #if defined VOID_TAGS
 	// Temporary stores for the frame and return.
 	stock __gFrame, __gRet;
 
-	// Special macro to detect the end of test macros in `u@`.
-	#define u@$ 1]);
-
-	// `%8$`  - Skip any other test macros.
-	// `%9`   - Ignore spaces between `native` and `void:`.  This will actually
-	//          skip anything before the first `v` anywhere in the code, but if
-	//          that first `v` isn't immediately followed by `oid:` the whole
-	//          match will fail (and try the next test in `%8`).
-	// `%0`   - The function name.
-	// `(%1)` - The function parameters.
+	// The macro matches `native` with `void:` anywhere later in the line, but
+	// before brackets.  This does mean it will match `native not_void:` and any
+	// other tags that end with `void:` and no earlier `v`.
 	//
-	// Define a copy of the native with NO parameters.  We only call it from
-	// assembly to avoid the need for complex macros to forward all parameters
-	// (and this is actually faster as a bonus).  Then define a function with
-	// the same name as the native and invoke the native from in there.  This
-	// is because only normal functions can have no return value, natives always
-	// return something.  In the function forward all the parameters to the true
-	// native then restore the stack and return.  Natives don't remove their
-	// parameters from the stack, functions do, hence why we can use them twice.
-	#define __VOID:%8$native%9void:%0(%1); %8$native __%0() = %0; stock %0(%1) { __emit(POP.pri, STOR.pri __gFrame, POP.pri, STOR.pri __gRet, SYSREQ.C __%0, PUSH __gRet, PUSH __gFrame); }
-
-	#define @native()%0(%1) u@(u[_:__VOID:u@$native %0(%1)
-#else
-	#define @native()%0(%1) native %0(%1)
+	// For the input:
+	#if 0
+		native void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
+	#endif
+	// The generated code looks like:
+	#if 0
+		// This is internal and doesn't need the parameters declaring.
+		native __ShowPlayerMarkers();
+		
+		// This does need the parameters as it is what users call.
+		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
+		{
+			// Remove the previous frame and return address from the stack.
+			#emit POP.pri
+			#emit STOR.pri    __gFrame
+			#emit POP.pri
+			#emit STOR.pri    __gRet
+			// Call the underlying native, with the current stack, thus the
+			// parameters passed to the containing function.
+			#emit SYSREQ.C    __ShowPlayerMarkers
+			// `SYSREQ` doesn't clean up the stack, so restore the rest.
+			#emit PUSH        __gRet
+			#emit PUSH        __gFrame
+			// End the function with no value returned.
+		}
+	#endif
+	
+	#define native%9void:%0(%1); native __%0() = %0; stock %0(%1) { __emit(POP.pri, STOR.pri __gFrame, POP.pri, STOR.pri __gRet, SYSREQ.C __%0, PUSH __gRet, PUSH __gFrame); }
 #endif
+
+#define void:
+#define string:
 
 // Disable the symbol length warning.
 #pragma warning push
