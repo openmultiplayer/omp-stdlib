@@ -22,7 +22,6 @@
 #pragma tabsize 4
 #define SAMP_CONST_CORRECT
 #define OPEN_MP_CONST_CORRECT
-#define _samp_included
 
 /**
  *   <remarks>
@@ -111,6 +110,36 @@ public const __OPEN_MP_VERSION = 0;
 	#define WEAK_TAGS
 	// TODO: Add all the other tags.
 	#define OPEN_MP_TAGS {Float, _}
+#endif
+
+#if defined VOID_TAGS
+	// Temporary stores for the frame and return.
+	stock __gFrame, __gRet;
+
+	// Special macro to detect the end of test macros in `u@`.
+	#define u@$ 1]);
+
+	// `%8$`  - Skip any other test macros.
+	// `%9`   - Ignore spaces between `native` and `void:`.  This will actually
+	//          skip anything before the first `v` anywhere in the code, but if
+	//          that first `v` isn't immediately followed by `oid:` the whole
+	//          match will fail (and try the next test in `%8`).
+	// `%0`   - The function name.
+	// `(%1)` - The function parameters.
+	//
+	// Define a copy of the native with NO parameters.  We only call it from
+	// assembly to avoid the need for complex macros to forward all parameters
+	// (and this is actually faster as a bonus).  Then define a function with
+	// the same name as the native and invoke the native from in there.  This
+	// is because only normal functions can have no return value, natives always
+	// return something.  In the function forward all the parameters to the true
+	// native then restore the stack and return.  Natives don't remove their
+	// parameters from the stack, functions do, hence why we can use them twice.
+	#define __VOID:%8$native%9void:%0(%1); %8$native __%0() = %0; stock %0(%1) { __emit(POP.pri, STOR.pri __gFrame, POP.pri, STOR.pri __gRet, SYSREQ.C __%0, PUSH __gRet, PUSH __gFrame); }
+
+	#define @native()%0(%1) u@(u[_:__VOID:u@$native %0(%1)
+#else
+	#define @native()%0(%1) native %0(%1)
 #endif
 
 // Disable the symbol length warning.
@@ -206,6 +235,12 @@ const bool:undefined = bool:-1;
 #endif
 
 /// <p/>
+
+#if defined VOID_TAGS
+	// Disable the unused parameters warning.
+	#pragma warning push
+	#pragma warning disable 203
+#endif
 
 #tryinclude "omp_core"
 #tryinclude <omp_core>
@@ -310,4 +345,37 @@ const bool:undefined = bool:-1;
 #if !defined _INC_omp_textlabel
 	#error cannot read from file: "omp_textlabel"
 #endif
+
+#if defined VOID_TAGS
+	// Maybe re-enable the unused parameters warning.
+	#pragma warning pop
+#endif
+
+// Backwards-compatibility defines.
+#define _YSF_included
+#define _inc_ysf
+
+#define _actor_included
+#define _http_included
+#define _objects_included
+#define _players_included
+#define _samp_included
+#define _sampdb_included
+#define _vehicles_included
+
+#define _INC_a_actor
+#define _INC_a_http
+#define _INC_a_objects
+#define _INC_a_players
+#define _INC_a_samp
+#define _INC_a_sampdb
+#define _INC_a_vehicles
+
+#define _inc_a_actor
+#define _inc_a_http
+#define _inc_a_objects
+#define _inc_a_players
+#define _inc_a_samp
+#define _inc_a_sampdb
+#define _inc_a_vehicles
 

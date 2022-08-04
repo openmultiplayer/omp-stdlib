@@ -871,7 +871,7 @@ native void:ShowNameTags(bool:show);
  * <remarks>It is also possible to set a player's colour to a colour that has full transparency (no
  * alpha value).  This makes it possible to show markers on a per-player basis.</remarks>
  */
-native void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
+@native() void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
 
 /**
  * <library>omp_core</library>

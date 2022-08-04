@@ -3,10 +3,6 @@
 #endif
 #define _INC_omp_actor
 
-// Backwards-compatibility.
-#define _actor_included
-#define _INC_a_actor
-
 /**
  * <library name="omp_actor" summary="open.mp actor functions.">
  *   <license>

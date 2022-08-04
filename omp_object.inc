@@ -3,10 +3,6 @@
 #endif
 #define _INC_omp_object
 
-// Backwards-compatibility.
-#define _INC_a_objects
-#define _objects_included
-
 /**
  * <library name="omp_object" summary="open.mp object functions.">
  *   <license>

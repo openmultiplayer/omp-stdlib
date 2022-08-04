@@ -3,10 +3,6 @@
 #endif
 #define _INC_omp_database
 
-// Backwards-compatibility.
-#define _sampdb_included
-#define _INC_a_sampdb
-
 /**
  * <library name="omp_database" summary="open.mp SQLite functions.">
  *   <license>
