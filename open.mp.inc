@@ -115,9 +115,6 @@ public const __OPEN_MP_VERSION = 0;
 // Optionally use `void:` tags on natives - ensure they don't return anything.
 // This is not the default as it adds a tiny bit of overhead to the calls.
 #if defined VOID_TAGS
-	// The macro matches `native` with `void:` anywhere later in the line, but
-	// before brackets.  This does mean it will match `native not_void:` and any
-	// other tags that end with `void:` and no earlier `v`.
 	//
 	// For the input:
 	//
@@ -154,7 +151,10 @@ public const __OPEN_MP_VERSION = 0;
 	// The parameters are not used in this code, the entire stack is instead
 	// forwarded to the native; hence the `disable 203` below so that we don't
 	// get loads of warnings in native declarations.
-	
+	//
+	// The macro matches `native` with `void:` anywhere later in the line, but
+	// before brackets.  This does mean it will match `native not_void:` and any
+	// other tags that end with `void:` and no earlier `v`.
 	#define native%9void:%0(%1); native __%0() = %0; stock %0(%1) { __emit(POP.pri, POP.alt, SCTRL 5, SYSREQ.C __%0, PUSH.alt, PROC); }
 #endif
 
