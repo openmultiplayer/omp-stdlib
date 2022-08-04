@@ -112,20 +112,21 @@ public const __OPEN_MP_VERSION = 0;
 	#define OPEN_MP_TAGS {Float, _}
 #endif
 
-// Optionally use `void:` tags on natives, ensure they don't return anything.
+// Optionally use `void:` tags on natives - ensure they don't return anything.
+// This is not the default as it adds a tiny bit of overhead to the calls.
 #if defined VOID_TAGS
-	// Temporary stores for the frame and return.
-	stock __gFrame, __gRet;
-
 	// The macro matches `native` with `void:` anywhere later in the line, but
 	// before brackets.  This does mean it will match `native not_void:` and any
 	// other tags that end with `void:` and no earlier `v`.
 	//
 	// For the input:
+	//
 	#if 0
 		native void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
 	#endif
+	//
 	// The generated code looks like:
+	//
 	#if 0
 		// This is internal and doesn't need the parameters declaring.
 		native __ShowPlayerMarkers();
@@ -135,23 +136,26 @@ public const __OPEN_MP_VERSION = 0;
 		{
 			// Remove the previous frame and return address from the stack.
 			#emit POP.pri
-			#emit STOR.pri    __gFrame
-			#emit POP.pri
-			#emit STOR.pri    __gRet
+			#emit POP.alt
+			#emit SCTRL       5
 			// Call the underlying native, with the current stack, thus the
 			// parameters passed to the containing function.
 			#emit SYSREQ.C    __ShowPlayerMarkers
-			// `SYSREQ` doesn't clean up the stack, so restore the rest.
-			#emit PUSH        __gRet
-			#emit PUSH        __gFrame
+			// `SYSREQ` doesn't empty the stack so the parameters are still
+			// there.  Push the return address back as if we were calling the
+			// function (`alt` is not clobbered by `SYSREQ`) and then put the
+			// frame pointer back on the stack to be used by the return code.
+			#emit PUSH.alt
+			#emit PROC
 			// End the function with no value returned.
 		}
 	#endif
+	//
 	// The parameters are not used in this code, the entire stack is instead
-	// forwarded to the native.  Hence the `disable 203` below so that we don't
+	// forwarded to the native; hence the `disable 203` below so that we don't
 	// get loads of warnings in native declarations.
 	
-	#define native%9void:%0(%1); native __%0() = %0; stock %0(%1) { __emit(POP.pri, STOR.pri __gFrame, POP.pri, STOR.pri __gRet, SYSREQ.C __%0, PUSH __gRet, PUSH __gFrame); }
+	#define native%9void:%0(%1); native __%0() = %0; stock %0(%1) { __emit(POP.pri, POP.alt, SCTRL 5, SYSREQ.C __%0, PUSH.alt, PROC); }
 #endif
 
 #define void:
