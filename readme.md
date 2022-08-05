@@ -1,7 +1,5 @@
 open.mp is the culmination of years of gradual improvements, fixes, and hard-learnt best practices for pawn code and SA:MP.  It is the direct continuation of several projects all with the same aim - making San Andreas Multiplayer better for (in order of importance): players (the largest group), newbies (who need help and support), and experienced coders (who can fend for themselves).  As a result the whole system should be smoother and less frustrating for those just learning, but may be a slight shock to existing scripters who have not kept up-to-date with these developments.  This file detais these changes for that latter group.
 
-
-
 # Compiler Changes
 
 open.mp officially uses version 3.10.11 of the pawn compiler, released along-side the server.  Older compilers may work, and old scripts on the old compiler obviously won't change, but these cases aren't tested.
@@ -159,6 +157,42 @@ Other new compiler features are documented on [the community compiler repo](http
 * `for (new i = 0; i != 10; ) {}` - Warning 250: variable used in loop condition not modified in loop body.
 * `for (new i = 0, j = 10; i != j; ) {}` - Warning 251: none of the variables used in loop condition are modified in loop body.
 
+# Include Changes
+
+## More Tags
+
+Parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+
+```pawn
+TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
+TextDrawFont(textid, 7); // Warning
+```
+
+Functions that take or return just `true`/`false` all have `bool:` tags.  More functions than might be expected return booleans; most player functions return `true` when they succeed and `false` when the player is not connected, sometimes skipping the need for `IsPlayerConnected`:
+
+```pawn
+new Float:x, Float:y, Float:z;
+// If the player is connected get their position.
+if (GetPlayerPos(playerid, x, y, z))
+{
+	// Timer repeats are on or off, so booleans.
+	SetTimer("TimerFunc", 1000, false);
+}
+```
+
+Native functions that don't return any useful value have `void:` tags to indicate this fact.  The compiler doesn't enforce this by default, it is purely for informational purposes:
+
+```pawn
+new useless = ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
+```
+
+You can enable `void:` tag warnings with a define before including `open.mp`, this is only disabled by default because doing so adds a tiny bit of overhead to the relevant native functions.  However, it is recommended as functions that return no defined value can by definition not be relied on (or at least enable the warning, fix the uses, then disable it again, periodically re-enabling to check no undefined value uses have snuck back in):
+
+```pawn
+#define VOID_TAGS
+#include <open.mp>
+```
+
 ## Tag Warning Example
 
 ```pawn
@@ -208,41 +242,13 @@ case VARTYPE_BOOL:
 
 The string/float mixup still needs some manual review, but it is now far more obvious that those two are the wrong way around.  In fact there's a good chance that the person updating the code would have used them the correct way round without even realising that they have now fixed a prior bug.  The `VARTYPE_BOOL:` line will give an error that the symbol doesn't exist because there is no type `4`.  The old code quite happily compiled without issues and had an impossible branch.  The effects aren't serious in this example, but they could be.  But, again, the old code will still compile and run.  More warnings help to highlight issues, they do not introduce new ones.
 
-## More Tags
+## Pawndoc
 
-Parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+The compiler has always been able to generate documentation from comments, and this is now officially supported within the official includes.  (Almost) every function has a documentation comment before it (denoted by `///` and `/** */` as opposed to `//` and `/* */`); which includes information on parameters, usage, and which library the function is defined in.  When a mode is compiled with the `-r` flag a `modename.xml` file is generated along-side the other output with all this information collated.  An included file called `pawndoc.xsl` can be used to pretty-print this XML as HTML or markdown for further use.  The included XSL has more features for things like macros, enums, and grouping library declarations together.  See [the pawndoc repo](https://github.com/pawn-lang/pawndoc) for more information.
 
-```pawn
-TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
-TextDrawFont(textid, 7); // Warning
-```
+The documentation generation and grouping by file are especially useful for library writers, who can put all the information canonically in a single place then extract just their parts of interest with ease.
 
-Functions that take or return just `true`/`false` all have `bool:` tags.  More functions than might be expected return booleans; most player functions return `true` when they succeed and `false` when the player is not connected, sometimes skipping the need for `IsPlayerConnected`:
-
-```pawn
-new Float:x, Float:y, Float:z;
-// If the player is connected get their position.
-if (GetPlayerPos(playerid, x, y, z))
-{
-	// Timer repeats are on or off, so booleans.
-	SetTimer("TimerFunc", 1000, false);
-}
-```
-
-Native functions that don't return any useful value have `void:` tags to indicate this fact.  The compiler doesn't enforce this by default, it is purely for informational purposes:
-
-```pawn
-new useless = ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
-```
-
-You can enable `void:` tag warnings with a define before including `open.mp`, this is only disabled by default because doing so adds a tiny bit of overhead to the relevant native functions.  However, it is recommended as functions that return no defined value can by definition not be relied on (or at least enable the warning, fix the uses, then disable it again, periodically re-enabling to check no undefined value uses have snuck back in):
-
-```pawn
-#define VOID_TAGS
-#include <open.mp>
-```
-
-## Major Changes
+# Function Changes
 
 * `random` now works for negative numbers.  Calling `random(-5)` will return any of `0`, `-1`, `-2`, `-3`, or `-4`.  As with `random(5)` the specified number will not be returned, if instead you want the upper limit (i.e. `0`) skipped just do `random(-5) - 1`.
 
