@@ -138,14 +138,15 @@ Other new compiler features are documented on [the community compiler repo](http
 * `__emit` - Similar to `#emit` but safer and a proper expression.
 * `__Pawn` - Now `0x030A`.
 * `__addressof` - Get a function address at compile-time.
+* `__nameof` - Convert a symbol name to a string if it exists.
 * `new a = a;` - Disallowed.
 * Multi-line strings.
 * Suggestions for unknown symbols.
 * Countless bug fixes.
-* Optional recursion detection.
+* Optional recursion detection (`-R`).
 * `new a = 5; a = 6;` - Warning 240: Previously assigned value is never used.
 * `new a = b >> -5;` - Warning 241: Negative or too big shift count.
-* `enum X (<<= 4) { E = 0x80000000, F}` - Warning 242: Shift overflow in enum element declaration.
+* `enum X (<<= 4) { E = 0x80000000, F }` - Warning 242: Shift overflow in enum element declaration.
 * `switch (5)` - Warning 243: Redundant code: switch control expression is constant.
 * `switch (x) { case E:{} }` - Warning 244: Enum element not handled in switch.
 * `enum X (<<= 1) { E, F}` - Warning 245: Enum increment has no effect on zero value.
@@ -156,6 +157,8 @@ Other new compiler features are documented on [the community compiler repo](http
 * `__static_assert(false);` - Error 110: assertation failed.
 * `for (new i = 0; i != 10; ) {}` - Warning 250: variable used in loop condition not modified in loop body.
 * `for (new i = 0, j = 10; i != j; ) {}` - Warning 251: none of the variables used in loop condition are modified in loop body.
+
+You will note that all these new features either use existing keywords, `#`, or a `__` prefix.  This last one is a well established convention in many languages reserved for compiler and system includes to be able to add new items without fear of conflicts.  The open.mp includes, as the core system library, continue this convention and use `__` prefixes liberally and without appology.
 
 # Include Changes
 
@@ -193,7 +196,7 @@ You can enable `void:` tag warnings with a define before including `open.mp`, th
 #include <open.mp>
 ```
 
-## Tag Warning Example
+### Tag Warning Example
 
 ```pawn
 if (GetPVarType(playerid, "MY_DATA") == 1)
