@@ -251,6 +251,53 @@ The compiler has always been able to generate documentation from comments, and t
 
 The documentation generation and grouping by file are especially useful for library writers, who can put all the information canonically in a single place then extract just their parts of interest with ease.
 
+## Deprecation And Unimplemented
+
+Any functions that were once in SA:MP but have since been removed (either by later SA:MP versions or open.mp itself) are declared as:
+
+```pawn
+forward void:SetDeathDropAmount(amount);
+```
+
+The `forward` on its own (i.e. with no implementation function) ensures that a special error message is given when code attempts to call it.  Rather than `Undefined symbol "SetDeathDropAmount"` the compiler gives `"SetDeathDropAmount" is not implemented`, which is far more specific error and makes it clear that the issue is not a typo or other mistake.  These unimplemented functions may give hints on alternative solutions to do the same thing:
+
+```pawn
+#pragma deprecated Use `OnPlayerClickMap`.
+forward void:AllowAdminTeleport(bool:allow);
+```
+
+Some functions are deprecated but not removed, meaning they still work but using them isn't recommended and they may disappear at some point in the future.  For example:
+
+```pawn
+#pragma deprecated This function is fundamentally broken.  See below.
+native GetPlayerPoolSize();
+```
+
+Some will suggest alternative methods to do the same thing:
+
+```pawn
+#pragma deprecated Use `GetConsoleVarAsString`.
+native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
+```
+
+And some are just replaced with new versions with better names:
+
+```pawn
+native DB_GetRowCount(DBResult:result);
+
+#pragma deprecated Use `DB_GetRowCount`
+native db_num_rows(DBResult:result);
+```
+
+And yes, by *better* we do mean *spelt correctly*:
+
+```pawn
+native bool:TextDrawColour(Text:textid, textColour);
+
+#pragma deprecated Use `TextDrawColour`
+native bool:TextDrawColor(Text:textid, textColour);
+```
+
 # Function Changes
 
 * `random` now works for negative numbers.  Calling `random(-5)` will return any of `0`, `-1`, `-2`, `-3`, or `-4`.  As with `random(5)` the specified number will not be returned, if instead you want the upper limit (i.e. `0`) skipped just do `random(-5) - 1`.
