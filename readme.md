@@ -10,7 +10,7 @@ An *error* indicates a mistake typing code, thus indicates that the code cannot 
 
 A *warning* indicates that code is syntactically correct (i.e. complete in terms of characters typed), but might still be wrong when run.  `new a = Multiply(5);` might seem simlar to the `5 *` error above, but it is only a warning because while the function is missing a parameter, the code "looks" correct.  `new f = fopen("file");` is a warning because `fopen` returns `File:` tagged data but `f` is untagged (`_:`); while the types expected are different the assignment is written correctly.  Warnings try to prevent mistakes that will cause the code to not do what you expect in some cases - your code will still compile.
 
-2. *** Warnings are not breaking.***
+2. ***Warnings are not breaking.***
 
 A warning is just a message.  Too many people think that a warning means the code hasn't compiled, or will do something different when run.  They do not.  You can have a thousand warnings and still get a `.amx`.  Only errors break the build.  If you get warnings they indicate things that *could* be problems, but your code will still compile and run.  New compiler versions add new warnings for more identified problems, and new include versions add better information to help the compiler do its job.
 
