@@ -372,7 +372,7 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 
 ## Appendix
 
-### SA:MP Callback Changes
+### All SA:MP Callback Changes
 
 * `OnPlayerStateChange`
 
@@ -380,7 +380,9 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 #if !defined PLAYER_STATE
 	#define PLAYER_STATE: _:
 #endif
-forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
+{
+}
 ```
 
 * `OnPlayerClickPlayer`
@@ -389,7 +391,9 @@ forward OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldsta
 #if !defined CLICK_SOURCE
 	#define CLICK_SOURCE: _:
 #endif
-forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
+public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
+{
+}
 ```
 
 * `OnPlayerEditObject`
@@ -398,7 +402,9 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
-forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ)
+{
+}
 ```
 
 * `OnPlayerEditAttachedObject`
@@ -407,7 +413,9 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respo
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
-forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
+public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ)
+{
+}
 ```
 
 * `OnPlayerSelectObject`
@@ -416,7 +424,9 @@ forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, mode
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
-forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ)
+{
+}
 ```
 
 * `OnPlayerWeaponShot`
@@ -425,7 +435,9 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
-forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+public OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
+{
+}
 ```
 
 * `OnPlayerKeyStateChange`
@@ -434,7 +446,9 @@ forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, F
 #if !defined KEY
 	#define KEY: _:
 #endif
-forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
+public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
+{
+}
 ```
 
 * `OnPlayerRequestDownload`
@@ -443,10 +457,12 @@ forward OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys);
 #if !defined DOWNLOAD_REQUEST
 	#define DOWNLOAD_REQUEST: _:
 #endif
-forward OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc);
+public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
+{
+}
 ```
 
-### Streamer Callback Changes
+### All Streamer Callback Changes
 
 * `Streamer_OnItemStreamIn`
 
@@ -454,7 +470,9 @@ forward OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc);
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
-forward Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid);
+public Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
+{
+}
 ```
 
 * `Streamer_OnItemStreamOut`
@@ -463,7 +481,9 @@ forward Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forpla
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
-forward Streamer_OnItemStreamOut(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid);
+public Streamer_OnItemStreamOut(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
+{
+}
 ```
 
 ## Further Reading
