@@ -376,15 +376,27 @@ native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY = 0.0, &F
  */
 native UsePlayerGangZoneCheck(zoneid, bool:enable);
 
+/**
+ */
 forward OnPlayerEnterGangZone(playerid, zoneid);
 
+/**
+ */
 forward OnPlayerLeaveGangZone(playerid, zoneid);
 
+/**
+ */
 forward OnPlayerEnterPlayerGangZone(playerid, zoneid);
 
+/**
+ */
 forward OnPlayerLeavePlayerGangZone(playerid, zoneid);
 
+/**
+ */
 forward OnPlayerClickGangZone(playerid, zoneid);
 
+/**
+ */
 forward OnPlayerClickPlayerGangZone(playerid, zoneid);
 
