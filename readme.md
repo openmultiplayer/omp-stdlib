@@ -197,6 +197,43 @@ You can enable `void:` tag warnings with a define before including `open.mp`, th
 #include <open.mp>
 ```
 
+The default is to make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning.  This second group can also be upgraded by specifying the use of *strong* tags instead:
+
+```pawn
+#define STRONG_TAGS
+#include <open.mp>
+```
+
+Alternatively, if you really hate help:
+
+```pawn
+#define NO_TAGS
+#include <open.mp>
+```
+
+The only breaking change introduced by these new tags are on callbacks.  For some reason tag mismatch warnings in function prototypes are an error, not a warning (probably because of code generation issues related to overloaded operators).  The best way to deal with these is to ensure that the `public` part of the callback will compile regardless of tag settings by falling back to `_:` when none is specified:
+
+```pawn
+#if !defined SELECT_OBJECT
+	#define SELECT_OBJECT: _:
+#endif
+forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+```
+
+See the end of this document for a full list of all updated callbacks.  This is the main problem change, but it is important to note that the following code will work with any include, with or without the new tags:
+
+```pawn
+#if !defined CLICK_SOURCE
+	#define CLICK_SOURCE: _:
+#endif
+public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
+{
+	return 1;
+}
+```
+
+Thus writing backwards-compatible code remains possible.
+
 #### Tag Warning Example
 
 ```pawn
@@ -245,43 +282,6 @@ case VARTYPE_BOOL:
 ```
 
 The string/float mixup still needs some manual review, but it is now far more obvious that those two are the wrong way around.  In fact there's a good chance that the person updating the code would have used them the correct way round without even realising that they have now fixed a prior bug.  The `VARTYPE_BOOL:` line will give an error that the symbol doesn't exist because there is no type `4`.  The old code quite happily compiled without issues and had an impossible branch.  The effects aren't serious in this example, but they could be.  But, again, the old code will still compile and run.  More warnings help to highlight issues, they do not introduce new ones.
-
-The default is to make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning.  This second group can also be upgraded by specifying the use of *strong* tags instead:
-
-```pawn
-#define STRONG_TAGS
-#include <open.mp>
-```
-
-Alternatively, if you really hate help:
-
-```pawn
-#define NO_TAGS
-#include <open.mp>
-```
-
-The only breaking change introduced by these new tags are on callbacks.  For some reason tag mismatch warnings in function prototypes are an error, not a warning (probably because of code generation issues related to overloaded operators).  The best way to deal with these is to ensure that the `public` part of the callback will compile regardless of tag settings by falling back to `_:` when none is specified:
-
-```pawn
-#if !defined SELECT_OBJECT
-	#define SELECT_OBJECT: _:
-#endif
-forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
-```
-
-See the end of this document for a full list of all updated callbacks.  This is the main problem change, but it is important to note that the following code will work with any include, with or without the new tags:
-
-```pawn
-#if !defined CLICK_SOURCE
-	#define CLICK_SOURCE: _:
-#endif
-public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
-{
-	return 1;
-}
-```
-
-Thus writing backwards-compatible code remains possible.
 
 ### Pawndoc
 
