@@ -574,7 +574,10 @@ forward OnPlayerFinishedDownloading(playerid, virtualworld);
 
 /**
  */
-forward OnPlayerRequestDownload(playerid, type, crc);
+#if !defined DOWNLOAD_REQUEST
+	#define DOWNLOAD_REQUEST: _:
+#endif
+forward OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc);
 
 /**
  * <summary>This callback is called when a command is sent through the server console, remote RCON,
