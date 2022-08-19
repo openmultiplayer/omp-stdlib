@@ -2848,29 +2848,6 @@ forward OnScriptCash(playerid, amount, source);
 forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
 
 /**
- * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
- * the Escape key.</summary>
- * <param name="playerid">The ID of the player that clicked on the textdraw</param>
- * <param name="clickedid">The ID of the clicked textdraw. <b><c>INVALID_TEXT_DRAW</c></b> if selection
- * was cancelled</param>
- * <seealso name="OnPlayerClickPlayerTextDraw" />
- * <seealso name="OnPlayerClickPlayer" />
- * <remarks>The clickable area is defined by <a href="#TextDrawTextSize">TextDrawTextSize</a>.  The
- * x and y parameters passed to that function must not be zero or negative. </remarks>
- * <remarks>Do not use <a href="#CancelSelectTextDraw">CancelSelectTextDraw</a> unconditionally within
- * this callback.  This results in an infinite loop. </remarks>
- * <returns>
- *   Returning <b><c>1</c></b> in this callback will prevent it being called in other scripts.  This
- * should be used to signal that the textdraw on which they clicked was 'found' and no further processing
- * is needed.  You should return <b><c>0</c></b> if the textdraw on which they clicked wasn't found,
- * just like in <a href="#OnPlayerCommandText">OnPlayerCommandText</a>.<br />
- *   It is always called first in filterscripts so returning <b><c>1</c></b> there also blocks other
- * scripts from seeing it.
- * </returns>
- */
-forward OnPlayerClickTextDraw(playerid, Text:clickedid);
-
-/**
  * <summary>This callback is called when an IP address attempts a connection to the server.  To block
  * incoming connections, use <a href="#BlockIpAddress">BlockIpAddress</a>.</summary>
  * <param name="playerid">The ID of the player attempting to connect</param>
