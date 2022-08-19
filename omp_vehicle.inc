@@ -1225,7 +1225,7 @@ native bool:IsValidVehicle(vehicleid);
 /**
  * <library>a_samp</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>This function was removed in <b>SA-MP 0.3</b>.  Tire popping is enabled by default.  If
+ * <remarks>Tire popping is enabled by default.  If
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */

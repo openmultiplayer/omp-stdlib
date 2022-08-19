@@ -316,7 +316,7 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
 
 /**
  * <library>omp_core</library>
- * <summary>Returns the uptime of the actual server (not the SA-MP server) in milliseconds.</summary>
+ * <summary>Returns the uptime of the actual server (not the open.mp server) in milliseconds.</summary>
  * <seealso name="tickcount" />
  * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount
  * will eventually warp past the integer size constraints.  However using
@@ -324,7 +324,7 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
  * function fixes the problem.</remarks>
  * <remarks>One common use for GetTickCount is for benchmarking.  It can be used to calculate how much
  * time some code takes to execute.</remarks>
- * <returns>Uptime of the actual server (not the SA-MP server).</returns>
+ * <returns>Uptime of the actual server (not the open.mp server).</returns>
  */
 native GetTickCount();
 
@@ -350,7 +350,6 @@ native GetMaxPlayers();
  * <seealso name="GetPlayerDistanceFromPoint" />
  * <seealso name="GetVehicleDistanceFromPoint" />
  * <seealso name="floatsqroot" />
- * <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
  * <returns>The norm (length) of the provided vector as a float.</returns>
  */
 native Float:VectorSize(Float:x, Float:y, Float:z);
@@ -399,7 +398,6 @@ native Float:atan2(Float:y, Float:x);
  * <summary>Gets the highest playerid currently in use on the server.</summary>
  * <seealso name="GetVehiclePoolSize" />
  * <seealso name="GetMaxPlayers" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
@@ -410,7 +408,6 @@ native GetPlayerPoolSize();
  * <library>omp_core</library>
  * <summary>Gets the highest vehicleid currently in use on the server.</summary>
  * <seealso name="GetPlayerPoolSize" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
@@ -423,7 +420,6 @@ native GetVehiclePoolSize();
  * <seealso name="CreateActor" />
  * <seealso name="IsValidActor" />
  * <seealso name="SetActorHealth" />
- * <remarks>This function was added in <b><b>SA-MP 0.3.7</b></b> and will not work in earlier versions!</remarks>
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
 #pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
@@ -480,7 +476,6 @@ forward void:AllowInteriorWeapons(bool:allow);
  * .amx extension)</param>
  * <seealso name="IsPlayerNPC" />
  * <seealso name="OnPlayerConnect" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>NPCs do not have nametags.  These can be scripted with
  * <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
  * <returns>This function always return <b><c>1</c></b>.</returns>
@@ -505,7 +500,6 @@ native DisableInteriorEnterExits();
  * <summary>Disables the nametag Line-Of-Sight checking so that players can see nametags through objects.</summary>
  * <seealso name="ShowNameTags" />
  * <seealso name="ShowPlayerNameTagForPlayer" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This can not be reversed until the server restarts.</remarks>
  */
 native DisableNameTagLOS();
@@ -513,7 +507,7 @@ native DisableNameTagLOS();
 /**
  * <library>omp_core</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>This function was removed in <b>SA-MP 0.3</b>.  Tire popping is enabled by default.  If
+ * <remarks>Tire popping is enabled by default.  If
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
@@ -708,7 +702,6 @@ native LimitGlobalChatRadius(Float:chatRadius);
  * <seealso name="ShowPlayerMarkers" />
  * <seealso name="SetPlayerMarkerForPlayer" />
  * <seealso name="LimitGlobalChatRadius" />
- * <remarks>This Function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  */
 native LimitPlayerMarkerRadius(Float:markerRadius);
 
@@ -828,7 +821,6 @@ native void:SetWorldTime(hour);
  * <param name="salt">The salt to use in the hash</param>
  * <param name="output">The returned hash</param>
  * <param name="size">The returned hash maximum length</param>
- * <remarks>This function was added in <b>SA-MP 0.3.7-R1</b> and will not work in earlier versions!</remarks>
  * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would
  * form 'foobar'. </remarks>
  * <remarks>The salt should be random, unique for each player and at least as long as the hashed password.

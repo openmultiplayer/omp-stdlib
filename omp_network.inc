@@ -73,7 +73,7 @@ static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return __DOWNLOAD_REQUEST; 
  * <param name="playerid">The ID of the player to kick</param>
  * <seealso name="Ban" />
  * <seealso name="BanEx" />
- * <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Kick() (such as sending a message
+ * <remarks>Any action taken directly before Kick() (such as sending a message
  * with <a href="#SendClientMessage">SendClientMessage</a>) will not reach the player.  A timer must
  * be used to delay the kick.</remarks>
  * <returns>This function always returns <b><c>1</c></b>, even if the function failed to execute (player
@@ -90,7 +90,7 @@ native Kick(playerid);
  * <param name="playerid">The ID of the player to ban</param>
  * <seealso name="BanEx" />
  * <seealso name="Kick" />
- * <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message
+ * <remarks>Any action taken directly before Ban() (such as sending a message
  * with SendClientMessage) will not reach the player.  A timer must be used to delay the ban.</remarks>
  * <remarks></remarks>
  */
@@ -103,7 +103,7 @@ native Ban(playerid);
  * <param name="reason">The reason for the ban</param>
  * <seealso name="Ban" />
  * <seealso name="Kick" />
- * <remarks>As of <b>SA-MP 0.3x</b>, any action taken directly before Ban() (such as sending a message
+ * <remarks>Any action taken directly before Ban() (such as sending a message
  * with SendClientMessage) will not reach the player.  A timer must be used to delay the ban.</remarks>
  */
 native BanEx(playerid, const reason[]);
@@ -451,7 +451,7 @@ native SendRconCommandf(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_network</library>
- * <summary>Returns the SA-MP client version, as reported by the player.</summary>
+ * <summary>Returns the client version, as reported by the player.</summary>
  * <param name="playerid">The ID of the player to get the client version of</param>
  * <param name="version">The string to store the player's version in, passed by reference</param>
  * <param name="len">The maximum length of the version</param>

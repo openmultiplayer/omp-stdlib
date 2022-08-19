@@ -570,7 +570,6 @@ native SetPlayerSkin(playerid, skinid);
  * <param name="shopName">The shop script to load.  Leave blank ("") to unload scripts</param>
  * <seealso name="DisableInteriorEnterExits" />
  * <seealso name="SetPlayerInterior" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This function does not support casino scripts.</remarks>
  * <remarks>
  *   <b>Shop names:</b><br />
@@ -647,7 +646,6 @@ native SetCameraBehindPlayer(playerid);
  * <param name="type">The explosion type</param>
  * <param name="radius">The radius of the explosion</param>
  * <seealso name="CreateExplosion" />
- * <remarks>This function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
  * <remarks>There is a limit as to how many explosions can be seen at once by a player.  This is roughly
  * 10.</remarks>
  * <returns>This function always returns <b><c>1</c></b>, even if the function failed to excute (player
@@ -672,7 +670,6 @@ native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float
  * <param name="usepos">Use the positions and distance specified. (optional=<b><c>0</c></b>)</param>
  * <seealso name="StopAudioStreamForPlayer" />
  * <seealso name="PlayerPlaySound" />
- * <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
@@ -686,7 +683,6 @@ native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:p
  * <param name="playerid">The player you want to stop the audio stream for</param>
  * <seealso name="PlayAudioStreamForPlayer" />
  * <seealso name="PlayerPlaySound" />
- * <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  */
 native StopAudioStreamForPlayer(playerid);
 
@@ -773,8 +769,7 @@ native GetPlayerHealth(playerid, &Float:health);
  * <seealso name="SetPlayerHealth" />
  * <seealso name="GetPlayerHealth" />
  * <remarks>Armour is obtained rounded to integers: set <b><c>50.15</c></b>, but get <b><c>50.0</c></b></remarks>
- * <remarks>The function's name is armour, not armor (Americanized).  This is inconsistent with the
- * rest of SA-MP, so remember that.</remarks>
+ * <remarks>The function's name is armour, not armor (Americanized).</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
@@ -795,8 +790,7 @@ native SetPlayerArmour(playerid, Float:armour);
  * becomes <b><c>0</c></b>, <b><c>257</c></b> becomes <b><c>1</c></b>, etc. </remarks>
  * <remarks>Armour is obtained rounded to integers: set <b><c>50.15</c></b>, but get <b><c>50.0</c></b>
  * </remarks>
- * <remarks>The function's name is armour, not armor (Americanized).  This is inconsistent with the
- * rest of SA-MP, so remember that.</remarks>
+ * <remarks>The function's name is armour, not armor (Americanized).</remarks>
  * <returns>
  *   <b><c>1</c></b> - success.<br />
  *   <b><c>0</c></b> - failure (i.e.  player not connected).<br />
@@ -814,7 +808,7 @@ native GetPlayerArmour(playerid, &Float:armour);
  * <seealso name="SetTeamCount" />
  * <seealso name="EnableVehicleFriendlyFire" />
  * <remarks>Players can not damage/kill players on the same team unless they use a knife to slit their
- * throat.  As of <b>SA-MP 0.3x</b>, players are also unable to damage vehicles driven by a player from
+ * throat.  Players are also unable to damage vehicles driven by a player from
  * the same team.  This can be enabled with <a href="#EnableVehicleFriendlyFire">EnableVehicleFriendlyFire</a>.</remarks>
  * <remarks><b><c>255</c></b> (or <b><c>NO_TEAM</c></b>) is the default team to be able to shoot other
  * players, not <b><c>0</c></b>.</remarks>
@@ -911,7 +905,6 @@ native GetPlayerColor(playerid);
  * </summary>
  * <param name="playerid">The player you want to check the drunkenness level of</param>
  * <seealso name="SetPlayerDrunkLevel" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns>An integer with the level of drunkenness of the player.</returns>
  */
 native GetPlayerDrunkLevel(playerid);
@@ -984,7 +977,7 @@ native ResetPlayerMoney(playerid);
  * be shown for the connecting player. </remarks>
  * <remarks>Passing a null string as the new name will crash the server. </remarks>
  * <remarks>Player names can be up to 24 characters when using this function, but when joining the server
- * from the SA-MP server browser, players' names must be no more than 20 and less than 3 characters
+ * from the server browser, players' names must be no more than 20 and less than 3 characters
  * (the server will deny entry).  This allows for 4 characters extra when using <a href="#SetPlayerName">SetPlayerName</a>.
  * </remarks>
  * <returns>
@@ -1125,7 +1118,6 @@ native GetPlayerWantedLevel(playerid);
  * <param name="playerid">The ID of player to set the fighting style of</param>
  * <param name="style">The fighting style that should be set</param>
  * <seealso name="GetPlayerFightingStyle" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This does not affect normal fist attacks - only special/secondary attacks (aim + press 'secondary
  * attack' key).</remarks>
  * <remarks>
@@ -1147,7 +1139,6 @@ native SetPlayerFightingStyle(playerid, FIGHT_STYLE:style);
  * <summary>Get the fighting style the player currently using.</summary>
  * <param name="playerid">The ID of the player to get the fighting style of</param>
  * <seealso name="SetPlayerFightingStyle" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   <b>Fighting styles:</b><br />
  *   <ul>
@@ -1173,7 +1164,6 @@ native FIGHT_STYLE:GetPlayerFightingStyle(playerid);
  * <seealso name="GetPlayerVelocity" />
  * <seealso name="SetVehicleVelocity" />
  * <seealso name="GetVehicleVelocity" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
@@ -1191,7 +1181,6 @@ native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
  * <seealso name="SetPlayerVelocity" />
  * <seealso name="SetVehicleVelocity" />
  * <seealso name="GetVehicleVelocity" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  */
 native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
 
@@ -1207,7 +1196,6 @@ native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
  * <seealso name="GetPlayerCameraAspectRatio" />
  * <seealso name="GetPlayerCameraMode" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>Player's camera positions are only updated once a second, <b>unless aiming</b>.</remarks>
  * <remarks>It is recommended to set a 1 second timer if you wish to take action that relies on a player's
  * camera position.</remarks>
@@ -1224,7 +1212,6 @@ native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
  * <seealso name="IsPlayerInRangeOfPoint" />
  * <seealso name="GetVehicleDistanceFromPoint" />
  * <seealso name="GetPlayerPos" />
- * <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
  * <returns>The distance between the player and the point as a float.</returns>
  */
 native Float:GetPlayerDistanceFromPoint(playerid, Float:x, Float:y, Float:z);
@@ -1297,7 +1284,6 @@ native GetPlayerVirtualWorld(playerid);
  * <param name="playerid">The ID of the player to check</param>
  * <seealso name="ConnectNPC" />
  * <seealso name="IsPlayerAdmin" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> if the player is an NPC, <b><c>0</c></b> if not.</returns>
  */
 native bool:IsPlayerNPC(playerid);
@@ -1313,7 +1299,6 @@ native bool:IsPlayerNPC(playerid);
  * <seealso name="OnPlayerStreamOut" />
  * <seealso name="OnVehicleStreamIn" />
  * <seealso name="OnVehicleStreamOut" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>Players aren't streamed in on their own client, so if playerid is the same as targetid it
  * will return false!</remarks>
  * <remarks>Players stream out if they are more than <b><c>150</c></b> meters away (see <c>server.cfg</c>
@@ -1472,7 +1457,6 @@ native ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
  * <seealso name="GetPlayerWeapon" />
  * <seealso name="VectorSize" />
  * <seealso name="OnPlayerWeaponShot" />
- * <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
  * <remarks>This function will only work when <a href="http://wiki.sa-mp.com/wiki/Lag_Compensation">lag
  * compensation</a> is <b>enabled</b>. </remarks>
  * <remarks>If the player hit nothing, the hit positions will be <b><c>0</c></b>.  This means you can't
@@ -1492,7 +1476,6 @@ native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float
  * <seealso name="GetPlayerCameraTargetVehicle" />
  * <seealso name="GetPlayerCameraTargetObject" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks>This function is disabled by default to save bandwidth.  Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a>
  * to enable it for each player.</remarks>
  * <remarks>Do not confuse this function with <a href="#GetPlayerTargetPlayer">GetPlayerTargetPlayer</a>.
@@ -1512,7 +1495,6 @@ native GetPlayerCameraTargetPlayer(playerid);
  * <seealso name="GetPlayerCameraTargetVehicle" />
  * <seealso name="GetPlayerCameraTargetObject" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks>This function is disabled by default to save bandwidth.  Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a>
  * to enable it for each player.</remarks>
  * <remarks>This function only tells you which actor (if any) the player is <b>looking</b> at.  To find
@@ -1528,7 +1510,6 @@ native GetPlayerCameraTargetActor(playerid);
  * <seealso name="GetPlayerCameraTargetVehicle" />
  * <seealso name="GetPlayerCameraTargetPlayer" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks>This function is disabled by default to save bandwidth.  Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a>
  * to enable it for each player.</remarks>
  * <returns>The ID of the object playerid is looking at.  If <b><c>INVALID_OBJECT_ID (65535)</c></b>
@@ -1544,7 +1525,6 @@ native GetPlayerCameraTargetObject(playerid);
  * <seealso name="GetPlayerCameraTargetObject" />
  * <seealso name="EnablePlayerCameraTarget" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks>This function is disabled by default to save bandwidth.  Use <a href="#EnablePlayerCameraTarget">EnablePlayerCameraTarget</a>
  * to enable it for each player.</remarks>
  * <remarks>This function can (obviously) only return one vehicle ID at a time, while the player may
@@ -1610,13 +1590,12 @@ native PutPlayerInVehicle(playerid, vehicleid, seatid);
  * <param name="radius">The radius around the specified point to remove objects with the specified model</param>
  * <seealso name="DestroyObject" />
  * <seealso name="DestroyPlayerObject" />
- * <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  * <remarks>There appears to be a limit of around <b><c>1000</c></b> lines/objects.  There is no workaround.
  * </remarks>
  * <remarks>When removing the same object for a player, they will crash.  Commonly, players crash when
  * reconnecting to the server because the server removes buildings on <a href="#OnPlayerConnect">OnPlayerConnect</a>.
  * </remarks>
- * <remarks>In <b>SA-MP 0.3.7</b> you can use <b><c>-1</c></b> for the modelid to remove all objects
+ * <remarks>You can use <b><c>-1</c></b> for the modelid to remove all objects
  * within the specified radius.</remarks>
  */
 native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
@@ -1741,7 +1720,6 @@ native SetPlayerAmmo(playerid, WEAPON:weaponid, ammo);
  * <param name="weaponid">The ID of the weapon that the player should be armed with</param>
  * <seealso name="GivePlayerWeapon" />
  * <seealso name="GetPlayerWeapon" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This function arms a player with a weapon they <b>already have</b>; it does not give them
  * a new weapon.  See <a href="#GivePlayerWeapon">GivePlayerWeapon</a>.</remarks>
  * <returns>
@@ -1760,7 +1738,6 @@ native SetPlayerArmedWeapon(playerid, WEAPON:weaponid);
  * <param name="colour">The text colour</param>
  * <param name="drawDistance">The distance from where players are able to see the chat bubble</param>
  * <param name="expireTime">The time in miliseconds the bubble should be displayed for</param>
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>You can't see your own chatbubbles.  The same applies to attached 3D text labels.</remarks>
  * <remarks>You can use colour embedding for multiple colours in the message.</remarks>
  */
@@ -1796,7 +1773,6 @@ native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
  *  A level out of range will max it out</param>
  * <seealso name="SetPlayerArmedWeapon" />
  * <seealso name="GivePlayerWeapon" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   <b>Weapon skills:</b><br />
  *   <ul>
@@ -1829,7 +1805,12 @@ native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
  *   <b>Special actions: (marked with * cannot be set)</b><br />
  *   <ul>
  *     <li><b><c>0 - SPECIAL_ACTION_NONE</c></b></li>
+ *     <li><b><c>1 - SPECIAL_ACTION_DUCK *</c></b> - Detect if the player is crouching.</li>
  *     <li><b><c>2 - SPECIAL_ACTION_USEJETPACK</c></b></li>
+ *     <li><b><c>3 - SPECIAL_ACTION_ENTER_VEHICLE *</c></b> - Detect if the player is entering a vehicle
+ * via an animation.</li>
+ *     <li><b><c>4 - SPECIAL_ACTION_EXIT_VEHICLE *</c></b> - Detect if the player is exiting a vehicle
+ * via an animation.</li>
  *     <li><b><c>5 - SPECIAL_ACTION_DANCE1</c></b></li>
  *     <li><b><c>6 - SPECIAL_ACTION_DANCE2</c></b></li>
  *     <li><b><c>7 - SPECIAL_ACTION_DANCE3</c></b></li>
@@ -1838,14 +1819,6 @@ native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
  *     <li><b><c>11 - SPECIAL_ACTION_USECELLPHONE</c></b></li>
  *     <li><b><c>12 - SPECIAL_ACTION_SITTING *</c></b></li>
  *     <li><b><c>13 - SPECIAL_ACTION_STOPUSECELLPHONE</c></b></li>
- *   </ul>
- *   <b>added in SA-MP 0.3:</b><br />
- *   <ul>
- *     <li><b><c>1 - SPECIAL_ACTION_DUCK *</c></b> - Detect if the player is crouching.</li>
- *     <li><b><c>3 - SPECIAL_ACTION_ENTER_VEHICLE *</c></b> - Detect if the player is entering a vehicle
- * via an animation.</li>
- *     <li><b><c>4 - SPECIAL_ACTION_EXIT_VEHICLE *</c></b> - Detect if the player is exiting a vehicle
- * via an animation.</li>
  *     <li><b><c>20 - SPECIAL_ACTION_DRINK_BEER</c></b> - Will increase the player's drunk level when
  * used</li>
  *     <li><b><c>21 - SPECIAL_ACTION_SMOKE_CIGGY</c></b> - Will give the player a cigar</li>
@@ -1853,18 +1826,12 @@ native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
  * drunk from</li>
  *     <li><b><c>23 - SPECIAL_ACTION_DRINK_SPRUNK</c></b> - Will give the player a sprunk bottle to
  * drink from</li>
- *     <li><b><c>68 - SPECIAL_ACTION_PISSING</c></b> - Will make make the player perform the pissing
- * animation with visible pee.</li>
- *   </ul>
- *   <b>added in SA-MP 0.3e:</b><br />
- *   <ul>
  *     <li><b><c>24 - SPECIAL_ACTION_CUFFED</c></b> - Will force the player in to cuffs (hands are behind
  * their back) (<b>does not work on CJ skin</b>)</li>
- *   </ul>
- *   <b>added in SA-MP 0.3x:</b><br />
- *   <ul>
  *     <li><b><c>25 - SPECIAL_ACTION_CARRY</c></b>         - Will apply a 'carrying' animation to the
  * player and make them unable to sprint, jump or punch (<b>does not work on CJ skin</b>)</li>
+ *     <li><b><c>68 - SPECIAL_ACTION_PISSING</c></b> - Will make make the player perform the pissing
+ * animation with visible pee.</li>
  *   </ul>
  * </remarks>
  * <returns>
@@ -1971,7 +1938,6 @@ native ApplyAnimation(playerid, const animationLibrary[], const animationName[],
  * <seealso name="GetPlayerCameraTargetVehicle" />
  * <seealso name="GetPlayerCameraTargetPlayer" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
@@ -2009,7 +1975,6 @@ native GetPlayerAmmo(playerid);
  * <summary>Returns the index of any running applied animations.</summary>
  * <param name="playerid">ID of the player of whom you want to get the animation index of</param>
  * <seealso name="GetAnimationName" />
- * <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>0</c></b> if there is no animation applied.</returns>
  */
 native GetPlayerAnimationIndex(playerid); // return the index of any running applied animations (0 if none are running)
@@ -2041,7 +2006,12 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
  *   <b>Special actions: (marked with * cannot be set)</b><br />
  *   <ul>
  *     <li><b><c>0 - SPECIAL_ACTION_NONE</c></b></li>
+ *     <li><b><c>1 - SPECIAL_ACTION_DUCK *</c></b> - Detect if the player is crouching.</li>
  *     <li><b><c>2 - SPECIAL_ACTION_USEJETPACK</c></b></li>
+ *     <li><b><c>3 - SPECIAL_ACTION_ENTER_VEHICLE *</c></b> - Detect if the player is entering a vehicle
+ * via an animation.</li>
+ *     <li><b><c>4 - SPECIAL_ACTION_EXIT_VEHICLE *</c></b> - Detect if the player is exiting a vehicle
+ * via an animation.</li>
  *     <li><b><c>5 - SPECIAL_ACTION_DANCE1</c></b></li>
  *     <li><b><c>6 - SPECIAL_ACTION_DANCE2</c></b></li>
  *     <li><b><c>7 - SPECIAL_ACTION_DANCE3</c></b></li>
@@ -2050,14 +2020,6 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
  *     <li><b><c>11 - SPECIAL_ACTION_USECELLPHONE</c></b></li>
  *     <li><b><c>12 - SPECIAL_ACTION_SITTING *</c></b></li>
  *     <li><b><c>13 - SPECIAL_ACTION_STOPUSECELLPHONE</c></b></li>
- *   </ul>
- *   <b>added in SA-MP 0.3:</b><br />
- *   <ul>
- *     <li><b><c>1 - SPECIAL_ACTION_DUCK *</c></b> - Detect if the player is crouching.</li>
- *     <li><b><c>3 - SPECIAL_ACTION_ENTER_VEHICLE *</c></b> - Detect if the player is entering a vehicle
- * via an animation.</li>
- *     <li><b><c>4 - SPECIAL_ACTION_EXIT_VEHICLE *</c></b> - Detect if the player is exiting a vehicle
- * via an animation.</li>
  *     <li><b><c>20 - SPECIAL_ACTION_DRINK_BEER</c></b> - Will increase the player's drunk level when
  * used</li>
  *     <li><b><c>21 - SPECIAL_ACTION_SMOKE_CIGGY</c></b> - Will give the player a cigar</li>
@@ -2065,18 +2027,12 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
  * drunk from</li>
  *     <li><b><c>23 - SPECIAL_ACTION_DRINK_SPRUNK</c></b> - Will give the player a sprunk bottle to
  * drink from</li>
- *     <li><b><c>68 - SPECIAL_ACTION_PISSING</c></b> - Will make make the player perform the pissing
- * animation with visible pee.</li>
- *   </ul>
- *   <b>added in SA-MP 0.3e:</b><br />
- *   <ul>
  *     <li><b><c>24 - SPECIAL_ACTION_CUFFED</c></b> - Will force the player in to cuffs (hands are behind
  * their back) (<b>does not work on CJ skin</b>)</li>
- *   </ul>
- *   <b>added in SA-MP 0.3x:</b><br />
- *   <ul>
  *     <li><b><c>25 - SPECIAL_ACTION_CARRY</c></b>         - Will apply a 'carrying' animation to the
  * player and make them unable to sprint, jump or punch (<b>does not work on CJ skin</b>)</li>
+ *     <li><b><c>68 - SPECIAL_ACTION_PISSING</c></b> - Will make make the player perform the pissing
+ * animation with visible pee.</li>
  *   </ul>
  * </remarks>
  * <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
@@ -2102,7 +2058,6 @@ native GetPlayerVehicleID(playerid);
  * <param name="playerid">The ID of the player you want to get the seat of</param>
  * <seealso name="GetPlayerVehicleid" />
  * <seealso name="PutPlayerInVehicle" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>Sometimes the result can be <b><c>128</c></b> which is an invalid seat ID.  Circumstances
  * of this are not yet known, but it is best to discard information when returned seat number is <b><c>128</c></b>.</remarks>
  * <returns>The ID of the seat the player is in. <b><c>-1</c></b> is not in vehicle, <b><c>0</c></b>
@@ -2135,7 +2090,6 @@ native GetPlayerWeaponData(playerid, slot, &WEAPON:weapons, &ammo);
  * <summary>Check the state of a player's weapon.</summary>
  * <param name="playerid">The ID of the player to obtain the weapon state of</param>
  * <seealso name="GivePlayerWeapon" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   <b>Weapon states:</b><br />
  *   <ul>
@@ -2166,7 +2120,6 @@ native WEAPONSTATE:GetPlayerWeaponState(playerid);
  * <seealso name="InterpolateCameraLookAt" />
  * <seealso name="SetPlayerCameraPos" />
  * <seealso name="SetPlayerCameraLookAt" />
- * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
  * <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while
  * the camera is moving.  You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
  */
@@ -2188,7 +2141,6 @@ native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Flo
  * <seealso name="InterpolateCameraPos" />
  * <seealso name="SetPlayerCameraLookAt" />
  * <seealso name="SetPlayerCameraPos" />
- * <remarks>This function was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
  * <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while
  * the camera is moving.  You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
  */
@@ -2243,7 +2195,6 @@ native Float:GetPlayerCameraAspectRatio(playerid);
  * <param name="y">A float to store the y coordinate, passed by reference</param>
  * <param name="z">A float to store the z coordinate, passed by reference</param>
  * <seealso name="GetPlayerCameraPos" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>In <b>0.3a</b> the camera front vector is only obtainable when player is inside a rhino,
  * S.W.A.T tank, fire truck, or on foot. </remarks>
  * <remarks>Since <b>0.3b</b> the camera data can be obtained when the player is in any vehicle or on
@@ -2262,7 +2213,6 @@ native GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
  * <seealso name="SetPlayerCameraPos" />
  * <seealso name="SetPlayerCameraLookAt" />
  * <seealso name="SetCameraBehindPlayer" />
- * <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
  * <returns>The camera mode as an integer (or <b><c>-1</c></b> if player is not connected).</returns>
  */
 native CAM_MODE:GetPlayerCameraMode(playerid);
@@ -2291,7 +2241,6 @@ native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
  * <param name="playerid">The ID of the player you want to know the surfing vehicle ID of</param>
  * <seealso name="GetPlayerVehicleid" />
  * <seealso name="GetPlayerVehicleSeat" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns>The ID of the vehicle that the player is surfing.  If they are not surfing a vehicle or
  * the vehicle they are surfing has no driver, <b><c>INVALID_VEHICLE_ID</c></b>.  If the player specified
  * is not connected, <b><c>INVALID_VEHICLE_ID</c></b> also.</returns>
@@ -2302,7 +2251,6 @@ native GetPlayerSurfingVehicleID(playerid);
  * <library>omp_player</library>
  * <summary>Returns the ID of the object the player is surfing on.</summary>
  * <param name="playerid">The ID of the player surfing the object</param>
- * <remarks>This function was added in <b>SA-MP 0.3c R3</b> and will not work in earlier versions!</remarks>
  * <returns>The ID of the <b>moving</b> object the player is surfing.  If the player isn't surfing a
  * <b>moving</b> object, it will return <b><c>INVALID_OBJECT_ID</c></b>.</returns>
  */
@@ -2315,7 +2263,6 @@ native GetPlayerSurfingObjectID(playerid);
  * <seealso name="GetPlayerCameraFrontVector" />
  * <seealso name="OnPlayerGiveDamage" />
  * <seealso name="OnPlayerTakeDamage" />
- * <remarks>This function was added in <b>SA-MP 0.3d</b> and will not work in earlier versions! </remarks>
  * <remarks>Does not work for joypads/controllers, and after a certain distance. </remarks>
  * <remarks>Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't
  * and won't return a player. </remarks>
@@ -2330,7 +2277,6 @@ native GetPlayerTargetPlayer(playerid);
  * <seealso name="GetPlayerCameraTargetActor" />
  * <seealso name="GetPlayerCameraFrontVector" />
  * <seealso name="OnPlayerGiveDamageActor" />
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <remarks>Does not work for joypads/controllers, and after a certain distance. </remarks>
  * <remarks>Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't
  * and won't return a player. </remarks>
@@ -2371,7 +2317,6 @@ native bool:IsPlayerInAnyVehicle(playerid);
  * <seealso name="GetPlayerDistanceFromPoint" />
  * <seealso name="GetVehicleDistanceFromPoint" />
  * <seealso name="GetPlayerPos" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> if the player is in range, <b><c>0</c></b> if not.</returns>
  */
 native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Float:z);
@@ -2385,7 +2330,6 @@ native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Floa
  * <param name="crime">The crime ID, which will be reported as a 10-code (i.e.  10-16 if 16 was passed
  * as the crime)</param>
  * <seealso name="PlayerPlaySound" />
- * <remarks>This function was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   <b>Crime list:</b><br />
  *   <ul>
@@ -2461,7 +2405,6 @@ forward AllowPlayerTeleport(playerid, bool:allow);
  * <summary>Disables collisions between occupied vehicles for a player.</summary>
  * <param name="playerid">The ID of the player for whom you want to disable collisions</param>
  * <param name="disable"><b><c>1</c></b> to disable collisions, <b><c>0</c></b> to enable collisions</param>
- * <remarks>This function was added in <b>SA-MP 0.3.7</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
@@ -2476,7 +2419,6 @@ native DisableRemoteVehicleCollisions(playerid, bool:disable);
  * <seealso name="GetPlayerCameraAspectRatio" />
  * <seealso name="GetPlayerCameraPos" />
  * <seealso name="GetPlayerCameraFrontVector" />
- * <remarks>This function was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
  * <remarks>This retrieves the zoom level of the GAME camera, not the camera WEAPON.</remarks>
  * <returns>The player's camera zoom level (camera, sniper etc.), a float.</returns>
  */
@@ -2565,7 +2507,6 @@ native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TA
  * for the victim's death.  Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
  * <seealso name="SendDeathMessage" />
  * <seealso name="OnPlayerDeath" />
- * <remarks>This Function was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
  *   <b><c>0</c></b>: The function failed to execute.
@@ -2690,7 +2631,6 @@ native Float:GetPlayerZAim(playerid);
  * <seealso name="OnPlayerStreamOut" />
  * <seealso name="OnActorStreamIn" />
  * <seealso name="OnVehicleStreamIn" />
- * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This callback can also be called by NPC.</remarks>
  * <returns>
  *   This callback does not handle returns.<br />
@@ -2706,7 +2646,6 @@ forward OnPlayerStreamIn(playerid, forplayerid);
  * <seealso name="OnPlayerStreamIn" />
  * <seealso name="OnActorStreamOut" />
  * <seealso name="OnVehicleStreamOut" />
- * <remarks>This callback was added in <b>SA-MP 0.3a</b> and will not work in earlier versions!</remarks>
  * <remarks>This callback can also be called by NPC.</remarks>
  * <returns>
  *   This callback does not handle returns.<br />
@@ -2727,7 +2666,6 @@ forward OnPlayerStreamOut(playerid, forplayerid);
  *  Leave it out if using an older version!)</param>
  * <seealso name="OnPlayerGiveDamage" />
  * <seealso name="OnPlayerWeaponShot" />
- * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  * <remarks><a href="#GetPlayerHealth">GetPlayerHealth</a> and <a href="#GetPlayerArmour">GetPlayerArmour</a>
  * will return the old amounts of the player before this callback. </remarks>
  * <remarks>
@@ -2761,7 +2699,6 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
  * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
  *  Leave it out if using an older version!)</param>
  * <seealso name="OnPlayerTakeDamage" />
- * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *   Keep in mind this function can be inaccurate in some cases.<br />
  *   If you want to prevent certain players from damaging eachother, use <a href="#SetPlayerTeam">SetPlayerTeam</a>.<br
@@ -2842,7 +2779,6 @@ forward OnPlayerDeath(playerid, killerid, reason);
  * <param name="fZ">The Z coordinate that the shot hit</param>
  * <seealso name="OnPlayerGiveDamage" />
  * <seealso name="GetPlayerLastShotVectors" />
- * <remarks>This callback was added in <b>SA-MP 0.3z</b> and will not work in earlier versions!</remarks>
  * <remarks>
  *     <li><b><c>BULLET_HIT_TYPE_NONE(0)</c></b></li>
  *     <li><b><c>BULLET_HIT_TYPE_PLAYER(1)</c></b></li>
@@ -2900,7 +2836,6 @@ forward OnScriptCash(playerid, amount, source);
  * <seealso name="SetPlayerPos" />
  * <seealso name="SetPlayerPosFindZ" />
  * <seealso name="GetPlayerPos" />
- * <remarks>This callback was added in <b>SA-MP 0.3d</b> and will not work in earlier versions!</remarks>
  * <remarks>The Z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player;
  * use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more
  * accurate Z coordinate.</remarks>
@@ -2920,7 +2855,6 @@ forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
  * was cancelled</param>
  * <seealso name="OnPlayerClickPlayerTextDraw" />
  * <seealso name="OnPlayerClickPlayer" />
- * <remarks>This callback was added in <b>SA-MP 0.3e</b> and will not work in earlier versions!</remarks>
  * <remarks>The clickable area is defined by <a href="#TextDrawTextSize">TextDrawTextSize</a>.  The
  * x and y parameters passed to that function must not be zero or negative. </remarks>
  * <remarks>Do not use <a href="#CancelSelectTextDraw">CancelSelectTextDraw</a> unconditionally within
@@ -2947,7 +2881,6 @@ forward OnPlayerClickTextDraw(playerid, Text:clickedid);
  * <seealso name="OnPlayerFinishedDownloading" />
  * <seealso name="BlockIpAddress" />
  * <seealso name="UnBlockIpAddress" />
- * <remarks> 	This callback was added in <b>SA-MP 0.3z R2-2</b> and will not work in earlier versions!</remarks>
  * <returns>
  *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
  *   <b><c>0</c></b> - Indicates that this callback will be passed to the next filterscript.<br />

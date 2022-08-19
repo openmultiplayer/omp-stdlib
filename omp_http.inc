@@ -66,7 +66,6 @@ static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
  * <param name="data">Any POST data you want to send with the request</param>
  * <param name="callback">Name of the callback function you want to use to handle responses to this
  * request</param>
- * <remarks>This function was added in <b>SA-MP 0.3b</b> and will not work in earlier versions!</remarks>
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  * <remarks>
  *   <b>Request types:</b><br />
