@@ -60,14 +60,29 @@ A *callback* is in contrast to a *native*, which is a function in the server tha
 
 ![The custom mode name shown in the server browser.](documentation/mode-name.png)
 
- the server to add a skin to the class selection screen before a player first spawns.  This sets the skin as `43` (), the position (``) somewhere in Los Santos, the angle (``) facing south, and then gives the player three weapons with various levels of ammo  This is where the player will be after they select a skin and spawn, it is not where the skin appears while being selected.  Try duplicating this line and changing the co-ordinates to see where you spawn.  Or open the client debug mode and type `/save` while on foot to generate more of these lines:
-
-
-Finally, although running around is fun, this is *Grand Theft Auto* - we need some *autos*!  So create a vehicle that will spawn (and respawn after death) near to where the player will spawn:
+Using a different native we tell the server to add a skin to the class selection screen before a player first spawns.  This sets the skin as `0` (CJ), the position (`2495.3547, -1688.2319, 13.6774`) somewhere in Los Santos, the angle (`351.1646`) facing south, and then gives the player three weapons with various levels of ammo  This is where the player will be after they select a skin and spawn, it is not where the skin appears while being selected.  Try duplicating this line (`Ctrl+D`) and changing the co-ordinates to see where you spawn, or open the client debug mode and type `/save` while on foot to generate more of these lines.  The co-ordinates are the second, third, and fourth *parameters*.  A parameter to a function configures that function, they are between the brackets (`()`s) that follow the function name, and they are separated by commas (`,`s).  Including the ones we examined and the weapons and ammo, `AddPlayerClass` has eleven parameters:
 
 ```pawn
-
+	AddPlayerClass(0, 2495.3547, -1688.2319, 13.6774, 351.1646, WEAPON_M4, 500, WEAPON_KNIFE, 1, WEAPON_COLT45, 100);
 ```
+
+Although running around is fun, this is *Grand Theft Auto* - we need some *autos*!  So create a vehicle that will spawn (and respawn after death) near to where the player will spawn:
+
+```pawn
+	AddStaticVehicle(522, 2493.7583, -1683.6482, 12.9099, 270.8069, -1, -1);
+```
+
+This native function takes seven parameters (again, separated by commas).  The first is the vehicle type (`522` is a motorbike); the second, third, and fourth are again the position (`X`, `Y`, and `Z`); the fourth is the angle again (the co-ordinates and angle are in the same position in both `AddPlayerClass` and `AddStaticVehicle` but that is just a co-incidence, not a rule).  The final two parameters are for the vehicle colours, but `-1` just means *random*.
+
+Some of you may be used to numbers with a *decimal comma*, so *two and a half* is written `2,5`.  You should be aware that pawn always uses commas to separate parameters, and numeric fractions use a *decimal point* instead, thus *two and a half* is written as `2.5` instead.  Some of you may also be used to using commas (or dots) to separate thousands, so *one million* is written `1,000,000` or `10,00,000`.  Again, this does not work in pawn because commas separate parameters, but `_` can be used instead to write *one million* as `1_000_000` (or in *vedic* style as `10_00_000`).
+
+Finally we signal the end of this function with:
+
+```pawn
+}
+```
+
+There are many more callbacks in the file, all invoked (run) by the server when different things happen.  For example, if you crash your car enough times eventually `OnVehicleDeath` will be called, and if you're still in the car then `OnPlayerDeath` will also probably be called.  `OnPlayerRequestClass` has some code in it already, which configures the server to show a nice shop mirror view while you are selecting your character.  Beyond that a comment saying `SPECIALIST` separates the common callbacks from more advanced ones.  You can write some very good modes with just the basic ones, so why not familiarise yourself with these first before moving on?
 
 ## Compiling
 
