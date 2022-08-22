@@ -76,9 +76,10 @@ This native function takes seven parameters (again, separated by commas).  The f
 
 Some of you may be used to numbers with a *decimal comma*, so *two and a half* is written `2,5`.  You should be aware that pawn always uses commas to separate parameters, and numeric fractions use a *decimal point* instead, thus *two and a half* is written as `2.5` instead.  Some of you may also be used to using commas (or dots) to separate thousands, so *one million* is written `1,000,000` or `10,00,000`.  Again, this does not work in pawn because commas separate parameters, but `_` can be used instead to write *one million* as `1_000_000` (or in *vedic* style as `10_00_000`).
 
-Finally we signal the end of this function with:
+Finally we signal the end of this function, and tell the server that our code was successful by passing it the value `1`:
 
 ```pawn
+	return 1;
 }
 ```
 
