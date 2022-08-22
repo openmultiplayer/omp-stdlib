@@ -75,12 +75,12 @@ forward @timer();
 /**
  * <library>time</library>
  */
-native __settimer(const callback[], milliseconds, bool:multishot) = SetTimer;
+/* */ native __settimer(const callback[], milliseconds, bool:multishot) = SetTimer;
 
 /**
  * <library>time</library>
  */
-native __killtimer(id) = KillTimer;
+/* */ native __killtimer(id) = KillTimer;
 
 /**
  * <library>time</library>

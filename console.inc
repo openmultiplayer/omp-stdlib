@@ -25,7 +25,7 @@
 /**
  * <library>console</library>
  */
-native __print(const string[]) = print;
+/* */ native __print(const string[]) = print;
 
 /**
  * <library>console</library>

@@ -1,6 +1,7 @@
 ## The Code
 
-Starting a new script in Qawno will give the following view:
+Starting Qawno will give the following view:
+
 
 
 Lets go through every line individually.

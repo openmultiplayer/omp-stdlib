@@ -111,7 +111,7 @@ static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKE
 #if defined _console_included
 	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
 	// in the output, unattached to any function.  So make a function.
-	native __open_mp_unused_print(const string[]);
+	/* */ native __open_mp_unused_print(const string[]);
 	#define __open_mp_unused_print
 #else
 	native print(const string[]);
@@ -153,7 +153,7 @@ static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKE
 #if defined _console_included
 	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
 	// in the output, unattached to any function.  So make a function.
-	native __open_mp_unused_printf(const format[], OPEN_MP_TAGS:...);
+	/* */ native __open_mp_unused_printf(const format[], OPEN_MP_TAGS:...);
 	#define __open_mp_unused_printf
 #else
 	native printf(const format[], OPEN_MP_TAGS:...);

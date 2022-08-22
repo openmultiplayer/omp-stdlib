@@ -125,8 +125,9 @@ public const __OPEN_MP_VERSION = 0;
 	// The generated code looks like:
 	//
 	#if 0
-		// This is internal and doesn't need the parameters declaring.
-		native __ShowPlayerMarkers();
+		// This is internal and doesn't need the parameters declaring.  It is
+		// also hidden from Qawno by using `/* */` before `native`.
+		/* */ native __ShowPlayerMarkers();
 		
 		// This does need the parameters as it is what users call.
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
