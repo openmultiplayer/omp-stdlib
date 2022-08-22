@@ -1,40 +1,66 @@
-## The Code
+ The View
+----------
 
 Starting Qawno will give the following view:
 
+![The initial view of Qawno once freshly opened.](documentation/initial-view.png)
 
+The three main panes are:
 
-Lets go through every line individually.
+* Top-Left - The main code view, where you write pawn.
+* Bottom-Left - The compiler view, where you can see issues with your code.
+* Right - The function list, with natives found in open.mp and third-party includes.
 
-First, we define how many players this server is going to support.  This line is optional and if not given will default to a full 1000 players:
+ The Code
+----------
 
-```pawn
-#define MAX_PLAYERS 100
-```
-
-Next we *include* another file, meaning we also get access to all the code in there as well.  The file is called `open.mp.inc`, but you don't need to specify the extension; and the code within it allows us to access all the features of the server - things like vehicles, objects, map icons, and more.  There are many other *third-party* includes and components we can also download to provide more features.  Once your script starts growing beyond a few simple functions you will also want to start splitting the code in to multiple files to help with code management:
+First we *include* another file, meaning we get access to all the code in there as well, allowing access to all the features of the server - things like vehicles, objects, map icons, and more.  The file is called `open.mp.inc`, but you don't need the extension.  There are many other *third-party* includes and components we can also download to provide more features.  Once your script starts growing beyond a few simple functions you will also want to start splitting the code in to multiple files to help with code management:
 
 ```pawn
 #include <open.mp>
 ```
 
-Now comes the first *function*, this one is called *main* and is special.  It is called when the mode first starts, but so is another function called `OnGameModeInit`, and most startup code tends to be found there instead.  So this function just prints a message, *printing* meaning it is displayed in the console window and not anywhere else.  The code between the *braces* (`{}`s, often incorrectly called *brackets*) are "inside" the function so when this function is called that is the code that is run:
+The green text after this include is called a *comment*.  It starts with `/*` and ends with `*/`.  The colour is to visually distinguish it from real code, because nothing in comments are compiled or run.  They are purely there to give information to humans reading the source code.  Comments can also start with `//`, that style finishing at the end of the line, not an explicit delimiter:
+
+```pawn
+/*
+     ___      _
+    / __| ___| |_ _  _ _ __
+    \__ \/ -_)  _| || | '_ \
+    |___/\___|\__|\_,_| .__/
+                      |_|
+*/
+```
+
+Now we get to our first custom code in a *function* - this one is called *main* and is special.  It is called when the mode first starts, but so is another function called `OnGameModeInit`, and most startup code tends to be found there instead.  So this function just prints a message, *printing* meaning it is displayed in the console window and not anywhere else.  The code between the *braces* (`{}`s, often incorrectly called *brackets*) are "inside" the function so when this function is called that is the code that is run:
 
 ```pawn
 main()
 {
-	print("A simple server example.");
+	printf(" ");
+	printf("  -------------------------------");
+	printf("  |  My first open.mp gamemode! |");
+	printf("  -------------------------------");
+	printf(" ");
 }
 ```
 
 Then we get our first true *callback*.  A *callback* is a function in our code that the server calls at some time (in this case, when the mode starts).  Callbacks are always `public`, which allows the server to see them, and usually start with `On`, meaning "up*on* this event":
-
+`
 ```pawn
 public OnGameModeInit()
 {
 ```
 
-A *callback* is in contrast to a *native*, which is a function in the server that our code calls to do something.  `AddPlayerClass`, the next line, is one such *native* and it tells the server to add a skin to the class selection screen before a player first spawns.  This sets the skin as `43` (), the position (``) somewhere in Los Santos, the angle (``) facing south, and then gives the player three weapons with various levels of ammo  This is where the player will be after they select a skin and spawn, it is not where the skin appears while being selected.  Try duplicating this line and changing the co-ordinates to see where you spawn.  Or open the client debug mode and type `/save` while on foot to generate more of these lines:
+A *callback* is in contrast to a *native*, which is a function in the server that our code calls to do something.  `SetGameModeText`, the next line, is one such *native* and it defines the mode name seen in the server browser:
+
+```pawn
+	SetGameModeText("My first open.mp gamemode!");
+```
+
+![The custom mode name shown in the server browser.](documentation/mode-name.png)
+
+ the server to add a skin to the class selection screen before a player first spawns.  This sets the skin as `43` (), the position (``) somewhere in Los Santos, the angle (``) facing south, and then gives the player three weapons with various levels of ammo  This is where the player will be after they select a skin and spawn, it is not where the skin appears while being selected.  Try duplicating this line and changing the co-ordinates to see where you spawn.  Or open the client debug mode and type `/save` while on foot to generate more of these lines:
 
 
 Finally, although running around is fun, this is *Grand Theft Auto* - we need some *autos*!  So create a vehicle that will spawn (and respawn after death) near to where the player will spawn:
