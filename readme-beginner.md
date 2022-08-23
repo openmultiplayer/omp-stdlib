@@ -87,7 +87,7 @@ There are many more callbacks in the file, all invoked (run) by the server when 
 
 ## Compiling
 
-The server doesn't run the same code as you write, it needs to first be converted in to a format that's better for computers (but way way worse for people).  This process is called *compiling*.  Sometimes when you compile there will be mistakes in your code that mean it cannot be converted in to the computer format - these are *errors* and will mean the compilation fails entirely.  There can also be minor mistakes that won't stop the code compiling, but might mean the result is wrong anyway, these are pointed out to you as *warnings*.  It is important to know the difference as far few people understand this distinction.
+The server doesn't run the same code as you write, it needs to first be converted in to a format that's better for computers (but far far worse for people).  This process is called *compiling*.  Sometimes when you compile there will be mistakes in your code that mean it cannot be converted in to the computer format - these are *errors* and will mean the compilation fails entirely.  There can also be minor mistakes that won't stop the code compiling, but might mean the result is wrong anyway, these are pointed out to you as *warnings*.  It is important to know the difference as too few people understand this distinction.
 
 Errors - Code cannot run at all.
 Warnings - Code can run but might do the wrong thing.
