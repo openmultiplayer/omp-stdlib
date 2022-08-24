@@ -68,7 +68,7 @@ SendRconCommand("loadfs objects");
 
 This is called *const correctness* - using `const` when data will not be modified, and not using `const` when the parameter will be modified.  This is mainly only useful for strings and arrays (differentiated in the includes by the use of a `string:` tag) as they are pass-by-reference, but when in doubt use the rules on normal numbers as well.
 
-Functions that are `const` can also take variables which may be modified.  `const` means the function promises not modify the variable (`GetPlayerName` in the SA:MP includes incorrectly used `const` and broke this promise), but that doesn't mean you can't pass varaibles that don't mind being modified - there's no such thing as a variable that *must* be modified:
+Functions that are `const` can also take variables which may be modified.  `const` means the function promises not modify the variable (`GetPlayerName` in the SA:MP includes incorrectly used `const` and broke this promise), but that doesn't mean you can't pass variables that don't mind being modified - there's no such thing as a variable that *must* be modified:
 
 ```pawn
 native SendRconCommand(const string:cmd[]);
@@ -368,7 +368,7 @@ native bool:TextDrawColour(Text:textid, textColour);
 native bool:TextDrawColor(Text:textid, textColour);
 ```
 
-Or less ambiguous names thanks to the increased symbol limit:
+Or less terse names thanks to the increased symbol limit:
 
 ```pawn
 #pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
