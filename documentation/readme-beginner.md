@@ -85,12 +85,50 @@ Finally we signal the end of this function, and tell the server that our code wa
 
 There are many more callbacks in the file, all invoked (run) by the server when different things happen.  For example, if you crash your car enough times eventually `OnVehicleDeath` will be called, and if you're still in the car then `OnPlayerDeath` will also probably be called.  `OnPlayerRequestClass` has some code in it already, which configures the server to show a nice shop mirror view while you are selecting your character.  Beyond that a comment saying `SPECIALIST` separates the common callbacks from more advanced ones.  You can write some very good modes with just the basic ones, so why not familiarise yourself with these first before moving on?
 
-## Compiling
+ Compiling
+-----------
 
-The server doesn't run the same code as you write, it needs to first be converted in to a format that's better for computers (but far far worse for people).  This process is called *compiling*.  Sometimes when you compile there will be mistakes in your code that mean it cannot be converted in to the computer format - these are *errors* and will mean the compilation fails entirely.  There can also be minor mistakes that won't stop the code compiling, but might mean the result is wrong anyway, these are pointed out to you as *warnings*.  It is important to know the difference as too few people understand this distinction.
+The server doesn't run the same code as you write, it needs to first be converted in to a format that's better for computers (but far far worse for people).  This process is called *compiling*.  Sometimes when you compile there will be mistakes in your code that mean it cannot be converted in to the computer format - these are *errors* and will mean the compilation fails entirely.  There can also be minor mistakes that won't stop the code compiling, but might mean the result is wrong anyway, these are pointed out to you as *warnings*.  It is important to know the difference as too few people understand this distinction:
 
-Errors - Code cannot run at all.
-Warnings - Code can run but might do the wrong thing.
+* Errors - Code cannot run at all.
+* Warnings - Code can run but might do the wrong thing.
 
-Then there's the third type of mistake, similar to warnings but the compiler can't spot them - *bugs*.  This is just code you've written that doesn't do what you want, but does something that is technically valid.  Dropping a player from 1000 units in the sky might not be what you wanted, but it is valid behaviour.  So there are no messages when you make these mistakes and you'll just have to work out why things aren't doing what you want.  No warnings or errors doesn't mean your code is correct - welcome to debugging!
+To convert the code you need to run the *compiler*.  In Qawno this is done by pressing `F5` (check their documentation for other editors) and will give output something like:
+
+```
+pawncc -;+ -(+ -\ -Z- "-rD:/open.mpgamemodes/first" "-iD:/open.mpgamemodes/first" "-iinclude" -d0 -O2 -t4 "-oD:/open.mpgamemodes/first" "D:/open.mpgamemodes/first.pwn"
+
+
+Pawn compiler 3.10.11	 	 	Copyright (c) 1997-2006, ITB CompuPhase
+```
+
+This is a successful compile.  The first line is the command used to run the compiler, the last line means things finished.  There are no warnings or errors so this code is good to go.
+
+If you get warnings, the `.amx` file will still probably work, but there may be problems.  This output looks something like:
+
+```
+pawncc -;+ -(+ -\ -Z- "-rD:/open.mpgamemodes/first" "-iD:/open.mpgamemodes/first" "-iinclude" -d0 -O2 -t4 "-oD:/open.mpgamemodes/first" "D:/open.mpgamemodes/first.pwn"
+
+
+D:\open.mp\gamemodes\first.pwn(25) : warning 203: symbol is never used: "a"
+Pawn compiler 3.10.11	 	 	Copyright (c) 1997-2006, ITB CompuPhase
+
+
+1 Warning.
+```
+
+If you get errors then the code did not compile.  You cannot use the result and you *must* fix those mistakes before you can continue:
+
+```
+pawncc -;+ -(+ -\ -Z- "-rD:/open.mpgamemodes/first" "-iD:/open.mpgamemodes/first" "-iinclude" -d0 -O2 -t4 "-oD:/open.mpgamemodes/first" "D:/open.mpgamemodes/first.pwn"
+
+
+D:\open.mp\gamemodes\first.pwn(26) : error 001: expected token: ";", but found "return"
+Pawn compiler 3.10.11	 	 	Copyright (c) 1997-2006, ITB CompuPhase
+
+
+1 Error.
+```
+
+Then there's the third type of mistake, similar to warnings but the compiler can't spot them - *bugs*.  This is just code you've written that doesn't do what you want, but does something that is technically valid.  Dropping a player from 1000 units in the sky might not be what you wanted, but it is valid behaviour.  So there are no messages when you make these mistakes and you'll just have to work out why things aren't doing what you want.  Unfortunately computers are stupid, and they will do **exactly** what you tell them, regardless of how wrong it is and the fact that it isn't what you *meant*.  No warnings or errors doesn't mean your code is correct - welcome to debugging!
 
