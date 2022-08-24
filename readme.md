@@ -7,7 +7,7 @@ If you are completely new to Pawn programming [click here for the beginner docum
 
 If you are an expert at Pawn programming [click here for the expert documentation](/documentation/readme-expert.md), detailing all the changes made and their reasons:  [readme-expert.md](/documentation/readme-expert.md)
 
-If you are somewhere in between [click here for the normal documentation](/documentation/readme-normal.md), which just tells you how to upgrade your code:  [readme-normal.md](/documentation/readme-normal.md)
+If you are somewhere in between [click here for the intermediate documentation](/documentation/readme-intermediate.md), which just tells you how to upgrade your code:  [readme-intermediate.md](/documentation/readme-intermediate.md)
 
  Further Reading
 -----------------

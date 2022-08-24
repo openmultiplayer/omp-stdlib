@@ -140,7 +140,7 @@ Alternatively, if you really hate help:
 #include <open.mp>
 ```
 
-The only breaking change introduced by these new tags are on callbacks.  For some reason tag mismatch warnings in function prototypes are an error, not a warning (probably because of code generation issues related to overloaded operators).  The best way to deal with these is to ensure that the `public` part of the callback will compile regardless of tag settings by falling back to `_:` when none is specified:
+The only breaking change introduced by these new tags are on callbacks.  The best way to deal with these is to ensure that the `public` part of the callback will compile regardless of tag settings by falling back to `_:` when none is specified (which is fully backwards-compatible):
 
 ```pawn
 #if !defined SELECT_OBJECT
@@ -149,19 +149,13 @@ The only breaking change introduced by these new tags are on callbacks.  For som
 forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 ```
 
-See the end of this document for a full list of all updated callbacks.  This is the main problem change, but it is important to note that the following code will work with any include, with or without the new tags:
+There is a tool to automatically upgrade all `forward`, `public`, `hook`, `@hook`, and `HOOK__` callbacks:
 
-```pawn
-#if !defined CLICK_SOURCE
-	#define CLICK_SOURCE: _:
-#endif
-public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
-{
-	return 1;
-}
+```
+callback-upgrade ./source-dir
 ```
 
-Thus writing backwards-compatible code remains possible.
+The argument `--help` will show more information and `--report` will show the changes needed without applying them automatically.
 
 #### Tag Warning Example
 
@@ -284,6 +278,8 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 ```
 
 * `OnPlayerEditObject`
+
+Ideally the names of the parameters would be changed here as well to something less Hungarian, but one thing at a time...
 
 ```pawn
 #if !defined EDIT_RESPONSE

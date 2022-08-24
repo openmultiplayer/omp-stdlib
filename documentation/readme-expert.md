@@ -266,6 +266,14 @@ public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstat
 forward Hooked_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
 ```
 
+There is a tool to automatically upgrade all `forward`, `public`, `hook`, `@hook`, and `HOOK__` callbacks:
+
+```
+callback-upgrade ./source-dir
+```
+
+The argument `--help` will show more information and `--report` will show the changes needed without applying them automatically.
+
 #### Tag Warning Example
 
 ```pawn
@@ -431,6 +439,8 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 ```
 
 * `OnPlayerEditObject`
+
+Ideally the names of the parameters would be changed here as well to something less Hungarian, but one thing at a time...
 
 ```pawn
 #if !defined EDIT_RESPONSE
