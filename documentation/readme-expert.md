@@ -1,6 +1,7 @@
-open.mp is the culmination of years of gradual improvements, fixes, and hard-learnt best practices for pawn code and SA:MP.  It is the direct continuation of several projects all with the same aim - making San Andreas Multiplayer better for (in order of importance): players (the largest group), newbies (who need help and support), and experienced coders (who can fend for themselves).  As a result the whole system should be smoother and less frustrating for those just learning, but may be a slight shock to existing scripters who have not kept up-to-date with these developments.  This file detais these changes for that latter group.
+open.mp is the culmination of years of gradual improvements, fixes, and hard-learnt best practices for pawn code and SA:MP.  It is the direct continuation of several projects all with the same aim - making online San Andreas better for (in order of importance): players (the largest group), newbies (who need help and support), and experienced coders (who can fend for themselves).  As a result the whole system should be smoother and less frustrating for those just learning, but may be a slight shock to existing scripters who have not kept up-to-date with these developments.  This file detais these changes for that latter group.
 
-## Compiler Changes
+ Compiler Changes
+------------------
 
 open.mp officially uses version 3.10.11 of the pawn compiler, released along-side the server.  Older compilers may work, and old scripts on the old compiler obviously won't change, but these cases aren't tested.
 
@@ -161,7 +162,8 @@ Other new compiler features are documented on [the community compiler repo](http
 
 You will note that all these new features either use existing keywords, `#`, or a `__` prefix.  This last one is a well established convention in many languages reserved for compiler and system includes to be able to add new items without fear of conflicts.  The open.mp includes, as the core system library, continue this convention and use `__` prefixes liberally and without appology.
 
-## Include Changes
+ Include Changes
+-----------------
 
 ### More Tags
 
@@ -349,9 +351,10 @@ native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:dr
 
 This final example will only compile the longer name when using the 3.10.11 compiler, but the deprecation warning will always exist even on compilers with a lower limit (because you should update).
 
-## Function Changes
+ Function Changes
+------------------
 
-A list of function behaviour changes between SA:MP and open.mp.  Most of these changes were previously in the precursor to open.mp - fixes.inc.  This does not include general bug fixes except when the fix is especially notable.
+A list of function behaviour changes between SA:MP and open.mp.  Most of these changes were previously in the precursor to open.mp - fixes.inc.  This does not include general bug fixes except when the fix is especially notable.  This list may not be exhaustive, but attempts to cover the most common changes.  Feel free to submit a PR if you find more:
 
 * `random` now works for negative numbers.  Calling `random(-5)` will return any of `0`, `-1`, `-2`, `-3`, or `-4`.  As with `random(5)` the specified number will not be returned, if instead you want the upper limit (i.e. `0`) skipped just do `random(-5) - 1`.
 * `GetPlayerPoolSize` returns `-1` when there are no players (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
@@ -370,7 +373,8 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 * Blunts and bottles no longer appear randomly on spawn.
 * Colour `-1` on vehicles is now synced so all players have the same random colour.
 
-## Appendix
+ Appendix
+----------
 
 ### All SA:MP Callback Changes
 
@@ -486,7 +490,8 @@ public Streamer_OnItemStreamOut(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forpla
 }
 ```
 
-## Further Reading
+ Further Reading
+-----------------
 
 https://github.com/pawn-lang/samp-stdlib/tree/consistency-overhaul - The SA:MP includes updated with const-correctness and more tags.
 https://github.com/samp-incognito/samp-streamer-plugin/pull/435 - A streamer plugin PR with more information on this tag system.

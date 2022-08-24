@@ -1,3 +1,5 @@
+Welcome to open.mp and Pawn.  This guide assumes you are using the complete server package from [here](https://open.mp/download).  This includes Qawno, the editor we will use, all the default includes, and the server itself.  First, lets open up Qawno:
+
  The View
 ----------
 
