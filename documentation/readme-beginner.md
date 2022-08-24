@@ -3,7 +3,7 @@
 
 Starting Qawno will give the following view:
 
-![The initial view of Qawno once freshly opened.](documentation/initial-view.png)
+![The initial view of Qawno once freshly opened.](initial-view.png)
 
 The three main panes are:
 
@@ -58,7 +58,7 @@ A *callback* is in contrast to a *native*, which is a function in the server tha
 	SetGameModeText("My first open.mp gamemode!");
 ```
 
-![The custom mode name shown in the server browser.](documentation/mode-name.png)
+![The custom mode name shown in the server browser.](mode-name.png)
 
 Using a different native we tell the server to add a skin to the class selection screen before a player first spawns.  This sets the skin as `0` (CJ), the position (`2495.3547, -1688.2319, 13.6774`) somewhere in Los Santos, the angle (`351.1646`) facing south, and then gives the player three weapons with various levels of ammo  This is where the player will be after they select a skin and spawn, it is not where the skin appears while being selected.  Try duplicating this line (`Ctrl+D`) and changing the co-ordinates to see where you spawn, or open the client debug mode and type `/save` while on foot to generate more of these lines.  The co-ordinates are the second, third, and fourth *parameters*.  A parameter to a function configures that function, they are between the brackets (`()`s) that follow the function name, and they are separated by commas (`,`s).  Including the ones we examined and the weapons and ammo, `AddPlayerClass` has eleven parameters:
 
@@ -130,5 +130,18 @@ Pawn compiler 3.10.11	 	 	Copyright (c) 1997-2006, ITB CompuPhase
 1 Error.
 ```
 
-Then there's the third type of mistake, similar to warnings but the compiler can't spot them - *bugs*.  This is just code you've written that doesn't do what you want, but does something that is technically valid.  Dropping a player from 1000 units in the sky might not be what you wanted, but it is valid behaviour.  So there are no messages when you make these mistakes and you'll just have to work out why things aren't doing what you want.  Unfortunately computers are stupid, and they will do **exactly** what you tell them, regardless of how wrong it is and the fact that it isn't what you *meant*.  No warnings or errors doesn't mean your code is correct - welcome to debugging!
+If you aren't sure how to solve an error or warning, pressing `Ctrl+E` (in Qawno) will copy the compiler output for you, so you can ask for help in the open.mp forums.  If you do know how to solve it, pressing `Crtl+E` again will jump to the first problem line (then the second, then the third, etc).
+
+ Running
+---------
+
+Once your code has compiled you'll want to run it.  This is easy - just press `F6`.  An open.mp server will automatically start and run your mode with basic settings (there is documentation on customising these settings elsewhere):
+
+![The server running your code.](server.png)
+
+You can then connect to the server at `127.0.0.1:7777` using the SA:MP server browser:
+
+![Connecting to your server.](client.png)
+
+This is where the third type of mistake comes in; similar to warnings but the compiler can't spot them - *bugs*.  This is just code you've written that doesn't do what you want, but does something that is technically valid.  Dropping a player from 1000 units in the sky might not be what you wanted, but it is valid behaviour.  So there are no messages when you make these mistakes and you'll just have to work out why things aren't doing what you want.  Unfortunately computers are stupid, and they will do **exactly** what you tell them, regardless of how wrong it is and the fact that it isn't what you *meant*.  No warnings or errors doesn't mean your code is correct - welcome to debugging!
 
