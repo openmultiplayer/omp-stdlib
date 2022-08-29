@@ -42,6 +42,10 @@
 const INVALID_PICKUP                           = -1;
 #define INVALID_PICKUP                         (-1)
 
+/*
+native #Global();
+*/
+
 /**
  * <library>omp_pickup</library>
  * <summary>This function adds a 'static' pickup to the game.  These pickups support weapons, health,
@@ -148,16 +152,6 @@ native bool:DestroyPickup(pickup);
 
 /**
  * <library>omp_pickup</library>
- * <summary>Currently removed/</summary>
- * <seealso name="CreatePickup" />
- * <seealso name="GivePlayerMoney" />
- * <seealso name="OnPlayerDeath" />
- */
-#pragma deprecated Use `CreatePickup`
-native void:SetDeathDropAmount(amount);
-
-/**
- * <library>omp_pickup</library>
  */
 native bool:IsValidPickup(pickupid);
 
@@ -224,6 +218,15 @@ native bool:SetPickupForPlayer(playerid, id, model, type, Float:x, Float:y, Floa
 /**
  * <library>omp_pickup</library>
  */
+native bool:IsPickupHiddenForPlayer(playerid, pickupid);
+
+/*
+native #Per-Player();
+*/
+
+/**
+ * <library>omp_pickup</library>
+ */
 native CreatePlayerPickup(playerid, model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
 
 /**
@@ -280,16 +283,6 @@ native GetPlayerPickupType(playerid, pickupid);
  * <library>omp_pickup</library>
  */
 native GetPlayerPickupVirtualWorld(playerid, pickupid);
-
-/**
- * <library>omp_pickup</library>
- */
-native bool:IsPickupHiddenForPlayer(playerid, pickupid);
-
-/**
- * <library>omp_pickup</library>
- */
-native Float:GetVehicleTrainSpeed(vehicleid);
 
 /**
  * <summary>Called when a player picks up a pickup created with <a href="#CreatePickup">CreatePickup</a>.</summary>

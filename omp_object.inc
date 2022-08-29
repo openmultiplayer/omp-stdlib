@@ -110,6 +110,10 @@ enum EDIT_RESPONSE:__EDIT_RESPONSE
 }
 static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 
+/*
+native #Global();
+*/
+
 /**
  * <library>omp_object</library>
  * <summary>Creates an object at specified coordinates in the game world.</summary>
@@ -371,6 +375,79 @@ native bool:MoveObject(objectid, Float:targetX, Float:targetY, Float:targetZ, Fl
 
 /**
  * <library>omp_object</library>
+ * <summary>Replace the texture of an object with the texture from another model in the game.</summary>
+ * <param name="objectid">The ID of the object to change the texture of</param>
+ * <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
+ * <param name="modelid">The modelid on which the replacement texture is located.  Use <b><c>0</c></b>
+ * for alpha.  Use <b><c>-1</c></b> to change the material colour without altering the texture</param>
+ * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use
+ * <b><c>"none"</c></b> if not required)</param>
+ * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b>
+ * if not required)</param>
+ * <param name="materialColour">The object colour to set, as an integer or hex in <b>ARGB</b> colour
+ * format.  Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
+ * <seealso name="SetPlayerObjectMaterial" />
+ * <seealso name="SetObjectMaterialText" />
+ * <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.
+ * </returns>
+ */
+native bool:SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Replace the texture of an object with text.</summary>
+ * <param name="objectid">The ID of the object to replace the texture of with text</param>
+ * <param name="text">The text to show on the object. (MAX <b>2048</b> characters).  May be optionally formatted</param>
+ * <param name="materialIndex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
+ * <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
+ * <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
+ * <param name="fontSize">The size of the text (MAX <b>255</b>) (optional=<b><c>24</c></b>)</param>
+ * <param name="bold">Bold text.  Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
+ * <param name="fontColour">The colour of the text, in <b>ARGB</b> format (optional=<b><c>-1</c></b>)</param>
+ * <param name="backgroundColour">The background colour, in <b>ARGB</b> format (optional=<b><c>0</c></b>)</param>
+ * <param name="textAlignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
+ * <seealso name="SetPlayerObjectMaterialText" />
+ * <seealso name="SetObjectMaterial" />
+ * <remarks>Color embedding can be used for multiple colours in the text.</remarks>
+ * <remarks>
+ *   <b>Alignment:</b><br />
+ *   <ul>
+ *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b> 0</li>
+ *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_CENTER</c></b> 1</li>
+ *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_RIGHT</c></b> 2</li>
+ *   </ul>
+ * </remarks>
+ * <remarks>
+ *   <b>Sizes:</b><br />
+ *   <ul>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_32x32</c></b> 10</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_64x32</c></b> 20</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_64x64</c></b> 30</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_128x32</c></b> 40</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_128x64</c></b> 50</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_128x128</c></b> 60</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_256x32</c></b> 70</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_256x64</c></b> 80</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_256x128</c></b> 90</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_256x256</c></b> 100</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_512x64</c></b> 110</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_512x128</c></b> 120</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_512x256</c></b> 130</li>
+ *     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
+ *   </ul>
+ * </remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.
+ * </returns>
+ */
+native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_object</library>
  * <summary>Stop a moving object after <a href="#MoveObject">MoveObject</a> has been used.</summary>
  * <param name="objectid">The ID of the object to stop moving</param>
  * <seealso name="MoveObject" />
@@ -410,79 +487,7 @@ native bool:IsObjectMoving(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-#pragma deprecated Use `BeginObjectEditing`
-native bool:EditObject(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
- * User Interface).</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The ID of the object to be edited by the player</param>
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
- * is specified, but nothing will happen.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
- * </returns>
- */
 native bool:BeginObjectEditing(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The object to be edited by the player</param>
- * <seealso name="EditObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
- * </returns>
- */
-#pragma deprecated Use `BeginPlayerObjectEditing`
-native bool:EditPlayerObject(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The object to be edited by the player</param>
- * <seealso name="EditObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
- * </returns>
- */
-native bool:BeginPlayerObjectEditing(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
- * is called when the player selects an object.</summary>
- * <param name="playerid">The ID of the player that should be able to select the object</param>
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="CancelEdit" />
- * <seealso name="OnPlayerSelectObject" />
- */
-#pragma deprecated Use `BeginObjectSelecting`
-native bool:SelectObject(playerid);
 
 /**
  * <library>omp_object</library>
@@ -506,19 +511,84 @@ native bool:BeginObjectSelecting(playerid);
  * <seealso name="EditPlayerObject" />
  * <seealso name="EditAttachedObject" />
  */
-#pragma deprecated Use `EndObjectEditing`
-native bool:CancelEdit(playerid);
+native bool:EndObjectEditing(playerid);
 
 /**
  * <library>omp_object</library>
- * <summary>Cancel object edition mode for a player.</summary>
- * <param name="playerid">The ID of the player to cancel edition for</param>
- * <seealso name="SelectObject" />
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
+ * <summary></summary>
  */
-native bool:EndObjectEditing(playerid);
+native Float:GetObjectDrawDistance(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:SetObjectMoveSpeed(objectid, Float:speed);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native Float:GetObjectMoveSpeed(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectMovingTargetRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectAttachedData(objectid, &parentVehicle = 0, &parentObject = 0, &parentPlayer = 0);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectAttachedOffset(objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectSyncRotation(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <remarks>This is NOT a boolean return.</remarks>
+ * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
+ */
+native _:IsObjectMaterialSlotUsed(objectid, materialIndex);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:IsObjectNoCameraCol(objectid);
+
+/*
+native #Per-Player();
+*/
 
 /**
  * <library>omp_object</library>
@@ -767,29 +837,6 @@ native bool:AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offse
 
 /**
  * <library>omp_object</library>
- * <summary>Replace the texture of an object with the texture from another model in the game.</summary>
- * <param name="objectid">The ID of the object to change the texture of</param>
- * <param name="materialIndex">The material index on the object to change (<b><c>0</c></b> to <b><c>15</c></b>)</param>
- * <param name="modelid">The modelid on which the replacement texture is located.  Use <b><c>0</c></b>
- * for alpha.  Use <b><c>-1</c></b> to change the material colour without altering the texture</param>
- * <param name="textureLibrary">The name of the txd file which contains the replacement texture (use
- * <b><c>"none"</c></b> if not required)</param>
- * <param name="textureName">The name of the texture to use as the replacement (use <b><c>"none"</c></b>
- * if not required)</param>
- * <param name="materialColour">The object colour to set, as an integer or hex in <b>ARGB</b> colour
- * format.  Using <b><c>0</c></b> keeps the existing material colour (optional=<b><c>0</c></b>)</param>
- * <seealso name="SetPlayerObjectMaterial" />
- * <seealso name="SetObjectMaterialText" />
- * <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.
- * </returns>
- */
-native bool:SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
-
-/**
- * <library>omp_object</library>
  * <summary>Replace the texture of a player-object with the texture from another model in the game.</summary>
  * <param name="playerid">The ID of the player the object is associated to</param>
  * <param name="objectid">The ID of the object to replace the texture of</param>
@@ -807,56 +854,6 @@ native bool:SetObjectMaterial(objectid, materialIndex, modelid, const textureLib
  * <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
  */
 native bool:SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
-
-/**
- * <library>omp_object</library>
- * <summary>Replace the texture of an object with text.</summary>
- * <param name="objectid">The ID of the object to replace the texture of with text</param>
- * <param name="text">The text to show on the object. (MAX <b>2048</b> characters).  May be optionally formatted</param>
- * <param name="materialIndex">The object's material index to replace with text (optional=<b><c>0</c></b>)</param>
- * <param name="materialSize">The size of the material (optional=<b><c>OBJECT_MATERIAL_SIZE_256x128</c></b>)</param>
- * <param name="fontFace">The font to use (optional=<b><c>"Arial"</c></b>)</param>
- * <param name="fontSize">The size of the text (MAX <b>255</b>) (optional=<b><c>24</c></b>)</param>
- * <param name="bold">Bold text.  Set to <b><c>1</c></b> for bold, <b><c>0</c></b> for not (optional=<b><c>1</c></b>)</param>
- * <param name="fontColour">The colour of the text, in <b>ARGB</b> format (optional=<b><c>-1</c></b>)</param>
- * <param name="backgroundColour">The background colour, in <b>ARGB</b> format (optional=<b><c>0</c></b>)</param>
- * <param name="textAlignment">The alignment of the text (optional=<b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b>)</param>
- * <seealso name="SetPlayerObjectMaterialText" />
- * <seealso name="SetObjectMaterial" />
- * <remarks>Color embedding can be used for multiple colours in the text.</remarks>
- * <remarks>
- *   <b>Alignment:</b><br />
- *   <ul>
- *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_LEFT</c></b> 0</li>
- *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_CENTER</c></b> 1</li>
- *     <li><b><c>OBJECT_MATERIAL_TEXT_ALIGN_RIGHT</c></b> 2</li>
- *   </ul>
- * </remarks>
- * <remarks>
- *   <b>Sizes:</b><br />
- *   <ul>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_32x32</c></b> 10</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_64x32</c></b> 20</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_64x64</c></b> 30</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_128x32</c></b> 40</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_128x64</c></b> 50</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_128x128</c></b> 60</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_256x32</c></b> 70</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_256x64</c></b> 80</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_256x128</c></b> 90</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_256x256</c></b> 100</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_512x64</c></b> 110</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_512x128</c></b> 120</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_512x256</c></b> 130</li>
- *     <li><b><c>OBJECT_MATERIAL_SIZE_512x512</c></b> 140</li>
- *   </ul>
- * </remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.
- * </returns>
- */
-native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_object</library>
@@ -907,127 +904,21 @@ native bool:SetPlayerObjectMaterialText(playerid, objectid, const text[], materi
 
 /**
  * <library>omp_object</library>
- * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
- * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
- * <b><c>0</c></b> to enable them (enabled by default)</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
- * not toggle existing objects' camera collisions.</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
+ * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The object to be edited by the player</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
+ * </returns>
  */
-native bool:SetObjectsDefaultCameraCol(bool:disable);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:HideObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:ShowObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:IsObjectHiddenForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:NewObjectsHiddenForPlayer(playerid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native Float:GetObjectDrawDistance(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:SetObjectMoveSpeed(objectid, Float:speed);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native Float:GetObjectMoveSpeed(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `GetObjectMovingTargetPos`
-native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectMovingTargetRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectAttachedData(objectid, &parentVehicle = 0, &parentObject = 0, &parentPlayer = 0);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectAttachedOffset(objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectSyncRotation(objectid);
-
-/**
- * <library>omp_object</library>
- * <remarks>This is NOT a boolean return.</remarks>
- * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
- */
-native _:IsObjectMaterialSlotUsed(objectid, materialIndex);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:IsObjectNoCameraCol(objectid);
+native bool:BeginPlayerObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1108,6 +999,54 @@ native GetPlayerSurfingPlayerObjectID(playerid);
  */
 native GetPlayerCameraTargetPlayerObj(playerid);
 
+/*
+native #Common();
+*/
+
+/**
+ * <library>omp_object</library>
+ * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
+ * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
+ * <b><c>0</c></b> to enable them (enabled by default)</param>
+ * <seealso name="SetObjectNoCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
+ * not toggle existing objects' camera collisions.</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ */
+native bool:SetObjectsDefaultCameraCol(bool:disable);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:HideObjectForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:ShowObjectForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:IsObjectHiddenForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:NewObjectsHiddenForPlayer(playerid);
+
 /**
  * <library>omp_object</library>
  * <summary></summary>
@@ -1118,16 +1057,20 @@ native GetObjectType(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0, &Float:scaleX = 0.0, &Float:scaleY = 0.0, &Float:scaleZ = 0.0, &materialColour1 = 0, &materialColour2 = 0);
+native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
+
+/*
+native #Attachments();
+*/
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
+native bool:GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0, &Float:scaleX = 0.0, &Float:scaleY = 0.0, &Float:scaleZ = 0.0, &materialColour1 = 0, &materialColour2 = 0);
 
 /**
- * <library>a_players</library>
+ * <library>omp_object</library>
  * <summary>Attach an object to a specific bone on a player.</summary>
  * <param name="playerid">The ID of the player to attach the object to</param>
  * <param name="index">The index (slot) to assign the object to (0-9)</param>
@@ -1178,7 +1121,7 @@ native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offse
 native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotationX = 0.0, Float:rotationY = 0.0, Float:rotationZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
 
 /**
- * <library>a_players</library>
+ * <library>omp_object</library>
  * <summary>Remove an attached object from a player.</summary>
  * <param name="playerid">The ID of the player to remove the object from</param>
  * <param name="index">The index of the object to remove (set with <a href="#SetPlayerAttachedObject">SetPlayerAttachedObject</a>)</param>
@@ -1189,7 +1132,7 @@ native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0
 native RemovePlayerAttachedObject(playerid, index);
 
 /**
- * <library>a_players</library>
+ * <library>omp_object</library>
  * <summary>Check if a player has an object attached in the specified index (slot).</summary>
  * <param name="playerid">The ID of the player to check</param>
  * <param name="index">The index (slot) to check</param>
@@ -1200,7 +1143,7 @@ native RemovePlayerAttachedObject(playerid, index);
 native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
 
 /**
- * <library>a_players</library>
+ * <library>omp_object</library>
  * <summary>Enter edition mode for an attached object.</summary>
  * <param name="playerid">The ID of the player to enter in to edition mode</param>
  * <param name="index">The index (slot) of the attached object to edit</param>
@@ -1228,6 +1171,83 @@ native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
  */
 native EditAttachedObject(playerid, index);
+
+/*
+native #Deprecated();
+*/
+
+/**
+ * <library>omp_object</library>
+ * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
+ * is called when the player selects an object.</summary>
+ * <param name="playerid">The ID of the player that should be able to select the object</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="CancelEdit" />
+ * <seealso name="OnPlayerSelectObject" />
+ */
+#pragma deprecated Use `BeginObjectSelecting`
+native bool:SelectObject(playerid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
+ * User Interface).</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The ID of the object to be edited by the player</param>
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
+ * is specified, but nothing will happen.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
+ * </returns>
+ */
+#pragma deprecated Use `BeginObjectEditing`
+native bool:EditObject(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The object to be edited by the player</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
+ * </returns>
+ */
+#pragma deprecated Use `BeginPlayerObjectEditing`
+native bool:EditPlayerObject(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Cancel object edition mode for a player.</summary>
+ * <param name="playerid">The ID of the player to cancel edition for</param>
+ * <seealso name="SelectObject" />
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ */
+#pragma deprecated Use `EndObjectEditing`
+native bool:CancelEdit(playerid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+#pragma deprecated Use `GetObjectMovingTargetPos`
+native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
 
 /**
  * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>

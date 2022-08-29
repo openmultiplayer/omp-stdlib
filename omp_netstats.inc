@@ -21,13 +21,9 @@
 
 #pragma tabsize 4
 
-/**
- * <library>omp_netstats</library>
- * <summary>Gets the tick rate (like FPS) of the server.</summary>
- * <seealso name="GetNetworkStats" />
- * <returns>The server tick rate (per second).  Returns <b><c>0</c></b> when the server is just started.</returns>
- */
-native GetServerTickRate();
+/*
+native #Raw();
+*/
 
 /**
  * <library>omp_netstats</library>
@@ -223,6 +219,10 @@ native NetStats_ConnectionStatus(playerid);
  * <seealso name="NetStats_ConnectionStatus" />
  */
 native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
+
+/*
+native #Formatted();
+*/
 
 /**
  * <library>omp_netstats</library>

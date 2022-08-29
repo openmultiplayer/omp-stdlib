@@ -1223,7 +1223,7 @@ native LANDING_GEAR_STATE:GetVehicleLandingGearState(vehicleid);
 native bool:IsValidVehicle(vehicleid);
 
 /**
- * <library>a_samp</library>
+ * <library>omp_vehicle</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
  * <remarks>Tire popping is enabled by default.  If
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
@@ -1436,7 +1436,12 @@ forward bool:GetVehicleSirenState(vehicleid);
 forward GetVehicleHydraReactorAngle(vehicleid);
 
 /**
- * <library>a_samp</library>
+ * <library>omp_vehicle</library>
+ */
+native Float:GetVehicleTrainSpeed(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
  * <summary>Enable friendly fire for team vehicles.  Players will be unable to damage teammates' vehicles
  * (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
  * <seealso name="SetPlayerTeam" />

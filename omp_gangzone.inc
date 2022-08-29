@@ -42,6 +42,10 @@
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 #define INVALID_GANG_ZONE                      0xFFFFFFFF
 
+/*
+native #Global();
+*/
+
 /**
  * <library>omp_gangzone</library>
  * <summary>Create a gangzone (coloured radar area).</summary>
@@ -254,18 +258,6 @@ native IsGangZoneVisibleForPlayer(playerid, zoneid);
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `GangZoneGetColourForPlayer`
-native GangZoneGetColorForPlayer(playerid, zoneid);
-
-/**
- * <library>omp_gangzone</library>
- */
-#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
-native GangZoneGetFlashColorForPlayer(playerid, zoneid);
-
-/**
- * <library>omp_gangzone</library>
- */
 native GangZoneGetColourForPlayer(playerid, zoneid);
 
 /**
@@ -290,6 +282,10 @@ native GangZoneGetPos(zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX = 0.0,
  * <param name="enable">Should entry detection be started or stopped?</param>
  */
 native UseGangZoneCheck(zoneid, bool:enable);
+
+/*
+native #Per-Player();
+*/
 
 /**
  * <library>omp_gangzone</library>
@@ -339,18 +335,6 @@ native IsPlayerGangZoneVisible(playerid, zoneid);
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `PlayerGangZoneGetColour`
-native PlayerGangZoneGetColor(playerid, zoneid);
-
-/**
- * <library>omp_gangzone</library>
- */
-#pragma deprecated Use `PlayerGangZoneGetFlashColour`
-native PlayerGangZoneGetFlashColor(playerid, zoneid);
-
-/**
- * <library>omp_gangzone</library>
- */
 native PlayerGangZoneGetColour(playerid, zoneid);
 
 /**
@@ -375,6 +359,34 @@ native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY = 0.0, &F
  * <param name="enable">Should entry detection be started or stopped?</param>
  */
 native UsePlayerGangZoneCheck(zoneid, bool:enable);
+
+/*
+native #Deprecated();
+*/
+
+/**
+ * <library>omp_gangzone</library>
+ */
+#pragma deprecated Use `GangZoneGetColourForPlayer`
+native GangZoneGetColorForPlayer(playerid, zoneid);
+
+/**
+ * <library>omp_gangzone</library>
+ */
+#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
+native GangZoneGetFlashColorForPlayer(playerid, zoneid);
+
+/**
+ * <library>omp_gangzone</library>
+ */
+#pragma deprecated Use `PlayerGangZoneGetColour`
+native PlayerGangZoneGetColor(playerid, zoneid);
+
+/**
+ * <library>omp_gangzone</library>
+ */
+#pragma deprecated Use `PlayerGangZoneGetFlashColour`
+native PlayerGangZoneGetFlashColor(playerid, zoneid);
 
 /**
  */

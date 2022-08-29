@@ -22,7 +22,7 @@
 #pragma tabsize 4
 
 /**
- * <library>a_samp</library>
+ * <library>omp_core</library>
  */
 const INVALID_TIMER                            = 0;
 #define INVALID_TIMER                          0
@@ -477,6 +477,14 @@ native #Server Config();
  * <returns>Uptime of the actual server (not the open.mp server).</returns>
  */
 native GetTickCount();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Gets the tick rate (like FPS) of the server.</summary>
+ * <seealso name="GetNetworkStats" />
+ * <returns>The server tick rate (per second).  Returns <b><c>0</c></b> when the server is just started.</returns>
+ */
+native GetServerTickRate();
 
 /**
  * <library>omp_core</library>
@@ -1035,6 +1043,16 @@ forward void:SetDeathDropAmount(amount);
  */
 #pragma deprecated Use BCrypt for hashing passwords.
 native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
+
+/**
+ * <library>omp_core</library>
+ * <summary>Currently removed/</summary>
+ * <seealso name="CreatePickup" />
+ * <seealso name="GivePlayerMoney" />
+ * <seealso name="OnPlayerDeath" />
+ */
+#pragma deprecated Use `CreatePickup`
+native void:SetDeathDropAmount(amount);
 
 /**
  * <summary>This callback is triggered when the gamemode starts.</summary>

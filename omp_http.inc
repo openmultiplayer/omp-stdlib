@@ -57,7 +57,7 @@ enum HTTP_ERROR:__HTTP_ERROR
 static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
 
 /**
- * <library>a_http</library>
+ * <library>omp_http</library>
  * <summary>Sends a threaded HTTP request.</summary>
  * <param name="index">ID used to differentiate requests that are sent to the same callback (useful
  * for playerids)</param>
