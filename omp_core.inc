@@ -351,6 +351,20 @@ native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
+ * <summary>Displays a message in chat to all players.  This is a multi-player equivalent of
+ * <a href="#SendClientMessage">SendClientMessage</a>.</summary>
+ * <param name="colour">The colour of the message (<b>RGBA</b>)</param>
+ * <param name="format">The message to show (<b>max 144 characters</b>).  Optionally formatted.</param>
+ * <seealso name="SendClientMessage" />
+ * <seealso name="SendPlayerMessageToAll" />
+ * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
+ *  It will result in crashes otherwise.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
+ */
+native void:SendClientMessageToAll(colour, const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
  * <summary>Sends a message in the name of a player to all other players on the server.  The line will
  * start with the sender's name in their colour, followed by the message in white.</summary>
  * <param name="senderid">The ID of the sender.  If invalid, the message will not be sent</param>
@@ -362,6 +376,27 @@ native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
  *  It will result in crashes otherwise.</remarks>
  */
 native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for all players.</summary>
+ * <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
+ * <param name="killee">The ID of the player that died</param>
+ * <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon)
+ * for the victim's death.  Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
+ * <seealso name="SendDeathMessageToPlayer" />
+ * <seealso name="OnPlayerDeath" />
+ * <remarks>Death messages can be cleared by using a valid player ID for <paramref name="killee" />
+ * that is not connected.</remarks>
+ * <remarks>To show a death message for just a single player, use <a href="#SendDeathMessageToPlayer">SendDeathMessageToPlayer</a>.
+ * </remarks>
+ * <remarks>You can use NPCs to create your own custom death reasons. </remarks>
+ * <returns>This function always returns <b><c>1</c></b>, even if the function fails to execute.  The
+ * function fails to execute (no death message shown) if <paramref name="killee" /> is invalid.  If
+ * <paramref name="reason" /> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer"
+ * /> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
+ */
+native bool:SendDeathMessage(killer, killee, weapon);
 
 /**
  * <library>omp_core</library>

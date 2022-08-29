@@ -170,6 +170,11 @@ native bool:IsBanned(const ipaddress[]);
 native bool:IsPlayerAdmin(playerid);
 
 /**
+ * <library>omp_player</library>
+ */
+native SetPlayerAdmin(playerid, bool:admin);
+
+/**
  * <library>omp_network</library>
  * <summary>Sends an RCON (Remote Console) command.</summary>
  * <param name="format">The RCON command to be executed.  May be optionally formatted.</param>
@@ -226,6 +231,11 @@ native GPCI(playerid, serial[], len = sizeof (serial)) = gpci;
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
  */
 native GetPlayerIp(playerid, ip[], len = sizeof (ip));
+
+/**
+ * <library>omp_player</library>
+ */
+native GetPlayerRawIp(playerid);
 
 /**
  * <library>omp_network</library>
