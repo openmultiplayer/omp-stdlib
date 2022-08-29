@@ -137,7 +137,7 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
  * units on the x and/or y axis).</remarks>
  */
-native bool:SetObjectsDefaultCameraCol(bool:disable);
+native bool:SetObjectsDefaultCameraCollision(bool:disable);
 
 /**
  * <library>omp_object</library>
@@ -406,7 +406,7 @@ native GetObjectModel(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
  * </returns>
  */
-native bool:SetObjectNoCameraCol(objectid);
+native bool:SetObjectNoCameraCollision(objectid);
 
 /**
  * <library>omp_object</library>
@@ -670,7 +670,7 @@ native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = si
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:IsObjectNoCameraCol(objectid);
+native bool:HasObjectCameraCollision(objectid);
 
 /*
                                                                                                                 
@@ -842,7 +842,7 @@ native GetPlayerObjectModel(playerid, objectid);
  * units on the x and/or y axis).</remarks>
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
-native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
+native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1086,7 +1086,7 @@ native bool:GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
+native bool:HasPlayerObjectCameraCollision(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1319,6 +1319,65 @@ native bool:CancelEdit(playerid);
  */
 #pragma deprecated Use `GetObjectMovingTargetPos`
 native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
+ * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
+ * <b><c>0</c></b> to enable them (enabled by default)</param>
+ * <seealso name="SetObjectNoCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
+ * not toggle existing objects' camera collisions.</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ */
+#pragma deprecated Use `SetObjectsDefaultCameraCollision`
+native bool:SetObjectsDefaultCameraCol(bool:disable);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Disable collisions between players' cameras and the specified object.</summary>
+ * <param name="objectid">The ID of the object to disable camera collisions on</param>
+ * <seealso name="SetObjectsDefaultCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
+ * </returns>
+ */
+#pragma deprecated Use `SetObjectNoCameraCollision`
+native bool:SetObjectNoCameraCol(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+#pragma deprecated Use `!HasObjectCameraCollision`
+native bool:IsObjectNoCameraCol(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Toggles a player object camera collision.</summary>
+ * <param name="playerid">The playerid the object belongs to</param>
+ * <param name="objectid">The ID of the object you want to toggle</param>
+ * <seealso name="SetObjectNoCameraCol" />
+ * <seealso name="SetObjectsDefaultCameraCol" />
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
+ */
+#pragma deprecated Use `#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
+native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+#pragma deprecated Use `!HasPlayerObjectCameraCollision`
+native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
 
 /*
                                                                                                   
