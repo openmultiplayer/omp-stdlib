@@ -97,21 +97,38 @@ public const __SAMP_INCLUDES_VERSION = 0x037030;
 public const __OPEN_MP_VERSION = 0;
 #pragma unused __OPEN_MP_VERSION
 
+#if !defined __PawnBuild
+	#define __PawnBuild 0
+#endif
+
 // Optionally stricter tags.
 #if defined NO_TAGS
 	#define __TAG(%0) _
-	#define OPEN_MP_TAGS {Float, _}
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) T_%0
-	// TODO: Add all the other tags.
-	#define OPEN_MP_TAGS {Float, _}
+	#if __PawnBuild >= 11
+		#define OPEN_MP_TAGS {LANDING_GEAR_STATE, T_CONNECTION_STATUS, T_CP_TYPE, T_WEAPON, T_PLAYER_MARKERS_MODE, T_DIALOG_STYLE, T_HTTP_METHOD, T_HTTP_ERROR, T_DOWNLOAD_REQUEST, T_SELECT_OBJECT, T_OBJECT_MATERIAL_SIZE, T_OBJECT_MATERIAL_TEXT_ALIGN, T_EDIT_RESPONSE, T_PLAYER_STATE, T_SPECIAL_ACTION, T_FIGHT_STYLE, T_WEAPONSKILL, T_WEAPONSTATE, T_KEY, T_CAM_MODE, T_MAPICON, T_SPECTATE_MODE, T_PLAYER_RECORDING_TYPE, T_FORCE_SYNC, T_CLICK_SOURCE, T_BULLET_HIT_TYPE, T_TEXT_DRAW_FONT, T_TEXT_DRAW_ALIGN, T_VARTYPE, T_CARMODTYPE, T_VEHICLE_MODEL_INFO, T_VEHICLE_PANEL_STATUS, T_VEHICLE_DOOR_STATUS, T_VEHICLE_LIGHT_STATUS, T_VEHICLE_TYRE_STATUS, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+	#endif
 #else // if defined WEAK_TAGS
 	#define __TAG(%0) t_%0
 	#define WEAK_TAGS
-	// TODO: Add all the other tags.
-	#define OPEN_MP_TAGS {Float, _}
 #endif
 
+#if defined OPEN_MP_TAGS
+	// Why does this contain YSI tags?  `Bit` - `Style`?  People have been
+	// trained to use `CUSTOM_TAG_TYPES` to add tags to various call checks,
+	// but not for YSI internal tags.  Not having them here would be a change
+	// for many existing scripts that didn't previously have to specify those
+	// tags.  Having more here isn't a problem, so they're just all here.
+#elseif __PawnBuild >= 11
+	// I say it isn't a problem - the old compiler is limited to only 16 tags.
+	#define OPEN_MP_TAGS {LANDING_GEAR_STATE, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+#else
+	// `CUSTOM_TAG_TYPES` is limited to six tags.  To keep the numbers down
+	// these are the most common (IMHO) tags plus those from old defines.
+	#define OPEN_MP_TAGS {Bit, Group, INI, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+#endif
+ 
 // Optionally use `void:` tags on natives - ensure they don't return anything.
 // This is not the default as it adds a tiny bit of overhead to the calls.
 #if defined VOID_TAGS
