@@ -137,7 +137,13 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
  * units on the x and/or y axis).</remarks>
  */
-native bool:SetObjectsDefaultCameraCollision(bool:disable);
+#if OPEN_MP_LONG_NAMES
+	native bool:SetObjectsDefaultCameraCollision(bool:disable);
+#else
+	static stock __SetObjectsDefaultCameraCol()
+	{
+	}
+#endif
 
 /**
  * <library>omp_object</library>
@@ -842,7 +848,13 @@ native GetPlayerObjectModel(playerid, objectid);
  * units on the x and/or y axis).</remarks>
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
-native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
+#if OPEN_MP_LONG_NAMES
+	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
+#else
+	static stock __SetPlayerObjectNoCameraCol();
+	{
+	}
+#endif
 
 /**
  * <library>omp_object</library>
@@ -1369,7 +1381,7 @@ native bool:IsObjectNoCameraCol(objectid);
  * units on the x and/or y axis).</remarks>
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
-#pragma deprecated Use `#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
+#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
 native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
