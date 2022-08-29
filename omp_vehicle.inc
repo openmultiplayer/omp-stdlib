@@ -974,7 +974,7 @@ native CARMODTYPE:GetVehicleComponentType(component);
  * Get random colour indexes that are valid for the given vehicle model.
  * </summary>
  */
-native GetRandomCarColPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
+native GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
 
 /**
  * <library>omp_vehicle</library>
@@ -982,7 +982,7 @@ native GetRandomCarColPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 =
  * Convert a car colour index to a HEX colour (RGBA).
  * </summary>
  */
-native CarColIndexToColour(index, alpha = 0xFF);
+native VehicleColourIndexToColour(index, alpha = 0xFF);
 
 /**
  * <library>omp_vehicle</library>
@@ -1481,6 +1481,24 @@ native void:EnableTirePopping(bool:enable); // deprecated function
  */
 #pragma deprecated Use `GetVehicleColours`
 native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>
+ * Get random colour indexes that are valid for the given vehicle model.
+ * </summary>
+ */
+#pragma deprecated Use `GetRandomVehicleColourPair`
+native GetRandomCarColPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>
+ * Convert a car colour index to a HEX colour (RGBA).
+ * </summary>
+ */
+#pragma deprecated Use `VehicleColourIndexToColour`
+native CarColIndexToColour(index, alpha = 0xFF);
 
 /*
                                                                                                   
