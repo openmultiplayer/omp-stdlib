@@ -40,6 +40,10 @@ enum CP_TYPE:__CP_TYPE
 }
 static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
 
+/*
+native #Player Checkpoints();
+*/
+
 /**
  * <library>omp_checkpoint</library>
  * <summary>Sets a checkpoint (red cylinder) for a player.  Also shows a red blip on the radar.  When
@@ -143,6 +147,10 @@ native bool:IsPlayerCheckpointActive(playerid);
  * <returns><b><c>0</c></b> if the player isn't connected else <b><c>1</c></b>.</returns>
  */
 native bool:GetPlayerCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:radius = 0.0);
+
+/*
+native #Race Checkpoints();
+*/
 
 /**
  * <library>omp_checkpoint</library>

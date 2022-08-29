@@ -102,6 +102,10 @@ enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 }
 static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
 
+/*
+native #Pawn Utilities();
+*/
+
 /**
  * <library>omp_core</library>
  * <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
@@ -270,6 +274,11 @@ native void:KillTimer(timerid);
 
 /**
  * <library>omp_core</library>
+ */
+native GetRunningTimers();
+
+/**
+ * <library>omp_core</library>
  * <summary>Calls a public function in any script that is loaded.</summary>
  * <param name="functionName">Public function's name</param>
  * <param name="specifiers">Tag/format of each variable</param>
@@ -316,30 +325,88 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
 
 /**
  * <library>omp_core</library>
- * <summary>Returns the uptime of the actual server (not the open.mp server) in milliseconds.</summary>
- * <seealso name="tickcount" />
- * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount
- * will eventually warp past the integer size constraints.  However using
- * <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
- * function fixes the problem.</remarks>
- * <remarks>One common use for GetTickCount is for benchmarking.  It can be used to calculate how much
- * time some code takes to execute.</remarks>
- * <returns>Uptime of the actual server (not the open.mp server).</returns>
+ * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
+ * <param name="format">The text to be displayed or formatted</param>
+ * <param name="time">The duration of the text being shown in milliseconds</param>
+ * <param name="style">The style of text to be displayed</param>
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="TextDrawShowForAll" />
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native GetTickCount();
+native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
- * <summary>Returns the maximum number of players that can join the server, as set by the server variable
- * 'maxplayers' in server.cfg.</summary>
- * <seealso name="GetPlayerPoolSize" />
- * <seealso name="IsPlayerConnected" />
- * <remarks>This function can not be used in place of <b><c>MAX_PLAYERS</c></b>.  It can not be used
- * at compile time (e.g.  for array sizes). <b><c>MAX_PLAYERS</c></b> should always be re-defined to
- * what the 'maxplayers' var will be, or higher.</remarks>
- * <returns>The maximum number of players that can join the server.</returns>
+ * <summary>Sends a message in the name of a player to all other players on the server.  The line will
+ * start with the sender's name in their colour, followed by the message in white.</summary>
+ * <param name="senderid">The ID of the sender.  If invalid, the message will not be sent</param>
+ * <param name="format">The message that will be sent.  May be optionally formatted.</param>
+ * <seealso name="SendPlayerMessageToPlayer" />
+ * <seealso name="SendClientMessageToAll" />
+ * <seealso name="OnPlayerText" />
+ * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
+ *  It will result in crashes otherwise.</remarks>
  */
-native GetMaxPlayers();
+native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the name of a weapon.</summary>
+ * <param name="weaponid">The ID of the weapon to get the name of</param>
+ * <param name="weapon">An array to store the weapon's name in, passed by reference</param>
+ * <param name="len">The maximum length of the weapon name to store.</param>
+ * <seealso name="GetPlayerWeapon" />
+ * <seealso name="AllowInteriorWeapons" />
+ * <seealso name="GivePlayerWeapon" />
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
+ * </returns>
+ */
+native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+
+/**
+ * <library>omp_core</library>
+ */
+native bool:IsValidNickName(const name[]);
+
+/**
+ * <library>omp_core</library>
+ */
+native GetWeaponSlot(WEAPON:weaponid);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the animation library/name for the index.</summary>
+ * <param name="index">The animation index, returned by <a href="#GetPlayerAnimationIndex">GetPlayerAnimationIndex</a></param>
+ * <param name="animationLibrary">String variable that stores the animation library</param>
+ * <param name="len1">Size of the string that stores the animation library</param>
+ * <param name="animationName">String variable that stores the animation name</param>
+ * <param name="len2">Size of the string that stores the animation name</param>
+ * <seealso name="GetPlayerAnimationIndex" />
+ * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
+ */
+native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName));
+
+/**
+ * <library>omp_core</library>
+ * <summary>Create an explosion at the specified coordinates.</summary>
+ * <param name="x">The x coordinate of the explosion</param>
+ * <param name="y">The y coordinate of the explosion</param>
+ * <param name="z">The z coordinate of the explosion</param>
+ * <param name="type">The type of explosion</param>
+ * <param name="radius">The explosion radius</param>
+ * <seealso name="CreateExplosionForPlayer" />
+ * <remarks>There is a limit as to how many explosions can be seen at once by a player.  This is roughly
+ * 10.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius
+ * values are invalid.</returns>
+ */
+native void:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
+
+/*
+native #Maths();
+*/
 
 /**
  * <library>omp_core</library>
@@ -393,148 +460,48 @@ native Float:atan(Float:value);
  */
 native Float:atan2(Float:y, Float:x);
 
-/**
- * <library>omp_core</library>
- * <summary>Gets the highest playerid currently in use on the server.</summary>
- * <seealso name="GetVehiclePoolSize" />
- * <seealso name="GetMaxPlayers" />
- * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
- * players.</returns>
- */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
-native GetPlayerPoolSize();
+/*
+native #Server Config();
+*/
 
 /**
  * <library>omp_core</library>
- * <summary>Gets the highest vehicleid currently in use on the server.</summary>
+ * <summary>Returns the uptime of the actual server (not the open.mp server) in milliseconds.</summary>
+ * <seealso name="tickcount" />
+ * <remarks>GetTickCount will cause problems on servers with uptime of over 24 days as GetTickCount
+ * will eventually warp past the integer size constraints.  However using
+ * <a href="https://gist.github.com/ziggi/5d7d8dc42f54531feba7ae924c608e73">this</a>
+ * function fixes the problem.</remarks>
+ * <remarks>One common use for GetTickCount is for benchmarking.  It can be used to calculate how much
+ * time some code takes to execute.</remarks>
+ * <returns>Uptime of the actual server (not the open.mp server).</returns>
+ */
+native GetTickCount();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Returns the maximum number of players that can join the server, as set by the server variable
+ * 'maxplayers' in server.cfg.</summary>
  * <seealso name="GetPlayerPoolSize" />
- * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
- * created vehicles.</returns>
+ * <seealso name="IsPlayerConnected" />
+ * <remarks>This function can not be used in place of <b><c>MAX_PLAYERS</c></b>.  It can not be used
+ * at compile time (e.g.  for array sizes). <b><c>MAX_PLAYERS</c></b> should always be re-defined to
+ * what the 'maxplayers' var will be, or higher.</remarks>
+ * <returns>The maximum number of players that can join the server.</returns>
  */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
-native GetVehiclePoolSize();
+native GetMaxPlayers();
 
 /**
  * <library>omp_core</library>
- * <summary>Gets the highest actorid created on the server.</summary>
- * <seealso name="CreateActor" />
- * <seealso name="IsValidActor" />
- * <seealso name="SetActorHealth" />
- * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
+ * <param name="seconds">The delay between loading main scripts, in seconds.</param>
  */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
-native GetActorPoolSize();
+native SetModeRestartTime(Float:seconds);
 
 /**
  * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
+ * <returns>The delay between loading main scripts, in seconds.</returns>
  */
-forward AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-forward AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-forward AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
-
-/**
- * <library>omp_core</library>
- * <summary>This function will determine whether RCON admins will be teleported to their waypoint when
- * they set one.</summary>
- * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
- * <remarks><b>This function is deprecated.  Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
- * <seealso name="IsPlayerAdmin" />
- * <seealso name="AllowPlayerTeleport" />
- */
-#pragma deprecated Use `OnPlayerClickMap`.
-forward void:AllowAdminTeleport(bool:allow);
-
-/**
- * <library>omp_core</library>
- * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
- * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b>
- * to disable weapons in interiors</param>
- * <seealso name="SetPlayerInterior" />
- * <seealso name="GetPlayerInterior" />
- * <seealso name="OnPlayerInteriorChange" />
- */
-#pragma deprecated Use `OnPlayerInteriorChange`.
-forward void:AllowInteriorWeapons(bool:allow);
-
-/**
- * <library>omp_core</library>
- * <summary>Connect an NPC to the server.</summary>
- * <param name="name">The name the NPC should connect as.  Must follow the same rules as normal player
- * names</param>
- * <param name="script">The NPC script name that is located in the <b>npcmodes</b> folder (without the
- * .amx extension)</param>
- * <seealso name="IsPlayerNPC" />
- * <seealso name="OnPlayerConnect" />
- * <remarks>NPCs do not have nametags.  These can be scripted with
- * <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
- * <returns>This function always return <b><c>1</c></b>.</returns>
- */
-native ConnectNPC(const name[], const script[]);
-
-/**
- * <library>omp_core</library>
- * <summary>Disable all the interior entrances and exits in the game (the yellow arrows at doors).</summary>
- * <seealso name="AllowInteriorWeapons" />
- * <remarks>If the gamemode is changed after this function has been used, and the new gamemode doesn't
- * disable markers, the markers will NOT reappear for already-connected players (but will for newly
- * connected players).</remarks>
- * <remarks>This function will only work if it has been used BEFORE a player connects (it is recommended
- * to use it in OnGameModeInit).  It will not remove a connected player's markers.</remarks>
- * <returns>This function always returns <b><c>1</c></b>.</returns>
- */
-native DisableInteriorEnterExits();
-
-/**
- * <library>omp_core</library>
- * <summary>Disables the nametag Line-Of-Sight checking so that players can see nametags through objects.</summary>
- * <seealso name="ShowNameTags" />
- * <seealso name="ShowPlayerNameTagForPlayer" />
- * <remarks>This can not be reversed until the server restarts.</remarks>
- */
-native DisableNameTagLOS();
-
-/**
- * <library>omp_core</library>
- * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>Tire popping is enabled by default.  If
- * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
- * OnVehicleDamageStatusUpdate</a>.</remarks>
- */
-#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-forward void:EnableTirePopping(bool:enable);
-
-/**
- * <library>omp_core</library>
- * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text
- * at the bottom-right of the screen as they enter the area.  This is a gamemode option and should be
- * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
- * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
- */
-#pragma deprecated Show names manually.
-forward EnableZoneNames(bool:enable);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-forward FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-forward FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
+native Float:GetModeRestartTime();
 
 /**
  * <library>omp_core</library>
@@ -542,31 +509,6 @@ forward FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
  * <seealso name="OnGameModeExit" />
  */
 native void:GameModeExit();
-
-/**
- * <library>omp_core</library>
- * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
- * <param name="format">The text to be displayed or formatted</param>
- * <param name="time">The duration of the text being shown in milliseconds</param>
- * <param name="style">The style of text to be displayed</param>
- * <seealso name="GameTextForPlayer" />
- * <seealso name="TextDrawShowForAll" />
- * <returns>This function always returns <b><c>1</c></b>.</returns>
- */
-native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_core</library>
- * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
- * <param name="format">The text to be displayed or formatted</param>
- * <param name="time">The duration of the text being shown in milliseconds</param>
- * <param name="style">The style of text to be displayed</param>
- * <seealso name="GameTextForPlayer" />
- * <seealso name="TextDrawShowForAll" />
- * <returns>This function always returns <b><c>1</c></b>.</returns>
- */
-#pragma deprecated Use `GameTextForAll`.
-native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -616,71 +558,69 @@ native bool:GetConsoleVarAsBool(const cvar[]);
 
 /**
  * <library>omp_core</library>
- * <summary>Get the string value of a server variable.</summary>
- * <param name="cvar">The name of the string variable to get the value of</param>
- * <param name="buffer">An array into which to store the value, passed by reference</param>
- * <param name="len">The length of the string that should be stored</param>
- * <seealso name="GetServerVarAsInt" />
- * <seealso name="GetServerVarAsBool" />
- * <remarks>This function is deprecated.  Please see
- * <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
- * <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b>
- * server variable, will <b>crash</b> your server! This is a bug.</remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <remarks>When filterscripts or plugins is specified as the cvar, this function only returns the name
- * of the first specified filterscript or plugin.  This is a bug.</remarks>
- * <returns>The length of the returned string. <b><c>0</c></b> if the specified server variable is not
- * a string or doesn't exist.</returns>
  */
-#pragma deprecated Use `GetConsoleVarAsString`.
-native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = GetConsoleVarAsString;
+native void:AllowNickNameCharacter(character, bool:allow);
 
 /**
  * <library>omp_core</library>
- * <summary>Get the integer value of a server variable.</summary>
- * <param name="cvar">The name of the integer variable to get the value of</param>
- * <seealso name="GetServerVarAsString" />
- * <seealso name="GetServerVarAsBool" />
- * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <returns>The value of the specified server variable.  0 if the specified server variable is not an
- * integer or doesn't exist.</returns>
  */
-#pragma deprecated Use `GetConsoleVarAsInt`.
-native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
+native bool:IsNickNameCharacterAllowed(character);
 
 /**
  * <library>omp_core</library>
- * <summary>Get the boolean value of a server variable.</summary>
- * <param name="cvar">The name of the boolean variable to get the value of</param>
- * <seealso name="GetServerVarAsString" />
- * <seealso name="GetServerVarAsInt" />
- * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable
- * is not a boolean or doesn't exist.</returns>
  */
-#pragma deprecated Use `GetConsoleVarAsBool`.
-native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
+native bool:AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
- * <summary>Get the name of a weapon.</summary>
- * <param name="weaponid">The ID of the weapon to get the name of</param>
- * <param name="weapon">An array to store the weapon's name in, passed by reference</param>
- * <param name="len">The maximum length of the weapon name to store.</param>
- * <seealso name="GetPlayerWeapon" />
+ */
+native bool:SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
+ */
+native bool:RemoveServerRule(const rule[]);
+
+/**
+ * <library>omp_core</library>
+ */
+native bool:IsValidServerRule(const rule[]);
+
+/**
+ * <library>omp_core</library>
+ */
+forward bool:SetServerRuleFlags(const rule[], E_SERVER_RULE_FLAGS:flags);
+
+/**
+ * <library>omp_core</library>
+ */
+forward E_SERVER_RULE_FLAGS:GetServerRuleFlags(const rule[]);
+
+/*
+native #Client Config();
+*/
+
+/**
+ * <library>omp_core</library>
+ * <summary>Disable all the interior entrances and exits in the game (the yellow arrows at doors).</summary>
  * <seealso name="AllowInteriorWeapons" />
- * <seealso name="GivePlayerWeapon" />
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
- * </returns>
+ * <remarks>If the gamemode is changed after this function has been used, and the new gamemode doesn't
+ * disable markers, the markers will NOT reappear for already-connected players (but will for newly
+ * connected players).</remarks>
+ * <remarks>This function will only work if it has been used BEFORE a player connects (it is recommended
+ * to use it in OnGameModeInit).  It will not remove a connected player's markers.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+native DisableInteriorEnterExits();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Disables the nametag Line-Of-Sight checking so that players can see nametags through objects.</summary>
+ * <seealso name="ShowNameTags" />
+ * <seealso name="ShowPlayerNameTagForPlayer" />
+ * <remarks>This can not be reversed until the server restarts.</remarks>
+ */
+native DisableNameTagLOS();
 
 /**
  * <library>omp_core</library>
@@ -704,51 +644,6 @@ native LimitGlobalChatRadius(Float:chatRadius);
  * <seealso name="LimitGlobalChatRadius" />
  */
 native LimitPlayerMarkerRadius(Float:markerRadius);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-forward RedirectDownload(playerid, const url[]);
-
-/**
- * <library>omp_core</library>
- * <summary>Sends a message in the name of a player to all other players on the server.  The line will
- * start with the sender's name in their colour, followed by the message in white.</summary>
- * <param name="senderid">The ID of the sender.  If invalid, the message will not be sent</param>
- * <param name="format">The message that will be sent.  May be optionally formatted.</param>
- * <seealso name="SendPlayerMessageToPlayer" />
- * <seealso name="SendClientMessageToAll" />
- * <seealso name="OnPlayerText" />
- * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
- *  It will result in crashes otherwise.</remarks>
- */
-native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_core</library>
- * <summary>Sends a message in the name of a player to all other players on the server.  The line will
- * start with the sender's name in their colour, followed by the message in white.</summary>
- * <param name="senderid">The ID of the sender.  If invalid, the message will not be sent</param>
- * <param name="format">The message that will be sent.  May be optionally formatted.</param>
- * <seealso name="SendPlayerMessageToPlayer" />
- * <seealso name="SendClientMessageToAll" />
- * <seealso name="OnPlayerText" />
- * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
- *  It will result in crashes otherwise.</remarks>
- */
-#pragma deprecated Use `SendPlayerMessageToAll`.
-native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_core</library>
- * <summary>This function does not work in the current SA:MP version! </summary>
- * <seealso name="CreatePickup" />
- * <seealso name="GivePlayerMoney" />
- * <seealso name="OnPlayerDeath" />
- */
-#pragma deprecated Use `CreatePickup`.
-forward void:SetDeathDropAmount(amount);
 
 /**
  * <library>omp_core</library>
@@ -812,23 +707,6 @@ native void:SetWeather(weatherid);
  * TogglePlayerClock</a>.</remarks>
  */
 native void:SetWorldTime(hour);
-
-/**
- * <library>omp_core</library>
- * <summary>Hashes a password using the SHA-256 hashing algorithm.  Includes a salt.  The output is
- * always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
- * <param name="password">The password to hash</param>
- * <param name="salt">The salt to use in the hash</param>
- * <param name="output">The returned hash</param>
- * <param name="size">The returned hash maximum length</param>
- * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would
- * form 'foobar'. </remarks>
- * <remarks>The salt should be random, unique for each player and at least as long as the hashed password.
- *  It is to be stored alongside the actual hash in the player's account. </remarks>
- * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
- */
-#pragma deprecated Use BCrypt for hashing passwords.
-native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
 
 /**
  * <library>omp_core</library>
@@ -905,90 +783,6 @@ native bool:ChatTextReplacementToggled();
 
 /**
  * <library>omp_core</library>
- */
-native bool:IsValidNickName(const name[]);
-
-/**
- * <library>omp_core</library>
- */
-native void:AllowNickNameCharacter(character, bool:allow);
-
-/**
- * <library>omp_core</library>
- */
-native bool:IsNickNameCharacterAllowed(character);
-
-/**
- * <library>omp_core</library>
- * <summary>Create an explosion at the specified coordinates.</summary>
- * <param name="x">The x coordinate of the explosion</param>
- * <param name="y">The y coordinate of the explosion</param>
- * <param name="z">The z coordinate of the explosion</param>
- * <param name="type">The type of explosion</param>
- * <param name="radius">The explosion radius</param>
- * <seealso name="CreateExplosionForPlayer" />
- * <remarks>There is a limit as to how many explosions can be seen at once by a player.  This is roughly
- * 10.</remarks>
- * <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius
- * values are invalid.</returns>
- */
-native void:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
-
-/**
- * <library>omp_core</library>
- */
-native GetWeaponSlot(WEAPON:weaponid);
-
-/**
- * <library>omp_core</library>
- */
-native bool:AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_core</library>
- */
-native bool:SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_core</library>
- */
-native bool:RemoveServerRule(const rule[]);
-
-/**
- * <library>omp_core</library>
- */
-native bool:IsValidServerRule(const rule[]);
-
-/**
- * <library>omp_core</library>
- */
-forward bool:SetServerRuleFlags(const rule[], E_SERVER_RULE_FLAGS:flags);
-
-/**
- * <library>omp_core</library>
- */
-forward E_SERVER_RULE_FLAGS:GetServerRuleFlags(const rule[]);
-
-/**
- * <library>omp_core</library>
- */
-native GetRunningTimers();
-
-/**
- * <library>omp_core</library>
- * <summary>Get the animation library/name for the index.</summary>
- * <param name="index">The animation index, returned by <a href="#GetPlayerAnimationIndex">GetPlayerAnimationIndex</a></param>
- * <param name="animationLibrary">String variable that stores the animation library</param>
- * <param name="len1">Size of the string that stores the animation library</param>
- * <param name="animationName">String variable that stores the animation name</param>
- * <param name="len2">Size of the string that stores the animation name</param>
- * <seealso name="GetPlayerAnimationIndex" />
- * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
- */
-native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibrary), animationName[], len2 = sizeof (animationName));
-
-/**
- * <library>omp_core</library>
  * <summary>Enables or disables stunt bonuses for all players.  If enabled, players will receive monetary
  * rewards when performing a stunt in a vehicle (e.g.  a wheelie).</summary>
  * <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
@@ -996,17 +790,251 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
  */
 native EnableStuntBonusForAll(bool:enable);
 
-/**
- * <library>omp_core</library>
- * <param name="seconds">The delay between loading main scripts, in seconds.</param>
- */
-native SetModeRestartTime(Float:seconds);
+/*
+native #NPCs();
+*/
 
 /**
  * <library>omp_core</library>
- * <returns>The delay between loading main scripts, in seconds.</returns>
+ * <summary>Connect an NPC to the server.</summary>
+ * <param name="name">The name the NPC should connect as.  Must follow the same rules as normal player
+ * names</param>
+ * <param name="script">The NPC script name that is located in the <b>npcmodes</b> folder (without the
+ * .amx extension)</param>
+ * <seealso name="IsPlayerNPC" />
+ * <seealso name="OnPlayerConnect" />
+ * <remarks>NPCs do not have nametags.  These can be scripted with
+ * <a href="#Attach3DTextLabelToPlayer">Attach3DTextLabelToPlayer</a>.</remarks>
+ * <returns>This function always return <b><c>1</c></b>.</returns>
  */
-native Float:GetModeRestartTime();
+native ConnectNPC(const name[], const script[]);
+
+/*
+native #DL();
+*/
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>omp_core</library>
+ * <remarks>Not implemented.</remarks>
+ */
+forward RedirectDownload(playerid, const url[]);
+
+/*
+native #Deprecated();
+*/
+
+/**
+ * <library>omp_core</library>
+ * <summary>Gets the highest playerid currently in use on the server.</summary>
+ * <seealso name="GetVehiclePoolSize" />
+ * <seealso name="GetMaxPlayers" />
+ * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
+ * players.</returns>
+ */
+#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
+native GetPlayerPoolSize();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Gets the highest vehicleid currently in use on the server.</summary>
+ * <seealso name="GetPlayerPoolSize" />
+ * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
+ * created vehicles.</returns>
+ */
+#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
+native GetVehiclePoolSize();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Gets the highest actorid created on the server.</summary>
+ * <seealso name="CreateActor" />
+ * <seealso name="IsValidActor" />
+ * <seealso name="SetActorHealth" />
+ * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
+ */
+#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
+native GetActorPoolSize();
+
+/**
+ * <library>omp_core</library>
+ * <summary>This function will determine whether RCON admins will be teleported to their waypoint when
+ * they set one.</summary>
+ * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
+ * <remarks><b>This function is deprecated.  Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+#pragma deprecated Use `OnPlayerClickMap`.
+forward void:AllowAdminTeleport(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
+ * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b>
+ * to disable weapons in interiors</param>
+ * <seealso name="SetPlayerInterior" />
+ * <seealso name="GetPlayerInterior" />
+ * <seealso name="OnPlayerInteriorChange" />
+ */
+#pragma deprecated Use `OnPlayerInteriorChange`.
+forward void:AllowInteriorWeapons(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
+ * <remarks>Tire popping is enabled by default.  If
+ * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
+ * OnVehicleDamageStatusUpdate</a>.</remarks>
+ */
+#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
+forward void:EnableTirePopping(bool:enable);
+
+/**
+ * <library>omp_core</library>
+ * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text
+ * at the bottom-right of the screen as they enter the area.  This is a gamemode option and should be
+ * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
+ * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
+ */
+#pragma deprecated Show names manually.
+forward EnableZoneNames(bool:enable);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
+ * <param name="format">The text to be displayed or formatted</param>
+ * <param name="time">The duration of the text being shown in milliseconds</param>
+ * <param name="style">The style of text to be displayed</param>
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="TextDrawShowForAll" />
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
+ */
+#pragma deprecated Use `GameTextForAll`.
+native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the string value of a server variable.</summary>
+ * <param name="cvar">The name of the string variable to get the value of</param>
+ * <param name="buffer">An array into which to store the value, passed by reference</param>
+ * <param name="len">The length of the string that should be stored</param>
+ * <seealso name="GetServerVarAsInt" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see
+ * <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
+ * <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b>
+ * server variable, will <b>crash</b> your server! This is a bug.</remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <remarks>When filterscripts or plugins is specified as the cvar, this function only returns the name
+ * of the first specified filterscript or plugin.  This is a bug.</remarks>
+ * <returns>The length of the returned string. <b><c>0</c></b> if the specified server variable is not
+ * a string or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsString`.
+native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = GetConsoleVarAsString;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the integer value of a server variable.</summary>
+ * <param name="cvar">The name of the integer variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable.  0 if the specified server variable is not an
+ * integer or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsInt`.
+native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the boolean value of a server variable.</summary>
+ * <param name="cvar">The name of the boolean variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsInt" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable
+ * is not a boolean or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsBool`.
+native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Sends a message in the name of a player to all other players on the server.  The line will
+ * start with the sender's name in their colour, followed by the message in white.</summary>
+ * <param name="senderid">The ID of the sender.  If invalid, the message will not be sent</param>
+ * <param name="format">The message that will be sent.  May be optionally formatted.</param>
+ * <seealso name="SendPlayerMessageToPlayer" />
+ * <seealso name="SendClientMessageToAll" />
+ * <seealso name="OnPlayerText" />
+ * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
+ *  It will result in crashes otherwise.</remarks>
+ */
+#pragma deprecated Use `SendPlayerMessageToAll`.
+native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_core</library>
+ * <summary>This function does not work in the current SA:MP version! </summary>
+ * <seealso name="CreatePickup" />
+ * <seealso name="GivePlayerMoney" />
+ * <seealso name="OnPlayerDeath" />
+ */
+#pragma deprecated Use `CreatePickup`.
+forward void:SetDeathDropAmount(amount);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Hashes a password using the SHA-256 hashing algorithm.  Includes a salt.  The output is
+ * always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
+ * <param name="password">The password to hash</param>
+ * <param name="salt">The salt to use in the hash</param>
+ * <param name="output">The returned hash</param>
+ * <param name="size">The returned hash maximum length</param>
+ * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would
+ * form 'foobar'. </remarks>
+ * <remarks>The salt should be random, unique for each player and at least as long as the hashed password.
+ *  It is to be stored alongside the actual hash in the player's account. </remarks>
+ * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
+ */
+#pragma deprecated Use BCrypt for hashing passwords.
+native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
 
 /**
  * <summary>This callback is triggered when the gamemode starts.</summary>
