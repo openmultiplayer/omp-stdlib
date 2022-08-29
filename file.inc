@@ -43,7 +43,7 @@ enum seek_whence
 {
 	seek_start,
 	seek_current,
-	seek_end,
+	seek_end
 }
 static stock seek_whence:_@seek_whence() { return seek_whence; }
 

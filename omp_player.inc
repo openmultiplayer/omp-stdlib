@@ -198,7 +198,7 @@ enum WEAPONSKILL:__WEAPONSKILL
 	WEAPONSKILL_MP5,
 	WEAPONSKILL_AK47,
 	WEAPONSKILL_M4,
-	WEAPONSKILL_SNIPERRIFLE,
+	WEAPONSKILL_SNIPERRIFLE
 }
 static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 
@@ -248,7 +248,7 @@ enum KEY:__KEY (<<= 1)
 	KEY_UP                                     = -128,
 	KEY_DOWN                                   =  128,
 	KEY_LEFT                                   = -128,
-	KEY_RIGHT                                  =  128,
+	KEY_RIGHT                                  =  128
 }
 static stock KEY:_@KEY() { return __KEY; }
 
