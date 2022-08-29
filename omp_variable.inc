@@ -48,6 +48,25 @@ enum VARTYPE:__VARTYPE
 }
 static stock VARTYPE:_@VARTYPE() { return __VARTYPE; }
 
+/*
+                                                    
+     ad88888ba   8b           d8                        
+    d8"     "8b  `8b         d8'                        
+    Y8,           `8b       d8'                         
+    `Y8aaaaa,      `8b     d8'  ,adPPYYba,  8b,dPPYba,  
+      `"""""8b,     `8b   d8'   ""     `Y8  88P'   "Y8  
+            `8b      `8b d8'    ,adPPPPP88  88          
+    Y8a     a8P       `888'     88,    ,88  88          
+     "Y88888P"         `8'      `"8bbdP"Y8  88          
+                                                    
+                                                    
+
+*/
+
+/*
+native #Server Variables();
+*/
+
 /**
  * <library>omp_variable</library>
  * <summary>Set an integer server variable.</summary>
@@ -213,6 +232,25 @@ native bool:GetSVarNameAtIndex(index, output[], size = sizeof (output));
  * <returns>Returns the type of the SVar.  See table below.</returns>
  */
 native VARTYPE:GetSVarType(const svar[]);
+
+/*
+                                                    
+    88888888ba   8b           d8                        
+    88      "8b  `8b         d8'                        
+    88      ,8P   `8b       d8'                         
+    88aaaaaa8P'    `8b     d8'  ,adPPYYba,  8b,dPPYba,  
+    88""""""'       `8b   d8'   ""     `Y8  88P'   "Y8  
+    88               `8b d8'    ,adPPPPP88  88          
+    88                `888'     88,    ,88  88          
+    88                 `8'      `"8bbdP"Y8  88          
+                                                    
+                                                    
+
+*/
+
+/*
+native #Player Variables();
+*/
 
 /**
  * <library>omp_variable</library>

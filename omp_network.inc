@@ -66,6 +66,21 @@ enum DOWNLOAD_REQUEST:__DOWNLOAD_REQUEST
 }
 static stock DOWNLOAD_REQUEST:_@DOWNLOAD_REQUEST() { return __DOWNLOAD_REQUEST; }
 
+/*
+                                                                           
+    888b      88                       88                                      
+    8888b     88                ,d     ""                                      
+    88 `8b    88                88                                             
+    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
+    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
+    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
+    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
+    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
+                                                                           
+                                                                           
+
+*/
+
 /**
  * <library>omp_network</library>
  * <summary>Kicks a player from the server.  They will have to quit the game and re-connect if they
@@ -146,11 +161,114 @@ native bool:IsBanned(const ipaddress[]);
 
 /**
  * <library>omp_network</library>
- * <summary>Gets the tick rate (like FPS) of the server.</summary>
- * <seealso name="GetNetworkStats" />
- * <returns>The server tick rate (per second).  Returns <b><c>0</c></b> when the server is just started.</returns>
+ * <summary>Check if a player is logged in as an RCON admin.</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <seealso name="SendRconCommand" />
+ * <seealso name="OnRconLoginAttempt" />
+ * <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
  */
-native GetServerTickRate();
+native bool:IsPlayerAdmin(playerid);
+
+/**
+ * <library>omp_network</library>
+ * <summary>Sends an RCON (Remote Console) command.</summary>
+ * <param name="format">The RCON command to be executed.  May be optionally formatted.</param>
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="OnRconCommand" />
+ * <seealso name="OnRconLoginAttempt" />
+ * <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
+ * <remarks>'password 0' will remove the server's password if one is set.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
+ * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
+ */
+native SendRconCommand(const format[], OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_network</library>
+ * <summary>Returns the client version, as reported by the player.</summary>
+ * <param name="playerid">The ID of the player to get the client version of</param>
+ * <param name="version">The string to store the player's version in, passed by reference</param>
+ * <param name="len">The maximum length of the version</param>
+ * <seealso name="GetPlayerName" />
+ * <seealso name="GetPlayerPing" />
+ * <seealso name="GetPlayerIp" />
+ * <remarks>The string the version gets stored in will be empty if playerid is an NPC.</remarks>
+ * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
+ */
+native GetPlayerVersion(playerid, version[], len = sizeof (version));
+
+/**
+ * <library>omp_network</library>
+ * <summary>Get a players unique ID.</summary>
+ * <param name="playerid">The player to get the unique ID of</param>
+ * <param name="serial">Where to save the unique ID</param>
+ * <param name="len">The size of "serial" (the serial)</param>
+ */
+native GPCI(playerid, serial[], len = sizeof (serial)) = gpci;
+
+/**
+ * <library>omp_network</library>
+ * <summary>Get the specified player's IP address and store it in a string.</summary>
+ * <param name="playerid">The ID of the player to get the IP address of</param>
+ * <param name="ip">An array into which to store the player's IP address, passed by reference</param>
+ * <param name="len">The maximum length of the IP address (recommended 16)</param>
+ * <seealso name="NetStats_GetIpPort" />
+ * <seealso name="GetPlayerName" />
+ * <seealso name="GetPlayerPing" />
+ * <seealso name="GetPlayerVersion" />
+ * <seealso name="OnIncomingConnection" />
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnPlayerDisconnect" />
+ * <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>
+ * because the player is already disconnected.  It will return an invalid IP (<b><c>255.255.255.255</c></b>).
+ *  Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under
+ * <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
+ * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
+ */
+native GetPlayerIp(playerid, ip[], len = sizeof (ip));
+
+/**
+ * <library>omp_network</library>
+ * <summary>Get the ping of a player.  The ping measures the amount of time it takes for the server
+ * to 'ping' the client and for the client to send the message back.</summary>
+ * <param name="playerid">The ID of the player to get the ping of</param>
+ * <seealso name="GetPlayerIp" />
+ * <seealso name="GetPlayerName" />
+ * <seealso name="GetPlayerVersion" />
+ * <remarks>Player's ping may be <b><c>65535</c></b> for a while after a player connects</remarks>
+ * <returns>The current ping of the player (expressed in milliseconds).</returns>
+ */
+native GetPlayerPing(playerid);
+
+/**
+ * <library>omp_network</library>
+ * <summary>Perform a memory check on the client.</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <param name="type">The type of check to perform</param>
+ * <param name="memoryAddress">The base address to check</param>
+ * <param name="memoryOffset">The offset from the base address</param>
+ * <param name="byteCount">The number of bytes to check</param>
+ */
+native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
+
+/*
+                                                                                       
+    888b      88                                                                           
+    8888b     88                ,d                  ,d                   ,d                
+    88 `8b    88                88                  88                   88                
+    88  `8b   88   ,adPPYba,  MM88MMM  ,adPPYba,  MM88MMM  ,adPPYYba,  MM88MMM  ,adPPYba,  
+    88   `8b  88  a8P_____88    88     I8[    ""    88     ""     `Y8    88     I8[    ""  
+    88    `8b 88  8PP"""""""    88      `"Y8ba,     88     ,adPPPPP88    88      `"Y8ba,   
+    88     `8888  "8b,   ,aa    88,    aa    ]8I    88,    88,    ,88    88,    aa    ]8I  
+    88      `888   `"Ybbd8"'    "Y888  `"YbbdP"'    "Y888  `"8bbdP"Y8    "Y888  `"YbbdP"'  
+                                                                                       
+                                                                                       
+
+*/
+
+/*
+native #Netstats();
+*/
 
 /**
  * <library>omp_network</library>
@@ -347,6 +465,25 @@ native CONNECTION_STATUS:NetStats_ConnectionStatus(playerid);
  */
 native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 
+/*
+                                                                                                            
+    88888888888                                                                                             88  
+    88                                                                  ,d       ,d                         88  
+    88                                                                  88       88                         88  
+    88aaaaa   ,adPPYba,   8b,dPPYba,  88,dPYba,,adPYba,   ,adPPYYba,  MM88MMM  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88"""""  a8"     "8a  88P'   "Y8  88P'   "88"    "8a  ""     `Y8    88       88    a8P_____88  a8"    `Y88  
+    88       8b       d8  88          88      88      88  ,adPPPPP88    88       88    8PP"""""""  8b       88  
+    88       "8a,   ,a8"  88          88      88      88  88,    ,88    88,      88,   "8b,   ,aa  "8a,   ,d88  
+    88        `"YbbdP"'   88          88      88      88  `"8bbdP"Y8    "Y888    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                                                                                                            
+                                                                                                            
+
+*/
+
+/*
+native #Formatted();
+*/
+
 /**
  * <library>omp_network</library>
  * <summary>Gets the server's network stats and stores them in a string.</summary>
@@ -410,29 +547,24 @@ native GetNetworkStats(output[], size = sizeof (output));
  */
 native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 
-/**
- * <library>omp_network</library>
- * <summary>Check if a player is logged in as an RCON admin.</summary>
- * <param name="playerid">The ID of the player to check</param>
- * <seealso name="SendRconCommand" />
- * <seealso name="OnRconLoginAttempt" />
- * <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
- */
-native bool:IsPlayerAdmin(playerid);
+/*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
 
-/**
- * <library>omp_network</library>
- * <summary>Sends an RCON (Remote Console) command.</summary>
- * <param name="format">The RCON command to be executed.  May be optionally formatted.</param>
- * <seealso name="IsPlayerAdmin" />
- * <seealso name="OnRconCommand" />
- * <seealso name="OnRconLoginAttempt" />
- * <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
- * <remarks>'password 0' will remove the server's password if one is set.</remarks>
- * <returns>This function always returns <b><c>1</c></b>.</returns>
- * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
- */
-native SendRconCommand(const format[], OPEN_MP_TAGS:...);
+*/
+
+/*
+native #Deprecated();
+*/
 
 /**
  * <library>omp_network</library>
@@ -451,20 +583,6 @@ native SendRconCommandf(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_network</library>
- * <summary>Returns the client version, as reported by the player.</summary>
- * <param name="playerid">The ID of the player to get the client version of</param>
- * <param name="version">The string to store the player's version in, passed by reference</param>
- * <param name="len">The maximum length of the version</param>
- * <seealso name="GetPlayerName" />
- * <seealso name="GetPlayerPing" />
- * <seealso name="GetPlayerIp" />
- * <remarks>The string the version gets stored in will be empty if playerid is an NPC.</remarks>
- * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
- */
-native GetPlayerVersion(playerid, version[], len = sizeof (version));
-
-/**
- * <library>omp_network</library>
  * <summary>Get a players unique ID.</summary>
  * <param name="playerid">The player to get the unique ID of</param>
  * <param name="serial">Where to save the unique ID</param>
@@ -473,59 +591,20 @@ native GetPlayerVersion(playerid, version[], len = sizeof (version));
 #pragma deprecated Use `GPCI`.
 native gpci(playerid, serial[], len = sizeof (serial));
 
-/**
- * <library>omp_network</library>
- * <summary>Get a players unique ID.</summary>
- * <param name="playerid">The player to get the unique ID of</param>
- * <param name="serial">Where to save the unique ID</param>
- * <param name="len">The size of "serial" (the serial)</param>
- */
-native GPCI(playerid, serial[], len = sizeof (serial)) = gpci;
+/*
+                                                                                                  
+      ,ad8888ba,               88  88  88                                   88                    
+     d8"'    `"8b              88  88  88                                   88                    
+    d8'                        88  88  88                                   88                    
+    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
+    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
+    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
+     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
+      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
+                                                                                                  
+                                                                                                  
 
-/**
- * <library>omp_network</library>
- * <summary>Get the specified player's IP address and store it in a string.</summary>
- * <param name="playerid">The ID of the player to get the IP address of</param>
- * <param name="ip">An array into which to store the player's IP address, passed by reference</param>
- * <param name="len">The maximum length of the IP address (recommended 16)</param>
- * <seealso name="NetStats_GetIpPort" />
- * <seealso name="GetPlayerName" />
- * <seealso name="GetPlayerPing" />
- * <seealso name="GetPlayerVersion" />
- * <seealso name="OnIncomingConnection" />
- * <seealso name="OnPlayerConnect" />
- * <seealso name="OnPlayerDisconnect" />
- * <remarks>This function does not work when used in <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>
- * because the player is already disconnected.  It will return an invalid IP (<b><c>255.255.255.255</c></b>).
- *  Save players' IPs under <a href="#OnPlayerConnect">OnPlayerConnect</a> if they need to be used under
- * <a href="#OnPlayerDisconnect">OnPlayerDisconnect</a>. </remarks>
- * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
- */
-native GetPlayerIp(playerid, ip[], len = sizeof (ip));
-
-/**
- * <library>omp_network</library>
- * <summary>Get the ping of a player.  The ping measures the amount of time it takes for the server
- * to 'ping' the client and for the client to send the message back.</summary>
- * <param name="playerid">The ID of the player to get the ping of</param>
- * <seealso name="GetPlayerIp" />
- * <seealso name="GetPlayerName" />
- * <seealso name="GetPlayerVersion" />
- * <remarks>Player's ping may be <b><c>65535</c></b> for a while after a player connects</remarks>
- * <returns>The current ping of the player (expressed in milliseconds).</returns>
- */
-native GetPlayerPing(playerid);
-
-/**
- * <library>omp_network</library>
- * <summary>Perform a memory check on the client.</summary>
- * <param name="playerid">The ID of the player to check</param>
- * <param name="type">The type of check to perform</param>
- * <param name="memoryAddress">The base address to check</param>
- * <param name="memoryOffset">The offset from the base address</param>
- * <param name="byteCount">The number of bytes to check</param>
- */
-native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
+*/
 
 /**
  * <summary>This callback is called when a SendClientCheck request comletes</summary>

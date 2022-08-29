@@ -111,6 +111,92 @@ enum EDIT_RESPONSE:__EDIT_RESPONSE
 static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 
 /*
+                                                                           
+    888b      88                       88                                      
+    8888b     88                ,d     ""                                      
+    88 `8b    88                88                                             
+    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
+    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
+    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
+    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
+    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
+                                                                           
+                                                                           
+
+*/
+
+/**
+ * <library>omp_object</library>
+ * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
+ * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
+ * <b><c>0</c></b> to enable them (enabled by default)</param>
+ * <seealso name="SetObjectNoCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
+ * not toggle existing objects' camera collisions.</remarks>
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ */
+native bool:SetObjectsDefaultCameraCol(bool:disable);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:HideObjectForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:ShowObjectForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:IsObjectHiddenForPlayer(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:NewObjectsHiddenForPlayer(playerid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native GetObjectType(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
+
+/*
+                                                                 
+      ,ad8888ba,   88               88                       88  
+     d8"'    `"8b  88               88                       88  
+    d8'            88               88                       88  
+    88             88   ,adPPYba,   88,dPPYba,   ,adPPYYba,  88  
+    88      88888  88  a8"     "8a  88P'    "8a  ""     `Y8  88  
+    Y8,        88  88  8b       d8  88       d8  ,adPPPPP88  88  
+     Y8a.    .a88  88  "8a,   ,a8"  88b,   ,a8"  88,    ,88  88  
+      `"Y88888P"   88   `"YbbdP"'   8Y"Ybbd8"'   `"8bbdP"Y8  88  
+                                                             
+                           
+
+*/
+
+/*
 native #Global();
 */
 
@@ -587,6 +673,21 @@ native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = si
 native bool:IsObjectNoCameraCol(objectid);
 
 /*
+                                                                                                                
+    88888888ba                                    88888888ba   88                                                   
+    88      "8b                                   88      "8b  88                                                   
+    88      ,8P                                   88      ,8P  88                                                   
+    88aaaaaa8P'  ,adPPYba,  8b,dPPYba,            88aaaaaa8P'  88  ,adPPYYba,  8b       d8   ,adPPYba,  8b,dPPYba,  
+    88""""""'   a8P_____88  88P'   "Y8  aaaaaaaa  88""""""'    88  ""     `Y8  `8b     d8'  a8P_____88  88P'   "Y8  
+    88          8PP"""""""  88          """"""""  88           88  ,adPPPPP88   `8b   d8'   8PP"""""""  88          
+    88          "8b,   ,aa  88                    88           88  88,    ,88    `8b,d8'    "8b,   ,aa  88          
+    88           `"Ybbd8"'  88                    88           88  `"8bbdP"Y8      Y88'      `"Ybbd8"'  88          
+                                                                                   d8'                              
+                                                                                  d8'                               
+
+*/                                  
+
+/*
 native #Per-Player();
 */
 
@@ -1000,64 +1101,19 @@ native GetPlayerSurfingPlayerObjectID(playerid);
 native GetPlayerCameraTargetPlayerObj(playerid);
 
 /*
-native #Common();
+                                                                                                                                       
+           db                                                 88                                                                           
+          d88b        ,d       ,d                             88                                                         ,d                
+         d8'`8b       88       88                             88                                                         88                
+        d8'  `8b    MM88MMM  MM88MMM  ,adPPYYba,   ,adPPYba,  88,dPPYba,   88,dPYba,,adPYba,    ,adPPYba,  8b,dPPYba,  MM88MMM  ,adPPYba,  
+       d8YaaaaY8b     88       88     ""     `Y8  a8"     ""  88P'    "8a  88P'   "88"    "8a  a8P_____88  88P'   `"8a   88     I8[    ""  
+      d8""""""""8b    88       88     ,adPPPPP88  8b          88       88  88      88      88  8PP"""""""  88       88   88      `"Y8ba,   
+     d8'        `8b   88,      88,    88,    ,88  "8a,   ,aa  88       88  88      88      88  "8b,   ,aa  88       88   88,    aa    ]8I  
+    d8'          `8b  "Y888    "Y888  `"8bbdP"Y8   `"Ybbd8"'  88       88  88      88      88   `"Ybbd8"'  88       88   "Y888  `"YbbdP"'  
+                                                                                                                                       
+                                                                                                                                       
+
 */
-
-/**
- * <library>omp_object</library>
- * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
- * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
- * <b><c>0</c></b> to enable them (enabled by default)</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
- * not toggle existing objects' camera collisions.</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- */
-native bool:SetObjectsDefaultCameraCol(bool:disable);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:HideObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:ShowObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:IsObjectHiddenForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:NewObjectsHiddenForPlayer(playerid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native GetObjectType(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
 
 /*
 native #Attachments();
@@ -1173,6 +1229,21 @@ native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
 native EditAttachedObject(playerid, index);
 
 /*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
+
+*/
+
+/*
 native #Deprecated();
 */
 
@@ -1248,6 +1319,21 @@ native bool:CancelEdit(playerid);
  */
 #pragma deprecated Use `GetObjectMovingTargetPos`
 native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
+
+/*
+                                                                                                  
+      ,ad8888ba,               88  88  88                                   88                    
+     d8"'    `"8b              88  88  88                                   88                    
+    d8'                        88  88  88                                   88                    
+    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
+    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
+    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
+     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
+      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
+                                                                                                  
+                                                                                                  
+
+*/
 
 /**
  * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>

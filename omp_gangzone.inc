@@ -43,6 +43,21 @@ const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 #define INVALID_GANG_ZONE                      0xFFFFFFFF
 
 /*
+                                                                 
+      ,ad8888ba,   88               88                       88  
+     d8"'    `"8b  88               88                       88  
+    d8'            88               88                       88  
+    88             88   ,adPPYba,   88,dPPYba,   ,adPPYYba,  88  
+    88      88888  88  a8"     "8a  88P'    "8a  ""     `Y8  88  
+    Y8,        88  88  8b       d8  88       d8  ,adPPPPP88  88  
+     Y8a.    .a88  88  "8a,   ,a8"  88b,   ,a8"  88,    ,88  88  
+      `"Y88888P"   88   `"YbbdP"'   8Y"Ybbd8"'   `"8bbdP"Y8  88  
+                                                             
+                           
+
+*/
+
+/*
 native #Global();
 */
 
@@ -284,6 +299,21 @@ native GangZoneGetPos(zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX = 0.0,
 native UseGangZoneCheck(zoneid, bool:enable);
 
 /*
+                                                                                                                
+    88888888ba                                    88888888ba   88                                                   
+    88      "8b                                   88      "8b  88                                                   
+    88      ,8P                                   88      ,8P  88                                                   
+    88aaaaaa8P'  ,adPPYba,  8b,dPPYba,            88aaaaaa8P'  88  ,adPPYYba,  8b       d8   ,adPPYba,  8b,dPPYba,  
+    88""""""'   a8P_____88  88P'   "Y8  aaaaaaaa  88""""""'    88  ""     `Y8  `8b     d8'  a8P_____88  88P'   "Y8  
+    88          8PP"""""""  88          """"""""  88           88  ,adPPPPP88   `8b   d8'   8PP"""""""  88          
+    88          "8b,   ,aa  88                    88           88  88,    ,88    `8b,d8'    "8b,   ,aa  88          
+    88           `"Ybbd8"'  88                    88           88  `"8bbdP"Y8      Y88'      `"Ybbd8"'  88          
+                                                                                   d8'                              
+                                                                                  d8'                               
+
+*/                                  
+
+/*
 native #Per-Player();
 */
 
@@ -361,6 +391,21 @@ native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY = 0.0, &F
 native UsePlayerGangZoneCheck(zoneid, bool:enable);
 
 /*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
+
+*/
+
+/*
 native #Deprecated();
 */
 
@@ -387,6 +432,21 @@ native PlayerGangZoneGetColor(playerid, zoneid);
  */
 #pragma deprecated Use `PlayerGangZoneGetFlashColour`
 native PlayerGangZoneGetFlashColor(playerid, zoneid);
+
+/*
+                                                                                                  
+      ,ad8888ba,               88  88  88                                   88                    
+     d8"'    `"8b              88  88  88                                   88                    
+    d8'                        88  88  88                                   88                    
+    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
+    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
+    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
+     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
+      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
+                                                                                                  
+                                                                                                  
+
+*/
 
 /**
  */

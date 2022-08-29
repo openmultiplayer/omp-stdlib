@@ -56,6 +56,21 @@ enum HTTP_ERROR:__HTTP_ERROR
 }
 static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
 
+/*
+                                                                           
+    888b      88                       88                                      
+    8888b     88                ,d     ""                                      
+    88 `8b    88                88                                             
+    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
+    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
+    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
+    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
+    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
+                                                                           
+                                                                           
+
+*/
+
 /**
  * <library>omp_http</library>
  * <summary>Sends a threaded HTTP request.</summary>

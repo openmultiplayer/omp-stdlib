@@ -241,6 +241,21 @@ enum VEHICLE_TYRE_STATUS:__VEHICLE_TYRE_STATUS
 static stock VEHICLE_TYRE_STATUS:_@VEHICLE_TYRE_STATUS() { return __VEHICLE_TYRE_STATUS; }
 #define VEHICLE_TIRE_STATUS VEHICLE_TYRE_STATUS
 
+/*
+                                                                           
+    888b      88                       88                                      
+    8888b     88                ,d     ""                                      
+    88 `8b    88                88                                             
+    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
+    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
+    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
+    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
+    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
+                                                                           
+                                                                           
+
+*/
+
 /**
  * <library>omp_vehicle</library>
  * <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
@@ -707,27 +722,6 @@ native bool:AddVehicleComponent(vehicleid, component);
  * <seealso name="OnEnterExitModShop" />
  */
 native bool:RemoveVehicleComponent(vehicleid, component);
-
-/**
- * <library>omp_vehicle</library>
- * <summary>Change a vehicle's primary and secondary colours.</summary>
- * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
- * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
- * ID</a></param>
- * <seealso name="ChangeVehiclePaintjob" />
- * <seealso name="OnVehicleRespray" />
- * <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all.
- *  A few (cement, squallo) have 4 colours, of which 2 can not currently be changed.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  The vehicle's colour was successfully changed.<br
- * />
- *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
- * </returns>
- */
-#pragma deprecated Use `ChangeVehicleColours`
-native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1224,16 +1218,6 @@ native bool:IsValidVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
- * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>Tire popping is enabled by default.  If
- * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
- * OnVehicleDamageStatusUpdate</a>.</remarks>
- */
-#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-native void:EnableTirePopping(bool:enable); // deprecated function
-
-/**
- * <library>omp_vehicle</library>
  */
 forward GetPlayerLastSyncedVehicleID(playerid);
 
@@ -1251,12 +1235,6 @@ native bool:GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:
  * <library>omp_vehicle</library>
  */
 native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
-
-/**
- * <library>omp_vehicle</library>
- */
-#pragma deprecated Use `GetVehicleColours`
-native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1447,6 +1425,77 @@ native Float:GetVehicleTrainSpeed(vehicleid);
  * <seealso name="SetPlayerTeam" />
  */
 native void:EnableVehicleFriendlyFire();
+
+/*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
+
+*/
+
+/*
+native #Deprecated();
+*/
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Change a vehicle's primary and secondary colours.</summary>
+ * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
+ * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * ID</a></param>
+ * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * ID</a></param>
+ * <seealso name="ChangeVehiclePaintjob" />
+ * <seealso name="OnVehicleRespray" />
+ * <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all.
+ *  A few (cement, squallo) have 4 colours, of which 2 can not currently be changed.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  The vehicle's colour was successfully changed.<br
+ * />
+ *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
+ * </returns>
+ */
+#pragma deprecated Use `ChangeVehicleColours`
+native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
+
+/**
+ * <library>omp_vehicle</library>
+ * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
+ * <remarks>Tire popping is enabled by default.  If
+ * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
+ * OnVehicleDamageStatusUpdate</a>.</remarks>
+ */
+#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
+native void:EnableTirePopping(bool:enable); // deprecated function
+
+/**
+ * <library>omp_vehicle</library>
+ */
+#pragma deprecated Use `GetVehicleColours`
+native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
+
+/*
+                                                                                                  
+      ,ad8888ba,               88  88  88                                   88                    
+     d8"'    `"8b              88  88  88                                   88                    
+    d8'                        88  88  88                                   88                    
+    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
+    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
+    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
+     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
+      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
+                                                                                                  
+                                                                                                  
+
+*/
 
 /**
  * <summary>This callback is called when a player sent a trailer update.</summary>

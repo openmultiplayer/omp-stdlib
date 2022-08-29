@@ -22,6 +22,21 @@
 #pragma tabsize 4
 
 /*
+                                                                                                                        
+    88b           d88                        88                                                 db         88888888ba   88  
+    888b         d888                        88                                                d88b        88      "8b  88  
+    88`8b       d8'88                        88                                               d8'`8b       88      ,8P  88  
+    88 `8b     d8' 88   ,adPPYba,    ,adPPYb,88   ,adPPYba,  8b,dPPYba,  8b,dPPYba,          d8'  `8b      88aaaaaa8P'  88  
+    88  `8b   d8'  88  a8"     "8a  a8"    `Y88  a8P_____88  88P'   "Y8  88P'   `"8a        d8YaaaaY8b     88""""""'    88  
+    88   `8b d8'   88  8b       d8  8b       88  8PP"""""""  88          88       88       d8""""""""8b    88           88  
+    88    `888'    88  "8a,   ,a8"  "8a,   ,d88  "8b,   ,aa  88          88       88      d8'        `8b   88           88  
+    88     `8'     88   `"YbbdP"'    `"8bbdP"Y8   `"Ybbd8"'  88          88       88     d8'          `8b  88           88  
+                                                                                                                        
+                                                                                                                        
+
+*/
+
+/*
 native #Modern API();
 */
 
@@ -216,6 +231,21 @@ native DB_GetDatabaseConnectionCount();
 native DB_GetDatabaseResultSetCount();
 
 /*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
+
+*/
+
+/*
 native #Deprecated Legacy();
 */
 
@@ -326,6 +356,21 @@ native db_debug_openfiles();
  */
 #pragma deprecated Use `DB_GetDatabaseResultSetCount`
 native db_debug_openresults();
+
+/*
+                                                                                                                             
+    88888888ba,                                                                                                          88  
+    88      `"8b                                                                              ,d                         88  
+    88        `8b                                                                             88                         88  
+    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
+    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
+    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
+    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
+    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
+                               88                                                                                            
+                               88                                                                                            
+
+*/
 
 /*
 native #Deprecated Compat();

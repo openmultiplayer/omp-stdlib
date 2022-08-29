@@ -42,6 +42,21 @@
 const INVALID_ACTOR_ID                         = 0xFFFF;
 #define INVALID_ACTOR_ID                       0xFFFF
 
+/*
+                                                                           
+    888b      88                       88                                      
+    8888b     88                ,d     ""                                      
+    88 `8b    88                88                                             
+    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
+    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
+    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
+    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
+    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
+                                                                           
+                                                                           
+
+*/
+
 /**
  * <library>omp_actor</library>
  * <summary>Create a static 'actor' in the world.  These 'actors' are like NPCs, however they have limited
@@ -350,6 +365,21 @@ native bool:GetActorAnimation(actorid, animationLibrary[], librarySize = sizeof 
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
 native bool:GetActorSpawnInfo(actorid, &skin, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:spawnAngle = 0.0);
+
+/*
+                                                                                                  
+      ,ad8888ba,               88  88  88                                   88                    
+     d8"'    `"8b              88  88  88                                   88                    
+    d8'                        88  88  88                                   88                    
+    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
+    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
+    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
+     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
+      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
+                                                                                                  
+                                                                                                  
+
+*/
 
 /**
  * <summary>This callback is called when a player gives damage to an actor.</summary>
