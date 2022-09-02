@@ -90,6 +90,31 @@ static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
 /// <p/>
 /**
+ * <library>open.mp</library>
+ * <summary>Weapon Slots</summary>
+ */
+#define WEAPON_SLOT: __TAG(WEAPON_SLOT):
+enum WEAPON_SLOT:__WEAPON_SLOT
+{
+	WEAPON_SLOT_UNKNOWN                        = -1,
+	WEAPON_SLOT_UNARMED                        =  0,
+	WEAPON_SLOT_MELEE                          =  1,
+	WEAPON_SLOT_PISTOL                         =  2,
+	WEAPON_SLOT_SHOTGUN                        =  3,
+	WEAPON_SLOT_MACHINE_GUN                    =  4,
+	WEAPON_SLOT_ASSAULT_RIFLE                  =  5,
+	WEAPON_SLOT_LONG_RIFLE                     =  6,
+	WEAPON_SLOT_ARTILLERY                      =  7,
+	WEAPON_SLOT_EXPLOSIVES                     =  8,
+	WEAPON_SLOT_EQUIPMENT                      =  9,
+	WEAPON_SLOT_GIFT                           = 10,
+	WEAPON_SLOT_APPAREL                        = 11,
+	WEAPON_SLOT_DETONATOR                      = 12
+}
+static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
+
+/// <p/>
+/**
  * <library>omp_core</library>
  * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
  */
