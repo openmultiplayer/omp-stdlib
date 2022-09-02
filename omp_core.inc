@@ -89,6 +89,8 @@ enum WEAPON:__WEAPON
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
+#define MAX_WEAPONS __WEAPON
+
 /// <p/>
 /**
  * <library>open.mp</library>
@@ -113,6 +115,8 @@ enum WEAPON_SLOT:__WEAPON_SLOT
 	WEAPON_SLOT_DETONATOR                      = 12
 }
 static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
+
+#define MAX_WEAPON_SLOTS __WEAPON_SLOT
 
 /// <p/>
 /**

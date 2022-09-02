@@ -181,6 +181,8 @@ enum FIGHT_STYLE:__FIGHT_STYLE
 }
 static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
 
+#define MAX_FIGHT_STYLES __FIGHT_STYLE
+
 /// <p/>
 /**
  * <library>omp_player</library>
@@ -201,6 +203,8 @@ enum WEAPONSKILL:__WEAPONSKILL
 	WEAPONSKILL_SNIPERRIFLE
 }
 static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
+
+#define MAX_WEAPONSKILLS __WEAPONSKILL
 
 /// <p/>
 /**
