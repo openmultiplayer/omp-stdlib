@@ -124,9 +124,11 @@ public const __OPEN_MP_VERSION = 0;
 	// I say it isn't a problem - the old compiler is limited to only 16 tags.
 	#define OPEN_MP_TAGS {LANDING_GEAR_STATE, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 #else
-	// `CUSTOM_TAG_TYPES` is limited to six tags.  To keep the numbers down
-	// these are the most common (IMHO) tags plus those from old defines.
-	#define OPEN_MP_TAGS {Bit, Group, INI, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+	// `CUSTOM_TAG_TYPES` is limited to eight tags.  To keep the numbers down
+	// these are the most common (IMHO) tags plus those from old defines.  It is
+	// limited to eight because the old compiler is limited to sixteen and some
+	// people have eight `CUSTOM_TAG_TYPES`.
+	#define OPEN_MP_TAGS {Bit, Group, Text, PlayerText, Text3D, File, Float, CUSTOM_TAG_TYPES, _}
 #endif
  
 // Optionally use `void:` tags on natives - ensure they don't return anything.
@@ -149,7 +151,12 @@ public const __OPEN_MP_VERSION = 0;
 		// This does need the parameters as it is what users call.
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
 		{
-			// Remove the previous frame and return address from the stack.
+			// Remove the previous frame and return address from the stack.  We
+			// need to store these both temporarily across the `SYSREQ` call.
+			// The return address we store in `alt` because `SYSREQ` never
+			// clobbers that register (even a re-entrant native like
+			// `CallLocalFunction` saves and restores it), and we store the
+			// frame address in the frame pointer register, because why not?
 			#emit POP.pri
 			#emit POP.alt
 			#emit SCTRL       5
@@ -158,12 +165,31 @@ public const __OPEN_MP_VERSION = 0;
 			#emit SYSREQ.C    __ShowPlayerMarkers
 			// `SYSREQ` doesn't empty the stack so the parameters are still
 			// there.  Push the return address back as if we were calling the
-			// function (`alt` is not clobbered by `SYSREQ`) and then put the
-			// frame pointer back on the stack to be used by the return code.
+			// function and then put the frame pointer back on the stack with
+			// `PROC` to be used by the return code straight away.  It is faster
+			// to call `PROC`/`RETN` than any more explicit code because they
+			// both do so much that would have to be imitated.
 			#emit PUSH.alt
 			#emit PROC
 			// End the function with no value returned.
 		}
+
+		// The ideal would be:
+		#pragma naked 
+		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
+		{
+			#emit POP.alt
+			#emit SYSREQ.C    __ShowPlayerMarkers
+			#emit PUSH.alt
+			#emit PROC
+			#emit RETN
+		}
+		
+		// But we can't do that in macros without `__pragma`.  Even if we could
+		// determine the parameter count in the macro (which we can't) the
+		// result with explicit removal of parameters and a `JUMP` instead of
+		// `RETN` would be no shorter than the `PROC` trick here.
+
 	#endif
 	//
 	// The parameters are not used in this code, the entire stack is instead
