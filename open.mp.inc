@@ -205,6 +205,14 @@ public const __OPEN_MP_VERSION = 0;
 #define void:
 #define string:
 
+// Silly extension to syntax.  It means we can do:
+//
+//    const open.mp_VERSION = 6;
+//    #if open.mp_TEST
+//    #endif
+//
+//#define open.mp OPEN_MP
+
 // Disable the symbol length warning.
 #pragma warning push
 #pragma warning disable 200
