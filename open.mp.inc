@@ -173,26 +173,15 @@ public const __OPEN_MP_VERSION = 0;
 	// The macro matches `native` with `void:` anywhere later in the line, but
 	// before brackets.  This does mean it will match `native not_void:` and any
 	// other tags that end with `void:` and no earlier `v`s.
-	#define __VOID_NATIVE%9\32;%0(%1); %0(%1);native __%0() = %0; stock %0(%1) { __emit(POP.pri, POP.alt, SCTRL 5, SYSREQ.C __%0, PUSH.alt, PROC); }
-	#define __void:__%0())%9}%9(%1)__OPEN_MP_SEMI __%0())__OPEN_MP_SEMI } stock %0(%1) { __emit(POP.pri, POP.alt, SCTRL 5, SYSREQ.C __%0, PUSH.alt, PROC)__OPEN_MP_SEMI }
+	#define native%9void:%0(%1); %0(%1);native __%0() = %0; stock %0(%1) { __emit(POP.pri, POP.alt, SCTRL 5, SYSREQ.C __%0, PUSH.alt, PROC); }
 #endif
 
-#define __OPEN_MP_SEMI ;
 #define void:
 #define string:
 
 // Disable the symbol length warning.
 #pragma warning push
 #pragma warning disable 200
-
-// When `__OPEN_MP_TEST` is enabled all natives are compiled with a second
-// version (`__Name`) called from a public function (`@@Name`).  This ensures
-// that when the server starts and function that is not implemented throws an
-// error.  `__untagged` ensures that tags don't mess up the macros.  This
-// isn't recursive because we omit `;`.
-#define __TEST_IMPL%9\32;%0(%1); %0(%1);native __untagged:__%0() = %0 __OPEN_MP_SEMI @@%0()__OPEN_MP_SEMI @@%0() { __%0()__OPEN_MP_SEMI } native %0(%1)__OPEN_MP_SEMI
-#define __TEST_NATIVE%9\32;%0(%1); __TEST_IMPL %0(%1);
-#define __untagged:__%2:%0()%9{%9}%9(%1) __%0() = %0 __OPEN_MP_SEMI @@%0()__OPEN_MP_SEMI @@%0() { (__%2:__%0())__OPEN_MP_SEMI } native %2:%0(%1)
 
 // Define a symbol and check another one.  They're the same when truncated.
 #if !defined __COMPILER_sNAMEMAX
@@ -283,17 +272,6 @@ const bool:undefined = bool:-1;
 #endif
 
 /// <p/>
-#if defined __OPEN_MP_TEST
-	// When `__OPEN_MP_TEST` is enabled all natives are compiled with a second
-	// version (`__Name`) called from a public function (`@@Name`).  This ensures
-	// that when the server starts and function that is not implemented throws an
-	// error.  `__untagged` ensures that tags don't mess up the macros.  This
-	// isn't recursive because we omit `;`.
-	#define native%9\32;%0(%1); __TEST_NATIVE %0(%1);
-#elseif defined VOID_TAGS
-	#define native%9void:%0(%1); __VOID_NATIVE %0(%1);
-#endif
-
 #if defined VOID_TAGS
 	// Disable the unused parameters warning.
 	#pragma warning push
@@ -402,16 +380,6 @@ const bool:undefined = bool:-1;
 #tryinclude <omp_textlabel>
 #if !defined _INC_omp_textlabel
 	#error cannot read from file: "omp_textlabel"
-#endif
-
-#if defined __OPEN_MP_TEST
-	// Don't use this trick in other includes.  Though if you do want it do:
-	//
-	//    #undef __TEST_NATIVE
-	//    #define __TEST_NATIVE%9\32;%0(%1); __TEST_IMPL %0(%1);
-	//
-	#undef __TEST_NATIVE
-	#define __TEST_NATIVE%9\32;%0(%1); native %0(%1)__OPEN_MP_SEMI
 #endif
 
 #if defined VOID_TAGS
