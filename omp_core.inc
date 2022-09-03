@@ -40,7 +40,7 @@ enum WEAPON:__WEAPON
 	WEAPON_BRASSKNUCKLE                        =  1,
 	WEAPON_GOLFCLUB                            =  2,
 	WEAPON_NITESTICK                           =  3,
-	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK
+	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
 	WEAPON_KNIFE                               =  4,
 	WEAPON_BAT                                 =  5,
 	WEAPON_SHOVEL                              =  6,
@@ -56,8 +56,8 @@ enum WEAPON:__WEAPON
 	WEAPON_GRENADE                             = 16,
 	WEAPON_TEARGAS                             = 17,
 	WEAPON_MOLTOV                              = 18,
-	WEAPON_MOLOTOV                             = WEAPON_MOLTOV
-	WEAPON_COLT45                              = 22
+	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
+	WEAPON_COLT45                              = 22,
 	WEAPON_SILENCED                            = 23,
 	WEAPON_DEAGLE                              = 24,
 	WEAPON_SHOTGUN                             = 25,
