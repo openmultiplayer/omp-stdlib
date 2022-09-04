@@ -167,7 +167,24 @@ You will note that all these new features either use existing keywords, `#`, or 
 
 ### More Tags
 
-Parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks:
+
+```pawn
+#define STRONG_TAGS
+#include <open.mp>
+```
+
+To encourage some adoption, the default is `WEAK_TAGS`.  Most old code uses will simply give a warning when the wrong tag is found:
+
+```pawn
+// Gives a warning:
+SetPlayerControllable(playerid, 1);
+
+// Should be:
+SetPlayerControllable(playerid, true);
+```
+
+Generally arameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
 
 ```pawn
 TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
@@ -234,7 +251,20 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 }
 ```
 
-Thus writing backwards-compatible code remains possible.
+Thus writing backwards-compatible code remains possible.  Forward for ALS as normal:
+
+```pawn
+#if !defined PLAYER_STATE
+	// Use the default tag (none, `_:`) when the improved includes aren't found.
+	#define PLAYER_STATE: _:
+#endif
+public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
+{
+	return Hooked_OnPlayerStateChange(playerid, newstate, oldstate);
+}
+
+forward Hooked_OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate);
+```
 
 #### Tag Warning Example
 
@@ -499,4 +529,5 @@ https://github.com/samp-incognito/samp-streamer-plugin/pull/435 - A streamer plu
 https://github.com/pawn-lang/compiler/wiki/Const-Correctness - More information on const-correctness and updating code.
 https://github.com/pawn-lang/sa-mp-fixes/ - Origin of many fixes, including several trivial ones integrated in to open.mp but not listed here.
 https://github.com/pawn-lang/compiler/raw/master/doc/pawn-lang.pdf - For more information on strong and weak tags.
+https://github.com/openmultiplayer/upgrade - A tool that can automate a lot of tag- and const-correctness upgrades.
 
