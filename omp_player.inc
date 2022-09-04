@@ -1935,7 +1935,7 @@ native GetPlayerAmmo(playerid);
  * slot specified is invalid (valid is <b><c>0-12</c></b>).
  * </returns>
  */
-native GetPlayerWeaponData(playerid, slot, &WEAPON:weapons, &ammo);
+native GetPlayerWeaponData(playerid, WEAPON_SLOT:slot, &WEAPON:weapons, &ammo);
 
 /**
  * <library>omp_player</library>

@@ -111,7 +111,7 @@ enum WEAPON_SLOT:__WEAPON_SLOT
 	WEAPON_SLOT_EXPLOSIVES                     =  8,
 	WEAPON_SLOT_EQUIPMENT                      =  9,
 	WEAPON_SLOT_GIFT                           = 10,
-	WEAPON_SLOT_APPAREL                        = 11,
+	WEAPON_SLOT_GADGET                         = 11,
 	WEAPON_SLOT_DETONATOR                      = 12
 }
 static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
@@ -453,7 +453,7 @@ native bool:IsValidNickName(const name[]);
 /**
  * <library>omp_core</library>
  */
-native GetWeaponSlot(WEAPON:weaponid);
+native WEAPON_SLOT:GetWeaponSlot(WEAPON:weaponid);
 
 /**
  * <library>omp_core</library>
