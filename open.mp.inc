@@ -213,31 +213,44 @@ public const __OPEN_MP_VERSION = 0;
 //
 //#define open.mp OPEN_MP
 
-// Disable the symbol length warning.
-#pragma warning push
-#pragma warning disable 200
+/**
+ * <summary>
+ *   The maximum length of symbol names, excluding any NULLs.
+ * </summary>
+ */
+#if __PawnBuild == 0
+	const __namemax = 31;
+#else
+	// Disable the symbol length warning.
+	//
+	// BuT I tHouGHt DiSaBlInG WArNiNGs Was BaD!
+	//
+	// Not when there's an actual reason.  In this case we're exploiting the
+	// fact that the compiler truncates some symbol names if they're too long to
+	// check if they were truncated and thus determine the maximum symbol
+	// length.  However, the compiler will normally (rightfully) give a warning
+	// when it does this.  We don't want excess warnings for behaviour we are
+	// actually exploiting, so don't issue the warning.  But make sure we re-
+	// enable it afterwards.
+	#pragma warning push
+	#pragma warning disable 200
 
-// Define a symbol and check another one.  They're the same when truncated.
-#if !defined __COMPILER_sNAMEMAX
-	#define __COMPILER_SYMBOL_NAME_CHECK_1F
-	#if defined __COMPILER_SYMBOL_NAME_CHECK_1F@
-		#define __COMPILER_sNAMEMAX (31)
-		#define OPEN_MP_LONG_NAMES (0)
+	// Define a symbol and check another one.  They're the same when truncated.
+	#define __OPEN_MP_LONG_SYMBOL_NAME_TEST
+	#if defined __OPEN_MP_LONG_SYMBOL_NAME_TEST@
+		const __namemax = 31;
+	#else
+		#define __OPEN_MP_LONG_SYMBOL_NAME_TEST_________padding_________padding
+		#if defined __OPEN_MP_LONG_SYMBOL_NAME_TEST_________padding_________padding@
+			const __namemax = 63;
+		#else
+			#error Unknown compiler max symbol length.
+		#endif
 	#endif
-#endif
-#if !defined __COMPILER_sNAMEMAX
-	#define __COMPILER_SYMBOL_NAME_CHECK_3F_________padding_________padding
-	#if defined __COMPILER_SYMBOL_NAME_CHECK_3F_________padding_________padding@
-		#define __COMPILER_sNAMEMAX (63)
-		#define OPEN_MP_LONG_NAMES (1)
-	#endif
-#endif
-#if !defined __COMPILER_sNAMEMAX
-	#error Unknown compiler max symbol length.
-#endif
 
-// Maybe re-enable the symbol length warning.
-#pragma warning pop
+	// Maybe re-enable the symbol length warning.
+	#pragma warning pop
+#endif
 
 /**
  * <summary>

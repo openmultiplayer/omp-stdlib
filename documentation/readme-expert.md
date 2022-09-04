@@ -374,7 +374,7 @@ Or less ambiguous names thanks to the increased symbol limit:
 #pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
 native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
 
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
 #endif
 ```

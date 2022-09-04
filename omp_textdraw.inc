@@ -440,7 +440,7 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2);
 #else
 	static stock __TextDrawSetPreviewVehCol()
@@ -546,7 +546,7 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
 /**
  * <library>omp_textdraw</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2);
 #else
 	static stock __TextDrawGetPreviewVehCol()
@@ -1102,7 +1102,7 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2);
 #else
 	static stock __PlayerTextDrawSetPreviewVehCo()
@@ -1158,7 +1158,7 @@ native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid);
 /**
  * <library>omp_textdraw</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid);
 #else
 	static stock __PlayerTextDrawGetBackgroundCo()
@@ -1214,7 +1214,7 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 /**
  * <library>omp_textdraw</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2);
 #else
 	static stock __PlayerTextDrawGetPreviewVehCo()

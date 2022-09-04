@@ -350,7 +350,7 @@ native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Fl
 /**
  * <library>omp_textlabel</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native Float:GetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid);
 #else
 	static stock __GetPlayer3DTextLabelDrawDist()
@@ -361,7 +361,7 @@ native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Fl
 /**
  * <library>omp_textlabel</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
 #else
 	static stock __SetPlayer3DTextLabelDrawDist()
@@ -382,7 +382,7 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
 /**
  * <library>omp_textlabel</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native GetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid);
 #else
 	static stock __GetPlayer3DTextLabelVirtualW()
@@ -393,7 +393,7 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
 /**
  * <library>omp_textlabel</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	forward SetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid, virtualWorld);
 #else
 	static stock __SetPlayer3DTextLabelVirtualW()
@@ -404,7 +404,7 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
 /**
  * <library>omp_textlabel</library>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
 #else
 	static stock __GetPlayer3DTextLabelAttached()

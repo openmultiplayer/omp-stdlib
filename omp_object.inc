@@ -86,7 +86,7 @@ static stock OBJECT_MATERIAL_SIZE:_@OBJECT_MATERIAL_SIZE() { return __OBJECT_MAT
 enum OBJECT_MATERIAL_TEXT_ALIGN:__OBJECT_MATERIAL_TEXT_ALIGN
 {
 	// First so we don't have trailing commas.
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	OBJECT_MATERIAL_TEXT_ALIGN_CENTRE = 1,
 	OBJECT_MATERIAL_TEXT_ALIGN_CENTER = 1,
 	OBJECT_MATERIAL_TEXT_ALIGN_RIGHT  = 2,
@@ -137,7 +137,7 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
  * units on the x and/or y axis).</remarks>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:SetObjectsDefaultCameraCollision(bool:disable);
 #else
 	static stock __SetObjectsDefaultCameraCol()
@@ -848,7 +848,7 @@ native GetPlayerObjectModel(playerid, objectid);
  * units on the x and/or y axis).</remarks>
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
-#if OPEN_MP_LONG_NAMES
+#if __namemax > 31
 	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 #else
 	static stock __SetPlayerObjectNoCameraCol();
