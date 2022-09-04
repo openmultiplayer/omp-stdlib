@@ -2529,10 +2529,6 @@ native GetPlayerSpectateType(playerid);
 native Float:GetPlayerZAim(playerid);
 
 /*
-native #()
-*/
-
-/*
                                                                                                                              
     88888888ba,                                                                                                          88  
     88      `"8b                                                                              ,d                         88  

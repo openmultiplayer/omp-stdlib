@@ -1256,7 +1256,7 @@ native #Selection();
  * MUST be used first, to allow a textdraw to be selectable.</remarks>
  * <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
  */
-native SelectTextDraw(playerid, hoverColour); // enables the mouse so the player can select a textdraw
+native SelectTextDraw(playerid, hoverColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -1269,7 +1269,7 @@ native SelectTextDraw(playerid, hoverColour); // enables the mouse so the player
  * (<b><c>65535</c></b>).  Using this function inside <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a>
  * without catching this case will cause clients to go into an infinite loop.</remarks>
  */
-native CancelSelectTextDraw(playerid);	// cancel textdraw selection with the mouse
+native CancelSelectTextDraw(playerid);
 
 /*
                                                                                                                              

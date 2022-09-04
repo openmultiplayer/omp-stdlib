@@ -1478,7 +1478,7 @@ native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-native void:EnableTirePopping(bool:enable); // deprecated function
+native void:EnableTirePopping(bool:enable);
 
 /**
  * <library>omp_vehicle</library>

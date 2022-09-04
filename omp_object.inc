@@ -149,31 +149,31 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:HideObjectForPlayer(playerid, objectid);
+forward bool:HideObjectForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:ShowObjectForPlayer(playerid, objectid);
+forward bool:ShowObjectForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
+forward bool:HideNewObjectsForPlayer(playerid, bool:toggle);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:IsObjectHiddenForPlayer(playerid, objectid);
+forward bool:IsObjectHiddenForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:NewObjectsHiddenForPlayer(playerid);
+forward bool:NewObjectsHiddenForPlayer(playerid);
 
 /**
  * <library>omp_object</library>
@@ -615,7 +615,7 @@ native Float:GetObjectDrawDistance(objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:SetObjectMoveSpeed(objectid, Float:speed);
+forward bool:SetObjectMoveSpeed(objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
@@ -1043,7 +1043,7 @@ native Float:GetPlayerObjectDrawDistance(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
+forward bool:SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
@@ -1110,7 +1110,13 @@ native GetPlayerSurfingPlayerObjectID(playerid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerCameraTargetPlayerObj(playerid);
+#if __namemax > 31
+	native GetPlayerCameraTargetPlayerObject(playerid);
+#else
+	static stock __GetPlayerCameraTargetPlayerOb();
+	{
+	}
+#endif
 
 /*
                                                                                                                                        
@@ -1390,6 +1396,13 @@ native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
  */
 #pragma deprecated Use `!HasPlayerObjectCameraCollision`
 native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`
+native GetPlayerCameraTargetPlayerObj(playerid);
 
 /*
                                                                                                   

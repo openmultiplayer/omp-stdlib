@@ -198,7 +198,7 @@ native bool:Is3DTextLabelStreamedIn(playerid, Text3D:textid);
 /**
  * <library>omp_textlabel</library>
  */
-native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof(text));
+native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof (text));
 
 /**
  * <library>omp_textlabel</library>
