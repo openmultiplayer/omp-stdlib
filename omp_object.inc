@@ -149,31 +149,31 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:HideObjectForPlayer(playerid, objectid);
+native bool:HideObjectForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:ShowObjectForPlayer(playerid, objectid);
+native bool:ShowObjectForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:HideNewObjectsForPlayer(playerid, bool:toggle);
+native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:IsObjectHiddenForPlayer(playerid, objectid);
+native bool:IsObjectHiddenForPlayer(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:NewObjectsHiddenForPlayer(playerid);
+native bool:NewObjectsHiddenForPlayer(playerid);
 
 /**
  * <library>omp_object</library>
@@ -615,7 +615,7 @@ native Float:GetObjectDrawDistance(objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:SetObjectMoveSpeed(objectid, Float:speed);
+native bool:SetObjectMoveSpeed(objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
@@ -851,7 +851,7 @@ native GetPlayerObjectModel(playerid, objectid);
 #if __namemax > 31
 	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 #else
-	static stock __SetPlayerObjectNoCameraCol();
+	static stock __SetPlayerObjectNoCameraCol()
 	{
 	}
 #endif
