@@ -1068,12 +1068,18 @@ native GetActorPoolSize();
  * <summary>This function will determine whether RCON admins will be teleported to their waypoint when
  * they set one.</summary>
  * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
- * <remarks><b>This function is deprecated.  Please see <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
  * <seealso name="IsPlayerAdmin" />
  * <seealso name="AllowPlayerTeleport" />
  */
-#pragma deprecated Use `OnPlayerClickMap`.
-forward void:AllowAdminTeleport(bool:allow);
+native void:AllowAdminTeleport(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Can admins teleport by right-clicking on the map?</summary>
+ * <seealso name="AllowAdminTeleport" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+native bool:IsAdminTeleportAllowed();
 
 /**
  * <library>omp_core</library>
@@ -1084,8 +1090,14 @@ forward void:AllowAdminTeleport(bool:allow);
  * <seealso name="GetPlayerInterior" />
  * <seealso name="OnPlayerInteriorChange" />
  */
-#pragma deprecated Use `OnPlayerInteriorChange`.
-forward void:AllowInteriorWeapons(bool:allow);
+native void:AllowInteriorWeapons(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Can weapons be used in interiors?</summary>
+ * <seealso name="AllowInteriorWeaponst" />
+ */
+native bool:IsInteriorWeaponsAllowed();
 
 /**
  * <library>omp_core</library>

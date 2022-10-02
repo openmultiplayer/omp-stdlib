@@ -2591,13 +2591,36 @@ native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...);
  * <summary>Enable/Disable the teleporting ability for a player by right-clicking on the map.</summary>
  * <param name="playerid">The ID of the player to allow teleport</param>
  * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
- * <remarks><b>This function, as of 0.3d, is deprecated.  Check <a href="#OnPlayerClickMap">OnPlayerClickMap</a>.</b></remarks>
- * <remarks>This function will work only if <a href="#AllowAdminTeleport">AllowAdminTeleport</a> is
- * enabled, and you have to be an admin.</remarks>
  * <seealso name="AllowAdminTeleport" />
  */
-#pragma deprecated Use `OnPlayerClickMap`.
-forward AllowPlayerTeleport(playerid, bool:allow);
+native AllowPlayerTeleport(playerid, bool:allow);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Can this player teleport by right-clicking on the map?</summary>
+ * <param name="playerid">The ID of the player to allow teleport</param>
+ * <seealso name="AllowAdminTeleport" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+native bool:IsPlayerTeleportAllowed(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Enable/Disable weapons for a player.</summary>
+ * <param name="playerid">The ID of the player to allow weapons</param>
+ * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
+ * <remarks>Players still have weapons server-side, they just can't arm them.</remarks>
+ * <seealso name="IsPlayerWeaponsAllowed" />
+ */
+native AllowPlayerWeapons(playerid, bool:allow);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Can this player use weapons?</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <seealso name="AllowPlayerWeapons" />
+ */
+native bool:IsPlayerWeaponsAllowed(playerid);
 
 /**
  * <library>omp_player</library>
