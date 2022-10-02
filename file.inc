@@ -471,3 +471,116 @@ native bool:drename(const oldname[], const newname[]) = frename;
  */
 native bool:ftouch(const filename[]);
 
+/**
+ * <library>file</library>
+ */
+forward File:operator++(File:a);
+/**
+ * <library>file</library>
+ */
+forward File:operator--(File:a);
+/**
+ * <library>file</library>
+ */
+forward File:operator-(File:a);
+/**
+ * <library>file</library>
+ */
+forward File:operator+(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator+(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator-(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator-(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator-(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator*(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator*(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator/(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator/(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator/(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator%(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator%(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward File:operator%(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<=(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<=(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator<=(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>(File:a, _:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>=(File:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>=(_:a, File:b);
+/**
+ * <library>file</library>
+ */
+forward bool:operator>=(File:a, _:b);
+
