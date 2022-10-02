@@ -980,37 +980,37 @@ native #DL();
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
 
 /**
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
+native FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
 
 /**
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
+native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
 
 /**
  * <library>omp_core</library>
  * <remarks>Not implemented.</remarks>
  */
-forward RedirectDownload(playerid, const url[]);
+native RedirectDownload(playerid, const url[]);
 
 /*
                                                                                                                          

@@ -332,8 +332,8 @@ forward void:SetDeathDropAmount(amount);
 The `forward` on its own (i.e. with no implementation function) ensures that a special error message is given when code attempts to call it.  Rather than `Undefined symbol "SetDeathDropAmount"` the compiler gives `"SetDeathDropAmount" is not implemented`, which is far more specific error and makes it clear that the issue is not a typo or other mistake.  These unimplemented functions may give hints on alternative solutions to do the same thing:
 
 ```pawn
-#pragma deprecated Use `OnPlayerClickMap`.
-forward void:AllowAdminTeleport(bool:allow);
+#pragma deprecated Show names manually.
+forward EnableZoneNames(bool:enable);
 ```
 
 Some functions are deprecated but not removed, meaning they still work but using them isn't recommended and they may disappear at some point in the future.  For example:
