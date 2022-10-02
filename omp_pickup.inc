@@ -228,7 +228,7 @@ native bool:HidePickupForPlayer(playerid, pickupid);
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPickupForPlayer(playerid, id, model, type, Float:x, Float:y, Float:z);
+forward bool:SetPickupForPlayer(playerid, id, model, type, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_pickup</library>
