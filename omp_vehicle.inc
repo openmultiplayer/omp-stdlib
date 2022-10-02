@@ -1334,6 +1334,7 @@ native GetVehicleCab(vehicleid);
  * <library>omp_vehicle</library>
  * <remarks>As in "one who tows", not "tall building".</remarks>
  */
+#pragma deprecated Use `GetVehicleCab`.
 native GetVehicleTower(vehicleid);
 
 /**
