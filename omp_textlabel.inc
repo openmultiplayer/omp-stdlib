@@ -55,13 +55,13 @@
  * <library>omp_textlabel</library>
  */
 const Text3D:INVALID_3DTEXT_ID                 = Text3D:0xFFFF;
-#define INVALID_3DTEXT_ID                      (Text3D:0xFFFF)
+#define INVALID_3DTEXT_ID                      (Text3D:65535)
 
 /**
  * <library>omp_textlabel</library>
  */
 const PlayerText3D:INVALID_PLAYER_3DTEXT_ID    = PlayerText3D:0xFFFF;
-#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:0xFFFF)
+#define INVALID_PLAYER_3DTEXT_ID               (PlayerText3D:65535)
 
 /*
                                                                  

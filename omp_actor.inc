@@ -40,7 +40,7 @@
  * <library>omp_actor</library>
  */
 const INVALID_ACTOR_ID                         = 0xFFFF;
-#define INVALID_ACTOR_ID                       0xFFFF
+#define INVALID_ACTOR_ID                       65535
 
 /*
                                                                            

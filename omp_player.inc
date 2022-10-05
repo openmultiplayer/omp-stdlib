@@ -85,13 +85,13 @@
  * <library>omp_player</library>
  */
 const NO_TEAM                                  = 0xFF;
-#define NO_TEAM                                0xFF
+#define NO_TEAM                                255
 
 /**
  * <library>omp_player</library>
  */
 const INVALID_PLAYER_ID                        = 0xFFFF;
-#define INVALID_PLAYER_ID                      0xFFFF
+#define INVALID_PLAYER_ID                      65535
 
 /// <p/>
 /**

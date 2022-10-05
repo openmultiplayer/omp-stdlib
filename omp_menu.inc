@@ -40,7 +40,7 @@
  * <library>omp_menu</library>
  */
 const Menu:INVALID_MENU                        = Menu:0xFF;
-#define INVALID_MENU                           (Menu:0xFF)
+#define INVALID_MENU                           (Menu:255)
 
 /*
                                                                            

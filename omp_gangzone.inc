@@ -40,7 +40,7 @@
  * <library>omp_gangzone</library>
  */
 const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
-#define INVALID_GANG_ZONE                      0xFFFFFFFF
+#define INVALID_GANG_ZONE                      -1
 
 /*
                                                                  

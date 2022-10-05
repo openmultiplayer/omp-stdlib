@@ -40,7 +40,7 @@
  * <library>omp_vehicle</library>
  */
 const INVALID_VEHICLE_ID                       = 0xFFFF;
-#define INVALID_VEHICLE_ID                     0xFFFF
+#define INVALID_VEHICLE_ID                     65535
 
 /// <p/>
 /**

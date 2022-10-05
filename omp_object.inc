@@ -40,7 +40,7 @@
  * <library>omp_object</library>
  */
 const INVALID_OBJECT_ID                        = 0xFFFF;
-#define INVALID_OBJECT_ID                      0xFFFF
+#define INVALID_OBJECT_ID                      65535
 
 /// <p/>
 /**

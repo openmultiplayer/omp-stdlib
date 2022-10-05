@@ -40,7 +40,7 @@
  * <library>omp_textdraw</library>
  */
 const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
-#define INVALID_TEXT_DRAW                      (Text:0xFFFF)
+#define INVALID_TEXT_DRAW                      (Text:65535)
 
 /**
  * <library>omp_textdraw</library>
@@ -61,7 +61,7 @@ const Text:INVALID_TEXT_DRAW                   = Text:0xFFFF;
  * <library>omp_textdraw</library>
  */
 const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
-#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:0xFFFF)
+#define INVALID_PLAYER_TEXT_DRAW               (PlayerText:65535)
 
 /// <p/>
 /**
