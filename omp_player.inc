@@ -1325,7 +1325,7 @@ native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
  * function. </remarks>
  * <returns>The skin id (<b><c>0</c></b> if invalid).</returns>
  */
-forward GetPlayerCustomSkin(playerid);
+native GetPlayerCustomSkin(playerid);
 
 /**
  * <library>omp_player</library>
@@ -2527,6 +2527,11 @@ native GetPlayerSpectateType(playerid);
  * <library>omp_player</library>
  */
 native Float:GetPlayerZAim(playerid);
+
+/**
+ * <library>omp_player</library>
+ */
+native GetPlayers(players[], size = sizeof (players));
 
 /*
                                                                                                                              

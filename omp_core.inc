@@ -656,6 +656,7 @@ native void:GameModeExit();
  * <param name="len">The length of the string that should be stored</param>
  * <seealso name="GetConsoleVarAsInt" />
  * <seealso name="GetConsoleVarAsBool" />
+ * <seealso name="GetConsoleVarAsFloat" />
  * <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console
  * variables and their types.</remarks>
  * <remarks>When filterscripts or plugins are specified as the cvar, this function only returns the
@@ -674,12 +675,27 @@ native GetConsoleVarAsString(const cvar[], buffer[], len = sizeof (buffer));
  * <param name="cvar">The name of the integer variable to get the value of</param>
  * <seealso name="GetConsoleVarAsString" />
  * <seealso name="GetConsoleVarAsBool" />
+ * <seealso name="GetConsoleVarAsFloat" />
  * <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console
  * variables and their types.</remarks>
  * <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable
  * is not an integer or doesn't exist.</returns>
  */
 native GetConsoleVarAsInt(const cvar[]);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the float value of a console variable.</summary>
+ * <param name="cvar">The name of the float variable to get the value of</param>
+ * <seealso name="GetConsoleVarAsString" />
+ * <seealso name="GetConsoleVarAsBool" />
+ * <seealso name="GetConsoleVarAsInt" />
+ * <remarks>Type <b><c>varlist</c></b> in the server console to display a list of available console
+ * variables and their types.</remarks>
+ * <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable
+ * is not a float or doesn't exist.</returns>
+ */
+native Float:GetConsoleVarAsFloat(const cvar[]);
 
 /**
  * <library>omp_core</library>
@@ -978,61 +994,6 @@ native #NPCs();
 native ConnectNPC(const name[], const script[]);
 
 /*
-                            
-    88888888ba,    88           
-    88      `"8b   88           
-    88        `8b  88           
-    88         88  88           
-    88         88  88           
-    88         8P  88           
-    88      .a8P   88           
-    88888888Y"'    88888888888  
-                            
-                            
-
-*/
-
-/*
-native #DL();
-*/
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
-
-/**
- * <library>omp_core</library>
- * <remarks>Not implemented.</remarks>
- */
-native RedirectDownload(playerid, const url[]);
-
-/*
                                                                                                                          
     88888888ba,                                                                                                          88  
     88      `"8b                                                                              ,d                         88  
@@ -1188,6 +1149,21 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = Get
  */
 #pragma deprecated Use `GetConsoleVarAsInt`.
 native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the float value of a server variable.</summary>
+ * <param name="cvar">The name of the float variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable.  0 if the specified server variable is not a
+ * float or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsFloat`.
+native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
 
 /**
  * <library>omp_core</library>

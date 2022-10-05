@@ -1110,6 +1110,18 @@ native GetPlayerSurfingPlayerObjectID(playerid);
  * <library>omp_object</library>
  * <summary></summary>
  */
+native bool:GetPlayerObjectMovingTargetPos(playerid, objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
 #if __namemax > 31
 	native GetPlayerCameraTargetPlayerObject(playerid);
 #else
@@ -1245,6 +1257,65 @@ native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
  */
 native EditAttachedObject(playerid, index);
+
+/*
+                            
+    88888888ba,    88           
+    88      `"8b   88           
+    88        `8b  88           
+    88         88  88           
+    88         88  88           
+    88         8P  88           
+    88      .a8P   88           
+    88888888Y"'    88888888888  
+                            
+                            
+
+*/
+
+/*
+native #DL();
+*/
+
+/**
+ * <library>omp_object</library>
+ */
+native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>omp_object</library>
+ */
+native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+
+/**
+ * <library>omp_object</library>
+ */
+native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+
+/**
+ * <library>omp_object</library>
+ */
+native FindModelFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>omp_object</library>
+ */
+native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
+
+/**
+ * <library>omp_object</library>
+ */
+native RedirectDownload(playerid, const url[]);
+
+/**
+ * <library>omp_object</library>
+ */
+native GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPath[], txdSize = sizeof (txdPath));
+
+/**
+ * <library>omp_object</library>
+ */
+native bool:IsValidCustomModel(modelid);
 
 /*
                                                                                                                              

@@ -4,7 +4,7 @@
 #define _INC_omp_vehicle
 
 /**
- * <library name="omp_variable" summary="open.mp vehicle functions.">
+ * <library name="omp_vehicle" summary="open.mp vehicle functions.">
  *   <license>
  *     (c) Copyright 2022, open.mp team.
  *   </license>
@@ -1411,12 +1411,12 @@ forward bool:IsVehicleHidden(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:GetVehicleSirenState(vehicleid);
+native bool:GetVehicleSirenState(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-forward GetVehicleHydraReactorAngle(vehicleid);
+native GetVehicleHydraReactorAngle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1430,6 +1430,11 @@ native Float:GetVehicleTrainSpeed(vehicleid);
  * <seealso name="SetPlayerTeam" />
  */
 native void:EnableVehicleFriendlyFire();
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetVehicles(vehicles[], size = sizeof (vehicles));
 
 /*
                                                                                                                              

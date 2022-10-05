@@ -366,6 +366,11 @@ native bool:GetActorAnimation(actorid, animationLibrary[], librarySize = sizeof 
  */
 native bool:GetActorSpawnInfo(actorid, &skin, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:spawnAngle = 0.0);
 
+/**
+ * <library>omp_actor</library>
+ */
+native GetActors(actors[], size = sizeof (actors));
+
 /*
                                                                                                   
       ,ad8888ba,               88  88  88                                   88                    
