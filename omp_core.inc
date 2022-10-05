@@ -294,8 +294,8 @@ native SetTimer(const functionName[], interval, bool:repeating);
  *     <li><b><c>i</c></b> - integer</li>
  *     <li><b><c>d</c></b> - integer</li>
  *     <li><b><c>a</c></b> - array The next parameter must be an integer (<b><c>"i"</c></b>) with the
- * array's size <b>[CURRENTLY UNUSABLE]</b></li>
- *     <li><b><c>s</c></b> - string <b>[CURRENTLY UNUSABLE]</b></li>
+ * array's size</li>
+ *     <li><b><c>s</c></b> - string</li>
  *     <li><b><c>f</c></b> - float</li>
  *     <li><b><c>b</c></b> - boolean</li>
  *   </ul>
@@ -320,7 +320,27 @@ native void:KillTimer(timerid);
 /**
  * <library>omp_core</library>
  */
-native GetRunningTimers();
+native bool:IsValidTimer(timerid);
+
+/**
+ * <library>omp_core</library>
+ */
+native bool:IsRepeatingTimer(timerid);
+
+/**
+ * <library>omp_core</library>
+ */
+native GetTimerRemaining(timerid);
+
+/**
+ * <library>omp_core</library>
+ */
+native GetTimerInterval(timerid);
+
+/**
+ * <library>omp_core</library>
+ */
+native CountRunningTimers();
 
 /**
  * <library>omp_core</library>
@@ -1235,6 +1255,12 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
  */
 #pragma deprecated Use `CreatePickup`
 native void:SetDeathDropAmount(amount);
+
+/**
+ * <library>omp_core</library>
+ */
+#pragma deprecated Use `CountRunningTimers`.
+native GetRunningTimers();
 
 /*
                                                                                               
