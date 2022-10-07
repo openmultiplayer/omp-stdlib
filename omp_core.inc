@@ -401,6 +401,17 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
 native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
 
 /**
+ * <library>omp_player</library>
+ * <summary>Stop showing a gametext style to everyone.</summary>
+ * <param name="style">The style of text to hide</param>
+ * <seealso name="GameTextForAll" />
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="HideGameTextForPlayer" />
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
+ */
+native void:HideGameTextForAll(style);
+
+/**
  * <library>omp_core</library>
  * <summary>Displays a message in chat to all players.  This is a multi-player equivalent of
  * <a href="#SendClientMessage">SendClientMessage</a>.</summary>

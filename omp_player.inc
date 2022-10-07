@@ -1374,14 +1374,62 @@ native bool:SendClientMessage(playerid, colour, const format[], OPEN_MP_TAGS:...
  * <seealso name="GameTextForAll" />
  * <seealso name="TextDrawShowForPlayer" />
  * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is reported when the style and/or
- * time is invalid.  Nothing will happen though (no text displayed).  May also cause game crashes.<br
- * />
+ *   <b><c>1</c></b>: The function executed successfully.
  *   <b><c>0</c></b>: The function failed to execute.  This means either the string is null or the player
  * is not connected.
  * </returns>
  */
 native bool:GameTextForPlayer(playerid, const format[], time, style, OPEN_MP_TAGS:...);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Stop showing a gametext style to a player.</summary>
+ * <param name="playerid">The ID of the player to hide the gametext for</param>
+ * <param name="style">The style of text to hide</param>
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="HasGameText" />
+ * <seealso name="GetGameText" />
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.
+ *   <b><c>0</c></b>: The function failed to execute.  This means either the style isn't displayed
+ *   or the player is not connected.
+ * </returns>
+ */
+native bool:HideGameTextForPlayer(playerid, style);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Does this player currently have text in the given gametext style displayed?</summary>
+ * <param name="playerid">The ID of the player to check the gametext for</param>
+ * <param name="style">The style of text to check</param>
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="HideGameTextForPlayer" />
+ * <seealso name="GetGameText" />
+ * <returns>
+ *   Does this player currently have text in the given gametext style displayed?
+ * </returns>
+ */
+native bool:HasGameText(playerid, style);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Returns all the information on the given game text style.</summary>
+ * <param name="playerid">The ID of the player to get the gametext data for</param>
+ * <param name="style">The style of text to get the data for</param>
+ * <param name="message">Return array for the text string</param>
+ * <param name="len">Size of the output</param>
+ * <param name="time">The time the gametext was originally shown for</param>
+ * <param name="remaining">How much of that time is still remaining</param>
+ * <seealso name="GameTextForPlayer" />
+ * <seealso name="HideGameTextForPlayer" />
+ * <seealso name="HasGameText" />
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.
+ *   <b><c>0</c></b>: The function failed to execute.  This means either the style isn't displayed
+ *   or the player is not connected.
+ * </returns>
+ */
+native bool:GetGameText(playerid, style, message[], len = sizeof (message), time, remaining);
 
 /**
  * <library>omp_player</library>
