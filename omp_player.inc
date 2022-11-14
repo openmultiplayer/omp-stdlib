@@ -405,7 +405,7 @@ native #World()
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native SetPlayerWantedLevel(playerid, level);
+native bool:SetPlayerWantedLevel(playerid, level);
 
 /**
  * <library>omp_player</library>
@@ -427,7 +427,7 @@ native GetPlayerWantedLevel(playerid);
  * <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change
  * over time, instead of changing instantly.</remarks>
  */
-native SetPlayerWeather(playerid, weather);
+native bool:SetPlayerWeather(playerid, weather);
 
 /**
  * <library>omp_player</library>
@@ -456,7 +456,7 @@ native GetPlayerWeather(playerid);
  *   </ul>
  * </remarks>
  */
-native SetPlayerShopName(playerid, const shopName[]);
+native bool:SetPlayerShopName(playerid, const shopName[]);
 
 /**
  * <library>omp_player</library>
@@ -480,7 +480,7 @@ native SetPlayerShopName(playerid, const shopName[]);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, bool:usepos = false);
+native bool:PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, bool:usepos = false);
 
 /**
  * <library>omp_player</library>
@@ -489,7 +489,7 @@ native PlayAudioStreamForPlayer(playerid, const url[], Float:posX = 0.0, Float:p
  * <seealso name="PlayAudioStreamForPlayer" />
  * <seealso name="PlayerPlaySound" />
  */
-native StopAudioStreamForPlayer(playerid);
+native bool:StopAudioStreamForPlayer(playerid);
 
 /**
  * <library>omp_player</library>
@@ -508,7 +508,7 @@ native StopAudioStreamForPlayer(playerid);
  * <returns>This function always returns <b><c>1</c></b>, even if the function failed to excute (player
  * doesn't exist, invalid radius, or invalid explosion type).</returns>
  */
-native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float:radius);
+native bool:CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float:radius);
 
 /**
  * <library>omp_player</library>
@@ -526,7 +526,7 @@ native CreateExplosionForPlayer(playerid, Float:x, Float:y, Float:z, type, Float
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native SetPlayerTime(playerid, hour, minute);
+native bool:SetPlayerTime(playerid, hour, minute);
 
 /**
  * <library>omp_player</library>
@@ -544,7 +544,7 @@ native SetPlayerTime(playerid, hour, minute);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.<br />
  * </returns>
  */
-native GetPlayerTime(playerid, &hour, &minute);
+native bool:GetPlayerTime(playerid, &hour, &minute);
 
 /**
  * <library>omp_player</library>
@@ -560,7 +560,7 @@ native GetPlayerTime(playerid, &hour, &minute);
  *   <b><c>0</c></b>: The function failed to execute.  The specified player does not exist.
  * </returns>
  */
-native TogglePlayerClock(playerid, bool:toggle);
+native bool:TogglePlayerClock(playerid, bool:toggle);
 
 /**
  * <library>omp_player</library>
@@ -580,7 +580,7 @@ native TogglePlayerClock(playerid, bool:toggle);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
+native bool:PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_player</library>
@@ -597,17 +597,17 @@ native PlayerPlaySound(playerid, soundid, Float:x, Float:y, Float:z);
  * <b><c>20000.0</c></b>, <b><c>-20000.0</c></b>.  These are the default values.</remarks>
  * <remarks>This function doesn't work in interiors!</remarks>
  */
-native SetPlayerWorldBounds(playerid, Float:maxX, Float:minX, Float:maxY, Float:minY);
+native bool:SetPlayerWorldBounds(playerid, Float:maxX, Float:minX, Float:maxY, Float:minY);
 
 /**
  * <library>omp_player</library>
  */
-native ClearPlayerWorldBounds(playerid);
+native bool:ClearPlayerWorldBounds(playerid);
 
 /**
  * <library>omp_player</library>
  */
-native GetPlayerWorldBounds(playerid, &Float:maxX, &Float:minX, &Float:maxY, &Float:minY);
+native bool:GetPlayerWorldBounds(playerid, &Float:maxX, &Float:minX, &Float:maxY, &Float:minY);
 
 /**
  * <library>omp_player</library>
@@ -628,7 +628,7 @@ native GetPlayerWorldBounds(playerid, &Float:maxX, &Float:minX, &Float:maxY, &Fl
  * <remarks>You can use <b><c>-1</c></b> for the modelid to remove all objects
  * within the specified radius.</remarks>
  */
-native RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
+native bool:RemoveBuildingForPlayer(playerid, modelid, Float:centerX, Float:centerY, Float:centerZ, Float:radius);
 
 /**
  * <library>omp_player</library>
@@ -647,7 +647,7 @@ native GetPlayerBuildingsRemoved(playerid);
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native RemovePlayerMapIcon(playerid, iconid);
+native bool:RemovePlayerMapIcon(playerid, iconid);
 
 /**
  * <library>omp_player</library>
@@ -686,7 +686,7 @@ native RemovePlayerMapIcon(playerid, iconid);
  *   <b><c>0</c></b>: The function failed to execute.  Player is not connected.
  * </returns>
  */
-native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, MAPICON:style = MAPICON_LOCAL);
+native bool:SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType, colour, MAPICON:style = MAPICON_LOCAL);
 
 /**
  * <library>omp_player</library>
@@ -699,7 +699,7 @@ native SetPlayerMapIcon(playerid, iconid, Float:x, Float:y, Float:z, markerType,
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-native EnableStuntBonusForPlayer(playerid, bool:enable);
+native bool:EnableStuntBonusForPlayer(playerid, bool:enable);
 
 /**
  * <library>omp_player</library>
@@ -751,7 +751,7 @@ native bool:IsPlayerInRangeOfPoint(playerid, Float:range, Float:x, Float:y, Floa
  *   </ul>
  * </remarks>
  */
-native PlayCrimeReportForPlayer(playerid, suspectid, crime);
+native bool:PlayCrimeReportForPlayer(playerid, suspectid, crime);
 
 /**
  * <library>omp_player</library>
@@ -763,12 +763,12 @@ native PlayCrimeReportForPlayer(playerid, suspectid, crime);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native DisableRemoteVehicleCollisions(playerid, bool:disable);
+native bool:DisableRemoteVehicleCollisions(playerid, bool:disable);
 
 /**
  * <library>omp_player</library>
  */
-native SetPlayerGravity(playerid, Float:gravity);
+native bool:SetPlayerGravity(playerid, Float:gravity);
 
 /**
  * <library>omp_player</library>
@@ -802,7 +802,7 @@ native #Character()
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SetPlayerDrunkLevel(playerid, level);
+native bool:SetPlayerDrunkLevel(playerid, level);
 
 /**
  * <library>omp_player</library>
@@ -835,7 +835,7 @@ native GetPlayerDrunkLevel(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SetPlayerInterior(playerid, interiorid);
+native bool:SetPlayerInterior(playerid, interiorid);
 
 /**
  * <library>omp_player</library>
@@ -858,7 +858,7 @@ native SetPlayerInterior(playerid, interiorid);
  * />
  * </returns>
  */
-native SetPlayerSkin(playerid, skinid);
+native bool:SetPlayerSkin(playerid, skinid);
 
 /**
  * <library>omp_player</library>
@@ -891,7 +891,7 @@ native GetPlayerSkin(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerHealth(playerid, Float:health);
+native bool:SetPlayerHealth(playerid, Float:health);
 
 /**
  * <library>omp_player</library>
@@ -913,7 +913,7 @@ native SetPlayerHealth(playerid, Float:health);
  *   <b><c>0</c></b> - failure (i.e.  player not connected).<br />
  * </returns>
  */
-native GetPlayerHealth(playerid, &Float:health);
+native bool:GetPlayerHealth(playerid, &Float:health);
 
 /**
  * <library>omp_player</library>
@@ -963,7 +963,7 @@ native PLAYER_STATE:GetPlayerState(playerid);
  *   </ul>
  * </remarks>
  */
-native SetPlayerFightingStyle(playerid, FIGHT_STYLE:style);
+native bool:SetPlayerFightingStyle(playerid, FIGHT_STYLE:style);
 
 /**
  * <library>omp_player</library>
@@ -1000,7 +1000,7 @@ native FIGHT_STYLE:GetPlayerFightingStyle(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
+native bool:SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_player</library>
@@ -1013,7 +1013,7 @@ native SetPlayerVelocity(playerid, Float:x, Float:y, Float:z);
  * <seealso name="SetVehicleVelocity" />
  * <seealso name="GetVehicleVelocity" />
  */
-native GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerVelocity(playerid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_player</library>
@@ -1060,7 +1060,7 @@ native GetPlayerInterior(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerPos(playerid, Float:x, Float:y, Float:z);
+native bool:SetPlayerPos(playerid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_player</library>
@@ -1078,7 +1078,7 @@ native SetPlayerPos(playerid, Float:x, Float:y, Float:z);
  * spawned.</remarks>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure (i.e.  player not connected).</returns>
  */
-native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_player</library>
@@ -1095,7 +1095,7 @@ native GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native SetPlayerFacingAngle(playerid, Float:ang);
+native bool:SetPlayerFacingAngle(playerid, Float:ang);
 
 /**
  * <library>omp_player</library>
@@ -1110,7 +1110,7 @@ native SetPlayerFacingAngle(playerid, Float:ang);
  * <remarks>Angles returned when inside a vehicle is rarely correct.  To get the correct facing angle
  * while inside a vehicle, use <a href="#GetVehicleZAngle">GetVehicleZAngle</a>.</remarks>
  */
-native GetPlayerFacingAngle(playerid, &Float:ang);
+native bool:GetPlayerFacingAngle(playerid, &Float:ang);
 
 /**
  * <library>omp_player</library>
@@ -1131,7 +1131,7 @@ native GetPlayerFacingAngle(playerid, &Float:ang);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
+native bool:SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_player</library>
@@ -1159,7 +1159,7 @@ native SetPlayerPosFindZ(playerid, Float:x, Float:y, Float:z);
  *   </ul>
  * </remarks>
  */
-native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
+native bool:SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
 
 /**
  * <library>omp_player</library>
@@ -1208,7 +1208,7 @@ native SetPlayerSkillLevel(playerid, WEAPONSKILL:skill, level);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SetPlayerSpecialAction(playerid, SPECIAL_ACTION:actionid);
+native bool:SetPlayerSpecialAction(playerid, SPECIAL_ACTION:actionid);
 
 /**
  * <library>omp_player</library>
@@ -1241,7 +1241,7 @@ native SetPlayerSpecialAction(playerid, SPECIAL_ACTION:actionid);
  * <returns>This function always returns <b><c>1</c></b>, even if the player specified does not exist,
  * or any of the parameters are invalid (e.g.  invalid library).</returns>
  */
-native ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, FORCE_SYNC:forceSync = SYNC_NONE);
+native bool:ApplyAnimation(playerid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time, FORCE_SYNC:forceSync = SYNC_NONE);
 
 /**
  * <library>omp_player</library>
@@ -1267,7 +1267,7 @@ native GetPlayerAnimationIndex(playerid);
  * same location as he was in his car seat.</remarks>
  * <returns>This function always returns <b><c>1</c></b>, even when the player specified is not connected.</returns>
  */
-native ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
+native bool:ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
 
 /**
  * <library>omp_player</library>
@@ -1335,7 +1335,7 @@ native GetPlayerSkillLevel(playerid, skill);
 /**
  * <library>omp_player</library>
  */
-native GetPlayerRotationQuat(playerid, &Float:w, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerRotationQuat(playerid, &Float:w, &Float:x, &Float:y, &Float:z);
 
 /*
 native #Client()
@@ -1480,7 +1480,7 @@ native bool:SendPlayerMessageToPlayer(playerid, senderid, const format[], OPEN_M
  * <remarks><b><c>255</c></b> (or <b><c>NO_TEAM</c></b>) is the default team to be able to shoot other
  * players, not <b><c>0</c></b>.</remarks>
  */
-native SetPlayerTeam(playerid, teamid);
+native bool:SetPlayerTeam(playerid, teamid);
 
 /**
  * <library>omp_player</library>
@@ -1508,7 +1508,7 @@ native GetPlayerTeam(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native SetPlayerScore(playerid, score);
+native bool:SetPlayerScore(playerid, score);
 
 /**
  * <library>omp_player</library>
@@ -1533,7 +1533,7 @@ native GetPlayerScore(playerid);
  * <remarks>If used under <a href="#OnPlayerConnect">OnPlayerConnect</a>, the affecting player will
  * not see the colour in the TAB menu. </remarks>
  */
-native SetPlayerColor(playerid, colour);
+native bool:SetPlayerColor(playerid, colour);
 
 /**
  * <library>omp_player</library>
@@ -1570,7 +1570,7 @@ native GetPlayerColor(playerid);
  *   <b><c>-1</c></b> The name can not be changed (it's already in use, too long or has invalid characters).
  * </returns>
  */
-native SetPlayerName(playerid, const name[]);
+native bool:SetPlayerName(playerid, const name[]);
 
 /**
  * <library>omp_player</library>
@@ -1589,7 +1589,7 @@ native SetPlayerName(playerid, const name[]);
  * and the player has to quit to choose a valid name.</remarks>
  * <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
  */
-native GetPlayerName(playerid, name[], len = sizeof (name));
+native bool:GetPlayerName(playerid, name[], len = sizeof (name));
 
 /**
  * <library>omp_player</library>
@@ -1605,7 +1605,7 @@ native GetPlayerName(playerid, name[], len = sizeof (name));
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SetPlayerVirtualWorld(playerid, virtualWorld);
+native bool:SetPlayerVirtualWorld(playerid, virtualWorld);
 
 /**
  * <library>omp_player</library>
@@ -1671,7 +1671,7 @@ native bool:IsPlayerConnected(playerid);
  * <remarks>You can't see your own chatbubbles.  The same applies to attached 3D text labels.</remarks>
  * <remarks>You can use colour embedding for multiple colours in the message.</remarks>
  */
-native SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, expireTime);
+native bool:SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, expireTime);
 
 /**
  * <library>omp_player</library>
@@ -1688,7 +1688,7 @@ native SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, e
  * name tags with ShowPlayerNameTagForPlayer, that means that in order to be effective you need to <c>ShowPlayerNameTagForPlayer(forplayerid,
  * playerid, 0)</c> ahead of time(<a href="#OnPlayerStreamIn">OnPlayerStreamIn</a> is a good spot).</remarks>
  */
-native ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
+native bool:ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
 
 /**
  * <library>omp_player</library>
@@ -1701,7 +1701,7 @@ native ShowPlayerNameTagForPlayer(playerid, targetid, bool:show);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native TogglePlayerControllable(playerid, bool:controllable);
+native bool:TogglePlayerControllable(playerid, bool:controllable);
 
 /**
  * <library>omp_player</library>
@@ -1719,7 +1719,7 @@ native TogglePlayerControllable(playerid, bool:controllable);
  * keys "W" and "S" can be detected with the "keys" parameter. </remarks>
  * <returns>The keys are stored in the specified variables.</returns>
  */
-native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
+native bool:GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
 
 /**
  * <library>omp_player</library>
@@ -1732,7 +1732,7 @@ native GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
  * <seealso name="SetPlayerColor" />
  * <seealso name="ShowPlayerNameTagForPlayer" />
  */
-native SetPlayerMarkerForPlayer(playerid, targetid, colour);
+native bool:SetPlayerMarkerForPlayer(playerid, targetid, colour);
 
 /**
  * <library>omp_player</library>
@@ -1744,7 +1744,7 @@ native SetPlayerMarkerForPlayer(playerid, targetid, colour);
  * file to npcmodes/recordings to use for playback</param>
  * <seealso name="StopRecordingPlayerData" />
  */
-forward StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
+forward bool:StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
 
 /**
  * <library>omp_player</library>
@@ -1753,7 +1753,7 @@ forward StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, con
  * <param name="playerid">The player you want to stop the recordings of</param>
  * <seealso name="StartRecordingPlayerData" />
  */
-forward StopRecordingPlayerData(playerid);
+forward bool:StopRecordingPlayerData(playerid);
 
 /**
  * <library>omp_player</library>
@@ -1768,7 +1768,7 @@ native bool:IsPlayerControllable(playerid);
 /**
  * <library>omp_player</library>
  */
-native TogglePlayerGhostMode(playerid, bool:enable);
+native bool:TogglePlayerGhostMode(playerid, bool:enable);
 
 /**
  * <library>omp_player</library>

@@ -1043,7 +1043,7 @@ native Float:GetPlayerObjectDrawDistance(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-forward bool:SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
+native bool:SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
