@@ -2152,7 +2152,7 @@ native #Camera()
  *   <b><c>0</c></b>: The function failed to execute.  The player specified doesn't exist.
  * </returns>
  */
-native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
+native bool:SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_player</library>
@@ -2175,7 +2175,7 @@ native SetPlayerCameraPos(playerid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAM_MOVE:cut = CAMERA_CUT);
+native bool:SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAM_MOVE:cut = CAMERA_CUT);
 
 /**
  * <library>omp_player</library>
@@ -2185,7 +2185,7 @@ native SetPlayerCameraLookAt(playerid, Float:x, Float:y, Float:z, CAM_MOVE:cut =
  * <seealso name="SetPlayerCameraPos" />
  * <seealso name="SetPlayerCameraLookAt" />
  */
-native SetCameraBehindPlayer(playerid);
+native bool:SetCameraBehindPlayer(playerid);
 
 /**
  * <library>omp_player</library>
@@ -2203,7 +2203,7 @@ native SetCameraBehindPlayer(playerid);
  * <remarks>It is recommended to set a 1 second timer if you wish to take action that relies on a player's
  * camera position.</remarks>
  */
-native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_player</library>
@@ -2233,7 +2233,7 @@ native GetPlayerCameraPos(playerid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  One of the players specified does not exist.
  * </returns>
  */
-native PlayerSpectatePlayer(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
+native bool:PlayerSpectatePlayer(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /**
  * <library>omp_player</library>
@@ -2256,7 +2256,7 @@ native PlayerSpectatePlayer(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MO
  *   <b><c>0</c></b>: The function failed to execute.  The player, vehicle, or both don't exist.
  * </returns>
  */
-native PlayerSpectateVehicle(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
+native bool:PlayerSpectateVehicle(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_MODE_NORMAL);
 
 /**
  * <library>omp_player</library>
@@ -2284,7 +2284,7 @@ native PlayerSpectateVehicle(playerid, targetid, SPECTATE_MODE:mode = SPECTATE_M
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.<br />
  * </returns>
  */
-native GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
+native bool:GetPlayerLastShotVectors(playerid, &Float:originX, &Float:originY, &Float:originZ, &Float:hitPosX, &Float:hitPosY, &Float:hitPosZ);
 
 /**
  * <library>omp_player</library>
@@ -2375,7 +2375,7 @@ native GetPlayerCameraTargetVehicle(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  The player does not exist.
  * </returns>
  */
-native TogglePlayerSpectating(playerid, bool:toggle);
+native bool:TogglePlayerSpectating(playerid, bool:toggle);
 
 /**
  * <library>omp_player</library>
@@ -2391,7 +2391,7 @@ native TogglePlayerSpectating(playerid, bool:toggle);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-native EnablePlayerCameraTarget(playerid, bool:enable);
+native bool:EnablePlayerCameraTarget(playerid, bool:enable);
 
 /**
  * <library>omp_player</library>
@@ -2412,7 +2412,7 @@ native EnablePlayerCameraTarget(playerid, bool:enable);
  * <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while
  * the camera is moving.  You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
  */
-native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
+native bool:InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
 
 /**
  * <library>omp_player</library>
@@ -2433,7 +2433,7 @@ native InterpolateCameraPos(playerid, Float:fromX, Float:fromY, Float:fromZ, Flo
  * <remarks>Use <b><c>TogglePlayerSpectating</c></b> to make objects stream in for the player while
  * the camera is moving.  You can reset the camera behind the player with <b><c>SetCameraBehindPlayer</c></b>.</remarks>
  */
-native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
+native bool:InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, Float:toX, Float:toY, Float:toZ, time, CAM_MOVE:cut = CAMERA_CUT);
 
 /**
  * <library>omp_player</library>
@@ -2443,7 +2443,7 @@ native InterpolateCameraLookAt(playerid, Float:fromX, Float:fromY, Float:fromZ, 
  * <seealso name="AttachCameraToPlayerObject" />
  * <remarks>You need to create the object first, before attempting to attach a player camera for that.</remarks>
  */
-native AttachCameraToObject(playerid, objectid);
+native bool:AttachCameraToObject(playerid, objectid);
 
 /**
  * <library>omp_player</library>
@@ -2456,7 +2456,7 @@ native AttachCameraToObject(playerid, objectid);
  * <seealso name="SetPlayerCameraLookAt" />
  * <remarks>The player-object must be created before attempting to attach the player's camera to it.</remarks>
  */
-native AttachCameraToPlayerObject(playerid, objectid);
+native bool:AttachCameraToPlayerObject(playerid, objectid);
 
 /**
  * <library>omp_player</library>
@@ -2490,7 +2490,7 @@ native Float:GetPlayerCameraAspectRatio(playerid);
  * foot. </remarks>
  * <returns>The position is stored in the specified variables.</returns>
  */
-native GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerCameraFrontVector(playerid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_player</library>
@@ -2554,7 +2554,7 @@ native bool:IsPlayerCameraTargetEnabled(playerid);
 /**
  * <library>omp_player</library>
  */
-native TogglePlayerWidescreen(playerid, bool:wide);
+native bool:TogglePlayerWidescreen(playerid, bool:wide);
 
 /**
  * <library>omp_player</library>
@@ -2646,7 +2646,7 @@ native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...);
  * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
  * <seealso name="AllowAdminTeleport" />
  */
-native AllowPlayerTeleport(playerid, bool:allow);
+native bool:AllowPlayerTeleport(playerid, bool:allow);
 
 /**
  * <library>omp_player</library>
@@ -2665,7 +2665,7 @@ native bool:IsPlayerTeleportAllowed(playerid);
  * <remarks>Players still have weapons server-side, they just can't arm them.</remarks>
  * <seealso name="IsPlayerWeaponsAllowed" />
  */
-native AllowPlayerWeapons(playerid, bool:allow);
+native bool:AllowPlayerWeapons(playerid, bool:allow);
 
 /**
  * <library>omp_player</library>
