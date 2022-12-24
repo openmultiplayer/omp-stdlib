@@ -412,7 +412,7 @@ native GetObjectModel(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
  * </returns>
  */
-native bool:SetObjectNoCameraCollision(objectid);
+native bool:SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
 
 /**
  * <library>omp_object</library>
@@ -672,11 +672,17 @@ native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[
  */
 native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
+/**/ native bool:__IsObjectNoCameraCol(objectid) = IsObjectNoCameraCol;
+
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:HasObjectCameraCollision(objectid);
+//native bool:HasObjectCameraCollision(objectid);
+stock bool:HasObjectCameraCollision(objectid)
+{
+	return !__IsObjectNoCameraCol(objectid);
+}
 
 /*
                                                                                                                 
@@ -1098,7 +1104,18 @@ native bool:GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:HasPlayerObjectCameraCollision(playerid, objectid);
+
+/**/ native bool:__IsPlayerObjectNoCameraCol(playerid, objectid) = IsPlayerObjectNoCameraCol;
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+//native bool:HasPlayerObjectCameraCollision(playerid, objectid);
+stock bool:HasPlayerObjectCameraCollision(playerid, objectid)
+{
+	return !__IsObjectNoCameraCol(playerid, objectid);
+}
 
 /**
  * <library>omp_object</library>

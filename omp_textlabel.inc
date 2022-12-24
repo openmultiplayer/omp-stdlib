@@ -203,7 +203,7 @@ native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof (text));
 /**
  * <library>omp_textlabel</library>
  */
-native Get3DTextLabelColour(Text3D:textid);
+native Get3DTextLabelColour(Text3D:textid) = Get3DTextLabelColor;
 
 /**
  * <library>omp_textlabel</library>
@@ -340,7 +340,7 @@ native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len 
 /**
  * <library>omp_textlabel</library>
  */
-native GetPlayer3DTextLabelColour(playerid, PlayerText3D:textid);
+native GetPlayer3DTextLabelColour(playerid, PlayerText3D:textid) = GetPlayer3DTextLabelColor;
 
 /**
  * <library>omp_textlabel</library>

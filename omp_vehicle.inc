@@ -747,7 +747,7 @@ native bool:RemoveVehicleComponent(vehicleid, component);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:ChangeVehicleColours(vehicleid, colour1, colour2);
+native bool:ChangeVehicleColours(vehicleid, colour1, colour2) = ChangeVehicleColor;
 
 /**
  * <library>omp_vehicle</library>
@@ -980,7 +980,7 @@ native CARMODTYPE:GetVehicleComponentType(component);
  * Get random colour indexes that are valid for the given vehicle model.
  * </summary>
  */
-native GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
+native GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0) = GetRandomCarColPair;
 
 /**
  * <library>omp_vehicle</library>
@@ -988,7 +988,7 @@ native GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0, &co
  * Convert a car colour index to a HEX colour (RGBA).
  * </summary>
  */
-native VehicleColourIndexToColour(index, alpha = 0xFF);
+native VehicleColourIndexToColour(index, alpha = 0xFF) = CarColIndexToColour;
 
 /**
  * <library>omp_vehicle</library>
@@ -1245,7 +1245,7 @@ native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleColours(vehicleid, &colour1, &colour2);
+native bool:GetVehicleColours(vehicleid, &colour1, &colour2) = GetVehicleColor;
 
 /**
  * <library>omp_vehicle</library>

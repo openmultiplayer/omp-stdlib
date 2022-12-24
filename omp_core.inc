@@ -970,6 +970,65 @@ native bool:ChatTextReplacementToggled();
  */
 native EnableStuntBonusForAll(bool:enable);
 
+/**
+ * <library>omp_core</library>
+ * <summary>This function will determine whether RCON admins will be teleported to their waypoint when
+ * they set one.</summary>
+ * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+native void:AllowAdminTeleport(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Can admins teleport by right-clicking on the map?</summary>
+ * <seealso name="AllowAdminTeleport" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+native bool:IsAdminTeleportAllowed();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
+ * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b>
+ * to disable weapons in interiors</param>
+ * <seealso name="SetPlayerInterior" />
+ * <seealso name="GetPlayerInterior" />
+ * <seealso name="OnPlayerInteriorChange" />
+ */
+native void:AllowInteriorWeapons(bool:allow);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Can weapons be used in interiors?</summary>
+ * <seealso name="AllowInteriorWeapons" />
+ */
+native bool:AreInteriorWeaponsAllowed();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Are the animations missing from some versions enabled?</summary>
+ * <seealso name="EnableAllAnimations" />
+ */
+native bool:AreAllAnimationsEnabled();
+
+/**
+ * <library>omp_core</library>
+ * <summary>Allow use of the animations missing from some versions.</summary>
+ * <seealso name="AreAllAnimationsEnabled" />
+ */
+native void:EnableAllAnimations(bool:enable);
+
+/**
+ * <library>omp_core</library>
+ * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text
+ * at the bottom-right of the screen as they enter the area.  This is a gamemode option and should be
+ * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
+ * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
+ */
+native EnableZoneNames(bool:enable);
+
 /*
                                                      
     888b      88  88888888ba     ,ad8888ba,              
@@ -1057,42 +1116,6 @@ native GetActorPoolSize();
 
 /**
  * <library>omp_core</library>
- * <summary>This function will determine whether RCON admins will be teleported to their waypoint when
- * they set one.</summary>
- * <param name="allow"><b><c>0</c></b> to disable and <b><c>1</c></b> to enable</param>
- * <seealso name="IsPlayerAdmin" />
- * <seealso name="AllowPlayerTeleport" />
- */
-native void:AllowAdminTeleport(bool:allow);
-
-/**
- * <library>omp_core</library>
- * <summary>Can admins teleport by right-clicking on the map?</summary>
- * <seealso name="AllowAdminTeleport" />
- * <seealso name="AllowPlayerTeleport" />
- */
-native bool:IsAdminTeleportAllowed();
-
-/**
- * <library>omp_core</library>
- * <summary>Toggle whether the usage of weapons in interiors is allowed or not.</summary>
- * <param name="allow"><b><c>1</c></b> to enable weapons in interiors (enabled by default), <b><c>0</c></b>
- * to disable weapons in interiors</param>
- * <seealso name="SetPlayerInterior" />
- * <seealso name="GetPlayerInterior" />
- * <seealso name="OnPlayerInteriorChange" />
- */
-native void:AllowInteriorWeapons(bool:allow);
-
-/**
- * <library>omp_core</library>
- * <summary>Can weapons be used in interiors?</summary>
- * <seealso name="AllowInteriorWeaponst" />
- */
-native bool:IsInteriorWeaponsAllowed();
-
-/**
- * <library>omp_core</library>
  * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
  * <remarks>Tire popping is enabled by default.  If
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
@@ -1100,16 +1123,6 @@ native bool:IsInteriorWeaponsAllowed();
  */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
 forward void:EnableTirePopping(bool:enable);
-
-/**
- * <library>omp_core</library>
- * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text
- * at the bottom-right of the screen as they enter the area.  This is a gamemode option and should be
- * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
- * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
- */
-#pragma deprecated Show names manually.
-forward EnableZoneNames(bool:enable);
 
 /**
  * <library>omp_core</library>

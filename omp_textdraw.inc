@@ -230,7 +230,7 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
-native bool:TextDrawColour(Text:textid, textColour);
+native bool:TextDrawColour(Text:textid, textColour) = TextDrawColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -257,7 +257,7 @@ native bool:TextDrawUseBox(Text:textid, bool:enableBox);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native bool:TextDrawBoxColour(Text:textid, boxColour);
+native bool:TextDrawBoxColour(Text:textid, boxColour) = TextDrawBoxColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -302,7 +302,7 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native bool:TextDrawBackgroundColour(Text:textid, backgroundColour);
+native bool:TextDrawBackgroundColour(Text:textid, backgroundColour) = TextDrawBackgroundColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -486,17 +486,17 @@ native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetColour(Text:textid);
+native TextDrawGetColour(Text:textid) = TextDrawGetColor;
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetBoxColour(Text:textid);
+native TextDrawGetBoxColour(Text:textid) = TextDrawGetBoxColor;
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetBackgroundColour(Text:textid);
+native TextDrawGetBackgroundColour(Text:textid) = TextDrawGetBackgroundColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -777,7 +777,7 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
-native bool:PlayerTextDrawColour(playerid, PlayerText:textid, textColour);
+native bool:PlayerTextDrawColour(playerid, PlayerText:textid, textColour) = PlayerTextDrawColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -825,7 +825,7 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native bool:PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour);
+native bool:PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour) = PlayerTextDrawBoxColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -902,7 +902,7 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColour">PlayerTextDrawBackgroundColour</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColour">PlayerTextDrawColour</a></remarks>
  */
-native bool:PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundColour);
+native bool:PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundColour) = PlayerTextDrawBackgroundColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -1148,12 +1148,12 @@ native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetColour(playerid, PlayerText:textid);
+native PlayerTextDrawGetColour(playerid, PlayerText:textid) = PlayerTextDrawGetColor;
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid);
+native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid) = PlayerTextDrawGetBoxColor;
 
 /**
  * <library>omp_textdraw</library>

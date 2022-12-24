@@ -2581,6 +2581,47 @@ native Float:GetPlayerZAim(playerid);
  */
 native GetPlayers(players[], size = sizeof (players));
 
+/**
+ * <library>omp_player</library>
+ */
+native bool:IsPlayerUsingOfficialClient(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Enable/Disable the teleporting ability for a player by right-clicking on the map.</summary>
+ * <param name="playerid">The ID of the player to allow teleport</param>
+ * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
+ * <seealso name="AllowAdminTeleport" />
+ */
+native AllowPlayerTeleport(playerid, bool:allow);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Can this player teleport by right-clicking on the map?</summary>
+ * <param name="playerid">The ID of the player to allow teleport</param>
+ * <seealso name="AllowAdminTeleport" />
+ * <seealso name="AllowPlayerTeleport" />
+ */
+native bool:IsPlayerTeleportAllowed(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Enable/Disable weapons for a player.</summary>
+ * <param name="playerid">The ID of the player to allow weapons</param>
+ * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
+ * <remarks>Players still have weapons server-side, they just can't arm them.</remarks>
+ * <seealso name="IsPlayerWeaponsAllowed" />
+ */
+native AllowPlayerWeapons(playerid, bool:allow);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Can this player use weapons?</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <seealso name="AllowPlayerWeapons" />
+ */
+native bool:ArePlayerWeaponsAllowed(playerid);
+
 /*
                                                                                                                              
     88888888ba,                                                                                                          88  
@@ -2638,42 +2679,6 @@ native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:..
  */
 #pragma deprecated Use `SendClientMessageToAll`
 native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...);
-
-/**
- * <library>omp_player</library>
- * <summary>Enable/Disable the teleporting ability for a player by right-clicking on the map.</summary>
- * <param name="playerid">The ID of the player to allow teleport</param>
- * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
- * <seealso name="AllowAdminTeleport" />
- */
-native bool:AllowPlayerTeleport(playerid, bool:allow);
-
-/**
- * <library>omp_player</library>
- * <summary>Can this player teleport by right-clicking on the map?</summary>
- * <param name="playerid">The ID of the player to allow teleport</param>
- * <seealso name="AllowAdminTeleport" />
- * <seealso name="AllowPlayerTeleport" />
- */
-native bool:IsPlayerTeleportAllowed(playerid);
-
-/**
- * <library>omp_player</library>
- * <summary>Enable/Disable weapons for a player.</summary>
- * <param name="playerid">The ID of the player to allow weapons</param>
- * <param name="allow"><b><c>1</c></b> to allow, <b><c>0</c></b> to disallow</param>
- * <remarks>Players still have weapons server-side, they just can't arm them.</remarks>
- * <seealso name="IsPlayerWeaponsAllowed" />
- */
-native bool:AllowPlayerWeapons(playerid, bool:allow);
-
-/**
- * <library>omp_player</library>
- * <summary>Can this player use weapons?</summary>
- * <param name="playerid">The ID of the player to check</param>
- * <seealso name="AllowPlayerWeapons" />
- */
-native bool:IsPlayerWeaponsAllowed(playerid);
 
 /**
  * <library>omp_player</library>
