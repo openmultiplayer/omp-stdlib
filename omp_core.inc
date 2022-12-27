@@ -1135,7 +1135,7 @@ forward void:EnableTirePopping(bool:enable);
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
 #pragma deprecated Use `GameTextForAll`.
-native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...);
+native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...) = GameTextForAll;
 
 /**
  * <library>omp_core</library>
@@ -1217,7 +1217,7 @@ native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
  *  It will result in crashes otherwise.</remarks>
  */
 #pragma deprecated Use `SendPlayerMessageToAll`.
-native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...);
+native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
 
 /**
  * <library>omp_core</library>
@@ -1260,7 +1260,7 @@ native void:SetDeathDropAmount(amount);
  * <library>omp_core</library>
  */
 #pragma deprecated Use `CountRunningTimers`.
-native GetRunningTimers();
+native GetRunningTimers() = CountRunningTimers;
 
 /*
                                                                                               

@@ -165,7 +165,7 @@ native #Deprecated();
  * </returns>
  */
 #pragma deprecated Use `GetPlayerDialogID`
-native GetPlayerDialog(playerid);
+native GetPlayerDialog(playerid) = GetPlayerDialogID;
 
 /*
                                                                                                   

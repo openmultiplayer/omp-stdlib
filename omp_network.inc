@@ -589,7 +589,7 @@ native #Deprecated();
  * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
  */
 #pragma deprecated Use `SendRconCommand`
-native SendRconCommandf(const format[], OPEN_MP_TAGS:...);
+native SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
 
 /**
  * <library>omp_network</library>

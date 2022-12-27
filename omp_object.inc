@@ -1365,7 +1365,7 @@ native #Deprecated();
  * <seealso name="OnPlayerSelectObject" />
  */
 #pragma deprecated Use `BeginObjectSelecting`
-native bool:SelectObject(playerid);
+native bool:SelectObject(playerid) = BeginObjectSelecting;
 
 /**
  * <library>omp_object</library>
@@ -1386,7 +1386,7 @@ native bool:SelectObject(playerid);
  * </returns>
  */
 #pragma deprecated Use `BeginObjectEditing`
-native bool:EditObject(playerid, objectid);
+native bool:EditObject(playerid, objectid) = BeginObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -1405,7 +1405,7 @@ native bool:EditObject(playerid, objectid);
  * </returns>
  */
 #pragma deprecated Use `BeginPlayerObjectEditing`
-native bool:EditPlayerObject(playerid, objectid);
+native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -1417,14 +1417,14 @@ native bool:EditPlayerObject(playerid, objectid);
  * <seealso name="EditAttachedObject" />
  */
 #pragma deprecated Use `EndObjectEditing`
-native bool:CancelEdit(playerid);
+native bool:CancelEdit(playerid) = EndObjectEditing;
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
 #pragma deprecated Use `GetObjectMovingTargetPos`
-native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
+native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>

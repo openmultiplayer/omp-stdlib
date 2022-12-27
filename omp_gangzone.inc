@@ -413,25 +413,25 @@ native #Deprecated();
  * <library>omp_gangzone</library>
  */
 #pragma deprecated Use `GangZoneGetColourForPlayer`
-native GangZoneGetColorForPlayer(playerid, zoneid);
+native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
 
 /**
  * <library>omp_gangzone</library>
  */
 #pragma deprecated Use `GangZoneGetFlashColourForPlayer`
-native GangZoneGetFlashColorForPlayer(playerid, zoneid);
+native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
 
 /**
  * <library>omp_gangzone</library>
  */
 #pragma deprecated Use `PlayerGangZoneGetColour`
-native PlayerGangZoneGetColor(playerid, zoneid);
+native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
 
 /**
  * <library>omp_gangzone</library>
  */
 #pragma deprecated Use `PlayerGangZoneGetFlashColour`
-native PlayerGangZoneGetFlashColor(playerid, zoneid);
+native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 
 /*
                                                                                                   

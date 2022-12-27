@@ -253,109 +253,109 @@ native #Deprecated Legacy();
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_Open`
-native DB:db_open(const name[]);
+native DB:db_open(const name[]) = DB_Open;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_Close`
-native bool:db_close(DB:db);
+native bool:db_close(DB:db) = DB_Close;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_ExecuteQuery`
-native DBResult:db_query(DB:db, const query[]);
+native DBResult:db_query(DB:db, const query[]) = DB_ExecuteQuery;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_FreeResultSet`
-native bool:db_free_result(DBResult:result);
+native bool:db_free_result(DBResult:result) = DB_FreeResultSet;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetRowCount`
-native db_num_rows(DBResult:result);
+native db_num_rows(DBResult:result) = DB_GetRowCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_SelectNextRow`
-native bool:db_next_row(DBResult:result);
+native bool:db_next_row(DBResult:result) = DB_SelectNextRow;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldCount`
-native db_num_fields(DBResult:result);
+native db_num_fields(DBResult:result) = DB_GetFieldCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldName`
-native bool:db_field_name(DBResult:result, field, output[], size = sizeof (output));
+native bool:db_field_name(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldString`
-native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output));
+native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldInt`
-native db_get_field_int(DBResult:result, field = 0);
+native db_get_field_int(DBResult:result, field = 0) = DB_GetFieldInt;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldFloat`
-native Float:db_get_field_float(DBResult:result, field = 0);
+native Float:db_get_field_float(DBResult:result, field = 0) = DB_GetFieldFloat;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldStringByName`
-native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output));
+native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldIntByName`
-native db_get_field_assoc_int(DBResult:result, const field[]);
+native db_get_field_assoc_int(DBResult:result, const field[]) = DB_GetFieldIntByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldFloatByName`
-native Float:db_get_field_assoc_float(DBResult:result, const field[]);
+native Float:db_get_field_assoc_float(DBResult:result, const field[]) = DB_GetFieldFloatByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetMemHandle`
-native db_get_mem_handle(DB:db);
+native db_get_mem_handle(DB:db) = DB_GetMemHandle;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetLegacyDBResult`
-native db_get_result_mem_handle(DBResult:result);
+native db_get_result_mem_handle(DBResult:result) = DB_GetLegacyDBResult;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetDatabaseConnectionCount`
-native db_debug_openfiles();
+native db_debug_openfiles() = DB_GetDatabaseConnectionCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetDatabaseResultSetCount`
-native db_debug_openresults();
+native db_debug_openresults() = DB_GetDatabaseResultSetCount;
 
 /*
                                                                                                                              
@@ -380,77 +380,77 @@ native #Deprecated Compat();
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_ExecuteQuery`
-native DBResult:DB_Query(DB:db, const query[]) = db_query;
+native DBResult:DB_Query(DB:db, const query[]) = DB_ExecuteQuery;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_FreeResultSet`
-native bool:DB_FreeResult(DBResult:result) = db_free_result;
+native bool:DB_FreeResult(DBResult:result) = DB_FreeResultSet;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetRowCount`
-native DB_NumRows(DBResult:result) = db_num_rows;
+native DB_NumRows(DBResult:result) = DB_GetRowCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_SelectNextRow`
-native bool:DB_NextRow(DBResult:result) = db_next_row;
+native bool:DB_NextRow(DBResult:result) = DB_SelectNextRow;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldCount`
-native DB_NumFields(DBResult:result) = db_num_fields;
+native DB_NumFields(DBResult:result) = DB_GetFieldCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldName`
-native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = db_field_name;
+native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldString`
-native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = db_get_field;
+native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldStringByName`
-native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = db_get_field_assoc;
+native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldIntByName`
-native DB_GetFieldAssocInt(DBResult:result, const field[]) = db_get_field_assoc_int;
+native DB_GetFieldAssocInt(DBResult:result, const field[]) = DB_GetFieldIntByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetFieldFloatByName`
-native Float:DB_GetFieldAssocFloat(DBResult:result, const field[]) = db_get_field_assoc_float;
+native Float:DB_GetFieldAssocFloat(DBResult:result, const field[]) = DB_GetFieldFloatByName;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetLegacyDBResult`
-native DB_GetResultMemHandle(DBResult:result) = db_get_result_mem_handle;
+native DB_GetResultMemHandle(DBResult:result) = DB_GetLegacyDBResult;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetDatabaseConnectionCount`
-native DB_DebugOpenFiles() = db_debug_openfiles;
+native DB_DebugOpenFiles() = DB_GetDatabaseConnectionCount;
 
 /**
  * <library>omp_database</library>
  */
 #pragma deprecated Use `DB_GetDatabaseResultSetCount`
-native DB_DebugOpenResults() = db_debug_openresults;
+native DB_DebugOpenResults() = DB_GetDatabaseResultSetCount;
 

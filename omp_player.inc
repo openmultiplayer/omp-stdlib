@@ -2663,7 +2663,7 @@ native #Deprecated();
  * </returns>
  */
 #pragma deprecated Use `SendClientMessage`
-native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:...);
+native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:...) = SendClientMessage;
 
 /**
  * <library>omp_player</library>
@@ -2678,7 +2678,7 @@ native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:..
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
 #pragma deprecated Use `SendClientMessageToAll`
-native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...);
+native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = SendClientMessageToAll;
 
 /**
  * <library>omp_player</library>
@@ -2698,7 +2698,7 @@ native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...);
  * </returns>
  */
 #pragma deprecated Use `GameTextForPlayer`
-native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TAGS:...);
+native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TAGS:...) = GameTextForPlayer;
 
 /**
  * <library>omp_player</library>
@@ -2716,7 +2716,7 @@ native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TA
  *  It will result in crashes otherwise.</remarks>
  */
 #pragma deprecated Use `SendPlayerMessageToPlayer`
-native bool:SendPlayerMessageToPlayerf(playerid, senderid, const format[], OPEN_MP_TAGS:...);
+native bool:SendPlayerMessageToPlayerf(playerid, senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToPlayer;
 
 /*
                                                                                                   
