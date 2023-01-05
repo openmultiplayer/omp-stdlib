@@ -6,7 +6,11 @@
 /**
  * <library name="omp_dialog" summary="open.mp dialog functions.">
  *   <license>
- *     (c) Copyright 2022, open.mp team.
+ *     This Source Code Form is subject to the terms of the Mozilla Public License,
+ *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ *     obtain one at http://mozilla.org/MPL/2.0/.
+ *    
+ *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
  *     This library uses the enhanced <em>pawndoc.xsl</em> from
