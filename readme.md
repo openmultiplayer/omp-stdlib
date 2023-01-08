@@ -22,6 +22,8 @@ Many legacy libraries using sampctl will reference `samp-stdlib` and `pawn-stdli
 	],
 ```
 
+All other dependencies go ***after*** these three lines.
+
  Further Reading
 -----------------
 
