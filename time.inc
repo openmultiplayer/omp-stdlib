@@ -139,11 +139,11 @@ stock delay(milliseconds)
  * <library>time</library>
  * <summary>Convert a time-stamp into a date and time.</summary>
  * <param name="year">This will hold the year upon return.</param>
- * <param name="month">This will hold the month (1–12) upon return.</param>
- * <param name="day">This will hold the day of (1–31) the month upon return.</param>
- * <param name="hour">This will hold the hour (0–23) upon return.</param>
- * <param name="minute">This will hold the minute (0–59) upon return.</param>
- * <param name="second">This will hold the second (0–59) upon return.</param>
+ * <param name="month">This will hold the month (1-12) upon return.</param>
+ * <param name="day">This will hold the day of (1-31) the month upon return.</param>
+ * <param name="hour">This will hold the hour (0-23) upon return.</param>
+ * <param name="minute">This will hold the minute (0-59) upon return.</param>
+ * <param name="second">This will hold the second (0-59) upon return.</param>
  * <remarks>
  * Some file and system functions return time-stamps as the number of seconds since midnight, 1
  * January 1970, which is the start of the UNIX system epoch.  This function allows to convert these

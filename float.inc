@@ -80,7 +80,7 @@ native Float:floatstr(const string[]);
  * <summary>Convert from text (string) to floating point.</summary>
  * <param name="string">A string containing a floating point number in characters.  This may be
  * either a packed or unpacked string.  The string may specify a fractional part, for example
- * c>"123.45"</c>.</param>
+ * <c>"123.45"</c>.</param>
  * <seealso name="float"/>
  * <seealso name="floatstr"/>
  * <returns>The value in the string, or zero if the string did not start with a valid number.</returns>
@@ -223,8 +223,8 @@ native Float:floatlog(Float:value, Float:base = 10.0);
  * <remarks>GTA/open.mp use <b>degrees</b> for angles in most circumstances, for example
  * <a href="#GetPlayerFacingAngle">GetPlayerFacingAngle</a>.
  *  Therefore, it is most likely you'll want to use the <b>degrees</b> angle mode, not radians. </remarks>
- * <remarks>Also note that angles in GTA are counterclockwise; 270° is East and 90° is West.  South
- * is still 180° and North still 0°/360°. </remarks>
+ * <remarks>Also note that angles in GTA are counterclockwise; 270 is East and 90 is West.  South
+ * is still 180 and North still 0/360. </remarks>
  * <remarks>
  *   <b>Angle modes:</b><p/>
  *   <ul>
@@ -247,8 +247,8 @@ native Float:floatsin(Float:value, anglemode:mode = radian);
  * <remarks>GTA/open.mp use <b>degrees</b> for angles in most circumstances, for example
  * <a href="#GetPlayerFacingAngle">GetPlayerFacingAngle</a>.
  *  Therefore, it is most likely you'll want to use the <b>degrees</b> angle mode, not radians. </remarks>
- * <remarks>Also note that angles in GTA are counterclockwise; 270° is East and 90° is West.  South
- * is still 180° and North still 0°/360°. </remarks>
+ * <remarks>Also note that angles in GTA are counterclockwise; 270 is East and 90 is West.  South
+ * is still 180 and North still 0/360. </remarks>
  * <remarks>
  *   <b>Angle modes:</b><p/>
  *   <ul>
@@ -271,8 +271,8 @@ native Float:floatcos(Float:value, anglemode:mode = radian);
  * <remarks>GTA/open.mp use <b>degrees</b> for angles in most circumstances, for example
  * <a href="#GetPlayerFacingAngle">GetPlayerFacingAngle</a>.
  *  Therefore, it is most likely you'll want to use the <b>degrees</b> angle mode, not radians. </remarks>
- * <remarks>Also note that angles in GTA are counterclockwise; 270° is East and 90° is West.  South
- * is still 180° and North still 0°/360°. </remarks>
+ * <remarks>Also note that angles in GTA are counterclockwise; 270 is East and 90 is West.  South
+ * is still 180 and North still 0/360. </remarks>
  * <remarks>
  *   <b>Angle modes:</b><p/>
  *   <ul>
