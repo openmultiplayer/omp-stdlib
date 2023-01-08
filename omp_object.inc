@@ -1146,7 +1146,7 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
 #if __namemax > 31
 	native GetPlayerCameraTargetPlayerObject(playerid);
 #else
-	static stock __GetPlayerCameraTargetPlayerOb();
+	static stock __GetPlayerCameraTargetPlayerOb()
 	{
 	}
 #endif
