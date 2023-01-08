@@ -1334,7 +1334,7 @@ native GetPlayerCustomSkin(playerid);
 /**
  * <library>omp_player</library>
  */
-native GetPlayerSkillLevel(playerid, skill);
+native GetPlayerSkillLevel(playerid, WEAPONSKILL:skill);
 
 /**
  * <library>omp_player</library>
