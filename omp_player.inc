@@ -1675,7 +1675,7 @@ native bool:IsPlayerConnected(playerid);
  * <remarks>You can't see your own chatbubbles.  The same applies to attached 3D text labels.</remarks>
  * <remarks>You can use colour embedding for multiple colours in the message.</remarks>
  */
-native bool:SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, expireTime);
+native bool:SetPlayerChatBubble(playerid, const text[], colour, Float:drawDistance, expireTime, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_player</library>
