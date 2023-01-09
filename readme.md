@@ -12,7 +12,7 @@ If you are somewhere in between [click here for the intermediate documentation](
  Using sampctl
 ---------------
 
-Many legacy libraries using sampctl will reference `samp-stdlib` and `pawn-stdlib` directly, which this library replaces entirely.  We need to trick sampctl in to not downloading those libraries so that this one takes precedence.  A new `@open.mp` branch has been added to both projects to achieve this.  They just contain a single `a_samp.inc` that redirects to `open.mp.inc` and no duplicates of other files.  Using this tag version in `pawn.json` in your project will ensure that and other dependencies including those libraries transitively will use the same tag, and then including `<open.mp>` in your main file will correctly set all the requisite defines to appear to those libraries like you have included `<a_samp>`.  Basically your `pawn.json` should first include:
+Many legacy libraries using sampctl will reference `samp-stdlib` and `pawn-stdlib` directly, which this library replaces entirely.  We need to trick sampctl in to not downloading those libraries so that this one takes precedence.  A new `@open.mp` branch has been added to both projects to achieve this.  They are completely empty so there are no duplicates of files.  Using this tag version in `pawn.json` in your project will ensure that and other dependencies including those libraries transitively will use the same tag, and then including `<open.mp>` in your main file will correctly set all the requisite defines to appear to those libraries like you have included `<a_samp>`.  Basically your `pawn.json` should first include:
 
 ```json
 	"dependencies": [
