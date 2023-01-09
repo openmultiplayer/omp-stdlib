@@ -2,6 +2,11 @@
 	#endinput
 #endif
 
+#if defined OPEN_MP_NO_WRAPPER_WARNING
+	#include <open.mp>
+	#endinput
+#endif
+
 #if !defined __PawnBuild
 	// Doesn't support `#warning`.
 	static Using_a_actor_legacy_wrapper;
