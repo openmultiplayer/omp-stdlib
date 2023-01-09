@@ -1735,8 +1735,22 @@ native bool:GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
  * <seealso name="LimitPlayerMarkerRadius" />
  * <seealso name="SetPlayerColor" />
  * <seealso name="ShowPlayerNameTagForPlayer" />
+ * <seealso name="GetPlayerMarkerForPlayer" />
  */
 native bool:SetPlayerMarkerForPlayer(playerid, targetid, colour);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Get the colour of a player's <b>nametag</b> and <b>radar blip</b> for another player.</summary>
+ * <param name="playerid">The player that can see the player's changed blip/nametag colour</param>
+ * <param name="targetid">The player whose colour was be changed</param>
+ * <seealso name="ShowPlayerMarkers" />
+ * <seealso name="LimitPlayerMarkerRadius" />
+ * <seealso name="SetPlayerColor" />
+ * <seealso name="ShowPlayerNameTagForPlayer" />
+ * <seealso name="SetPlayerMarkerForPlayer" />
+ */
+native GetPlayerMarkerForPlayer(playerid, targetid);
 
 /**
  * <library>omp_player</library>
