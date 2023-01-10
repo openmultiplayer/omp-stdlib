@@ -1086,37 +1086,18 @@ native ConnectNPC(const name[], const script[]);
 native #Deprecated();
 */
 
-/**
- * <library>omp_core</library>
- * <summary>Gets the highest playerid currently in use on the server.</summary>
- * <seealso name="GetVehiclePoolSize" />
- * <seealso name="GetMaxPlayers" />
- * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
- * players.</returns>
- */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
+// These three functions are like this for qawno.
+/*
 native GetPlayerPoolSize();
+*/
 
-/**
- * <library>omp_core</library>
- * <summary>Gets the highest vehicleid currently in use on the server.</summary>
- * <seealso name="GetPlayerPoolSize" />
- * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
- * created vehicles.</returns>
- */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
+/*
 native GetVehiclePoolSize();
+*/
 
-/**
- * <library>omp_core</library>
- * <summary>Gets the highest actorid created on the server.</summary>
- * <seealso name="CreateActor" />
- * <seealso name="IsValidActor" />
- * <seealso name="SetActorHealth" />
- * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
- */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
+/*
 native GetActorPoolSize();
+*/
 
 /**
  * <library>omp_core</library>
