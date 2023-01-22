@@ -464,7 +464,7 @@ const bool:undefined = bool:-1;
 #pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
 stock GetPlayerPoolSize()
 {
-	return MAX_PLAYERS;
+	return MAX_PLAYERS - 1;
 }
 
 /**
@@ -477,7 +477,7 @@ stock GetPlayerPoolSize()
 #pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
 stock GetVehiclePoolSize()
 {
-	return MAX_VEHICLES;
+	return MAX_VEHICLES - 1;
 }
 
 /**
@@ -491,7 +491,7 @@ stock GetVehiclePoolSize()
 #pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
 stock GetActorPoolSize()
 {
-	return MAX_ACTORS;
+	return MAX_ACTORS - 1;
 }
 
 #if __PawnBuild > 4
