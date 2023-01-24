@@ -233,6 +233,7 @@ static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
 #define KEY: __TAG(KEY):
 enum KEY:__KEY (<<= 1)
 {
+	KEY_NONE,
 	KEY_ACTION                                 = 1,
 	KEY_CROUCH,
 	KEY_FIRE,
