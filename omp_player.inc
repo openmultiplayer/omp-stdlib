@@ -1723,7 +1723,7 @@ native bool:TogglePlayerControllable(playerid, bool:controllable);
  * keys "W" and "S" can be detected with the "keys" parameter. </remarks>
  * <returns>The keys are stored in the specified variables.</returns>
  */
-native bool:GetPlayerKeys(playerid, &KEY:keys, &KEY:updown, &KEY:leftright);
+native bool:GetPlayerKeys(playerid, &KEY:keys, &updown, &leftright);
 
 /**
  * <library>omp_player</library>
