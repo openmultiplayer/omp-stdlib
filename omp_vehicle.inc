@@ -93,6 +93,24 @@ const bool:VEHICLE_PARAMS_OFF = false;
  */
 const bool:VEHICLE_PARAMS_ON = true;
 
+/**
+ * <library>omp_vehicle</library>
+ */
+
+#define LANDING_GEAR_STATE: bool:
+
+/**
+ * <library>omp_vehicle</library>
+ */
+
+const bool:LANDING_GEAR_STATE_DOWN = false;
+
+/**
+ * <library>omp_vehicle</library>
+ */
+
+const bool:LANDING_GEAR_STATE_UP = true;
+
 /// <p/>
 /**
  * <library>omp_vehicle</library>
