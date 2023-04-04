@@ -93,24 +93,6 @@ const bool:VEHICLE_PARAMS_OFF = false;
  */
 const bool:VEHICLE_PARAMS_ON = true;
 
-/**
- * <library>omp_vehicle</library>
- */
-
-#define LANDING_GEAR_STATE: bool:
-
-/**
- * <library>omp_vehicle</library>
- */
-
-const bool:LANDING_GEAR_STATE_DOWN = false;
-
-/**
- * <library>omp_vehicle</library>
- */
-
-const bool:LANDING_GEAR_STATE_UP = true;
-
 /// <p/>
 /**
  * <library>omp_vehicle</library>
@@ -268,6 +250,18 @@ enum VEHICLE_TYRE_STATUS:__VEHICLE_TYRE_STATUS
 }
 static stock VEHICLE_TYRE_STATUS:_@VEHICLE_TYRE_STATUS() { return __VEHICLE_TYRE_STATUS; }
 #define VEHICLE_TIRE_STATUS VEHICLE_TYRE_STATUS
+
+/// <p/>
+/**
+ * <library>omp_vehicle</library>
+ */
+#define LANDING_GEAR_STATE: __TAG(LANDING_GEAR_STATE):
+enum LANDING_GEAR_STATE:__LANDING_GEAR_STATE
+{
+	LANDING_GEAR_STATE_DOWN = 0,
+	LANDING_GEAR_STATE_UP
+}
+static stock LANDING_GEAR_STATE:_@LANDING_GEAR_STATE() { return __LANDING_GEAR_STATE; }
 
 /*
                                                                            
