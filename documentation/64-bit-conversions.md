@@ -396,7 +396,7 @@ setarg(arg, value)
 	// `value` here not `16`.
 	#emit LOAD.S.alt  16
 
-	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	// Swap `pri` and `alt` to put data and address in the correct registers.
 	#emit XCHG
 
 	// And write the data.
@@ -432,7 +432,7 @@ setarg(arg, value)
 	// Load the data to write to the address.
 	#emit LOAD.S.alt  value_address
 
-	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	// Swap `pri` and `alt` to put data and address in the correct registers.
 	#emit XCHG
 
 	// And write the data.
@@ -470,7 +470,7 @@ setarg(arg, value)
 	#emit ADD
 	// Load the data to write to the address.
 	#emit LOAD.S.alt  __param1_offset
-	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	// Swap `pri` and `alt` to put data and address in the correct registers.
 	#emit XCHG
 	// And write the data.
 	#emit STOR.I
