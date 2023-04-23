@@ -235,7 +235,7 @@ The number of arguments passed to a function is stored on the stack after the pr
 new args;
 
 #emit LOAD.S.pri    8 // Two cells, eight bytes, from the frame pointer.
-#emit SHL.C.pri     2 // Divide by four to get a count in cells.
+#emit SHR.C.pri     2 // Divide by four to get a count in cells.
 
 #emit STOR.S.pri    args
 ```
@@ -254,7 +254,7 @@ A first attempt to make this code flexible might look like:
 new args;
 
 #emit LOAD.S.pri    ARG_COUNT_OFFSET
-#emit SHL.C.pri     ARG_COUNT_SHIFT
+#emit SHR.C.pri     ARG_COUNT_SHIFT
 
 #emit STOR.S.pri    args
 ```
@@ -266,10 +266,10 @@ new args;
 
 #if cellbits == 64
 	#emit LOAD.S.pri    16
-	#emit SHL.C.pri     3
+	#emit SHR.C.pri     3
 #else
 	#emit LOAD.S.pri    8
-	#emit SHL.C.pri     2
+	#emit SHR.C.pri     2
 #endif
 
 #emit STOR.S.pri    args
@@ -281,10 +281,10 @@ But again, thanks to compiler issues this doesn't work either - `#emit` ignores 
 new args;
 
 #emit LOAD.S.pri    16
-#emit SHL.C.pri     3
+#emit SHR.C.pri     3
 
 #emit LOAD.S.pri    8
-#emit SHL.C.pri     2
+#emit SHR.C.pri     2
 
 #emit STOR.S.pri    args
 ```
@@ -303,7 +303,7 @@ But for some bizzare reason, while `#define` and `#if` don't work with `#emit`, 
 new args;
 
 #emit LOAD.S.pri    ARG_COUNT_OFFSET
-#emit SHL.C.pri     ARG_COUNT_SHIFT
+#emit SHR.C.pri     ARG_COUNT_SHIFT
 
 #emit STOR.S.pri    args
 ```
@@ -345,7 +345,7 @@ const ARG_COUNT_OFFSET = 2 * cellbytes;
 new args;
 
 #emit LOAD.S.pri    ARG_COUNT_OFFSET
-#emit SHL.C.pri     ARG_COUNT_SHIFT
+#emit SHR.C.pri     ARG_COUNT_SHIFT
 
 #emit STOR.S.pri    args
 ```
@@ -361,6 +361,138 @@ https://github.com/pawn-lang/YSI-Includes/blob/f0f51cd9fc41ed2c7af49833ead7cd3ab
 https://github.com/pawn-lang/YSI-Includes/blob/f0f51cd9fc41ed2c7af49833ead7cd3ab7367b50/YSI_Core/y_testing/y_testing_entry.inc#L519-L544
 
 This code also uses the fact that `const` works with assembly to make code like `LCTRL 6` easier to read by swapping it to `LCTRL __cip`, but that's side-point.
+
+Example
+-------
+
+Another example of converting some old `#emit` code to be 32- and 64-bit compatable.  This is a reimplementation of the native `setarg`:
+
+```pawn
+native setarg(arg, value);
+```
+
+The regular assembly would look like:
+
+```pawn
+setarg(arg, value)
+{
+	// Get the parameter to be modified.  Normally we would just use
+	// `LOAD.S.pri arg`, but that doesn't demonstrate the technique.
+	#emit LOAD.S.pri  12
+
+	// Adjust the loaded parameter number to a byte offset.
+	#emit SHL.C.pri   2
+
+	// Add the offset to the start of parameters.
+	#emit ADD.C       12
+
+	// Get the address of the previous function's stack.
+	#emit LOAD.S.alt  0
+
+	// Add the frame base address to the parameter byte offset.
+	#emit ADD
+
+	// Load the data to write to the address.  Again, we would normally just use
+	// `value` here not `16`.
+	#emit LOAD.S.alt  16
+
+	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	#emit XCHG
+
+	// And write the data.
+	#emit STOR.I
+}
+```
+
+Very often you can see what needs changing because they're raw numbers that are a multiple of four.  We can replace these raw numbers with constants (and to clarify they must use `const` not `new` or `stock const` or anything else or the assembly will get the address of the variable, not the value of the variable).  Although it isn't a multiple of four the `2` in the code must also be changed because it is a shift that is equivalent to `* 4` (so again, if you squint really really hard `<< 2` becomes `* 4` and in fact is the number you're looking for):
+
+```pawn
+setarg(arg, value)
+{
+	const arg_address = 12;
+	const mul_by_4 = 2;
+	const params_offset = 12;
+	const value_address = 16;
+
+	// Get the parameter to be modified.
+	#emit LOAD.S.pri  arg_address
+
+	// Adjust the loaded parameter number to a byte offset.
+	#emit SHL.C.pri   mul_by_4
+
+	// Add the offset to the start of parameters.
+	#emit ADD.C       params_offset
+
+	// Get the address of the previous function's stack.
+	#emit LOAD.S.alt  0
+
+	// Add the frame base address to the parameter byte offset.
+	#emit ADD
+
+	// Load the data to write to the address.
+	#emit LOAD.S.alt  value_address
+
+	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	#emit XCHG
+
+	// And write the data.
+	#emit STOR.I
+}
+```
+
+We can then change these values to be in terms of `cellbytes` instead of pure numbers, which arguably makes them clearer to read as they are now just cell counts:
+
+```pawn
+	const arg_address = 3 * cellbytes;
+	#if cellbits == 64
+		const mul_by_4 = 3;
+	#else
+		const mul_by_4 = 2;
+	#endif
+	const params_offset = 3 * cellbytes;
+	const value_address = 4 * cellbytes;
+```
+
+There's still one `#if` in there because you can't directly do `log2` in the preprocessor.  But we can go one step further and use the pre-defined constants from YSI:
+
+```pawn
+setarg(arg, value)
+{
+	// Get the parameter to be modified.
+	#emit LOAD.S.pri  __param0_offset
+	// Adjust the loaded parameter number to a byte offset.
+	#emit SHL.C.pri   __cell_shift
+	// Add the offset to the start of parameters.
+	#emit ADD.C       __params_offset
+	// Get the address of the previous function's stack.
+	#emit LOAD.S.alt  0
+	// Add the frame base address to the parameter byte offset.
+	#emit ADD
+	// Load the data to write to the address.
+	#emit LOAD.S.alt  __param1_offset
+	// Swap `pri` and `alt` registers to put data and address in the correct ones.
+	#emit XCHG
+	// And write the data.
+	#emit STOR.I
+}
+```
+
+Note that while `__param0_offset` and `__params_offset` are logically the same number, they are used for different things here so treated differently - one is actually getting the first parameter, the other is just the offset to the start of the parameter block.  And the final version, actually using the real parameter names too, would be:
+we can go one step further and use the pre-defined constants from YSI:
+
+```pawn
+setarg(arg, value)
+{
+	#emit LOAD.S.pri  arg
+	#emit SHL.C.pri   __cell_shift
+	#emit ADD.C       __params_offset
+	#emit LOAD.S.alt  0
+	#emit ADD
+	#emit LOAD.S.alt  value
+	#emit XCHG
+	#emit STOR.I
+}
+```
 
 Rewritng
 --------
