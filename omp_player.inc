@@ -2135,7 +2135,7 @@ native bool:IsPlayerInAnyVehicle(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native RemovePlayerFromVehicle(playerid);
+native RemovePlayerFromVehicle(playerid, bool:force = false);
 
 /**
  * <library>omp_player</library>
