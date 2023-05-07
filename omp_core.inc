@@ -39,7 +39,16 @@ const INVALID_TIMER                            = 0;
 #define WEAPON: __TAG(WEAPON):
 enum WEAPON:__WEAPON
 {
-	WEAPON_UNKNOWN                             = -1,
+	UNKNOWN_WEAPON                             = -1,
+	// Special `OnPlayerDeath` `reason` values.  NOT included in `MAX_WEAPONS`.
+	REASON_VEHICLE                             = 49,
+	REASON_DROWN                               = 53,
+	REASON_COLLISION                           = 54,
+	REASON_SPLAT                               = 54,
+	REASON_CONNECT                             = 200,
+	REASON_DISCONNECT                          = 200,
+	REASON_SUICIDE                             = 255,
+	// The main weapon types.  Done after the reasons so sizes are correct.
 	WEAPON_FIST                                =  0,
 	WEAPON_BRASSKNUCKLE                        =  1,
 	WEAPON_GOLFCLUB                            =  2,
@@ -85,15 +94,16 @@ enum WEAPON:__WEAPON
 	WEAPON_CAMERA                              = 43,
 	WEAPON_NIGHT_VISION_GOGGLES                = 44,
 	WEAPON_THERMAL_GOGGLES                     = 45,
-	WEAPON_PARACHUTE                           = 46,
-	WEAPON_VEHICLE                             = 49,
-	WEAPON_DROWN                               = 53,
-	WEAPON_COLLISION                           = 54,
-	WEAPON_SPLAT                               = WEAPON_COLLISION
+	WEAPON_PARACHUTE                           = 46
 }
 static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
 #define MAX_WEAPONS __WEAPON
+#define WEAPON_UNKNOWN UNKNOWN_WEAPON
+#define WEAPON_VEHICLE REASON_VEHICLE
+#define WEAPON_DROWN REASON_DROWN
+#define WEAPON_COLLISION REASON_COLLISION
+#define WEAPON_SPLAT REASON_SPLAT
 
 /// <p/>
 /**
@@ -103,7 +113,7 @@ static stock WEAPON:_@WEAPON() { return __WEAPON; }
 #define WEAPON_SLOT: __TAG(WEAPON_SLOT):
 enum WEAPON_SLOT:__WEAPON_SLOT
 {
-	WEAPON_SLOT_UNKNOWN                        = -1,
+	UNKNOWN_WEAPON_SLOT                        = -1,
 	WEAPON_SLOT_UNARMED                        =  0,
 	WEAPON_SLOT_MELEE                          =  1,
 	WEAPON_SLOT_PISTOL                         =  2,
@@ -121,6 +131,7 @@ enum WEAPON_SLOT:__WEAPON_SLOT
 static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
 
 #define MAX_WEAPON_SLOTS __WEAPON_SLOT
+#define WEAPON_SLOT_UNKNOWN UNKNOWN_WEAPON_SLOT
 
 /// <p/>
 /**
@@ -130,12 +141,14 @@ static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
 #define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
 enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
 {
-	PLAYER_MARKERS_MODE_UNKNOWN                = -1,
+	UNKNOWN_PLAYER_MARKERS_MODE                = -1,
 	PLAYER_MARKERS_MODE_OFF                    =  0,
 	PLAYER_MARKERS_MODE_GLOBAL                 =  1,
 	PLAYER_MARKERS_MODE_STREAMED               =  2
 }
 static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
+
+#define PLAYER_MARKERS_MODE_UNKNOWN UNKNOWN_PLAYER_MARKERS_MODE
 
 /*
                                                                                                                                     

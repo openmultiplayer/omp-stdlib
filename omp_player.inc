@@ -105,6 +105,7 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
 enum PLAYER_STATE:__PLAYER_STATE
 {
+	UNKNOWN_PLAYER_STATE                       = -1,
 	PLAYER_STATE_NONE,
 	PLAYER_STATE_ONFOOT,
 	PLAYER_STATE_DRIVER,
@@ -146,6 +147,7 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
 #define SPECIAL_ACTION: __TAG(SPECIAL_ACTION):
 enum SPECIAL_ACTION:__SPECIAL_ACTION
 {
+	UNKNOWN_SPECIAL_ACTION                     = -1,
 	SPECIAL_ACTION_NONE,
 	SPECIAL_ACTION_DUCK,
 	SPECIAL_ACTION_USEJETPACK,
@@ -176,6 +178,7 @@ static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return __SPECIAL_ACTION; }
 #define FIGHT_STYLE: __TAG(FIGHT_STYLE):
 enum FIGHT_STYLE:__FIGHT_STYLE
 {
+	UNKNOWN_FIGHT_STYLE                        = -1,
 	FIGHT_STYLE_NORMAL                         = 4,
 	FIGHT_STYLE_BOXING,
 	FIGHT_STYLE_KUNGFU,
@@ -194,6 +197,7 @@ static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
 #define WEAPONSKILL: __TAG(WEAPONSKILL):
 enum WEAPONSKILL:__WEAPONSKILL
 {
+	UNKNOWN_WEAPONSKILL                        = -1,
 	WEAPONSKILL_PISTOL,
 	WEAPONSKILL_PISTOL_SILENCED,
 	WEAPONSKILL_DESERT_EAGLE,
@@ -217,13 +221,15 @@ static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 #define WEAPONSTATE: __TAG(WEAPONSTATE):
 enum WEAPONSTATE:__WEAPONSTATE
 {
-	WEAPONSTATE_UNKNOWN                        = -1,
+	UNKNOWN_WEAPONSTATE                        = -1,
 	WEAPONSTATE_NO_BULLETS,
 	WEAPONSTATE_LAST_BULLET,
 	WEAPONSTATE_MORE_BULLETS,
 	WEAPONSTATE_RELOADING
 }
 static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
+
+#define WEAPONSTATE_UNKNOWN UNKNOWN_WEAPONSTATE
 
 /// <p/>
 /**
@@ -233,7 +239,8 @@ static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
 #define KEY: __TAG(KEY):
 enum KEY:__KEY (<<= 1)
 {
-	KEY_NONE,
+	UNKNOWN_KEY                                = -1,
+	KEY_NONE                                   = 0,
 	KEY_ACTION                                 = 1,
 	KEY_CROUCH,
 	KEY_FIRE,
@@ -268,6 +275,7 @@ static stock KEY:_@KEY() { return __KEY; }
 #define CAM_MOVE: __TAG(CAM_MOVE):
 enum CAM_MOVE:__CAMERA
 {
+	UNKNOWN_CAM_MOVE                           = -1,
 	CAMERA_MOVE                                = 1,
 	CAMERA_CUT
 }
@@ -280,6 +288,7 @@ static stock CAMERA_MOVE:_@CAMERA_MOVE() { return __CAMERA_MOVE; }
 #define CAM_MODE: __TAG(CAM_MODE):
 enum CAM_MODE:__CAM_MODE
 {
+	UNKNOWN_CAM_MODE                           = -1,
 	CAM_MODE_DISCONNECTED                      = -1,
 	CAM_MODE_NONE                              = 0,
 	CAM_MODE_BEHINDCAR                         = 3,
@@ -305,6 +314,7 @@ static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
 #define MAPICON: __TAG(MAPICON):
 enum MAPICON:__MAPICON
 {
+	UNKNOWN_MAPICON                            = -1,
 	MAPICON_LOCAL,                             // Displays in the player's local area
 	MAPICON_GLOBAL,                            // Displays always
 	MAPICON_LOCAL_CHECKPOINT,                  // Displays in the player's local area and has a checkpoint marker
@@ -320,6 +330,7 @@ static stock MAPICON:_@MAPICON() { return __MAPICON; }
 #define SPECTATE_MODE: __TAG(SPECTATE_MODE):
 enum SPECTATE_MODE:__SPECTATE_MODE
 {
+	UNKNOWN_SPECTATE_MODE                      = -1,
 	SPECTATE_MODE_NORMAL                       = 1,
 	SPECTATE_MODE_FIXED,
 	SPECTATE_MODE_SIDE
@@ -334,6 +345,7 @@ static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
 enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
 {
+	UNKNOWN_PLAYER_RECORDING_TYPE              = -1,
 	PLAYER_RECORDING_TYPE_NONE,
 	PLAYER_RECORDING_TYPE_DRIVER,
 	PLAYER_RECORDING_TYPE_ONFOOT
@@ -347,9 +359,10 @@ static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_R
 #define FORCE_SYNC: __TAG(FORCE_SYNC):
 enum FORCE_SYNC:__FORCE_SYNC
 {
-	SYNC_NONE, // Don't force sync to anyone else.
-	SYNC_ALL,  // Sync to all streamed-in players.
-	SYNC_OTHER // Sync to all streamed-in players, except the player with the animation.
+	UNKNOWN_FORCE_SYNC                         = -1,
+	SYNC_NONE,                                 // Don't force sync to anyone else.
+	SYNC_ALL,                                  // Sync to all streamed-in players.
+	SYNC_OTHER                                 // Sync to all streamed-in players, except the player with the animation.
 }
 static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 
@@ -360,6 +373,7 @@ static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
 #define CLICK_SOURCE: __TAG(CLICK_SOURCE):
 enum CLICK_SOURCE:__CLICK_SOURCE
 {
+	UNKNOWN_CLICK_SOURCE                       = -1,
 	CLICK_SOURCE_SCOREBOARD
 }
 static stock CLICK_SOURCE:_@CLICK_SOURCE() { return __CLICK_SOURCE; }
@@ -371,6 +385,7 @@ static stock CLICK_SOURCE:_@CLICK_SOURCE() { return __CLICK_SOURCE; }
 #define BULLET_HIT_TYPE: __TAG(BULLET_HIT_TYPE):
 enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
 {
+	UNKNOWN_BULLET_HIT_TYPE                    = -1,
 	BULLET_HIT_TYPE_NONE,
 	BULLET_HIT_TYPE_PLAYER,
 	BULLET_HIT_TYPE_VEHICLE,

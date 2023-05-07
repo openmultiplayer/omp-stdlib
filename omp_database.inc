@@ -31,6 +31,7 @@
  */
 enum SQLITE_OPEN:__SQLITE_OPEN
 {
+	UNKNOWN_SQLITE_OPEN                        = -1,
 	SQLITE_OPEN_READONLY                       = 0x00000001,
 	SQLITE_OPEN_READWRITE                      = 0x00000002,
 	SQLITE_OPEN_CREATE                         = 0x00000004,

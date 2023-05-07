@@ -33,6 +33,7 @@
 #define HTTP_METHOD: __TAG(HTTP_METHOD):
 enum HTTP_METHOD:__HTTP_METHOD
 {
+	UNKNOWN_HTTP_METHOD                        = -1,
 	HTTP_GET                                   = 1,
 	HTTP_POST,
 	HTTP_HEAD
@@ -51,6 +52,7 @@ static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 #define HTTP_ERROR: __TAG(HTTP_ERROR):
 enum HTTP_ERROR:__HTTP_ERROR
 {
+	UNKNOWN_HTTP_ERROR                         = -1,
 	HTTP_ERROR_BAD_HOST                        = 1,
 	HTTP_ERROR_NO_SOCKET,
 	HTTP_ERROR_CANT_CONNECT,

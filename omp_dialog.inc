@@ -46,6 +46,7 @@ const MAX_DIALOG                               = 32768;
 #define DIALOG_STYLE: __TAG(DIALOG_STYLE):
 enum DIALOG_STYLE:__DIALOG_STYLE
 {
+	UNKNOWN_DIALOG_STYLE                       = -1,
 	DIALOG_STYLE_MSGBOX,
 	DIALOG_STYLE_INPUT,
 	DIALOG_STYLE_LIST,

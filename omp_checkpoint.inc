@@ -32,15 +32,16 @@
 #define CP_TYPE: __TAG(CP_TYPE):
 enum CP_TYPE:__CP_TYPE
 {
-	CP_TYPE_GROUND_NORMAL                  = 0,
-	CP_TYPE_GROUND_FINISH                  = 1,
-	CP_TYPE_GROUND_EMPTY                   = 2,
-	CP_TYPE_AIR_NORMAL                     = 3,
-	CP_TYPE_AIR_FINISH                     = 4,
-	CP_TYPE_AIR_ROTATING                   = 5,
-	CP_TYPE_AIR_STROBING                   = 6,
-	CP_TYPE_AIR_SWINGING                   = 7,
-	CP_TYPE_AIR_BOBBING                    = 8
+	UNKNOWN_CP_TYPE                            = -1,
+	CP_TYPE_GROUND_NORMAL                      = 0,
+	CP_TYPE_GROUND_FINISH                      = 1,
+	CP_TYPE_GROUND_EMPTY                       = 2,
+	CP_TYPE_AIR_NORMAL                         = 3,
+	CP_TYPE_AIR_FINISH                         = 4,
+	CP_TYPE_AIR_ROTATING                       = 5,
+	CP_TYPE_AIR_STROBING                       = 6,
+	CP_TYPE_AIR_SWINGING                       = 7,
+	CP_TYPE_AIR_BOBBING                        = 8
 }
 static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
 
