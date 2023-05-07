@@ -1693,7 +1693,7 @@ forward OnVehicleDeath(vehicleid, killerid);
  * <summary>This callback is called when a vehicle is modded.</summary>
  * <param name="playerid">The ID of the driver of the vehicle</param>
  * <param name="vehicleid">The ID of the vehicle which is modded</param>
- * <param name="component">The ID of the component which was added to the vehicle</param>
+ * <param name="componentid">The ID of the component which was added to the vehicle</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="OnEnterExitModShop" />
  * <seealso name="OnVehiclePaintjob" />
@@ -1706,7 +1706,7 @@ forward OnVehicleDeath(vehicleid, killerid);
  * from seeing it.
  * </returns>
  */
-forward OnVehicleMod(playerid, vehicleid, component);
+forward OnVehicleMod(playerid, vehicleid, componentid);
 
 /**
  * <summary>This callback is called when a player enters or exits a mod shop.</summary>
@@ -1730,7 +1730,7 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
  * is not called when the player buys the paintjob.</summary>
  * <param name="playerid">The ID of the player that changed the paintjob of their vehicle</param>
  * <param name="vehicleid">The ID of the vehicle that had its paintjob changed</param>
- * <param name="paintjob">The ID of the new paintjob</param>
+ * <param name="paintjobid">The ID of the new paintjob</param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="ChangeVehicleColours" />
  * <seealso name="OnVehicleRespray" />
@@ -1743,15 +1743,15 @@ forward OnEnterExitModShop(playerid, enterexit, interiorid);
  * from seeing it.
  * </returns>
  */
-forward OnVehiclePaintjob(playerid, vehicleid, paintjob);
+forward OnVehiclePaintjob(playerid, vehicleid, paintjobid);
 
 /**
  * <summary>This callback is called when a player exits a mod shop, even if the colours weren't changed.
  *  Watch out, the name is ambiguous, Pay 'n' Spray shops don't call this callback.</summary>
  * <param name="playerid">The ID of the player that is driving the vehicle</param>
  * <param name="vehicleid">The ID of the vehicle that was resprayed</param>
- * <param name="colour1">The colour that the vehicle's primary colour was changed to</param>
- * <param name="colour2">The colour that the vehicle's secondary colour was changed to</param>
+ * <param name="color1">The colour that the vehicle's primary colour was changed to</param>
+ * <param name="color2">The colour that the vehicle's secondary colour was changed to</param>
  * <seealso name="ChangeVehicleColours" />
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehiclePaintjob" />
@@ -1767,7 +1767,7 @@ forward OnVehiclePaintjob(playerid, vehicleid, paintjob);
  * from seeing it.
  * </returns>
  */
-forward OnVehicleRespray(playerid, vehicleid, colour1, colour2);
+forward OnVehicleRespray(playerid, vehicleid, color1, color2);
 
 /**
  * <summary>This callback is called when a vehicle element such as doors, tires, panels, or lights change

@@ -1589,7 +1589,7 @@ forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respo
  *   It is always called first in filterscripts.
  * </returns>
  */
-forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, Float:scaleX, Float:scaleY, Float:scaleZ);
+forward OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ);
 
 /**
  * <summary>This callback is called when an object is moved after <a href="#MoveObject">MoveObject</a>
