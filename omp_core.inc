@@ -185,6 +185,14 @@ native #Pawn Utilities();
 
 /**
  * <library>omp_core</library>
+ * <summary>Prints a string to the server console (not in-game chat) and logs (server_log.txt).</summary>
+ * <param name="string">The string to print</param>
+ * <seealso name="printf" />
+ */
+native Print(const string[]) = print;
+
+/**
+ * <library>omp_core</library>
  * <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
  * <param name="format">The format string</param>
  * <param name="">Indefinite number of arguments of any tag</param>
@@ -231,6 +239,45 @@ native #Pawn Utilities();
 
 /**
  * <library>omp_core</library>
+ * <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
+ * <param name="format">The format string</param>
+ * <param name="">Indefinite number of arguments of any tag</param>
+ * <seealso name="print" />
+ * <seealso name="format" />
+ * <remarks>The format string or its output should not exceed 1024 characters.  Anything beyond that
+ * length can lead to a server to crash.</remarks>
+ * <remarks>This function doesn't support <a href="#strpack">packed</a> strings.</remarks>
+ * <remarks>
+ *   <b>Format Specifiers:</b><br />
+ *   <ul>
+ *     <li><b><c>%i</c></b> - integer (whole number)</li>
+ *     <li><b><c>%d</c></b> - integer (whole number).</li>
+ *     <li><b><c>%s</c></b> - string</li>
+ *     <li><b><c>%f</c></b> - floating-point number (Float: tag)</li>
+ *     <li><b><c>%c</c></b> - ASCII character</li>
+ *     <li><b><c>%x</c></b> - hexadecimal number</li>
+ *     <li><b><c>%b</c></b> - binary number</li>
+ *     <li><b><c>%%</c></b> - literal <b><c>%</c></b></li>
+ *     <li><b><c>%q</c></b> - escape a text for SQLite. (Added in <b>0.3.7 R2</b>)</li>
+ *   </ul>
+ * </remarks>
+ * <remarks>The values for the placeholders follow in the exact same order as parameters in the call.
+ *  For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer
+ * variable, which is the person's age.</remarks>
+ * <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder
+ * code.  This number indicates the field width; if the size of the parameter to print at the position
+ * of the placeholder is smaller than the field width, the field is expanded with spaces.  To cut the
+ * number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between
+ * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
+ */
+native PrintF(const format[], OPEN_MP_TAGS:...) = printf;
+
+#if !defined _console_included
+	#define _console_included
+#endif
+
+/**
+ * <library>omp_core</library>
  * <summary>Formats a string to include variables and other strings inside it.</summary>
  * <param name="output">The string to output the result to</param>
  * <param name="len">The maximum length output can contain</param>
@@ -263,6 +310,41 @@ native #Pawn Utilities();
  * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
  */
 native format(output[], len = sizeof (output), const format[], {Float, _}:...);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Formats a string to include variables and other strings inside it.</summary>
+ * <param name="output">The string to output the result to</param>
+ * <param name="len">The maximum length output can contain</param>
+ * <param name="format">The format string</param>
+ * <param name="">Indefinite number of arguments of any tag</param>
+ * <seealso name="print" />
+ * <seealso name="printf" />
+ * <remarks>This function doesn't support <a href="#strpack">packed strings</a>.</remarks>
+ * <remarks>
+ *   <b>Format Specifiers:</b><br />
+ *   <ul>
+ *     <li><b><c>%i</c></b> - integer (whole number)</li>
+ *     <li><b><c>%d</c></b> - integer (whole number).</li>
+ *     <li><b><c>%s</c></b> - string</li>
+ *     <li><b><c>%f</c></b> - floating-point number (Float: tag)</li>
+ *     <li><b><c>%c</c></b> - ASCII character</li>
+ *     <li><b><c>%x</c></b> - hexadecimal number</li>
+ *     <li><b><c>%b</c></b> - binary number</li>
+ *     <li><b><c>%%</c></b> - literal <b><c>%</c></b></li>
+ *     <li><b><c>%q</c></b> - escape a text for SQLite. (Added in <b>0.3.7 R2</b>)</li>
+ *   </ul>
+ * </remarks>
+ * <remarks>The values for the placeholders follow in the exact same order as parameters in the call.
+ *  For example, <b><c>"I am %i years old"</c></b> - the <b><c>%i</c></b> will be replaced with an Integer
+ * variable, which is the person's age.</remarks>
+ * <remarks>You may optionally put a number between the <b><c>%</c></b> and the letter of the placeholder
+ * code.  This number indicates the field width; if the size of the parameter to print at the position
+ * of the placeholder is smaller than the field width, the field is expanded with spaces.  To cut the
+ * number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between
+ * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
+ */
+native Format(output[], len = sizeof (output), const format[], {Float, _}:...) = format;
 
 /**
  * <library>omp_core</library>
@@ -575,12 +657,30 @@ native Float:asin(Float:value);
 
 /**
  * <library>omp_core</library>
+ * <summary>Get the inversed value of a sine in degrees.</summary>
+ * <param name="value">The sine for which to find the angle for</param>
+ * <seealso name="floatsin" />
+ * <returns>The angle in degrees.</returns>
+ */
+native Float:ASin(Float:value) = asin;
+
+/**
+ * <library>omp_core</library>
  * <summary>Get the inversed value of a cosine in degrees.</summary>
  * <param name="value">The cosine for which to find the angle for</param>
  * <seealso name="floatcos" />
  * <returns>The angle in degrees.</returns>
  */
 native Float:acos(Float:value);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the inversed value of a cosine in degrees.</summary>
+ * <param name="value">The cosine for which to find the angle for</param>
+ * <seealso name="floatcos" />
+ * <returns>The angle in degrees.</returns>
+ */
+native Float:ACos(Float:value) = acos;
 
 /**
  * <library>omp_core</library>
@@ -594,6 +694,16 @@ native Float:atan(Float:value);
 
 /**
  * <library>omp_core</library>
+ * <summary>Get the inversed value of a tangent in degrees.</summary>
+ * <param name="value">The tangent for which to find the angle for</param>
+ * <seealso name="atan2" />
+ * <seealso name="floattan" />
+ * <returns>The angle in degrees.</returns>
+ */
+native Float:ATan(Float:value) = atan;
+
+/**
+ * <library>omp_core</library>
  * <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
  * <param name="y">y size</param>
  * <param name="x">x size</param>
@@ -602,6 +712,17 @@ native Float:atan(Float:value);
  * <returns>The angle in degrees.</returns>
  */
 native Float:atan2(Float:y, Float:x);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the multi-valued inversed value of a tangent in degrees.</summary>
+ * <param name="y">y size</param>
+ * <param name="x">x size</param>
+ * <seealso name="atan" />
+ * <seealso name="floattan" />
+ * <returns>The angle in degrees.</returns>
+ */
+native Float:ATan2(Float:y, Float:x) = atan2;
 
 /*
                                                                                                                                                
