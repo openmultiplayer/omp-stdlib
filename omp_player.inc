@@ -360,7 +360,7 @@ static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_R
 enum FORCE_SYNC:__FORCE_SYNC
 {
 	UNKNOWN_FORCE_SYNC                         = -1,
-	REMOVE_FROM_VEHICLES                       = 128, // Remove players from vehicles.
+	//REMOVE_FROM_VEHICLES                       = 128, // Remove players from vehicles.
 	SYNC_NONE                                  = 0, // Don't force sync to anyone else.
 	SYNC_ALL,                                  // Sync to all streamed-in players.
 	SYNC_OTHER                                 // Sync to all streamed-in players, except the player with the animation.

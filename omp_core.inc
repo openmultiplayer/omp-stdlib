@@ -233,10 +233,6 @@ native Print(const string[]) = print;
 	native printf(const format[], OPEN_MP_TAGS:...);
 #endif
 
-#if !defined _console_included
-	#define _console_included
-#endif
-
 /**
  * <library>omp_core</library>
  * <summary>Outputs a formatted string on the console (the server window, not the in-game chat).</summary>
