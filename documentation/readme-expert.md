@@ -446,7 +446,7 @@ Ideally the names of the parameters would be changed here as well to something l
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
-public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ)
+public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:rotationX, Float:rotationY, Float:rotationZ)
 {
 }
 ```
@@ -476,10 +476,13 @@ public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Flo
 * `OnPlayerWeaponShot`
 
 ```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
-public OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
+public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
 }
 ```
@@ -505,6 +508,52 @@ public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
 {
 }
 ```
+
+* `OnPlayerTakeDamage`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart)
+{
+}
+```
+
+* `OnPlayerGiveDamage`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bodypart)
+{
+}
+```
+
+* `OnPlayerGiveDamageActor`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:weaponid, bodypart)
+{
+}
+```
+
+* `OnPlayerDeath`
+
+```pawn
+#if !defined WEAPON
+	#define WEAPON: _:
+#endif
+public OnPlayerDeath(playerid, killerid, WEAPON:reason)
+{
+}
+```
+
+The `WEAPON:` enum has a few extra `REASON_` values to support this use-case,  Namely `REASON_VEHICLE`, REASON_DROWN`, `REASON_COLLISION`, `REASON_SPLAT`, `REASON_CONNECT`, `REASON_DISCONNECT, and `REASON_SUICIDE`.
 
 ### All Streamer Callback Changes
 
