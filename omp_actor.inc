@@ -414,7 +414,7 @@ native GetActors(actors[], size = sizeof (actors));
  * from seeing it.
  * </returns>
  */
-forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <summary>This callback is called when an actor is streamed in by a player's client.</summary>

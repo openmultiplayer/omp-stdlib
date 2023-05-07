@@ -2815,7 +2815,7 @@ forward OnPlayerStreamOut(playerid, forplayerid);
  * from seeing it.
  * </returns>
  */
-forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart);
+forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <summary>This callback is called when a player gives damage to another player.</summary>
@@ -2849,7 +2849,7 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
  * from seeing it.
  * </returns>
  */
-forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart);
+forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <summary>Called when a player double-clicks on a player on the scoreboard.</summary>
@@ -2891,7 +2891,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
  *   It is always called first in filterscripts.
  * </returns>
  */
-forward OnPlayerDeath(playerid, killerid, reason);
+forward OnPlayerDeath(playerid, killerid, WEAPON:reason);
 
 /**
  * <summary>This callback is called when a player fires a shot from a weapon.  Only bullet weapons are
@@ -2943,7 +2943,7 @@ forward OnPlayerDeath(playerid, killerid, reason);
  * scripts from seeing it.
  * </returns>
  */
-forward OnPlayerWeaponShot(playerid, weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /**
  * <summary>This callback is called when a SendClientCheck request comletes</summary>
