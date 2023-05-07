@@ -174,11 +174,13 @@ native #Pawn Utilities();
  * <param name="string">The string to print</param>
  * <seealso name="printf" />
  */
-#if defined _console_included
+#if defined __print
 	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
 	// in the output, unattached to any function.  So make a function.
 	/* */ native __open_mp_unused_print(const string[]);
 	#define __open_mp_unused_print
+	#define print( __print(
+	#define _ALS_print
 #else
 	native print(const string[]);
 #endif
@@ -224,14 +226,9 @@ native Print(const string[]) = print;
  * number of decimal places beeing shown of a float, you can add <b><c>.&lt;max number&gt;</c></b> between
  * the <b><c>%</c></b> and the <b><c>f</c></b>. (example: <b><c>%.2f</c></b>)</remarks>
  */
-#if defined _console_included
-	// Fixes a pawndoc bug - comments on `#ifdef`ed out functions are still put
-	// in the output, unattached to any function.  So make a function.
-	/* */ native __open_mp_unused_printf(const format[], OPEN_MP_TAGS:...);
-	#define __open_mp_unused_printf
-#else
-	native printf(const format[], OPEN_MP_TAGS:...);
-#endif
+native __printf(const format[], OPEN_MP_TAGS:...) = printf;
+#define printf( __printf(
+#define _ALS_printf
 
 /**
  * <library>omp_core</library>
