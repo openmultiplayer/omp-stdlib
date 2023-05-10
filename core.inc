@@ -152,7 +152,7 @@ native clamp(value, min = cellmin, max = cellmax);
 /**
  * <library>core</library>
  * <summary>Get a specific property from the memory, the string is returned as a packed string!.</summary>
- * <param name="id">The <a href="http://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
+ * <param name="id">The <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
  * use, you should keep this zero (optional=<b><c>0</c></b>)</param>
  * <param name="name">The property's name, you should keep this "" (optional=<b><c>""</c></b>)</param>
  * <param name="value">The property's unique ID, Use the hash-function to calculate it from a string
@@ -185,7 +185,7 @@ native setproperty(id = 0, const name[] = "", value = cellmin, const string[] = 
 /**
  * <library>core</library>
  * <summary>Delete an earlier set property (<a href="#setproperty">setproperty</a>).</summary>
- * <param name="id">The <a href="http://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
+ * <param name="id">The <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
  * use.  You should keep this as zero (optional=<b><c>0</c></b>)</param>
  * <param name="name">The property's name, you should keep this blank (optional=<b><c>""</c></b>)</param>
  * <param name="value">The property's unique ID.  Use the hash-function to calculate it from a string
@@ -200,7 +200,7 @@ native deleteproperty(id = 0, const name[] = "", value = cellmin);
 /**
  * <library>core</library>
  * <summary>Check if a property exist.</summary>
- * <param name="id">The <a href="http://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
+ * <param name="id">The <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machine</a> to
  * use, you should keep this zero (optional=<b><c>0</c></b>)</param>
  * <param name="name">The property's name, you should keep this (optional=<b><c>""</c></b>)</param>
  * <param name="value">The property's unique ID.  Use the hash-function to calculate it from a string

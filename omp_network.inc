@@ -420,8 +420,8 @@ native NetStats_MessagesRecvPerSecond(playerid);
  * 1.0% is outright bad.</remarks>
  * <remarks>This function has been found to be currently unreliable the output is not as expected when
  * compared to the client.  Therefore this function should not be used as a packet loss kicker. </remarks>
- * <remarks>A more accurate packetloss function can be found here: <a href="http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984">
- * http://forum.sa-mp.com/showpost.php?p=2488911&amp;postcount=984</a></remarks>
+ * <remarks>A more accurate packetloss function can be found here: <a href="https://sampforum.blast.hk/showthread.php?tid=281&pid=2488911#pid2488911">
+ * https://sampforum.blast.hk/showthread.php?tid=281&pid=2488911#pid2488911</a></remarks>
  * <returns>The percentage packet loss as a float. <b><c>0.0</c></b> if player not connected.</returns>
  */
 native Float:NetStats_PacketLossPercent(playerid);
@@ -653,8 +653,8 @@ forward OnRconLoginAttempt(ip[], password[], success);
 
 /**
  * <summary>This callback is called when a player finishes downloading custom models.  For more information
- * on how to add custom models to your server, see <a href="http://forum.sa-mp.com/showthread.php?t=644105">the
- * release thread</a> and <a href="http://forum.sa-mp.com/showthread.php?t=644123">this tutorial</a>.</summary>
+ * on how to add custom models to your server, see <a href="https://sampforum.blast.hk/showthread.php?tid=644105">the
+ * release thread</a> and <a href="https://sampforum.blast.hk/showthread.php?tid=644123">this tutorial</a>.</summary>
  * <param name="playerid">The ID of the player that finished downloading custom models</param>
  * <param name="virtualworld">The ID of the virtual world the player finished downloading custom models
  * for</param>

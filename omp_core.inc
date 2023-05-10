@@ -348,9 +348,6 @@ native Format(output[], len = sizeof (output), const format[], {Float, _}:...) =
  * <param name="repeating">Whether the timer should repeat or not</param>
  * <seealso name="SetTimerEx" />
  * <seealso name="KillTimer" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
- * <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
- * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use <a href="#KillTimer">KillTimer</a> on a timer
  * ID and it won't matter if it's running or not. </remarks>
  * <remarks>The function that should be called must be public. </remarks>
@@ -373,9 +370,6 @@ native SetTimer(const functionName[], interval, bool:repeating);
  * <seealso name="KillTimer" />
  * <seealso name="CallLocalFunction" />
  * <seealso name="CallRemoteFunction" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
- * <a href="http://forum.sa-mp.com/showthread.php?t=289675">here</a>.
- * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use KillTimer() on a timer ID and it won't matter
  * if it's running or not. </remarks>
  * <remarks>The function that should be called must be public. </remarks>
@@ -536,7 +530,7 @@ native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
  * <summary>Adds a death to the 'killfeed' on the right-hand side of the screen for all players.</summary>
  * <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
  * <param name="killee">The ID of the player that died</param>
- * <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon)
+ * <param name="weapon">The <a href="https://www.open.mp/docs/scripting/resources/weaponids">reason</a> (not always a weapon)
  * for the victim's death.  Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
  * <seealso name="SendDeathMessageToPlayer" />
  * <seealso name="OnPlayerDeath" />
@@ -998,7 +992,7 @@ native void:SetNameTagDrawDistance(Float:distance);
 /**
  * <library>omp_core</library>
  * <summary>Set the world weather for all players.</summary>
- * <param name="weatherid">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
+ * <param name="weatherid">The <a href="https://www.open.mp/docs/scripting/resources/weatherid">weather</a> to set</param>
  * <seealso name="SetPlayerWeather" />
  * <seealso name="SetGravity" />
  * <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change

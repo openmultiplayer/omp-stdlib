@@ -109,7 +109,7 @@ native #Global();
  *   If the virtualWorld is set as <b><c>-1</c></b> the text will not appear.
  * </remarks>
  * <remarks>drawdistance seems to be a lot smaller when spectating.</remarks>
- * <remarks>Use <a href="http://wiki.sa-mp.com/wiki/Colors_List#Inline_colour_embedding">colour embedding</a>
+ * <remarks>Use <a href="https://www.open.mp/docs/scripting/resources/colorslist">colour embedding</a>
  * for multiple colours in the text.</remarks>
  * <returns>The ID of the newly created 3D Text Label, or <b><c>INVALID_3DTEXT_ID</c></b> if the 3D
  * Text Label limit (<b><c>MAX_3DTEXT_GLOBAL</c></b>) was reached.</returns>
