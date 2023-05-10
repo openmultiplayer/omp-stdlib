@@ -442,7 +442,7 @@ native GetPlayerWantedLevel(playerid);
  * <library>omp_player</library>
  * <summary>Set a player's weather.</summary>
  * <param name="playerid">The ID of the player whose weather to set</param>
- * <param name="weather">The <a href="http://wiki.sa-mp.com/wiki/Weatherid">weather</a> to set</param>
+ * <param name="weather">The <a href="https://www.open.mp/docs/scripting/resources/weatherid">weather</a> to set</param>
  * <seealso name="SetWeather" />
  * <seealso name="SetGravity" />
  * <remarks>If <a href="#TogglePlayerClock">TogglePlayerClock</a> is enabled, weather will slowly change
@@ -515,7 +515,7 @@ native bool:StopAudioStreamForPlayer(playerid);
 /**
  * <library>omp_player</library>
  * <summary>Creates an explosion that is only visible to a single player.  This can be used to isolate
- * explosions from other players or to make them only appear in specific <a href="http://wiki.sa-mp.com/wiki/SetPlayerVirtualWorld">virtual
+ * explosions from other players or to make them only appear in specific <a href="https://www.open.mp/docs/scripting/functions/SetPlayerVirtualWorld">virtual
  * worlds</a>.</summary>
  * <param name="playerid">The ID of the player to create the explosion for</param>
  * <param name="x">The x coordinate of the explosion</param>
@@ -844,9 +844,9 @@ native GetPlayerDrunkLevel(playerid);
 /**
  * <library>omp_player</library>
  * <summary>Set a player's interior.  A list of currently known interiors and their positions can be
- * found <a href="http://wiki.sa-mp.com/wiki/Interiorids">here</a>.</summary>
+ * found <a href="https://www.open.mp/docs/scripting/resources/interiorids">here</a>.</summary>
  * <param name="playerid">The ID of the player to set the interior of</param>
- * <param name="interiorid">The <a href="http://wiki.sa-mp.com/wiki/Interiorids">interior ID</a> to
+ * <param name="interiorid">The <a href="https://www.open.mp/docs/scripting/resources/interiorids">interior ID</a> to
  * set the player in</param>
  * <seealso name="GetPlayerInterior" />
  * <seealso name="LinkVehicleToInterior" />
@@ -862,7 +862,7 @@ native bool:SetPlayerInterior(playerid, interiorid);
  * <library>omp_player</library>
  * <summary>Set the skin of a player.  A player's skin is their character model.</summary>
  * <param name="playerid">The ID of the player to set the skin of</param>
- * <param name="skinid">The <a href="http://wiki.sa-mp.com/wiki/Skins">skin</a> the player should use</param>
+ * <param name="skinid">The <a href="https://www.open.mp/docs/scripting/resources/skins">skin</a> the player should use</param>
  * <seealso name="GetPlayerSkin" />
  * <seealso name="SetSpawnInfo" />
  * <remarks>If a player's skin is set when they are crouching, in a vehicle, or performing certain animations,
@@ -1053,7 +1053,7 @@ native Float:GetPlayerDistanceFromPoint(playerid, Float:x, Float:y, Float:z);
 /**
  * <library>omp_player</library>
  * <summary>Retrieves the player's current interior.  A list of currently known interiors with their
- * positions can be found on <a href="http://wiki.sa-mp.com/wiki/Interiorids">this</a> page.</summary>
+ * positions can be found on <a href="https://www.open.mp/docs/scripting/resources/interiorids">this</a> page.</summary>
  * <param name="playerid">The player to get the interior ID of</param>
  * <seealso name="SetPlayerInterior" />
  * <seealso name="GetPlayerVirtualWorld" />
@@ -1145,7 +1145,7 @@ native bool:GetPlayerFacingAngle(playerid, &Float:ang);
  * <seealso name="OnPlayerClickMap" />
  * <remarks>This function does not work if the new coordinates are far away from where the player currently
  * is.  The z height will be <b><c>0</c></b>, which will likely put them underground.  It is highly
- * recommended that the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a>
+ * recommended that the <a href="https://github.com/philip1337/samp-plugin-mapandreas">MapAndreas plugin</a>
  * be used instead.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
@@ -1292,9 +1292,9 @@ native bool:ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
 
 /**
  * <library>omp_player</library>
- * <summary>Retrieves a player's current <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special
+ * <summary>Retrieves a player's current <a href="https://www.open.mp/docs/scripting/resources/specialactions">special
  * action</a>.</summary>
- * <param name="playerid">The ID of the player to get the <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special
+ * <param name="playerid">The ID of the player to get the <a href="https://www.open.mp/docs/scripting/resources/specialactions">special
  * action</a> of</param>
  * <seealso name="SetPlayerSpecialAction" />
  * <seealso name="GetPlayerState" />
@@ -1331,7 +1331,7 @@ native bool:ClearAnimations(playerid, FORCE_SYNC:forceSync = SYNC_NONE);
  * animation with visible pee.</li>
  *   </ul>
  * </remarks>
- * <returns>The <a href="http://wiki.sa-mp.com/wiki/SpecialActions">special action</a> of the player.</returns>
+ * <returns>The <a href="https://www.open.mp/docs/scripting/resources/specialactions">special action</a> of the player.</returns>
  */
 native SPECIAL_ACTION:GetPlayerSpecialAction(playerid);
 
@@ -1458,7 +1458,7 @@ native bool:GetGameText(playerid, style, message[], len = sizeof (message), time
  * <param name="playerid">The ID of the player to send the death message to</param>
  * <param name="killer">The ID of the killer (can be <b><c>INVALID_PLAYER_ID</c></b>)</param>
  * <param name="killee">The ID of the player that died</param>
- * <param name="weapon">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> (not always a weapon)
+ * <param name="weapon">The <a href="https://www.open.mp/docs/scripting/resources/weaponids">reason</a> (not always a weapon)
  * for the victim's death.  Special icons can also be used (<b><c>ICON_CONNECT</c></b> and <b><c>ICON_DISCONNECT</c></b>)</param>
  * <seealso name="SendDeathMessage" />
  * <seealso name="OnPlayerDeath" />
@@ -1728,7 +1728,7 @@ native bool:TogglePlayerControllable(playerid, bool:controllable);
  * <library>omp_player</library>
  * <summary>Check which keys a player is pressing.</summary>
  * <param name="playerid">The ID of the player to get the keys of</param>
- * <param name="keys">Bitmask containing the player's key states. <a href="http://wiki.sa-mp.com/wiki/Keys">List
+ * <param name="keys">Bitmask containing the player's key states. <a href="https://www.open.mp/docs/scripting/resources/keys">List
  * of keys</a></param>
  * <param name="updown">Up/down state</param>
  * <param name="leftright">Left/right state</param>
@@ -1955,7 +1955,7 @@ native ResetPlayerWeapons(playerid);
  * <library>omp_player</library>
  * <summary>Set the ammo of a player's weapon.</summary>
  * <param name="playerid">The ID of the player to set the weapon ammo of</param>
- * <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> to set
+ * <param name="weaponid">The ID of the <a href="https://www.open.mp/docs/scripting/resources/weaponids">weapon</a> to set
  * the ammo of.</param>
  * <param name="ammo">The amount of ammo to set</param>
  * <seealso name="GetPlayerAmmo" />
@@ -2310,7 +2310,7 @@ native bool:PlayerSpectateVehicle(playerid, targetid, SPECTATE_MODE:mode = SPECT
  * <seealso name="GetPlayerWeapon" />
  * <seealso name="VectorSize" />
  * <seealso name="OnPlayerWeaponShot" />
- * <remarks>This function will only work when <a href="http://wiki.sa-mp.com/wiki/Lag_Compensation">lag
+ * <remarks>This function will only work when <a href="https://www.open.mp/docs/server/LagCompensation">lag
  * compensation</a> is <b>enabled</b>. </remarks>
  * <remarks>If the player hit nothing, the hit positions will be <b><c>0</c></b>.  This means you can't
  * currently calculate how far a bullet travels through open air. </remarks>
@@ -2804,7 +2804,7 @@ forward OnPlayerStreamOut(playerid, forplayerid);
  * <param name="issuerid">The ID of the player that caused the damage. <b><c>INVALID_PLAYER_ID</c></b>
  * if self-inflicted</param>
  * <param name="amount">The amount of damage the player took (health and armour combined)</param>
- * <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon/reason</a>
+ * <param name="weaponid">The ID of the <a href="https://www.open.mp/docs/scripting/resources/weaponids">weapon/reason</a>
  * for the damage</param>
  * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
  *  Leave it out if using an older version!)</param>
@@ -2838,7 +2838,7 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bo
  * <param name="playerid">The ID of the player that gave damage</param>
  * <param name="damagedid">The ID of the player that received damage</param>
  * <param name="amount">The amount of health/armour damagedid has lost (combined)</param>
- * <param name="weaponid">The <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> that caused the
+ * <param name="weaponid">The <a href="https://www.open.mp/docs/scripting/resources/weaponids">reason</a> that caused the
  * damage</param>
  * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
  *  Leave it out if using an older version!)</param>
@@ -2889,7 +2889,7 @@ forward OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source);
  * <param name="playerid">The ID of the player that died</param>
  * <param name="killerid">The ID of the player that killed the player who died, or <b><c>INVALID_PLAYER_ID</c></b>
  * if there was none</param>
- * <param name="reason">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">reason</a> for the
+ * <param name="reason">The ID of the <a href="https://www.open.mp/docs/scripting/resources/weaponids">reason</a> for the
  * player's death</param>
  * <seealso name="OnPlayerSpawn" />
  * <seealso name="SendDeathMessage" />
@@ -2914,7 +2914,7 @@ forward OnPlayerDeath(playerid, killerid, WEAPON:reason);
  * supported.  Only <b>passenger</b> drive-by is supported (not driver drive-by, and not sea sparrow
  * / hunter shots).</summary>
  * <param name="playerid">The ID of the player that shot a weapon</param>
- * <param name="weaponid">The ID of the <a href="http://wiki.sa-mp.com/wiki/Weapons">weapon</a> shot
+ * <param name="weaponid">The ID of the <a href="https://www.open.mp/docs/scripting/resources/weaponids">weapon</a> shot
  * by the player</param>
  * <param name="hittype">The type of thing the shot hit (none, player, vehicle, or (player)object)</param>
  * <param name="hitid">The ID of the player, vehicle or object that was hit</param>
@@ -2981,7 +2981,7 @@ forward OnScriptCash(playerid, amount, source);
  * <seealso name="SetPlayerPosFindZ" />
  * <seealso name="GetPlayerPos" />
  * <remarks>The Z value returned will be <b><c>0</c></b> (invalid) if it is far away from the player;
- * use the <a href="http://forum.sa-mp.com/showthread.php?t=275492">MapAndreas plugin</a> to get a more
+ * use the <a href="https://github.com/philip1337/samp-plugin-mapandreas">MapAndreas plugin</a> to get a more
  * accurate Z coordinate.</remarks>
  * <returns>
  *   <b><c>1</c></b> - Will prevent other filterscripts from receiving this callback.<br />
@@ -3050,9 +3050,9 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
  * <summary>This callback is called when the state of any supported key is changed (pressed/released).
  *  Directional keys do not trigger OnPlayerKeyStateChange (up/down/left/right).</summary>
  * <param name="playerid">The ID of the player that pressed or released a key</param>
- * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
+ * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="https://www.open.mp/docs/scripting/resources/keys">here</a></param>
  * <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see
- * <a href="http://wiki.sa-mp.com/wiki/Keys">here</a></param>
+ * <a href="https://www.open.mp/docs/scripting/resources/keys">here</a></param>
  * <seealso name="GetPlayerKeys" />
  * <remarks>This callback can also be called by NPC.</remarks>
  * <remarks>

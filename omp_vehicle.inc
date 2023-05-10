@@ -287,15 +287,15 @@ static stock LANDING_GEAR_STATE:_@LANDING_GEAR_STATE() { return __LANDING_GEAR_S
 /**
  * <library>omp_vehicle</library>
  * <summary>Adds a 'static' vehicle (models are pre-loaded for players) to the gamemode.</summary>
- * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the
+ * <param name="modelid">The <a href="https://www.open.mp/docs/scripting/resources/vehicleid">Model ID</a> for the
  * vehicle</param>
  * <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
  * <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
  * <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
  * <param name="angle">Direction of vehicle - angle</param>
- * <param name="colour1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b>
+ * <param name="colour1">The primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a>. <b><c>-1</c></b>
  * for random (random colour chosen by client)</param>
- * <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>.
+ * <param name="colour2">The secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a>.
  * <b><c>-1</c></b> for random (random colour chosen by client)</param>
  * <returns>
  *   <ul>
@@ -316,15 +316,15 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
  * <summary>Adds a 'static' vehicle (models are pre-loaded for players)to the gamemode.  Differs from
  * <a href="#AddStaticVehicle">AddStaticVehicle</a> in only one way: allows a respawn time to be set
  * for when the vehicle is left unoccupied by the driver.</summary>
- * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">Model ID</a> for the
+ * <param name="modelid">The <a href="https://www.open.mp/docs/scripting/resources/vehicleid">Model ID</a> for the
  * vehicle</param>
  * <param name="spawnX">The x coordinate of the spawnpoint of this vehicle</param>
  * <param name="spawnY">The y coordinate of the spawnpoint of this vehicle</param>
  * <param name="spawnZ">The z coordinate of the spawnpoint of this vehicle</param>
  * <param name="angle">Direction of vehicle - angle</param>
- * <param name="colour1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>. <b><c>-1</c></b>
+ * <param name="colour1">The primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a>. <b><c>-1</c></b>
  * for random (random colour chosen by client)</param>
- * <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a>.
+ * <param name="colour2">The secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a>.
  * <b><c>-1</c></b> for random (random colour chosen by client)</param>
  * <param name="respawnDelay">The delay until the car is respawned without a driver, in seconds</param>
  * <param name="addSiren"><b>Added in 0.3.7; will not work in earlier versions.</b> Enables the vehicle
@@ -347,13 +347,13 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
  * <library>omp_vehicle</library>
  * <summary>Creates a vehicle in the world.  Can be used in place of <a href="#AddStaticVehicleEx">AddStaticVehicleEx</a>
  * at any time in the script.</summary>
- * <param name="modelid">The <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model</a> for the vehicle</param>
+ * <param name="modelid">The <a href="https://www.open.mp/docs/scripting/resources/vehicleid">model</a> for the vehicle</param>
  * <param name="spawnX">The x coordinate for the vehicle</param>
  * <param name="spawnY">The y coordinate for the vehicle</param>
  * <param name="spawnZ">The z coordinate for the vehicle</param>
  * <param name="angle">The facing angle for the vehicle</param>
- * <param name="colour1">The primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a></param>
- * <param name="colour2">The secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour ID</a></param>
+ * <param name="colour1">The primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a></param>
+ * <param name="colour2">The secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour ID</a></param>
  * <param name="respawnDelay">The delay until the car is respawned without a driver in <b>seconds</b>.
  *  Using <b><c>-1</c></b> will prevent the vehicle from respawning</param>
  * <param name="addSiren"><b>Added in 0.3.7; will not work in earlier versions</b>.  Enables the vehicle
@@ -702,7 +702,7 @@ native bool:SetVehicleToRespawn(vehicleid);
  * <summary>Links a vehicle to an interior.  Vehicles can only be seen by players in the same interior
  * (<a href="#SetPlayerInterior">SetPlayerInterior</a>).</summary>
  * <param name="vehicleid">The ID of the vehicle to link to an interior</param>
- * <param name="interiorid">The <a href="http://wiki.sa-mp.com/wiki/Interiorids">Interior ID</a> to
+ * <param name="interiorid">The <a href="https://www.open.mp/docs/scripting/resources/interiorids">Interior ID</a> to
  * link it to</param>
  * <seealso name="SetVehicleVirtualWorld" />
  * <seealso name="SetPlayerInterior" />
@@ -716,10 +716,10 @@ native bool:LinkVehicleToInterior(vehicleid, interiorid);
 /**
  * <library>omp_vehicle</library>
  * <summary>Adds a 'component' (often referred to as a 'mod' (modification)) to a vehicle.  Valid components
- * can be found <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">here</a>.</summary>
+ * can be found <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">here</a>.</summary>
  * <param name="vehicleid">The ID of the vehicle to add the component to.  Not to be confused with <a
- * href="http://wiki.sa-mp.com/wiki/Confuse_modelid">modelid</a></param>
- * <param name="component">The <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">ID of the component</a>
+ * href="https://sampwiki.blast.hk/wiki/Confuse_modelid">modelid</a></param>
+ * <param name="component">The <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">ID of the component</a>
  * to add to the vehicle</param>
  * <returns>
  *   <ul>
@@ -727,7 +727,7 @@ native bool:LinkVehicleToInterior(vehicleid, interiorid);
  *     <li><b><c>1</c></b> - The component was successfully added to the vehicle.</li>
  *   </ul>
  * </returns>
- * <remarks>Using an invalid <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component ID</a>
+ * <remarks>Using an invalid <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component ID</a>
  * crashes the player's game.  There are no internal checks for this.</remarks>
  * <seealso name="RemoveVehicleComponent" />
  * <seealso name="GetVehicleComponentInSlot" />
@@ -741,7 +741,7 @@ native bool:AddVehicleComponent(vehicleid, component);
  * <library>omp_vehicle</library>
  * <summary>Remove a component from a vehicle.</summary>
  * <param name="vehicleid">ID of the vehicle</param>
- * <param name="component">ID of the <a href="http://wiki.sa-mp.com/wiki/Car_Component_ID">component</a>
+ * <param name="component">ID of the <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component</a>
  * to remove</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="GetVehicleComponentInSlot" />
@@ -755,9 +755,9 @@ native bool:RemoveVehicleComponent(vehicleid, component);
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * <param name="colour2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehicleRespray" />
@@ -922,13 +922,13 @@ native bool:SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /**
  * <library>omp_vehicle</library>
- * <summary>Gets the <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a> of a vehicle.</summary>
+ * <summary>Gets the <a href="https://www.open.mp/docs/scripting/resources/vehicleid">model ID</a> of a vehicle.</summary>
  * <param name="vehicleid">The ID of the vehicle to get the model of</param>
  * <seealso name="GetPlayerVehicleid" />
  * <seealso name="GetVehiclePos" />
  * <seealso name="GetVehicleZAngle" />
  * <seealso name="GetPlayerVehicleSeat" />
- * <returns>The vehicle's <a href="http://wiki.sa-mp.com/wiki/Vehicle_Models">model ID</a>, or <b><c>0</c></b>
+ * <returns>The vehicle's <a href="https://www.open.mp/docs/scripting/resources/vehicleid">model ID</a>, or <b><c>0</c></b>
  * if the vehicle doesn't exist.</returns>
  */
 native GetVehicleModel(vehicleid);
@@ -1182,7 +1182,7 @@ native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VE
 /**
  * <library>omp_vehicle</library>
  * <summary>Retrieve information about a specific vehicle model such as the size or position of seats.</summary>
- * <param name="vehiclemodel">The vehicle <a href="http://wiki.sa-mp.com/wiki/Vehicles:All">model</a>
+ * <param name="vehiclemodel">The vehicle <a href="https://www.open.mp/docs/scripting/resources/vehicleid">model</a>
  * to get info of</param>
  * <param name="infotype">The type of information to retrieve</param>
  * <param name="x">A float to store the x value</param>
@@ -1483,9 +1483,9 @@ native #Deprecated();
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="http://wiki.sa-mp.com/wiki/Color_ID">colour
+ * <param name="colour2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehicleRespray" />
