@@ -348,9 +348,6 @@ native Format(output[], len = sizeof (output), const format[], {Float, _}:...) =
  * <param name="repeating">Whether the timer should repeat or not</param>
  * <seealso name="SetTimerEx" />
  * <seealso name="KillTimer" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
- * <a href="https://github.com/udan11/samp-plugin-timerfix">here</a>.
- * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use <a href="#KillTimer">KillTimer</a> on a timer
  * ID and it won't matter if it's running or not. </remarks>
  * <remarks>The function that should be called must be public. </remarks>
@@ -373,9 +370,6 @@ native SetTimer(const functionName[], interval, bool:repeating);
  * <seealso name="KillTimer" />
  * <seealso name="CallLocalFunction" />
  * <seealso name="CallRemoteFunction" />
- * <remarks>Timer intervals are not accurate (roughly 25% off).  There's a fix available
- * <a href="https://github.com/udan11/samp-plugin-timerfix">here</a>.
- * </remarks>
  * <remarks>Timer IDs are never used twice.  You can use KillTimer() on a timer ID and it won't matter
  * if it's running or not. </remarks>
  * <remarks>The function that should be called must be public. </remarks>
