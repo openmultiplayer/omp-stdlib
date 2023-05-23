@@ -42,11 +42,13 @@ enum WEAPON:__WEAPON
 	UNKNOWN_WEAPON                             = -1,
 	// Special `OnPlayerDeath` `reason` values.  NOT included in `MAX_WEAPONS`.
 	REASON_VEHICLE                             = 49,
+	REASON_HELICOPTER_BLADES                   = 50,
+	REASON_EXPLOSION                           = 51,
 	REASON_DROWN                               = 53,
 	REASON_COLLISION                           = 54,
 	REASON_SPLAT                               = 54,
 	REASON_CONNECT                             = 200,
-	REASON_DISCONNECT                          = 200,
+	REASON_DISCONNECT                          = 201,
 	REASON_SUICIDE                             = 255,
 	// The main weapon types.  Done after the reasons so sizes are correct.
 	WEAPON_FIST                                =  0,
