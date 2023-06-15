@@ -1587,8 +1587,8 @@ native GetPlayerColor(playerid);
  * </remarks>
  * <returns>
  *   <b><c>1</c></b> The name was changed successfully.<br />
- *   <b><c>0</c></b> The player is not connected, player already has that name or it's already taken by another player.<br />
- *   <b><c>-1</c></b> The name can not be changed (it's too long or has invalid characters).
+ *   <b><c>0</c></b> The player is not connected or the name is already in use.<br />
+ *   <b><c>-1</c></b> The name can not be changed (it's less than 3 symbols, too long or has invalid characters).
  * </returns>
  */
 native SetPlayerName(playerid, const name[]);
