@@ -302,6 +302,7 @@ native getpubvar(const name[]);
 */
 stock getpubvar(const __name[])
 {
+	const __cellbytes = cellbits / charbits;
 	new __entry = __findpubvar(__name);
 	if (__entry)
 	{
@@ -311,7 +312,7 @@ stock getpubvar(const __name[])
 		// Get the old data (fortunately the pointer is relative to `DAT`).
 		#emit LREF.S.pri   __entry
 		// Return the value in `pri`.
-		#emit STACK        4
+		#emit STACK        __cellbytes
 		#emit RETN
 	}
 	return 0;
@@ -332,6 +333,7 @@ native setpubvar(const name[], value);
 */
 stock setpubvar(const __name[], __value)
 {
+	const __cellbytes = cellbits / charbits;
 	new __entry = __findpubvar(__name);
 	if (__entry)
 	{
@@ -344,7 +346,7 @@ stock setpubvar(const __name[], __value)
 		#emit LOAD.S.alt   __value
 		#emit SREF.S.alt   __entry
 		// Return the value in `pri`.
-		#emit STACK        4
+		#emit STACK        __cellbytes
 		#emit RETN
 	}
 	return 0;
@@ -380,9 +382,10 @@ native numpubvars();
 */
 stock numpubvars()
 {
+	const __cellbytes = cellbits / charbits;
 	// In 32-bit scripts this is `64`, but in 64-bit scripts it is only `96`.  Part of the header
 	// entry is always 32-bit, regardless of the cell bit width.  We need it in bytes.
-	const __defsize = cellbits / charbits + 4;
+	const __defsize = __cellbytes + 4;
 	new __start, __end;
 	// Now we start doing assembly magic to dig through the AMX header itself.
 	// Get the offset from the start of the file to the start of the data segment (DAT).
