@@ -212,3 +212,212 @@ native deleteproperty(id = 0, const name[] = "", value = cellmin);
  */
 native bool:existproperty(id = 0, const name[] = "", value = cellmin);
 
+/* */ native __packpubvar(dest[], const source[], maxlength = sizeof (dest)) = strpack;
+
+static stock __findpubvar(const __name[])
+{
+	// Scans the AMX header to find a public variable and returns the address of the entry, or `0`
+	// if there isn't one.  Can't use `static` here because we rely on the string being all `\0`s.
+	new __packed[64 char], __offset = 0;
+	const __cellbytes = cellbits / charbits;
+	// In 32-bit scripts this is `64`, but in 64-bit scripts it is only `96`.  Part of the header
+	// entry is always 32-bit, regardless of the cell bit width.  We need it in bytes.
+	const __defsize = __cellbytes + 4;
+	// Convert the normal input string to a C string, via a packed string.  Pack it, then reverse
+	// every individual cell to get the correct final memory layout.
+	__packpubvar(__packed, __name);
+	// All cells have trailing nulls, so this can only be true when all bytes are non-zero because
+	// the top byte is non-zero.
+	while ((__packed[__offset] = swapchars(__packed[__offset])) > (cellmax >>> (charbits - 1)))
+	{
+		++__offset;
+	}
+	new __start, __end;
+	// Now we start doing assembly magic to dig through the AMX header itself.
+	// Get the offset from the start of the file to the start of the data segment (DAT).
+	#emit LCTRL        1
+	// Invert it to get the start of the file relative to DAT.
+	#emit NEG
+	// Store this offset.  We'll need it a lot.
+	#emit MOVE.alt
+	#emit STOR.S.alt   __offset
+	// Get the offset to the pubvars pointer.
+	#emit ADD.C        44 // Doesn't change with `cellbits`.
+	#emit STOR.S.pri   __start
+	#emit LREF.S.pri   __start
+	// Make this pointer relative to `DAT`.
+	#emit ADD
+	// Point to the name pointer in the entry to begin with.
+	#emit ADD.C        __cellbytes
+	#emit STOR.S.pri   __start
+	// Get the offset to the tags pointer.
+	#emit MOVE.pri
+	#emit ADD.C        48 // Doesn't change with `cellbits`.
+	#emit STOR.S.pri   __end
+	#emit LREF.S.pri   __end
+	#emit ADD
+	#emit ADD.C        __cellbytes
+	#emit STOR.S.pri   __end
+	// Loop through the 
+	new __s0, __s1, __s2;
+	// This could be made a binary search, but it would complicate the code a lot, and isn't worth
+	// it given how rare public variables are.  In fact, amx_assembly doesn't even bother with
+	// comparing four bytes at once and just loads and compares single characters instead, which is
+	// an option...  It would simplify the code even more.
+	while (__start != __end)
+	{
+		// Load the pointer.
+		#emit LREF.S.pri   __start
+		// Add the `DAT` offset.
+		#emit LOAD.S.alt   __offset
+		#emit ADD
+		// Save the pointer.
+		#emit STOR.S.pri   __s0
+		__s1 = 0;
+		for ( ; ; )
+		{
+			#emit LREF.S.pri   __s0
+			#emit STOR.S.pri   __s2
+			if (__packed[__s1] == __s2)
+			{
+				__s0 += __cellbytes;
+				++__s1;
+				continue;
+			}
+			// They are different, but this could be because of junk data loaded from after the end
+			// of the pubvar name in the AMX.  We need to determine whether the `NULL` comes first.
+			__s1 = __packed[__s1];
+			while (__s1 && (__s1 & 0xFF) == (__s2 & 0xFF))
+			{
+				__s1 >>>= 8;
+				__s2 >>>= 8;
+			}
+			if ((__s1 & 0xFF) || (__s2 & 0xFF))
+			{
+				break;
+			}
+			// Enough matches.
+			return __start - __cellbytes;
+		}
+		// This wasn't a match.  Try the next one.
+		__start += __defsize;
+	}
+	return 0;
+}
+
+/**
+ * <library>core</library>
+ * <summary>Gets a specific public variable from the current script.</summary>
+ * <param name="name">The public variable's name.</param>
+ * <seealso name="setpubvar"/>
+ * <seealso name="existpubvar"/>
+ * <seealso name="numpubvars"/>
+ * <returns>Naught if the variable doesn't exist (use <c>existpubvar</c> first).</returns>
+ */
+/*
+native getpubvar(const name[]);
+*/
+stock getpubvar(const __name[])
+{
+	new __entry = __findpubvar(__name);
+	if (__entry)
+	{
+		// Get the pointer to the data.
+		#emit LREF.S.pri   __entry
+		#emit STOR.S.pri   __entry
+		// Get the old data (fortunately the pointer is relative to `DAT`).
+		#emit LREF.S.pri   __entry
+		// Return the value in `pri`.
+		#emit STACK        4
+		#emit RETN
+	}
+	return 0;
+}
+
+/**
+ * <library>core</library>
+ * <summary>Sets a specific public variable in the current script.</summary>
+ * <param name="name">The public variable's name.</param>
+ * <param name="value">The value to store in the public variable.</param>
+ * <seealso name="getpubvar"/>
+ * <seealso name="existpubvar"/>
+ * <seealso name="numpubvars"/>
+ * <returns>The previous value of the variable.</returns>
+ */
+/*
+native setpubvar(const name[], value);
+*/
+stock setpubvar(const __name[], __value)
+{
+	new __entry = __findpubvar(__name);
+	if (__entry)
+	{
+		// Get the pointer to the data.
+		#emit LREF.S.pri   __entry
+		#emit STOR.S.pri   __entry
+		// Get the old data (fortunately the pointer is relative to `DAT`).
+		#emit LREF.S.pri   __entry
+		// Store the new data.
+		#emit LOAD.S.alt   __value
+		#emit SREF.S.alt   __entry
+		// Return the value in `pri`.
+		#emit STACK        4
+		#emit RETN
+	}
+	return 0;
+}
+
+/**
+ * <library>core</library>
+ * <summary>Checks if a specific public variable exists in the current script.</summary>
+ * <param name="name">The public variable's name.</param>
+ * <seealso name="getpubvar"/>
+ * <seealso name="setpubvar"/>
+ * <seealso name="numpubvars"/>
+ * <returns>Does the variable exist?</returns>
+ */
+/*
+native bool:existpubvar(const name[]);
+*/
+stock bool:existpubvar(const __name[])
+{
+	return __findpubvar(__name) != 0;
+}
+
+/**
+ * <library>core</library>
+ * <summary>Counts how many public variables there are in the script.</summary>
+ * <seealso name="getpubvar"/>
+ * <seealso name="setpubvar"/>
+ * <seealso name="existpubvar"/>
+ * <returns>The number of public variables declared.</returns>
+ */
+/*
+native numpubvars();
+*/
+stock numpubvars()
+{
+	// In 32-bit scripts this is `64`, but in 64-bit scripts it is only `96`.  Part of the header
+	// entry is always 32-bit, regardless of the cell bit width.  We need it in bytes.
+	const __defsize = cellbits / charbits + 4;
+	new __start, __end;
+	// Now we start doing assembly magic to dig through the AMX header itself.
+	// Get the offset from the start of the file to the start of the data segment (DAT).
+	#emit LCTRL        1
+	// Invert it to get the start of the file relative to DAT.
+	#emit NEG
+	// Get the offset to the pubvars pointer.
+	#emit ADD.C        44 // Doesn't change with `cellbits`.
+	#emit STOR.S.pri   __start
+	#emit LREF.S.pri   __start
+	#emit STOR.S.pri   __start
+	// Get the offset to the tags pointer.
+	#emit LCTRL        1
+	#emit NEG
+	#emit ADD.C        48 // Doesn't change with `cellbits`.
+	#emit STOR.S.pri   __end
+	#emit LREF.S.pri   __end
+	#emit STOR.S.pri   __end
+	return (__end - __start) / __defsize;
+}
+
