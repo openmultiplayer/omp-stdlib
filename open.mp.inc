@@ -101,8 +101,15 @@ public const __SAMP_INCLUDES_VERSION = 0x037030;
 public const __OPEN_MP_VERSION = 0;
 #pragma unused __OPEN_MP_VERSION
 
-#if !defined __PawnBuild
-	#define __PawnBuild 0
+#if defined __PawnBuild
+	#if __PawnBuild == 0
+		#undef __PawnBuild
+		#define __pawn_build 0
+	#else
+		#define __pawn_build __PawnBuild
+	#endif
+#else
+	#define __pawn_build 0
 #endif
 
 // Optionally stricter tags.
@@ -110,7 +117,7 @@ public const __OPEN_MP_VERSION = 0;
 	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) T_%0
-	#if __PawnBuild >= 11
+	#if __pawn_build >= 11
 		#define OPEN_MP_TAGS {LANDING_GEAR_STATE, T_CONNECTION_STATUS, T_CP_TYPE, T_WEAPON, T_PLAYER_MARKERS_MODE, T_DIALOG_STYLE, T_HTTP_METHOD, T_HTTP_ERROR, T_DOWNLOAD_REQUEST, T_SELECT_OBJECT, T_OBJECT_MATERIAL_SIZE, T_OBJECT_MATERIAL_TEXT_ALIGN, T_EDIT_RESPONSE, T_PLAYER_STATE, T_SPECIAL_ACTION, T_FIGHT_STYLE, T_WEAPONSKILL, T_WEAPONSTATE, T_KEY, T_CAM_MODE, T_MAPICON, T_SPECTATE_MODE, T_PLAYER_RECORDING_TYPE, T_FORCE_SYNC, T_CLICK_SOURCE, T_BULLET_HIT_TYPE, T_TEXT_DRAW_FONT, T_TEXT_DRAW_ALIGN, T_VARTYPE, T_CARMODTYPE, T_VEHICLE_MODEL_INFO, T_VEHICLE_PANEL_STATUS, T_VEHICLE_DOOR_STATUS, T_VEHICLE_LIGHT_STATUS, T_VEHICLE_TYRE_STATUS, T_WEAPON_SLOT, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#else
 		#define OPEN_MP_TAGS {T_WEAPON, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
@@ -121,7 +128,7 @@ public const __OPEN_MP_VERSION = 0;
 #endif
 
 #if defined OPEN_MP_TAGS
-#elseif __PawnBuild >= 11
+#elseif __pawn_build >= 11
 	// Why does this contain YSI tags?  `Bit` - `Style`?  People have been
 	// trained to use `CUSTOM_TAG_TYPES` to add tags to various call checks,
 	// but not for YSI internal tags.  Not having them here would be a change
@@ -222,7 +229,7 @@ public const __OPEN_MP_VERSION = 0;
  *   The maximum length of symbol names, excluding any NULLs.
  * </summary>
  */
-#if __PawnBuild == 0
+#if __pawn_build == 0
 	const __namemax = 31;
 #else
 	// Disable the symbol length warning.
@@ -244,8 +251,8 @@ public const __OPEN_MP_VERSION = 0;
 	#if defined __OPEN_MP_LONG_SYMBOL_NAME_TEST@
 		const __namemax = 31;
 	#else
-		#define __OPEN_MP_LONG_SYMBOL_NAME_TEST_________padding_________padding
-		#if defined __OPEN_MP_LONG_SYMBOL_NAME_TEST_________padding_________padding@
+		#define __OPEN_MP_LONG_SYMBOL_NAME_TEST_____padding_________padding____
+		#if defined __OPEN_MP_LONG_SYMBOL_NAME_TEST_____padding_________padding____@
 			const __namemax = 63;
 		#else
 			#error Unknown compiler max symbol length.
@@ -438,7 +445,7 @@ const bool:undefined = bool:-1;
 	#pragma warning pop
 #endif
 
-#if __PawnBuild > 4
+#if __pawn_build > 4
 	// Disable the deprecation warning.  There's a bug on some compiler versions
 	// where using a deprecated function shows two warnings - one at the call
 	// site and one at the declaration site.  There's no point having the
@@ -494,7 +501,7 @@ stock GetActorPoolSize()
 	return MAX_ACTORS - 1;
 }
 
-#if __PawnBuild > 4
+#if __pawn_build > 4
 	// Maybe re-enable the deprecation warning.
 	#pragma warning pop
 #endif
