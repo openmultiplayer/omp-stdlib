@@ -212,26 +212,19 @@ native deleteproperty(id = 0, const name[] = "", value = cellmin);
  */
 native bool:existproperty(id = 0, const name[] = "", value = cellmin);
 
-/* */ native __packpubvar(dest[], const source[], maxlength = sizeof (dest)) = strpack;
+/* */ native __unpackpubvar(dest[], const source[], maxlength = sizeof (dest)) = strunpack;
 
 static stock __findpubvar(const __name[])
 {
 	// Scans the AMX header to find a public variable and returns the address of the entry, or `0`
 	// if there isn't one.  Can't use `static` here because we rely on the string being all `\0`s.
-	new __packed[64 char], __offset = 0;
+	new __unpacked[64], __offset = 0;
 	const __cellbytes = cellbits / charbits;
 	// In 32-bit scripts this is `64`, but in 64-bit scripts it is only `96`.  Part of the header
 	// entry is always 32-bit, regardless of the cell bit width.  We need it in bytes.
 	const __defsize = __cellbytes + 4;
-	// Convert the normal input string to a C string, via a packed string.  Pack it, then reverse
-	// every individual cell to get the correct final memory layout.
-	__packpubvar(__packed, __name);
-	// All cells have trailing nulls, so this can only be true when all bytes are non-zero because
-	// the top byte is non-zero.
-	while ((__packed[__offset] = swapchars(__packed[__offset])) > (cellmax >>> (charbits - 1)))
-	{
-		++__offset;
-	}
+	// Ensure the input is unpacked for easier (to code) comparisons.
+	__unpackpubvar(__unpacked, __name);
 	new __start, __end;
 	// Now we start doing assembly magic to dig through the AMX header itself.
 	// Get the offset from the start of the file to the start of the data segment (DAT).
@@ -258,12 +251,11 @@ static stock __findpubvar(const __name[])
 	#emit ADD
 	#emit ADD.C        __cellbytes
 	#emit STOR.S.pri   __end
-	// Loop through the 
+	// Loop through the list of public variables and compare their names.
 	new __s0, __s1, __s2;
 	// This could be made a binary search, but it would complicate the code a lot, and isn't worth
-	// it given how rare public variables are.  In fact, amx_assembly doesn't even bother with
-	// comparing four bytes at once and just loads and compares single characters instead, which is
-	// an option...  It would simplify the code even more.
+	// it given how rare public variables are.  I actually wrote a more complex version that could
+	// compare two packed C strings, but shorter is better here.
 	while (__start != __end)
 	{
 		// Load the pointer.
@@ -278,26 +270,17 @@ static stock __findpubvar(const __name[])
 		{
 			#emit LREF.S.pri   __s0
 			#emit STOR.S.pri   __s2
-			if (__packed[__s1] == __s2)
-			{
-				__s0 += __cellbytes;
-				++__s1;
-				continue;
-			}
-			// They are different, but this could be because of junk data loaded from after the end
-			// of the pubvar name in the AMX.  We need to determine whether the `NULL` comes first.
-			__s1 = __packed[__s1];
-			while (__s1 && (__s1 & 0xFF) == (__s2 & 0xFF))
-			{
-				__s1 >>>= 8;
-				__s2 >>>= 8;
-			}
-			if ((__s1 & 0xFF) || (__s2 & 0xFF))
+			if (__unpacked[__s1] != __s2 & 0xFF)
 			{
 				break;
 			}
-			// Enough matches.
-			return __start - __cellbytes;
+			if (__unpacked[__s1] == '\0')
+			{
+				// The end of the string.
+				return __start - __cellbytes;
+			}
+			++__s0;
+			++__s1;
 		}
 		// This wasn't a match.  Try the next one.
 		__start += __defsize;
