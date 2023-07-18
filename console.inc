@@ -38,15 +38,18 @@
  * <seealso name="printf"/>
  * <return>This function always returns 0.</return>
  */
-stock print(const string[], foreground = -1, background = -1)
+/*
+native print(const string[], foreground = -1, background = -1);
+*/
+stock print(const __string[], __foreground = -1, __background = -1)
 {
 	// Quote:
 	//
 	// > Note that a [...] host application may not support colours
 	//
 	// So we can just ignore them.
-	#pragma unused foreground, background
-	return __print(string);
+	#pragma unused __foreground, __background
+	return __print(__string);
 }
 
 /**

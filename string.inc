@@ -107,9 +107,12 @@ native strcat(dest[], const source[], maxlength = sizeof (dest));
  * <seealso name="strcat"/>
  * <returns>The length of the new destination string.</returns>
  */
-stock strcopy(dest[], const source[], maxlength = sizeof (dest))
+/*
+native strcopy(dest[], const source[], maxlength = sizeof (dest));
+*/
+stock strcopy(__dest[], const __source[], __maxlength = sizeof (__dest))
 {
-	return strcat((dest[0] = EOS, dest), source, maxlength);
+	return strcat((__dest[0] = EOS, __dest), __source, __maxlength);
 }
 
 /**
@@ -406,18 +409,21 @@ native bool:memcpy(dest[], const source[], index = 0, numbytes, maxlength = size
  * <returns><b><c>true</c></b> if the strings match each other on given length, <b><c>false</c></b>
  * otherwise.</returns>
  */
-stock bool:strequal(const string1[], const string2[], bool:ignorecase = false, length = cellmax)
+/*
+native bool:strequal(const string1[], const string2[], bool:ignorecase = false, length = cellmax);
+*/
+stock bool:strequal(const __string1[], const __string2[], bool:__ignorecase = false, __length = cellmax)
 {
-	if (string1[0] == '\0')
+	if (__string1[0] == '\0')
 	{
 		// Only need to check the first character.
-		return string2[0] == '\0';
+		return __string2[0] == '\0';
 	}
-	if (string2[0] == '\0')
+	if (__string2[0] == '\0')
 	{
 		// Because we already know that `string1` isn't the same.
 		return false;
 	}
-	return strcmp(string1, string2, ignorecase, length) == 0;
+	return strcmp(__string1, __string2, __ignorecase, __length) == 0;
 }
 

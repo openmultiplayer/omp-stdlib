@@ -322,209 +322,287 @@ native Float:operator=(oper) = float;
 /**
  * <library>float</library>
  */
-stock Float:operator++(Float:oper)
+/*
+native Float:operator++(Float:oper);
+*/
+stock Float:operator++(Float:__oper)
 {
-	return oper + 1.0;
+	return __oper + 1.0;
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator--(Float:oper)
+/*
+native Float:operator--(Float:oper);
+*/
+stock Float:operator--(Float:__oper)
 {
-	return oper - 1.0;
+	return __oper - 1.0;
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator-(Float:oper)
+/*
+native Float:operator-(Float:oper);
+*/
+stock Float:operator-(Float:__oper)
 {
-	return oper ^ Float:cellmin;                /* IEEE values are sign/magnitude */
+	return __oper ^ Float:cellmin;                /* IEEE values are sign/magnitude */
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator*(Float:oper1, oper2)
+/*
+native Float:operator*(Float:oper1, oper2);
+*/
+stock Float:operator*(Float:__oper1, __oper2)
 {
-	return floatmul(oper1, float(oper2));       /* "*" is commutative */
+	return floatmul(__oper1, float(__oper2)); /* "*" is commutative */
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator/(Float:oper1, oper2)
+/*
+native Float:operator/(Float:oper1, oper2);
+*/
+stock Float:operator/(Float:__oper1, __oper2)
 {
-	return floatdiv(oper1, float(oper2));
+	return floatdiv(__oper1, float(__oper2));
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator/(oper1, Float:oper2)
+/*
+native Float:operator/(oper1, Float:oper2);
+*/
+stock Float:operator/(__oper1, Float:__oper2)
 {
-	return floatdiv(float(oper1), oper2);
+	return floatdiv(float(__oper1), __oper2);
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator+(Float:oper1, oper2)
+/*
+native Float:operator+(Float:oper1, oper2);
+*/
+stock Float:operator+(Float:__oper1, __oper2)
 {
-	return floatadd(oper1, float(oper2));       /* "+" is commutative */
+	return floatadd(__oper1, float(__oper2)); /* "+" is commutative */
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator-(Float:oper1, oper2)
+/*
+native Float:operator-(Float:oper1, oper2);
+*/
+stock Float:operator-(Float:__oper1, __oper2)
 {
-	return floatsub(oper1, float(oper2));
+	return floatsub(__oper1, float(__oper2));
 }
 
 /**
  * <library>float</library>
  */
-stock Float:operator-(oper1, Float:oper2)
+/*
+native Float:operator-(oper1, Float:oper2);
+*/
+stock Float:operator-(__oper1, Float:__oper2)
 {
-	return floatsub(float(oper1), oper2);
+	return floatsub(float(__oper1), __oper2);
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator==(Float:oper1, Float:oper2)
+/*
+native bool:operator==(Float:oper1, Float:oper2);
+*/
+stock bool:operator==(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) == 0;
+	return floatcmp(__oper1, __oper2) == 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator==(Float:oper1, oper2)
+/*
+native bool:operator==(Float:oper1, oper2);
+*/
+stock bool:operator==(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) == 0;  /* "==" is commutative */
+	return floatcmp(__oper1, float(__oper2)) == 0; /* "==" is commutative */
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator!=(Float:oper1, Float:oper2)
+/*
+native bool:operator!=(Float:oper1, Float:oper2);
+*/
+stock bool:operator!=(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) != 0;
+	return floatcmp(__oper1, __oper2) != 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator!=(Float:oper1, oper2)
+/*
+native bool:operator!=(Float:oper1, Float:oper2);
+*/
+stock bool:operator!=(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) != 0;  /* "!=" is commutative */
+	return floatcmp(__oper1, float(__oper2)) != 0; /* "!=" is commutative */
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>(Float:oper1, Float:oper2)
+/*
+native bool:operator>(Float:oper1, Float:oper2);
+*/
+stock bool:operator>(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) > 0;
+	return floatcmp(__oper1, __oper2) > 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>(Float:oper1, oper2)
+/*
+native bool:operator>(Float:oper1, oper2);
+*/
+stock bool:operator>(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) > 0;
+	return floatcmp(__oper1, float(__oper2)) > 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>(oper1, Float:oper2)
+/*
+native bool:operator>(oper1, Float:oper2);
+*/
+stock bool:operator>(__oper1, Float:__oper2)
 {
-	return floatcmp(float(oper1), oper2) > 0;
+	return floatcmp(float(__oper1), __oper2) > 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>=(Float:oper1, Float:oper2)
+/*
+native bool:operator>=(Float:oper1, Float:oper2);
+*/
+stock bool:operator>=(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) >= 0;
+	return floatcmp(__oper1, __oper2) >= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>=(Float:oper1, oper2)
+/*
+native bool:operator>=(Float:oper1, oper2);
+*/
+stock bool:operator>=(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) >= 0;
+	return floatcmp(__oper1, float(__oper2)) >= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator>=(oper1, Float:oper2)
+/*
+native bool:operator>=(oper1, Float:oper2);
+*/
+stock bool:operator>=(__oper1, Float:__oper2)
 {
-	return floatcmp(float(oper1), oper2) >= 0;
+	return floatcmp(float(__oper1), __oper2) >= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<(Float:oper1, Float:oper2)
+/*
+native bool:operator<(Float:oper1, Float:oper2);
+*/
+stock bool:operator<(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) < 0;
+	return floatcmp(__oper1, __oper2) < 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<(Float:oper1, oper2)
+/*
+native bool:operator<(Float:oper1, oper2);
+*/
+stock bool:operator<(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) < 0;
+	return floatcmp(__oper1, float(__oper2)) < 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<(oper1, Float:oper2)
+/*
+native bool:operator<(oper1, Float:oper2);
+*/
+stock bool:operator<(__oper1, Float:__oper2)
 {
-	return floatcmp(float(oper1), oper2) < 0;
+	return floatcmp(float(__oper1), __oper2) < 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<=(Float:oper1, Float:oper2)
+/*
+native bool:operator<=(Float:oper1, Float:oper2);
+*/
+stock bool:operator<=(Float:__oper1, Float:__oper2)
 {
-	return floatcmp(oper1, oper2) <= 0;
+	return floatcmp(__oper1, __oper2) <= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<=(Float:oper1, oper2)
+/*
+native bool:operator<=(Float:oper1, oper2);
+*/
+stock bool:operator<=(Float:__oper1, __oper2)
 {
-	return floatcmp(oper1, float(oper2)) <= 0;
+	return floatcmp(__oper1, float(__oper2)) <= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator<=(oper1, Float:oper2)
+/*
+native bool:operator<=(oper1, Float:oper2);
+*/
+stock bool:operator<=(__oper1, Float:__oper2)
 {
-	return floatcmp(float(oper1), oper2) <= 0;
+	return floatcmp(float(__oper1), __oper2) <= 0;
 }
 
 /**
  * <library>float</library>
  */
-stock bool:operator!(Float:oper)
+/*
+native bool:operator!(Float:oper);
+*/
+stock bool:operator!(Float:__oper)
 {
-	return (_:oper & cellmax) == 0;
+	return (_:__oper & cellmax) == 0;
 }
 
 /* forbidden operations */

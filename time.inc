@@ -95,17 +95,20 @@ forward @timer();
  * </remarks>
  * <returns>This function always returns 0.</returns>
  */
-stock settimer(milliseconds, bool:singleshot = false)
+/*
+native settimer(milliseconds, bool:singleshot = false);
+*/
+stock settimer(__milliseconds, bool:__singleshot = false)
 {
-	static id = 0;
-	if (id)
+	static __id = 0;
+	if (__id)
 	{
-		__killtimer(id);
+		__killtimer(__id);
 	}
-	id = 0;
-	if (milliseconds)
+	__id = 0;
+	if (__milliseconds)
 	{
-		id = __settimer("@timer", milliseconds, !singleshot);
+		__id = __settimer("@timer", __milliseconds, !__singleshot);
 	}
 	return 0;
 }
@@ -124,11 +127,14 @@ stock settimer(milliseconds, bool:singleshot = false)
  * </remarks>
  * <returns>This function always returns 0.</returns>
  */
-stock delay(milliseconds)
+/*
+native delay(milliseconds);
+*/
+stock delay(__milliseconds)
 {
 	// This arrangement accounts for integer overflows.
-	new end = tickcount() + milliseconds;
-	while (tickcount() - end < 0)
+	new __end = tickcount() + __milliseconds;
+	while (tickcount() - __end < 0)
 	{
 		// Do nothing.
 	}
@@ -151,57 +157,60 @@ stock delay(milliseconds)
  * </remarks>
  * <returns>This function always returns 0.</returns>
  */
-stock cvttimestamp(seconds1970, &year = 0, &month = 0, &day = 0, &hour = 0, &minute = 0, &second = 0)
+/*
+native cvttimestamp(seconds1970, &year = 0, &month = 0, &day = 0, &hour = 0, &minute = 0, &second = 0);
+*/
+stock cvttimestamp(__seconds1970, &__year = 0, &__month = 0, &__day = 0, &__hour = 0, &__minute = 0, &__second = 0)
 {
 	// Based on the amxtime.c code, with some fixed bugs...
-	new days, seconds;
-	static monthdays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	new __days, __seconds;
+	static __monthdays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	// Find the year.
-	for (year = 1970; ; ++year)
+	for (__year = 1970; ; ++__year)
 	{
 		// Leap year check.
-		days = 365 + _:((year % 4) == 0) - _:((year % 100) == 0) + _:((year % 400) == 0);
-		seconds = days * 86400;
-		if (seconds - seconds1970 > 0)
+		__days = 365 + _:((__year % 4) == 0) - _:((__year % 100) == 0) + _:((__year % 400) == 0);
+		__seconds = __days * 86400;
+		if (__seconds - __seconds1970 > 0)
 		{
 			break;
 		}
-		seconds1970 -= seconds;
+		__seconds1970 -= __seconds;
 	}
 	
 	// Find the month.
-	for (month = 1; ; ++month)
+	for (__month = 1; ; ++__month)
 	{
-		days = monthdays[month - 1];
-		seconds = days * 86400;
-		if (seconds - seconds1970 > 0)
+		__days = __monthdays[__month - 1];
+		__seconds = __days * 86400;
+		if (__seconds - __seconds1970 > 0)
 		{
 			break;
 		}
-		seconds1970 -= seconds;
+		__seconds1970 -= __seconds;
 	}
 
 	// Find the day.
-	for (day = 1; seconds1970 >= 86400; ++day)
+	for (__day = 1; __seconds1970 >= 86400; ++__day)
 	{
-		seconds1970 -= 86400;
+		__seconds1970 -= 86400;
 	}
 
 	// Find the hour.
-	for (hour = 0; seconds1970 >= 3600; ++hour)
+	for (__hour = 0; __seconds1970 >= 3600; ++__hour)
 	{
-		seconds1970 -= 3600;
+		__seconds1970 -= 3600;
 	}
 
 	// Find the minute.
-	for (minute = 0; seconds1970 >= 60; ++minute)
+	for (__minute = 0; __seconds1970 >= 60; ++__minute)
 	{
-		seconds1970 -= 60;
+		__seconds1970 -= 60;
 	}
 
 	// Remainder is the number of seconds.
-	second = seconds1970;
+	__second = __seconds1970;
 
 	return 0;
 }
@@ -238,12 +247,15 @@ forward settime(hour = cellmin, minute = cellmin, second = cellmin);
  * <returns>This function always returns 0.</returns>
  * <remarks>The function <c>getdate</c> returns the number of seconds since 1 January 1970.</remarks>
  */
-stock settimestamp(seconds1970)
+/*
+native settimestamp(seconds1970);
+*/
+stock settimestamp(__seconds1970)
 {
-	new year, month, day, hour, minute, second;
-	cvttimestamp(seconds1970, year, month, day, hour, minute, second);
-	setdate(year, month, day);
-	settime(hour, minute, second);
+	new __year, __month, __day, __hour, __minute, __second;
+	cvttimestamp(__seconds1970, __year, __month, __day, __hour, __minute, __second);
+	setdate(__year, __month, __day);
+	settime(__hour, __minute, __second);
 	return 0;
 }
 
