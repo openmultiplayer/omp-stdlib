@@ -210,5 +210,5 @@ native deleteproperty(id = 0, const name[] = "", value = cellmin);
  * <seealso name="Deleteproperty"/>
  * <returns><b><c>1</c></b> if the property exists and <b><c>0</c></b> otherwise.</returns>
  */
-native existproperty(id = 0, const name[] = "", value = cellmin);
+native bool:existproperty(id = 0, const name[] = "", value = cellmin);
 
