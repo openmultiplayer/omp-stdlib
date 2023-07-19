@@ -73,7 +73,7 @@ native getarg(arg, index = 0);
  * <seealso name="numargs"/>
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> if the argument or the index are invalid.</returns>
  */
-native setarg(arg, index = 0, value);
+native bool:setarg(arg, index = 0, value);
 
 /**
  * <library>core</library>
@@ -233,10 +233,12 @@ static stock __findpubvar(const __name[])
 	#emit NEG
 	// Store this offset.  We'll need it a lot.
 	#emit MOVE.alt
-	#emit STOR.S.alt   __offset
+	#emit STOR.S.pri   __offset
 	// Get the offset to the pubvars pointer.
 	#emit ADD.C        44 // Doesn't change with `cellbits`.
 	#emit STOR.S.pri   __start
+	#emit ADD.C        4 // Doesn't change with `cellbits`.
+	#emit STOR.S.pri   __end
 	#emit LREF.S.pri   __start
 	// Make this pointer relative to `DAT`.
 	#emit ADD
@@ -244,9 +246,6 @@ static stock __findpubvar(const __name[])
 	#emit ADD.C        __cellbytes
 	#emit STOR.S.pri   __start
 	// Get the offset to the tags pointer.
-	#emit MOVE.pri
-	#emit ADD.C        48 // Doesn't change with `cellbits`.
-	#emit STOR.S.pri   __end
 	#emit LREF.S.pri   __end
 	#emit ADD
 	#emit ADD.C        __cellbytes
@@ -395,15 +394,14 @@ stock numpubvars()
 	// Get the offset to the pubvars pointer.
 	#emit ADD.C        44 // Doesn't change with `cellbits`.
 	#emit STOR.S.pri   __start
-	#emit LREF.S.pri   __start
-	#emit STOR.S.pri   __start
 	// Get the offset to the tags pointer.
-	#emit LCTRL        1
-	#emit NEG
-	#emit ADD.C        48 // Doesn't change with `cellbits`.
+	#emit ADD.C        4 // Doesn't change with `cellbits`.
 	#emit STOR.S.pri   __end
+	// Load both values.
+	#emit LREF.S.alt   __start
 	#emit LREF.S.pri   __end
+	#emit SUB
 	#emit STOR.S.pri   __end
-	return (__end - __start) / __defsize;
+	return __end / __defsize;
 }
 
