@@ -414,7 +414,7 @@ native readcfg(const cfgname[] = "", const section[] = "", const key[], value[],
  * <param name="section">The section to look for the key.  If this parameter is not set, the
  * function reads the key outside any section.</param>
  * <param name="key">The key whose value must be looked up.</param>
- * <param name="defvalue">The string to copy into parameter value in the case that the function
+ * <param name="defvalue">The value to return in the case that the function
  * cannot read the field from the INI file.</param>
  * <returns>The numeric value if the field, or the value of <c>defvalue</c> if the field was not
  * found in the section and/or at the key.</returns>
