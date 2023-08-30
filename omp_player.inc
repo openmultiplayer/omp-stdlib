@@ -103,18 +103,15 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  * <summary>States</summary>
  */
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
-enum PLAYER_STATE:__PLAYER_STATE
-{
-	UNKNOWN_PLAYER_STATE                       = -1,
-	PLAYER_STATE_NONE,
-	PLAYER_STATE_ONFOOT,
-	PLAYER_STATE_DRIVER,
-	PLAYER_STATE_PASSENGER,
-	PLAYER_STATE_WASTED                        = 7,
-	PLAYER_STATE_SPAWNED,
-	PLAYER_STATE_SPECTATING
-}
-static stock PLAYER_STATE:_@PLAYER_STATE() { return __PLAYER_STATE; }
+
+const PLAYER_STATE:UNKNOWN_PLAYER_STATE        = PLAYER_STATE:-1;
+const PLAYER_STATE:PLAYER_STATE_NONE           = PLAYER_STATE:0;
+const PLAYER_STATE:PLAYER_STATE_ONFOOT         = PLAYER_STATE:1;
+const PLAYER_STATE:PLAYER_STATE_DRIVER         = PLAYER_STATE:2;
+const PLAYER_STATE:PLAYER_STATE_PASSENGER      = PLAYER_STATE:3;
+const PLAYER_STATE:PLAYER_STATE_WASTED         = PLAYER_STATE:7;
+const PLAYER_STATE:PLAYER_STATE_SPAWNED        = PLAYER_STATE:8;
+const PLAYER_STATE:PLAYER_STATE_SPECTATING     = PLAYER_STATE:9;
 
 /**
  * <library>omp_player</library>
@@ -129,7 +126,7 @@ const PLAYER_STATE:PLAYER_STATE_EXIT_VEH       = PLAYER_STATE:4;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV = PLAYER_STATE:5;
+const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV  = PLAYER_STATE:5;
 #define PLAYER_STATE_ENTER_VEHICLE_DRIVER      PLAYER_STATE_ENTER_VEHICLE_DRV
 
 /**
@@ -145,89 +142,77 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
  * <library>omp_player</library>
  */
 #define SPECIAL_ACTION: __TAG(SPECIAL_ACTION):
-enum SPECIAL_ACTION:__SPECIAL_ACTION
-{
-	UNKNOWN_SPECIAL_ACTION                     = -1,
-	SPECIAL_ACTION_NONE,
-	SPECIAL_ACTION_DUCK,
-	SPECIAL_ACTION_USEJETPACK,
-	SPECIAL_ACTION_ENTER_VEHICLE,
-	SPECIAL_ACTION_EXIT_VEHICLE,
-	SPECIAL_ACTION_DANCE1,
-	SPECIAL_ACTION_DANCE2,
-	SPECIAL_ACTION_DANCE3,
-	SPECIAL_ACTION_DANCE4,
-	SPECIAL_ACTION_HANDSUP                     = 10,
-	SPECIAL_ACTION_USECELLPHONE,
-	SPECIAL_ACTION_SITTING,
-	SPECIAL_ACTION_STOPUSECELLPHONE,
-	SPECIAL_ACTION_DRINK_BEER                  = 20,
-	SPECIAL_ACTION_SMOKE_CIGGY,
-	SPECIAL_ACTION_DRINK_WINE,
-	SPECIAL_ACTION_DRINK_SPRUNK,
-	SPECIAL_ACTION_CUFFED,
-	SPECIAL_ACTION_CARRY,
-	SPECIAL_ACTION_PISSING                     = 68
-}
-static stock SPECIAL_ACTION:_@SPECIAL_ACTION() { return __SPECIAL_ACTION; }
+
+const SPECIAL_ACTION:UNKNOWN_SPECIAL_ACTION    = SPECIAL_ACTION:-1;
+const SPECIAL_ACTION:SPECIAL_ACTION_NONE       = SPECIAL_ACTION:0;
+const SPECIAL_ACTION:SPECIAL_ACTION_DUCK       = SPECIAL_ACTION:1;
+const SPECIAL_ACTION:SPECIAL_ACTION_USEJETPACK = SPECIAL_ACTION:2;
+const SPECIAL_ACTION:SPECIAL_ACTION_ENTER_VEHICLE  = SPECIAL_ACTION:3;
+const SPECIAL_ACTION:SPECIAL_ACTION_EXIT_VEHICLE   = SPECIAL_ACTION:4;
+const SPECIAL_ACTION:SPECIAL_ACTION_DANCE1     = SPECIAL_ACTION:5;
+const SPECIAL_ACTION:SPECIAL_ACTION_DANCE2     = SPECIAL_ACTION:6;
+const SPECIAL_ACTION:SPECIAL_ACTION_DANCE3     = SPECIAL_ACTION:7;
+const SPECIAL_ACTION:SPECIAL_ACTION_DANCE4     = SPECIAL_ACTION:8;
+const SPECIAL_ACTION:SPECIAL_ACTION_HANDSUP    = SPECIAL_ACTION:10;
+const SPECIAL_ACTION:SPECIAL_ACTION_USECELLPHONE   = SPECIAL_ACTION:11;
+const SPECIAL_ACTION:SPECIAL_ACTION_SITTING    = SPECIAL_ACTION:12;
+const SPECIAL_ACTION:SPECIAL_ACTION_STOPUSECELLPHONE   = SPECIAL_ACTION:13;
+const SPECIAL_ACTION:SPECIAL_ACTION_DRINK_BEER = SPECIAL_ACTION:20;
+const SPECIAL_ACTION:SPECIAL_ACTION_SMOKE_CIGGY    = SPECIAL_ACTION:21;
+const SPECIAL_ACTION:SPECIAL_ACTION_DRINK_WINE = SPECIAL_ACTION:22;
+const SPECIAL_ACTION:SPECIAL_ACTION_DRINK_SPRUNK   = SPECIAL_ACTION:23;
+const SPECIAL_ACTION:SPECIAL_ACTION_CUFFED     = SPECIAL_ACTION:24;
+const SPECIAL_ACTION:SPECIAL_ACTION_CARRY      = SPECIAL_ACTION:25;
+const SPECIAL_ACTION:SPECIAL_ACTION_PISSING    = SPECIAL_ACTION:68;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define FIGHT_STYLE: __TAG(FIGHT_STYLE):
-enum FIGHT_STYLE:__FIGHT_STYLE
-{
-	UNKNOWN_FIGHT_STYLE                        = -1,
-	FIGHT_STYLE_NORMAL                         = 4,
-	FIGHT_STYLE_BOXING,
-	FIGHT_STYLE_KUNGFU,
-	FIGHT_STYLE_KNEEHEAD,
-	FIGHT_STYLE_GRABKICK                       = 15,
-	FIGHT_STYLE_ELBOW
-}
-static stock FIGHT_STYLE:_@FIGHT_STYLE() { return __FIGHT_STYLE; }
 
-#define MAX_FIGHT_STYLES __FIGHT_STYLE
+const FIGHT_STYLE:UNKNOWN_FIGHT_STYLE          = FIGHT_STYLE:-1;
+const FIGHT_STYLE:FIGHT_STYLE_NORMAL           = FIGHT_STYLE:4;
+const FIGHT_STYLE:FIGHT_STYLE_BOXING           = FIGHT_STYLE:5;
+const FIGHT_STYLE:FIGHT_STYLE_KUNGFU           = FIGHT_STYLE:6;
+const FIGHT_STYLE:FIGHT_STYLE_KNEEHEAD         = FIGHT_STYLE:7;
+const FIGHT_STYLE:FIGHT_STYLE_GRABKICK         = FIGHT_STYLE:15;
+const FIGHT_STYLE:FIGHT_STYLE_ELBOW            = FIGHT_STYLE:16;
+
+const FIGHT_STYLE:MAX_FIGHT_STYLES             = FIGHT_STYLE:17;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define WEAPONSKILL: __TAG(WEAPONSKILL):
-enum WEAPONSKILL:__WEAPONSKILL
-{
-	UNKNOWN_WEAPONSKILL                        = -1,
-	WEAPONSKILL_PISTOL,
-	WEAPONSKILL_PISTOL_SILENCED,
-	WEAPONSKILL_DESERT_EAGLE,
-	WEAPONSKILL_SHOTGUN,
-	WEAPONSKILL_SAWNOFF_SHOTGUN,
-	WEAPONSKILL_SPAS12_SHOTGUN,
-	WEAPONSKILL_MICRO_UZI,
-	WEAPONSKILL_MP5,
-	WEAPONSKILL_AK47,
-	WEAPONSKILL_M4,
-	WEAPONSKILL_SNIPERRIFLE
-}
-static stock WEAPONSKILL:_@WEAPONSKILL() { return __WEAPONSKILL; }
 
-#define MAX_WEAPONSKILLS __WEAPONSKILL
+const WEAPONSKILL:UNKNOWN_WEAPONSKILL          = WEAPONSKILL:-1;
+const WEAPONSKILL:WEAPONSKILL_PISTOL           = WEAPONSKILL:0;
+const WEAPONSKILL:WEAPONSKILL_PISTOL_SILENCED  = WEAPONSKILL:1;
+const WEAPONSKILL:WEAPONSKILL_DESERT_EAGLE     = WEAPONSKILL:2;
+const WEAPONSKILL:WEAPONSKILL_SHOTGUN          = WEAPONSKILL:3;
+const WEAPONSKILL:WEAPONSKILL_SAWNOFF_SHOTGUN  = WEAPONSKILL:4;
+const WEAPONSKILL:WEAPONSKILL_SPAS12_SHOTGUN   = WEAPONSKILL:5;
+const WEAPONSKILL:WEAPONSKILL_MICRO_UZI        = WEAPONSKILL:6;
+const WEAPONSKILL:WEAPONSKILL_MP5              = WEAPONSKILL:7;
+const WEAPONSKILL:WEAPONSKILL_AK47             = WEAPONSKILL:8;
+const WEAPONSKILL:WEAPONSKILL_M4               = WEAPONSKILL:9;
+const WEAPONSKILL:WEAPONSKILL_SNIPERRIFLE      = WEAPONSKILL:10;
+
+const WEAPONSKILL:MAX_WEAPONSKILLS             = WEAPONSKILL:11;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define WEAPONSTATE: __TAG(WEAPONSTATE):
-enum WEAPONSTATE:__WEAPONSTATE
-{
-	UNKNOWN_WEAPONSTATE                        = -1,
-	WEAPONSTATE_NO_BULLETS,
-	WEAPONSTATE_LAST_BULLET,
-	WEAPONSTATE_MORE_BULLETS,
-	WEAPONSTATE_RELOADING
-}
-static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
+
+const WEAPONSTATE:UNKNOWN_WEAPONSTATE          = WEAPONSTATE:-1;
+const WEAPONSTATE:WEAPONSTATE_NO_BULLETS       = WEAPONSTATE:0;
+const WEAPONSTATE:WEAPONSTATE_LAST_BULLET      = WEAPONSTATE:1;
+const WEAPONSTATE:WEAPONSTATE_MORE_BULLETS     = WEAPONSTATE:2;
+const WEAPONSTATE:WEAPONSTATE_RELOADING        = WEAPONSTATE:3;
 
 #define WEAPONSTATE_UNKNOWN UNKNOWN_WEAPONSTATE
 
@@ -237,90 +222,79 @@ static stock WEAPONSTATE:_@WEAPONSTATE() { return __WEAPONSTATE; }
  * <summary>Keys</summary>
  */
 #define KEY: __TAG(KEY):
-enum KEY:__KEY (<<= 1)
-{
-	UNKNOWN_KEY                                = -1,
-	KEY_NONE                                   = 0,
-	KEY_ACTION                                 = 1,
-	KEY_CROUCH,
-	KEY_FIRE,
-	KEY_SPRINT,
-	KEY_SECONDARY_ATTACK,
-	KEY_JUMP,
-	KEY_LOOK_RIGHT,
-	KEY_HANDBRAKE,
-	KEY_LOOK_LEFT,
-	KEY_SUBMISSION,
-	KEY_LOOK_BEHIND                            = KEY_SUBMISSION,
-	KEY_WALK,
-	KEY_ANALOG_UP,
-	KEY_ANALOG_DOWN,
-	KEY_ANALOG_LEFT,
-	KEY_ANALOG_RIGHT,
-	KEY_YES                                    = 65536,
-	KEY_NO,
-	KEY_CTRL_BACK,
 
-	KEY_UP                                     = -128,
-	KEY_DOWN                                   =  128,
-	KEY_LEFT                                   = -128,
-	KEY_RIGHT                                  =  128
-}
-static stock KEY:_@KEY() { return __KEY; }
+const KEY:UNKNOWN_KEY                          = KEY:-1;
+const KEY:KEY_NONE                             = KEY:0x00000000;
+const KEY:KEY_ACTION                           = KEY:0x00000001;
+const KEY:KEY_CROUCH                           = KEY:0x00000002;
+const KEY:KEY_FIRE                             = KEY:0x00000004;
+const KEY:KEY_SPRINT                           = KEY:0x00000008;
+const KEY:KEY_SECONDARY_ATTACK                 = KEY:0x00000010;
+const KEY:KEY_JUMP                             = KEY:0x00000020;
+const KEY:KEY_LOOK_RIGHT                       = KEY:0x00000040;
+const KEY:KEY_HANDBRAKE                        = KEY:0x00000080;
+const KEY:KEY_LOOK_LEFT                        = KEY:0x00000100;
+const KEY:KEY_SUBMISSION                       = KEY:0x00000200;
+const KEY:KEY_LOOK_BEHIND                      = KEY:0x00000200;
+const KEY:KEY_WALK                             = KEY:0x00000400;
+const KEY:KEY_ANALOG_UP                        = KEY:0x00000800;
+const KEY:KEY_ANALOG_DOWN                      = KEY:0x00001000;
+const KEY:KEY_ANALOG_LEFT                      = KEY:0x00002000;
+const KEY:KEY_ANALOG_RIGHT                     = KEY:0x00004000;
+const KEY:KEY_YES                              = KEY:0x00010000;
+const KEY:KEY_NO                               = KEY:0x00020000;
+const KEY:KEY_CTRL_BACK                        = KEY:0x00040000;
+
+// Untagged.
+const KEY_UP                                   = -128;
+const KEY_DOWN                                 =  128;
+const KEY_LEFT                                 = -128;
+const KEY_RIGHT                                =  128;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define CAM_MOVE: __TAG(CAM_MOVE):
-enum CAM_MOVE:__CAMERA
-{
-	UNKNOWN_CAM_MOVE                           = -1,
-	CAMERA_MOVE                                = 1,
-	CAMERA_CUT
-}
-static stock CAMERA_MOVE:_@CAMERA_MOVE() { return __CAMERA_MOVE; }
+
+const CAM_MOVE:UNKNOWN_CAM_MOVE                = CAM_MOVE:-1;
+const CAM_MOVE:CAMERA_MOVE                     = CAM_MOVE:1;
+const CAM_MOVE:CAMERA_CUT                      = CAM_MOVE:2;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define CAM_MODE: __TAG(CAM_MODE):
-enum CAM_MODE:__CAM_MODE
-{
-	UNKNOWN_CAM_MODE                           = -1,
-	CAM_MODE_DISCONNECTED                      = -1,
-	CAM_MODE_NONE                              = 0,
-	CAM_MODE_BEHINDCAR                         = 3,
-	CAM_MODE_FOLLOWPED                         = 4,
-	CAM_MODE_SNIPER                            = 7,
-	CAM_MODE_ROCKETLAUNCHER                    = 8,
-	CAM_MODE_FIXED                             = 15,
-	CAM_MODE_1STPERSON                         = 16,
-	CAM_MODE_CAM_ON_A_STRING                   = 18,
-	CAM_MODE_BEHINDBOAT                        = 22,
-	CAM_MODE_CAMERA                            = 46,
-	CAM_MODE_ROCKETLAUNCHER_HS                 = 51,
-	CAM_MODE_AIMWEAPON                         = 53,
-	CAM_MODE_AIMWEAPON_FROMCAR                 = 55,
-	CAM_MODE_DW_HELI_CHASE                     = 56
-}
-static stock CAM_MODE:_@CAM_MODE() { return __CAM_MODE; }
+
+const CAM_MODE:UNKNOWN_CAM_MODE                = CAM_MODE:-1;
+const CAM_MODE:CAM_MODE_DISCONNECTED           = CAM_MODE:-1;
+const CAM_MODE:CAM_MODE_NONE                   = CAM_MODE:0;
+const CAM_MODE:CAM_MODE_BEHINDCAR              = CAM_MODE:3;
+const CAM_MODE:CAM_MODE_FOLLOWPED              = CAM_MODE:4;
+const CAM_MODE:CAM_MODE_SNIPER                 = CAM_MODE:7;
+const CAM_MODE:CAM_MODE_ROCKETLAUNCHER         = CAM_MODE:8;
+const CAM_MODE:CAM_MODE_FIXED                  = CAM_MODE:15;
+const CAM_MODE:CAM_MODE_1STPERSON              = CAM_MODE:16;
+const CAM_MODE:CAM_MODE_CAM_ON_A_STRING        = CAM_MODE:18;
+const CAM_MODE:CAM_MODE_BEHINDBOAT             = CAM_MODE:22;
+const CAM_MODE:CAM_MODE_CAMERA                 = CAM_MODE:46;
+const CAM_MODE:CAM_MODE_ROCKETLAUNCHER_HS      = CAM_MODE:51;
+const CAM_MODE:CAM_MODE_AIMWEAPON              = CAM_MODE:53;
+const CAM_MODE:CAM_MODE_AIMWEAPON_FROMCAR      = CAM_MODE:55;
+const CAM_MODE:CAM_MODE_DW_HELI_CHASE          = CAM_MODE:56;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define MAPICON: __TAG(MAPICON):
-enum MAPICON:__MAPICON
-{
-	UNKNOWN_MAPICON                            = -1,
-	MAPICON_LOCAL,                             // Displays in the player's local area
-	MAPICON_GLOBAL,                            // Displays always
-	MAPICON_LOCAL_CHECKPOINT,                  // Displays in the player's local area and has a checkpoint marker
-	MAPICON_GLOBAL_CHECKPOINT                  // Displays always and has a checkpoint marker
-}
-static stock MAPICON:_@MAPICON() { return __MAPICON; }
+
+const MAPICON:UNKNOWN_MAPICON                  = MAPICON:-1;
+const MAPICON:MAPICON_LOCAL                    = MAPICON:0; // Displays in the player's local area.
+const MAPICON:MAPICON_GLOBAL                   = MAPICON:1; // Displays always.
+const MAPICON:MAPICON_LOCAL_CHECKPOINT         = MAPICON:2; // Displays in the player's local area and has a checkpoint marker.
+const MAPICON:MAPICON_GLOBAL_CHECKPOINT        = MAPICON:3; // Displays always and has a checkpoint marker.
 
 /// <p/>
 /**
@@ -328,14 +302,11 @@ static stock MAPICON:_@MAPICON() { return __MAPICON; }
  * <summary>Spectating</summary>
  */
 #define SPECTATE_MODE: __TAG(SPECTATE_MODE):
-enum SPECTATE_MODE:__SPECTATE_MODE
-{
-	UNKNOWN_SPECTATE_MODE                      = -1,
-	SPECTATE_MODE_NORMAL                       = 1,
-	SPECTATE_MODE_FIXED,
-	SPECTATE_MODE_SIDE
-}
-static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
+
+const SPECTATE_MODE:UNKNOWN_SPECTATE_MODE      = SPECTATE_MODE:-1;
+const SPECTATE_MODE:SPECTATE_MODE_NORMAL       = SPECTATE_MODE:1;
+const SPECTATE_MODE:SPECTATE_MODE_FIXED        = SPECTATE_MODE:2;
+const SPECTATE_MODE:SPECTATE_MODE_SIDE         = SPECTATE_MODE:3;
 
 /// <p/>
 /**
@@ -343,57 +314,45 @@ static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
  * <summary>Recording for NPC playback</summary>
  */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
-enum PLAYER_RECORDING_TYPE:__PLAYER_RECORDING_TYPE
-{
-	UNKNOWN_PLAYER_RECORDING_TYPE              = -1,
-	PLAYER_RECORDING_TYPE_NONE,
-	PLAYER_RECORDING_TYPE_DRIVER,
-	PLAYER_RECORDING_TYPE_ONFOOT
-}
-static stock PLAYER_RECORDING_TYPE:_@PLAYER_RECORDING_TYPE() { return __PLAYER_RECORDING_TYPE; }
+
+const PLAYER_RECORDING_TYPE:UNKNOWN_PLAYER_RECORDING_TYPE  = PLAYER_RECORDING_TYPE:-1;
+const PLAYER_RECORDING_TYPE:PLAYER_RECORDING_TYPE_NONE     = PLAYER_RECORDING_TYPE:0;
+const PLAYER_RECORDING_TYPE:PLAYER_RECORDING_TYPE_DRIVER   = PLAYER_RECORDING_TYPE:1;
+const PLAYER_RECORDING_TYPE:PLAYER_RECORDING_TYPE_ONFOOT   = PLAYER_RECORDING_TYPE:2;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define FORCE_SYNC: __TAG(FORCE_SYNC):
-enum FORCE_SYNC:__FORCE_SYNC
-{
-	UNKNOWN_FORCE_SYNC                         = -1,
-	//REMOVE_FROM_VEHICLES                       = 128, // Remove players from vehicles.
-	SYNC_NONE                                  = 0, // Don't force sync to anyone else.
-	SYNC_ALL,                                  // Sync to all streamed-in players.
-	SYNC_OTHER                                 // Sync to all streamed-in players, except the player with the animation.
-}
-static stock FORCE_SYNC:_@FORCE_SYNC() { return __FORCE_SYNC; }
+
+const FORCE_SYNC:UNKNOWN_FORCE_SYNC            = FORCE_SYNC:-1;
+//const FORCE_SYNC:REMOVE_FROM_VEHICLES          = FORCE_SYNC:128; // Remove players from vehicles.
+const FORCE_SYNC:SYNC_NONE                     = FORCE_SYNC:0; // Don't force sync to anyone else.
+const FORCE_SYNC:SYNC_ALL                      = FORCE_SYNC:1; // Sync to all streamed-in players.
+const FORCE_SYNC:SYNC_OTHER                    = FORCE_SYNC:2; // Sync to all streamed-in players, except the player with the animation.
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define CLICK_SOURCE: __TAG(CLICK_SOURCE):
-enum CLICK_SOURCE:__CLICK_SOURCE
-{
-	UNKNOWN_CLICK_SOURCE                       = -1,
-	CLICK_SOURCE_SCOREBOARD
-}
-static stock CLICK_SOURCE:_@CLICK_SOURCE() { return __CLICK_SOURCE; }
+
+const CLICK_SOURCE:UNKNOWN_CLICK_SOURCE        = CLICK_SOURCE:-1;
+const CLICK_SOURCE:CLICK_SOURCE_SCOREBOARD     = CLICK_SOURCE:0;
 
 /// <p/>
 /**
  * <library>omp_player</library>
  */
 #define BULLET_HIT_TYPE: __TAG(BULLET_HIT_TYPE):
-enum BULLET_HIT_TYPE:__BULLET_HIT_TYPE
-{
-	UNKNOWN_BULLET_HIT_TYPE                    = -1,
-	BULLET_HIT_TYPE_NONE,
-	BULLET_HIT_TYPE_PLAYER,
-	BULLET_HIT_TYPE_VEHICLE,
-	BULLET_HIT_TYPE_OBJECT,
-	BULLET_HIT_TYPE_PLAYER_OBJECT
-}
-static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return __BULLET_HIT_TYPE; }
+
+const BULLET_HIT_TYPE:UNKNOWN_BULLET_HIT_TYPE  = BULLET_HIT_TYPE:-1;
+const BULLET_HIT_TYPE:BULLET_HIT_TYPE_NONE     = BULLET_HIT_TYPE:0;
+const BULLET_HIT_TYPE:BULLET_HIT_TYPE_PLAYER   = BULLET_HIT_TYPE:1;
+const BULLET_HIT_TYPE:BULLET_HIT_TYPE_VEHICLE  = BULLET_HIT_TYPE:2;
+const BULLET_HIT_TYPE:BULLET_HIT_TYPE_OBJECT   = BULLET_HIT_TYPE:3;
+const BULLET_HIT_TYPE:BULLET_HIT_TYPE_PLAYER_OBJECT    = BULLET_HIT_TYPE:4;
 
 /*
                                                                            

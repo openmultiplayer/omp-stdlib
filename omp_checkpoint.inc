@@ -30,20 +30,17 @@
  * <library>omp_checkpoint</library>
  */
 #define CP_TYPE: __TAG(CP_TYPE):
-enum CP_TYPE:__CP_TYPE
-{
-	UNKNOWN_CP_TYPE                            = -1,
-	CP_TYPE_GROUND_NORMAL                      = 0,
-	CP_TYPE_GROUND_FINISH                      = 1,
-	CP_TYPE_GROUND_EMPTY                       = 2,
-	CP_TYPE_AIR_NORMAL                         = 3,
-	CP_TYPE_AIR_FINISH                         = 4,
-	CP_TYPE_AIR_ROTATING                       = 5,
-	CP_TYPE_AIR_STROBING                       = 6,
-	CP_TYPE_AIR_SWINGING                       = 7,
-	CP_TYPE_AIR_BOBBING                        = 8
-}
-static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
+
+const CP_TYPE:UNKNOWN_CP_TYPE                  = CP_TYPE:-1;
+const CP_TYPE:CP_TYPE_GROUND_NORMAL            = CP_TYPE:0;
+const CP_TYPE:CP_TYPE_GROUND_FINISH            = CP_TYPE:1;
+const CP_TYPE:CP_TYPE_GROUND_EMPTY             = CP_TYPE:2;
+const CP_TYPE:CP_TYPE_AIR_NORMAL               = CP_TYPE:3;
+const CP_TYPE:CP_TYPE_AIR_FINISH               = CP_TYPE:4;
+const CP_TYPE:CP_TYPE_AIR_ROTATING             = CP_TYPE:5;
+const CP_TYPE:CP_TYPE_AIR_STROBING             = CP_TYPE:6;
+const CP_TYPE:CP_TYPE_AIR_SWINGING             = CP_TYPE:7;
+const CP_TYPE:CP_TYPE_AIR_BOBBING              = CP_TYPE:8;
 
 /*
                                                                   

@@ -37,70 +37,70 @@ const INVALID_TIMER                            = 0;
  * <summary>Weapons</summary>
  */
 #define WEAPON: __TAG(WEAPON):
-enum WEAPON:__WEAPON
-{
-	UNKNOWN_WEAPON                             = -1,
-	// Special `OnPlayerDeath` `reason` values.  NOT included in `MAX_WEAPONS`.
-	REASON_VEHICLE                             = 49,
-	REASON_HELICOPTER_BLADES                   = 50,
-	REASON_EXPLOSION                           = 51,
-	REASON_DROWN                               = 53,
-	REASON_COLLISION                           = 54,
-	REASON_SPLAT                               = 54,
-	REASON_CONNECT                             = 200,
-	REASON_DISCONNECT                          = 201,
-	REASON_SUICIDE                             = 255,
-	// The main weapon types.  Done after the reasons so sizes are correct.
-	WEAPON_FIST                                =  0,
-	WEAPON_BRASSKNUCKLE                        =  1,
-	WEAPON_GOLFCLUB                            =  2,
-	WEAPON_NITESTICK                           =  3,
-	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
-	WEAPON_KNIFE                               =  4,
-	WEAPON_BAT                                 =  5,
-	WEAPON_SHOVEL                              =  6,
-	WEAPON_POOLSTICK                           =  7,
-	WEAPON_KATANA                              =  8,
-	WEAPON_CHAINSAW                            =  9,
-	WEAPON_DILDO                               = 10,
-	WEAPON_DILDO2                              = 11,
-	WEAPON_VIBRATOR                            = 12,
-	WEAPON_VIBRATOR2                           = 13,
-	WEAPON_FLOWER                              = 14,
-	WEAPON_CANE                                = 15,
-	WEAPON_GRENADE                             = 16,
-	WEAPON_TEARGAS                             = 17,
-	WEAPON_MOLTOV                              = 18,
-	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
-	WEAPON_COLT45                              = 22,
-	WEAPON_SILENCED                            = 23,
-	WEAPON_DEAGLE                              = 24,
-	WEAPON_SHOTGUN                             = 25,
-	WEAPON_SAWEDOFF                            = 26,
-	WEAPON_SHOTGSPA                            = 27,
-	WEAPON_UZI                                 = 28,
-	WEAPON_MP5                                 = 29,
-	WEAPON_AK47                                = 30,
-	WEAPON_M4                                  = 31,
-	WEAPON_TEC9                                = 32,
-	WEAPON_RIFLE                               = 33,
-	WEAPON_SNIPER                              = 34,
-	WEAPON_ROCKETLAUNCHER                      = 35,
-	WEAPON_HEATSEEKER                          = 36,
-	WEAPON_FLAMETHROWER                        = 37,
-	WEAPON_MINIGUN                             = 38,
-	WEAPON_SATCHEL                             = 39,
-	WEAPON_BOMB                                = 40,
-	WEAPON_SPRAYCAN                            = 41,
-	WEAPON_FIREEXTINGUISHER                    = 42,
-	WEAPON_CAMERA                              = 43,
-	WEAPON_NIGHT_VISION_GOGGLES                = 44,
-	WEAPON_THERMAL_GOGGLES                     = 45,
-	WEAPON_PARACHUTE                           = 46
-}
-static stock WEAPON:_@WEAPON() { return __WEAPON; }
 
-#define MAX_WEAPONS __WEAPON
+const WEAPON:UNKNOWN_WEAPON                    = WEAPON:-1;
+
+// Special `OnPlayerDeath` `reason` values.  NOT included in `MAX_WEAPONS`.
+const WEAPON:REASON_VEHICLE                    = WEAPON:49;
+const WEAPON:REASON_HELICOPTER_BLADES          = WEAPON:50;
+const WEAPON:REASON_EXPLOSION                  = WEAPON:51;
+const WEAPON:REASON_DROWN                      = WEAPON:53;
+const WEAPON:REASON_COLLISION                  = WEAPON:54;
+const WEAPON:REASON_SPLAT                      = WEAPON:54;
+const WEAPON:REASON_CONNECT                    = WEAPON:200;
+const WEAPON:REASON_DISCONNECT                 = WEAPON:201;
+const WEAPON:REASON_SUICIDE                    = WEAPON:255;
+
+// The main weapon types.
+const WEAPON:WEAPON_FIST                       = WEAPON:0;
+const WEAPON:WEAPON_BRASSKNUCKLE               = WEAPON:1;
+const WEAPON:WEAPON_GOLFCLUB                   = WEAPON:2;
+const WEAPON:WEAPON_NITESTICK                  = WEAPON:3;
+const WEAPON:WEAPON_NIGHTSTICK                 = WEAPON:3;
+const WEAPON:WEAPON_KNIFE                      = WEAPON:4;
+const WEAPON:WEAPON_BAT                        = WEAPON:5;
+const WEAPON:WEAPON_SHOVEL                     = WEAPON:6;
+const WEAPON:WEAPON_POOLSTICK                  = WEAPON:7;
+const WEAPON:WEAPON_KATANA                     = WEAPON:8;
+const WEAPON:WEAPON_CHAINSAW                   = WEAPON:9;
+const WEAPON:WEAPON_DILDO                      = WEAPON:10;
+const WEAPON:WEAPON_DILDO2                     = WEAPON:11;
+const WEAPON:WEAPON_VIBRATOR                   = WEAPON:12;
+const WEAPON:WEAPON_VIBRATOR2                  = WEAPON:13;
+const WEAPON:WEAPON_FLOWER                     = WEAPON:14;
+const WEAPON:WEAPON_CANE                       = WEAPON:15;
+const WEAPON:WEAPON_GRENADE                    = WEAPON:16;
+const WEAPON:WEAPON_TEARGAS                    = WEAPON:17;
+const WEAPON:WEAPON_MOLTOV                     = WEAPON:18;
+const WEAPON:WEAPON_MOLOTOV                    = WEAPON:18;
+const WEAPON:WEAPON_COLT45                     = WEAPON:22;
+const WEAPON:WEAPON_SILENCED                   = WEAPON:23;
+const WEAPON:WEAPON_DEAGLE                     = WEAPON:24;
+const WEAPON:WEAPON_SHOTGUN                    = WEAPON:25;
+const WEAPON:WEAPON_SAWEDOFF                   = WEAPON:26;
+const WEAPON:WEAPON_SHOTGSPA                   = WEAPON:27;
+const WEAPON:WEAPON_UZI                        = WEAPON:28;
+const WEAPON:WEAPON_MP5                        = WEAPON:29;
+const WEAPON:WEAPON_AK47                       = WEAPON:30;
+const WEAPON:WEAPON_M4                         = WEAPON:31;
+const WEAPON:WEAPON_TEC9                       = WEAPON:32;
+const WEAPON:WEAPON_RIFLE                      = WEAPON:33;
+const WEAPON:WEAPON_SNIPER                     = WEAPON:34;
+const WEAPON:WEAPON_ROCKETLAUNCHER             = WEAPON:35;
+const WEAPON:WEAPON_HEATSEEKER                 = WEAPON:36;
+const WEAPON:WEAPON_FLAMETHROWER               = WEAPON:37;
+const WEAPON:WEAPON_MINIGUN                    = WEAPON:38;
+const WEAPON:WEAPON_SATCHEL                    = WEAPON:39;
+const WEAPON:WEAPON_BOMB                       = WEAPON:40;
+const WEAPON:WEAPON_SPRAYCAN                   = WEAPON:41;
+const WEAPON:WEAPON_FIREEXTINGUISHER           = WEAPON:42;
+const WEAPON:WEAPON_CAMERA                     = WEAPON:43;
+const WEAPON:WEAPON_NIGHT_VISION_GOGGLES       = WEAPON:44;
+const WEAPON:WEAPON_THERMAL_GOGGLES            = WEAPON:45;
+const WEAPON:WEAPON_PARACHUTE                  = WEAPON:46;
+
+const WEAPON:MAX_WEAPONS                       = WEAPON:47;
+
 #define WEAPON_UNKNOWN UNKNOWN_WEAPON
 #define WEAPON_VEHICLE REASON_VEHICLE
 #define WEAPON_DROWN REASON_DROWN
@@ -113,26 +113,24 @@ static stock WEAPON:_@WEAPON() { return __WEAPON; }
  * <summary>Weapon Slots</summary>
  */
 #define WEAPON_SLOT: __TAG(WEAPON_SLOT):
-enum WEAPON_SLOT:__WEAPON_SLOT
-{
-	UNKNOWN_WEAPON_SLOT                        = -1,
-	WEAPON_SLOT_UNARMED                        =  0,
-	WEAPON_SLOT_MELEE                          =  1,
-	WEAPON_SLOT_PISTOL                         =  2,
-	WEAPON_SLOT_SHOTGUN                        =  3,
-	WEAPON_SLOT_MACHINE_GUN                    =  4,
-	WEAPON_SLOT_ASSAULT_RIFLE                  =  5,
-	WEAPON_SLOT_LONG_RIFLE                     =  6,
-	WEAPON_SLOT_ARTILLERY                      =  7,
-	WEAPON_SLOT_EXPLOSIVES                     =  8,
-	WEAPON_SLOT_EQUIPMENT                      =  9,
-	WEAPON_SLOT_GIFT                           = 10,
-	WEAPON_SLOT_GADGET                         = 11,
-	WEAPON_SLOT_DETONATOR                      = 12
-}
-static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
 
-#define MAX_WEAPON_SLOTS __WEAPON_SLOT
+const WEAPON_SLOT:UNKNOWN_WEAPON_SLOT          = WEAPON_SLOT:-1;
+const WEAPON_SLOT:WEAPON_SLOT_UNARMED          = WEAPON_SLOT:0;
+const WEAPON_SLOT:WEAPON_SLOT_MELEE            = WEAPON_SLOT:1;
+const WEAPON_SLOT:WEAPON_SLOT_PISTOL           = WEAPON_SLOT:2;
+const WEAPON_SLOT:WEAPON_SLOT_SHOTGUN          = WEAPON_SLOT:3;
+const WEAPON_SLOT:WEAPON_SLOT_MACHINE_GUN      = WEAPON_SLOT:4;
+const WEAPON_SLOT:WEAPON_SLOT_ASSAULT_RIFLE    = WEAPON_SLOT:5;
+const WEAPON_SLOT:WEAPON_SLOT_LONG_RIFLE       = WEAPON_SLOT:6;
+const WEAPON_SLOT:WEAPON_SLOT_ARTILLERY        = WEAPON_SLOT:7;
+const WEAPON_SLOT:WEAPON_SLOT_EXPLOSIVES       = WEAPON_SLOT:8;
+const WEAPON_SLOT:WEAPON_SLOT_EQUIPMENT        = WEAPON_SLOT:9;
+const WEAPON_SLOT:WEAPON_SLOT_GIFT             = WEAPON_SLOT:10;
+const WEAPON_SLOT:WEAPON_SLOT_GADGET           = WEAPON_SLOT:11;
+const WEAPON_SLOT:WEAPON_SLOT_DETONATOR        = WEAPON_SLOT:12;
+
+const WEAPON_SLOT:MAX_WEAPON_SLOTS             = WEAPON_SLOT:13;
+
 #define WEAPON_SLOT_UNKNOWN UNKNOWN_WEAPON_SLOT
 
 /// <p/>
@@ -141,14 +139,11 @@ static stock WEAPON_SLOT:_@WEAPON_SLOT() { return __WEAPON_SLOT; }
  * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
  */
 #define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
-enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
-{
-	UNKNOWN_PLAYER_MARKERS_MODE                = -1,
-	PLAYER_MARKERS_MODE_OFF                    =  0,
-	PLAYER_MARKERS_MODE_GLOBAL                 =  1,
-	PLAYER_MARKERS_MODE_STREAMED               =  2
-}
-static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
+
+const PLAYER_MARKERS_MODE:UNKNOWN_PLAYER_MARKERS_MODE  = PLAYER_MARKERS_MODE:-1;
+const PLAYER_MARKERS_MODE:PLAYER_MARKERS_MODE_OFF  = PLAYER_MARKERS_MODE:0;
+const PLAYER_MARKERS_MODE:PLAYER_MARKERS_MODE_GLOBAL   = PLAYER_MARKERS_MODE:1;
+const PLAYER_MARKERS_MODE:PLAYER_MARKERS_MODE_STREAMED = PLAYER_MARKERS_MODE:2;
 
 #define PLAYER_MARKERS_MODE_UNKNOWN UNKNOWN_PLAYER_MARKERS_MODE
 

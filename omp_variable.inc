@@ -33,26 +33,23 @@
 #define VARTYPE: __TAG(VARTYPE):
 #define SERVER_VARTYPE: __TAG(VARTYPE):
 #define PLAYER_VARTYPE: __TAG(VARTYPE):
-enum VARTYPE:__VARTYPE
-{
-	UNKNOWN_VARTYPE                            = -1,
 
-	VARTYPE_NONE,
-	VARTYPE_INT,
-	VARTYPE_STRING,
-	VARTYPE_FLOAT,
+const VARTYPE:UNKNOWN_VARTYPE                  = VARTYPE:-1;
 
-	SERVER_VARTYPE_NONE                        = VARTYPE_NONE,
-	SERVER_VARTYPE_INT,
-	SERVER_VARTYPE_STRING,
-	SERVER_VARTYPE_FLOAT,
+const VARTYPE:VARTYPE_NONE                     = VARTYPE:0;
+const VARTYPE:VARTYPE_INT                      = VARTYPE:1;
+const VARTYPE:VARTYPE_STRING                   = VARTYPE:2;
+const VARTYPE:VARTYPE_FLOAT                    = VARTYPE:3;
 
-	PLAYER_VARTYPE_NONE                        = VARTYPE_NONE,
-	PLAYER_VARTYPE_INT,
-	PLAYER_VARTYPE_STRING,
-	PLAYER_VARTYPE_FLOAT
-}
-static stock VARTYPE:_@VARTYPE() { return __VARTYPE; }
+const VARTYPE:SERVER_VARTYPE_NONE              = VARTYPE:0;
+const VARTYPE:SERVER_VARTYPE_INT               = VARTYPE:1;
+const VARTYPE:SERVER_VARTYPE_STRING            = VARTYPE:2;
+const VARTYPE:SERVER_VARTYPE_FLOAT             = VARTYPE:3;
+
+const VARTYPE:PLAYER_VARTYPE_NONE              = VARTYPE:0;
+const VARTYPE:PLAYER_VARTYPE_INT               = VARTYPE:1;
+const VARTYPE:PLAYER_VARTYPE_STRING            = VARTYPE:2;
+const VARTYPE:PLAYER_VARTYPE_FLOAT             = VARTYPE:3;
 
 /*
                                                     
