@@ -119,5 +119,63 @@ This just declares a variable as being changable by the server, but not by users
 
 This weird declaration is again related to documentation comments.  The documentation for an `enum` is always generated, but if the `enum` is never used anywhere in code the comments become unattached and form part of the global documentation, instead of a symbol's documentation.  This line just uses the enum in such as way to correctly attach the documentation to the correct symbol in the `.xml`, but not generate any additional output in the AMX.
 
-It does however transpire that `enum`s have some minor issues when used for array indexes.  While not all of the enums declared make sense for array indexes (think `KEY`, which is a bit-map), they have all none-the-less been converted to simple `const`s instead (at great cost in documentation complexity).
+## Double declarations.
+
+So most symbols are defined in `enum` for several reasons - to keep them grouped together, to collate things in the generated documentation, and for ease of declaration.  So why are all the values re-declared a second time using `#define`?  This is because different ways of declaring symbols work in different ways.  Using `enum` for a set of related values puts them together in the documentation and allows for very efficient declarations - tags can be ommitted and values inferred, leading to much terser and clearer code.  The downside to using `enum` is that it messes with arrays, since the slots will inherit the declared tags of each element, so this:
+
+```pawn
+new WEAPON:gWeapons[MAX_WEAPON_SLOTS];
+```
+
+Will produce unexpected results - the entries have the tag of `_:` not the tag of `WEAPON:`, because that's how the values inside the `WEAPON_SLOT` enum were declared.
+
+Using `const` instead of `enum` solves this problem - there's no weird mixing of index tags and value tags, but the code is way more verbose, and the generated documentation is much more spread out; with unused values not even mentioned.
+
+`#define` is slightly shorter than `const` in declaration length, since you only need tags once instead of twice, but they are not inserted in to the generated documentation at all.  There's also one other weird quirk - `#define` is completely ignored by `#emit`, this:
+
+```pawn
+#define NUMBER 2
+#emit CONST.pri NUMBER
+```
+
+Will give an undefined symbol error.  But they're not only ignored by `#emit`, but completely invisible to it.  Meanwhile, `const` and `enum` can be used by `#emit`, even if a `#define` with the same name would normally overwrite them:
+
+```pawn
+const NUMBER = 2;
+#define NUMBER 2
+#emit CONST.pri NUMBER
+```
+
+That code works, and uses the `const` in `#emit`, despite the fact that it should have been hidden by the `#define`.  So we have the final solution, covering all use-cases.  It is quite verbose, but you can just use the `enum`s to more easily read the code.  This will generate compact and complete documentation, it makes reading the code easy if you only use the `enum` part, it works for `#emit` as well as normal code, and it doesn't produce weird side-effects in array declarations:
+
+```pawn
+enum WEAPON:MAX_WEAPONS
+{
+	WEAPON_FIST                       = 0,
+	WEAPON_BRASSKNUCKLE,
+	WEAPON_GOLFCLUB,
+	WEAPON_NITESTICK,
+	WEAPON_NIGHTSTICK                 = WEAPON_NITESTICK,
+	WEAPON_KNIFE,
+	WEAPON_BAT,
+	WEAPON_SHOVEL,
+	WEAPON_POOLSTICK,
+	WEAPON_KATANA,
+	// ...
+}
+
+#define WEAPON_FIST                       (WEAPON:0)
+#define WEAPON_BRASSKNUCKLE               (WEAPON:1)
+#define WEAPON_GOLFCLUB                   (WEAPON:2)
+#define WEAPON_NITESTICK                  (WEAPON:3)
+#define WEAPON_NIGHTSTICK                 (WEAPON:3)
+#define WEAPON_KNIFE                      (WEAPON:4)
+#define WEAPON_BAT                        (WEAPON:5)
+#define WEAPON_SHOVEL                     (WEAPON:6)
+#define WEAPON_POOLSTICK                  (WEAPON:7)
+#define WEAPON_KATANA                     (WEAPON:8)
+// ...
+```
+
+The enum names can't be used in the `#define`s as that would create an infinite loop in the compiler.
 
