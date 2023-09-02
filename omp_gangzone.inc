@@ -62,7 +62,10 @@ const INVALID_GANG_ZONE                        = 0xFFFFFFFF;
 */
 
 /*
-native #Global();
+native # Global();
+native             Global(
+native      ====================(
+native
 */
 
 /**
@@ -318,7 +321,10 @@ native UseGangZoneCheck(zoneid, bool:enable);
 */                                  
 
 /*
-native #Per-Player();
+native # Per-Player();
+native           Per-Player(
+native      ====================(
+native
 */
 
 /**
@@ -410,7 +416,10 @@ native UsePlayerGangZoneCheck(zoneid, bool:enable);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

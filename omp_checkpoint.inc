@@ -72,7 +72,10 @@ static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
 */
 
 /*
-native #Player Checkpoints();
+native # Player Checkpoints();
+native       Player Checkpoints(
+native      ====================(
+native
 */
 
 /**
@@ -195,7 +198,10 @@ native bool:GetPlayerCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY =
 */
 
 /*
-native #Race Checkpoints();
+native # Race Checkpoints();
+native        Race Checkpoints(
+native      ====================(
+native
 */
 
 /**

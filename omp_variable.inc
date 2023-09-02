@@ -87,7 +87,10 @@ static stock VARTYPE:_@VARTYPE() { return __VARTYPE; }
 */
 
 /*
-native #Server Variables();
+native # Server Variables();
+native        Server Variables(
+native      ====================(
+native
 */
 
 /**
@@ -272,7 +275,10 @@ native VARTYPE:GetSVarType(const svar[]);
 */
 
 /*
-native #Player Variables();
+native # Player Variables();
+native        Player Variables(
+native      ====================(
+native
 */
 
 /**

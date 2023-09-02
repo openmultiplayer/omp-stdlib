@@ -255,7 +255,10 @@ static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKE
 
 */
 /*
-native #Pawn Utilities();
+native # Pawn Utilities();
+native         Pawn Utilities(
+native      ====================(
+native
 */
 
 /**
@@ -707,7 +710,10 @@ native void:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 */
 
 /*
-native #Maths();
+native # Maths();
+native             Maths(
+native      ====================(
+native
 */
 
 /**
@@ -817,7 +823,10 @@ native Float:ATan2(Float:y, Float:x) = atan2;
 */
 
 /*
-native #Server Config();
+native # Server Config();
+native         Server Config(
+native      ====================(
+native
 */
 
 /**
@@ -992,7 +1001,10 @@ forward E_SERVER_RULE_FLAGS:GetServerRuleFlags(const rule[]);
 */
 
 /*
-native #Client Config();
+native # Client Config();
+native         Client Config(
+native      ====================(
+native
 */
 
 /**
@@ -1260,7 +1272,10 @@ native EnableZoneNames(bool:enable);
 */
 
 /*
-native #NPCs();
+native # NPCs();
+native              NPCs(
+native      ====================(
+native
 */
 
 /**
@@ -1294,7 +1309,10 @@ native ConnectNPC(const name[], const script[]);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 // These three functions are like this for qawno.

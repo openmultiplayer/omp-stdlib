@@ -62,7 +62,10 @@ const INVALID_PICKUP                           = -1;
 */
 
 /*
-native #Global();
+native # Global();
+native             Global(
+native      ====================(
+native
 */
 
 /**
@@ -255,7 +258,10 @@ native bool:IsPickupHiddenForPlayer(playerid, pickupid);
 */                                  
 
 /*
-native #Per-Player();
+native # Per-Player();
+native           Per-Player(
+native      ====================(
+native
 */
 
 /**

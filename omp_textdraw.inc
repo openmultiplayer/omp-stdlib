@@ -160,7 +160,10 @@ static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 */
 
 /*
-native #Global();
+native # Global();
+native              Global(
+native      ====================(
+native
 */
 
 /**
@@ -624,7 +627,10 @@ native bool:TextDrawSetStringForPlayer(Text:textid, playerid, const format[], OP
 */                                  
 
 /*
-native #Per-Player();
+native # Per-Player();
+native           Per-Player(
+native      ====================(
+native
 */
 
 /**
@@ -1287,7 +1293,10 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 */
 
 /*
-native #Selection();
+native # Selection();
+native           Selection(
+native      ====================(
+native
 */
 
 /**
@@ -1336,7 +1345,10 @@ native CancelSelectTextDraw(playerid);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

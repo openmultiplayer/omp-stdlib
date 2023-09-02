@@ -93,15 +93,18 @@ native NotDeclared();
 */
 ```
 
-Pawno just uses almost any line that starts with `native`; Qawno is a little stricter - the line must be vaguely valid syntax, but interprets any native name that starts with `#` as a subheading in the list.  We can semi-replicate these headings in Pawno as well by using invalid lines for spacing:
+Pawno just uses almost any line that starts with `native`; Qawno is a little stricter - the line must be vaguely valid syntax, but interprets any native name that starts with `#` as a subheading in the list.  We can semi-replicate these headings in Pawno using some clever tricks to confuse both editors in different ways - Pawno to pad the headings, and Qawno to hide things we don't want.  The code below has a number of `.`s in it, so that you can see what is happening, but you should know that each of those `.`s are in fact ASCII character `0xA0`, which renders as a space without causing the lines to be entirely elided:
 
 ```pawn
 /*
-native
-native #Heading();
+native # Heading();
+native ............Heading(
+native .....====================(
 native
 */
 ```
+
+The `#` causes Qawno to render its native heading, while the other lines are all sufficiently invalid that it will entirely ignore them.  Pawno will render all four, but the first and last are sufficiently invalid to it that they will both be blank, while the other two contain padding characters for alignment.
 
 ## `__` prefix.
 

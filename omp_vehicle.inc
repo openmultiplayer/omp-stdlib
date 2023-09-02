@@ -1608,7 +1608,10 @@ native GetVehicles(vehicles[], size = sizeof (vehicles));
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

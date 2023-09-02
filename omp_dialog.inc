@@ -161,7 +161,10 @@ native GetPlayerDialogID(playerid);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

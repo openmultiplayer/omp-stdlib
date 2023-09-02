@@ -246,7 +246,10 @@ native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offse
 */
 
 /*
-native #Global();
+native # Global();
+native             Global(
+native      ====================(
+native
 */
 
 /**
@@ -743,7 +746,10 @@ stock bool:HasObjectCameraCollision(objectid)
 */                                  
 
 /*
-native #Per-Player();
+native # Per-Player();
+native           Per-Player(
+native      ====================(
+native
 */
 
 /**
@@ -1206,7 +1212,10 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
 */
 
 /*
-native #Attachments();
+native # Attachments();
+native          Attachments(
+native      ====================(
+native
 */
 
 /**
@@ -1334,7 +1343,10 @@ native EditAttachedObject(playerid, index);
 */
 
 /*
-native #DL();
+native # DL();
+native               DL(
+native      ====================(
+native
 */
 
 /**
@@ -1393,7 +1405,10 @@ native bool:IsValidCustomModel(modelid);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

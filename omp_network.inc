@@ -310,7 +310,10 @@ native SendClientCheck(playerid, type, memoryAddress, memoryOffset, byteCount);
 */
 
 /*
-native #Netstats();
+native # Netstats();
+native            Netstats(
+native      ====================(
+native
 */
 
 /**
@@ -525,7 +528,10 @@ native NetStats_GetIpPort(playerid, output[], size = sizeof (output));
 */
 
 /*
-native #Formatted();
+native # Formatted();
+native           Formatted(
+native      ====================(
+native
 */
 
 /**
@@ -607,7 +613,10 @@ native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

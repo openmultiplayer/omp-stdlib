@@ -2842,7 +2842,10 @@ native bool:ArePlayerWeaponsAllowed(playerid);
 */
 
 /*
-native #Deprecated();
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
 */
 
 /**

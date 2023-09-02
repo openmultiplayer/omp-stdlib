@@ -97,7 +97,10 @@ static stock SQLITE_OPEN:_@SQLITE_OPEN() { return __SQLITE_OPEN; }
 */
 
 /*
-native #Modern API();
+native # Modern API();
+native           Modern API(
+native      ====================(
+native
 */
 
 /**
@@ -306,7 +309,10 @@ native DB_GetDatabaseResultSetCount();
 */
 
 /*
-native #Deprecated Legacy();
+native # Deprecated Legacy();
+native       Deprecated Legacy(
+native      ====================(
+native
 */
 
 /**
@@ -433,7 +439,10 @@ native db_debug_openresults() = DB_GetDatabaseResultSetCount;
 */
 
 /*
-native #Deprecated Compat();
+native # Deprecated Compat();
+native       Deprecated Compat(
+native      ====================(
+native
 */
 
 /**
