@@ -32,10 +32,10 @@
  */
 #define HTTP_METHOD: __TAG(HTTP_METHOD):
 
-#define UNKNOWN_HTTP_METHOD (HTTP_METHOD:-1)
-#define HTTP_GET (HTTP_METHOD:1)
-#define HTTP_POST (HTTP_METHOD:2)
-#define HTTP_HEAD (HTTP_METHOD:3)
+#define UNKNOWN_HTTP_METHOD                                        (HTTP_METHOD:-1)
+#define HTTP_GET                                        (HTTP_METHOD:1)
+#define HTTP_POST                                        (HTTP_METHOD:2)
+#define HTTP_HEAD                                        (HTTP_METHOD:3)
 
 /// <p/>
 /**
@@ -48,13 +48,13 @@
  */
 #define HTTP_ERROR: __TAG(HTTP_ERROR):
 
-#define UNKNOWN_HTTP_ERROR (HTTP_ERROR:-1)
-#define HTTP_ERROR_BAD_HOST (HTTP_ERROR:1)
-#define HTTP_ERROR_NO_SOCKET (HTTP_ERROR:2)
-#define HTTP_ERROR_CANT_CONNECT (HTTP_ERROR:3)
-#define HTTP_ERROR_CANT_WRITE (HTTP_ERROR:4)
-#define HTTP_ERROR_CONTENT_TOO_BIG (HTTP_ERROR:5)
-#define HTTP_ERROR_MALFORMED_RESPONSE (HTTP_ERROR:6)
+#define UNKNOWN_HTTP_ERROR                                        (HTTP_ERROR:-1)
+#define HTTP_ERROR_BAD_HOST                                        (HTTP_ERROR:1)
+#define HTTP_ERROR_NO_SOCKET                                        (HTTP_ERROR:2)
+#define HTTP_ERROR_CANT_CONNECT                                        (HTTP_ERROR:3)
+#define HTTP_ERROR_CANT_WRITE                                        (HTTP_ERROR:4)
+#define HTTP_ERROR_CONTENT_TOO_BIG                                        (HTTP_ERROR:5)
+#define HTTP_ERROR_MALFORMED_RESPONSE                                        (HTTP_ERROR:6)
 
 /*
                                                                            

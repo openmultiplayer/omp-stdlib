@@ -104,21 +104,21 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define PLAYER_STATE: __TAG(PLAYER_STATE):
 
-#define UNKNOWN_PLAYER_STATE (PLAYER_STATE:-1)
-#define PLAYER_STATE_NONE (PLAYER_STATE:0)
-#define PLAYER_STATE_ONFOOT (PLAYER_STATE:1)
-#define PLAYER_STATE_DRIVER (PLAYER_STATE:2)
-#define PLAYER_STATE_PASSENGER (PLAYER_STATE:3)
-#define PLAYER_STATE_WASTED (PLAYER_STATE:7)
-#define PLAYER_STATE_SPAWNED (PLAYER_STATE:8)
-#define PLAYER_STATE_SPECTATING (PLAYER_STATE:9)
+#define UNKNOWN_PLAYER_STATE                                        (PLAYER_STATE:-1)
+#define PLAYER_STATE_NONE                                        (PLAYER_STATE:0)
+#define PLAYER_STATE_ONFOOT                                        (PLAYER_STATE:1)
+#define PLAYER_STATE_DRIVER                                        (PLAYER_STATE:2)
+#define PLAYER_STATE_PASSENGER                                        (PLAYER_STATE:3)
+#define PLAYER_STATE_WASTED                                        (PLAYER_STATE:7)
+#define PLAYER_STATE_SPAWNED                                        (PLAYER_STATE:8)
+#define PLAYER_STATE_SPECTATING                                        (PLAYER_STATE:9)
 
 /**
  * <library>omp_player</library>
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-#define PLAYER_STATE_EXIT_VEH (PLAYER_STATE:4)
+#define PLAYER_STATE_EXIT_VEH                                        (PLAYER_STATE:4)
 #define PLAYER_STATE_EXIT_VEHICLE              PLAYER_STATE_EXIT_VEH
 
 /**
@@ -126,7 +126,7 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-#define PLAYER_STATE_ENTER_VEHICLE_DRV (PLAYER_STATE:5)
+#define PLAYER_STATE_ENTER_VEHICLE_DRV                                        (PLAYER_STATE:5)
 #define PLAYER_STATE_ENTER_VEHICLE_DRIVER      PLAYER_STATE_ENTER_VEHICLE_DRV
 
 /**
@@ -134,7 +134,7 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-#define PLAYER_STATE_ENTER_VEHICLE_PASS (PLAYER_STATE:6)
+#define PLAYER_STATE_ENTER_VEHICLE_PASS                                        (PLAYER_STATE:6)
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   PLAYER_STATE_ENTER_VEHICLE_PASS
 
 /// <p/>
@@ -143,27 +143,27 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define SPECIAL_ACTION: __TAG(SPECIAL_ACTION):
 
-#define UNKNOWN_SPECIAL_ACTION (SPECIAL_ACTION:-1)
-#define SPECIAL_ACTION_NONE (SPECIAL_ACTION:0)
-#define SPECIAL_ACTION_DUCK (SPECIAL_ACTION:1)
-#define SPECIAL_ACTION_USEJETPACK (SPECIAL_ACTION:2)
-#define SPECIAL_ACTION_ENTER_VEHICLE (SPECIAL_ACTION:3)
-#define SPECIAL_ACTION_EXIT_VEHICLE (SPECIAL_ACTION:4)
-#define SPECIAL_ACTION_DANCE1 (SPECIAL_ACTION:5)
-#define SPECIAL_ACTION_DANCE2 (SPECIAL_ACTION:6)
-#define SPECIAL_ACTION_DANCE3 (SPECIAL_ACTION:7)
-#define SPECIAL_ACTION_DANCE4 (SPECIAL_ACTION:8)
-#define SPECIAL_ACTION_HANDSUP (SPECIAL_ACTION:10)
-#define SPECIAL_ACTION_USECELLPHONE (SPECIAL_ACTION:11)
-#define SPECIAL_ACTION_SITTING (SPECIAL_ACTION:12)
-#define SPECIAL_ACTION_STOPUSECELLPHONE (SPECIAL_ACTION:13)
-#define SPECIAL_ACTION_DRINK_BEER (SPECIAL_ACTION:20)
-#define SPECIAL_ACTION_SMOKE_CIGGY (SPECIAL_ACTION:21)
-#define SPECIAL_ACTION_DRINK_WINE (SPECIAL_ACTION:22)
-#define SPECIAL_ACTION_DRINK_SPRUNK (SPECIAL_ACTION:23)
-#define SPECIAL_ACTION_CUFFED (SPECIAL_ACTION:24)
-#define SPECIAL_ACTION_CARRY (SPECIAL_ACTION:25)
-#define SPECIAL_ACTION_PISSING (SPECIAL_ACTION:68)
+#define UNKNOWN_SPECIAL_ACTION                                        (SPECIAL_ACTION:-1)
+#define SPECIAL_ACTION_NONE                                        (SPECIAL_ACTION:0)
+#define SPECIAL_ACTION_DUCK                                        (SPECIAL_ACTION:1)
+#define SPECIAL_ACTION_USEJETPACK                                        (SPECIAL_ACTION:2)
+#define SPECIAL_ACTION_ENTER_VEHICLE                                        (SPECIAL_ACTION:3)
+#define SPECIAL_ACTION_EXIT_VEHICLE                                        (SPECIAL_ACTION:4)
+#define SPECIAL_ACTION_DANCE1                                        (SPECIAL_ACTION:5)
+#define SPECIAL_ACTION_DANCE2                                        (SPECIAL_ACTION:6)
+#define SPECIAL_ACTION_DANCE3                                        (SPECIAL_ACTION:7)
+#define SPECIAL_ACTION_DANCE4                                        (SPECIAL_ACTION:8)
+#define SPECIAL_ACTION_HANDSUP                                        (SPECIAL_ACTION:10)
+#define SPECIAL_ACTION_USECELLPHONE                                        (SPECIAL_ACTION:11)
+#define SPECIAL_ACTION_SITTING                                        (SPECIAL_ACTION:12)
+#define SPECIAL_ACTION_STOPUSECELLPHONE                                        (SPECIAL_ACTION:13)
+#define SPECIAL_ACTION_DRINK_BEER                                        (SPECIAL_ACTION:20)
+#define SPECIAL_ACTION_SMOKE_CIGGY                                        (SPECIAL_ACTION:21)
+#define SPECIAL_ACTION_DRINK_WINE                                        (SPECIAL_ACTION:22)
+#define SPECIAL_ACTION_DRINK_SPRUNK                                        (SPECIAL_ACTION:23)
+#define SPECIAL_ACTION_CUFFED                                        (SPECIAL_ACTION:24)
+#define SPECIAL_ACTION_CARRY                                        (SPECIAL_ACTION:25)
+#define SPECIAL_ACTION_PISSING                                        (SPECIAL_ACTION:68)
 
 /// <p/>
 /**
@@ -171,15 +171,15 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define FIGHT_STYLE: __TAG(FIGHT_STYLE):
 
-#define UNKNOWN_FIGHT_STYLE (FIGHT_STYLE:-1)
-#define FIGHT_STYLE_NORMAL (FIGHT_STYLE:4)
-#define FIGHT_STYLE_BOXING (FIGHT_STYLE:5)
-#define FIGHT_STYLE_KUNGFU (FIGHT_STYLE:6)
-#define FIGHT_STYLE_KNEEHEAD (FIGHT_STYLE:7)
-#define FIGHT_STYLE_GRABKICK (FIGHT_STYLE:15)
-#define FIGHT_STYLE_ELBOW (FIGHT_STYLE:16)
+#define UNKNOWN_FIGHT_STYLE                                        (FIGHT_STYLE:-1)
+#define FIGHT_STYLE_NORMAL                                        (FIGHT_STYLE:4)
+#define FIGHT_STYLE_BOXING                                        (FIGHT_STYLE:5)
+#define FIGHT_STYLE_KUNGFU                                        (FIGHT_STYLE:6)
+#define FIGHT_STYLE_KNEEHEAD                                        (FIGHT_STYLE:7)
+#define FIGHT_STYLE_GRABKICK                                        (FIGHT_STYLE:15)
+#define FIGHT_STYLE_ELBOW                                        (FIGHT_STYLE:16)
 
-#define MAX_FIGHT_STYLES (FIGHT_STYLE:17)
+#define MAX_FIGHT_STYLES                                        (FIGHT_STYLE:17)
 
 /// <p/>
 /**
@@ -187,20 +187,20 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define WEAPONSKILL: __TAG(WEAPONSKILL):
 
-#define UNKNOWN_WEAPONSKILL (WEAPONSKILL:-1)
-#define WEAPONSKILL_PISTOL (WEAPONSKILL:0)
-#define WEAPONSKILL_PISTOL_SILENCED (WEAPONSKILL:1)
-#define WEAPONSKILL_DESERT_EAGLE (WEAPONSKILL:2)
-#define WEAPONSKILL_SHOTGUN (WEAPONSKILL:3)
-#define WEAPONSKILL_SAWNOFF_SHOTGUN (WEAPONSKILL:4)
-#define WEAPONSKILL_SPAS12_SHOTGUN (WEAPONSKILL:5)
-#define WEAPONSKILL_MICRO_UZI (WEAPONSKILL:6)
-#define WEAPONSKILL_MP5 (WEAPONSKILL:7)
-#define WEAPONSKILL_AK47 (WEAPONSKILL:8)
-#define WEAPONSKILL_M4 (WEAPONSKILL:9)
-#define WEAPONSKILL_SNIPERRIFLE (WEAPONSKILL:10)
+#define UNKNOWN_WEAPONSKILL                                        (WEAPONSKILL:-1)
+#define WEAPONSKILL_PISTOL                                        (WEAPONSKILL:0)
+#define WEAPONSKILL_PISTOL_SILENCED                                        (WEAPONSKILL:1)
+#define WEAPONSKILL_DESERT_EAGLE                                        (WEAPONSKILL:2)
+#define WEAPONSKILL_SHOTGUN                                        (WEAPONSKILL:3)
+#define WEAPONSKILL_SAWNOFF_SHOTGUN                                        (WEAPONSKILL:4)
+#define WEAPONSKILL_SPAS12_SHOTGUN                                        (WEAPONSKILL:5)
+#define WEAPONSKILL_MICRO_UZI                                        (WEAPONSKILL:6)
+#define WEAPONSKILL_MP5                                        (WEAPONSKILL:7)
+#define WEAPONSKILL_AK47                                        (WEAPONSKILL:8)
+#define WEAPONSKILL_M4                                        (WEAPONSKILL:9)
+#define WEAPONSKILL_SNIPERRIFLE                                        (WEAPONSKILL:10)
 
-#define MAX_WEAPONSKILLS (WEAPONSKILL:11)
+#define MAX_WEAPONSKILLS                                        (WEAPONSKILL:11)
 
 /// <p/>
 /**
@@ -208,11 +208,11 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define WEAPONSTATE: __TAG(WEAPONSTATE):
 
-#define UNKNOWN_WEAPONSTATE (WEAPONSTATE:-1)
-#define WEAPONSTATE_NO_BULLETS (WEAPONSTATE:0)
-#define WEAPONSTATE_LAST_BULLET (WEAPONSTATE:1)
-#define WEAPONSTATE_MORE_BULLETS (WEAPONSTATE:2)
-#define WEAPONSTATE_RELOADING (WEAPONSTATE:3)
+#define UNKNOWN_WEAPONSTATE                                        (WEAPONSTATE:-1)
+#define WEAPONSTATE_NO_BULLETS                                        (WEAPONSTATE:0)
+#define WEAPONSTATE_LAST_BULLET                                        (WEAPONSTATE:1)
+#define WEAPONSTATE_MORE_BULLETS                                        (WEAPONSTATE:2)
+#define WEAPONSTATE_RELOADING                                        (WEAPONSTATE:3)
 
 #define WEAPONSTATE_UNKNOWN UNKNOWN_WEAPONSTATE
 
@@ -223,27 +223,27 @@ const INVALID_PLAYER_ID                        = 0xFFFF;
  */
 #define KEY: __TAG(KEY):
 
-#define UNKNOWN_KEY (KEY:-1)
-#define KEY_NONE (KEY:0x00000000)
-#define KEY_ACTION (KEY:0x00000001)
-#define KEY_CROUCH (KEY:0x00000002)
-#define KEY_FIRE (KEY:0x00000004)
-#define KEY_SPRINT (KEY:0x00000008)
-#define KEY_SECONDARY_ATTACK (KEY:0x00000010)
-#define KEY_JUMP (KEY:0x00000020)
-#define KEY_LOOK_RIGHT (KEY:0x00000040)
-#define KEY_HANDBRAKE (KEY:0x00000080)
-#define KEY_LOOK_LEFT (KEY:0x00000100)
-#define KEY_SUBMISSION (KEY:0x00000200)
-#define KEY_LOOK_BEHIND (KEY:0x00000200)
-#define KEY_WALK (KEY:0x00000400)
-#define KEY_ANALOG_UP (KEY:0x00000800)
-#define KEY_ANALOG_DOWN (KEY:0x00001000)
-#define KEY_ANALOG_LEFT (KEY:0x00002000)
-#define KEY_ANALOG_RIGHT (KEY:0x00004000)
-#define KEY_YES (KEY:0x00010000)
-#define KEY_NO (KEY:0x00020000)
-#define KEY_CTRL_BACK (KEY:0x00040000)
+#define UNKNOWN_KEY                                        (KEY:-1)
+#define KEY_NONE                                        (KEY:0x00000000)
+#define KEY_ACTION                                        (KEY:0x00000001)
+#define KEY_CROUCH                                        (KEY:0x00000002)
+#define KEY_FIRE                                        (KEY:0x00000004)
+#define KEY_SPRINT                                        (KEY:0x00000008)
+#define KEY_SECONDARY_ATTACK                                        (KEY:0x00000010)
+#define KEY_JUMP                                        (KEY:0x00000020)
+#define KEY_LOOK_RIGHT                                        (KEY:0x00000040)
+#define KEY_HANDBRAKE                                        (KEY:0x00000080)
+#define KEY_LOOK_LEFT                                        (KEY:0x00000100)
+#define KEY_SUBMISSION                                        (KEY:0x00000200)
+#define KEY_LOOK_BEHIND                                        (KEY:0x00000200)
+#define KEY_WALK                                        (KEY:0x00000400)
+#define KEY_ANALOG_UP                                        (KEY:0x00000800)
+#define KEY_ANALOG_DOWN                                        (KEY:0x00001000)
+#define KEY_ANALOG_LEFT                                        (KEY:0x00002000)
+#define KEY_ANALOG_RIGHT                                        (KEY:0x00004000)
+#define KEY_YES                                        (KEY:0x00010000)
+#define KEY_NO                                        (KEY:0x00020000)
+#define KEY_CTRL_BACK                                        (KEY:0x00040000)
 
 // Untagged.
 const KEY_UP                                   = -128;
@@ -257,9 +257,9 @@ const KEY_RIGHT                                =  128;
  */
 #define CAM_MOVE: __TAG(CAM_MOVE):
 
-#define UNKNOWN_CAM_MOVE (CAM_MOVE:-1)
-#define CAMERA_MOVE (CAM_MOVE:1)
-#define CAMERA_CUT (CAM_MOVE:2)
+#define UNKNOWN_CAM_MOVE                                        (CAM_MOVE:-1)
+#define CAMERA_MOVE                                        (CAM_MOVE:1)
+#define CAMERA_CUT                                        (CAM_MOVE:2)
 
 /// <p/>
 /**
@@ -267,22 +267,22 @@ const KEY_RIGHT                                =  128;
  */
 #define CAM_MODE: __TAG(CAM_MODE):
 
-#define UNKNOWN_CAM_MODE (CAM_MODE:-1)
-#define CAM_MODE_DISCONNECTED (CAM_MODE:-1)
-#define CAM_MODE_NONE (CAM_MODE:0)
-#define CAM_MODE_BEHINDCAR (CAM_MODE:3)
-#define CAM_MODE_FOLLOWPED (CAM_MODE:4)
-#define CAM_MODE_SNIPER (CAM_MODE:7)
-#define CAM_MODE_ROCKETLAUNCHER (CAM_MODE:8)
-#define CAM_MODE_FIXED (CAM_MODE:15)
-#define CAM_MODE_1STPERSON (CAM_MODE:16)
-#define CAM_MODE_CAM_ON_A_STRING (CAM_MODE:18)
-#define CAM_MODE_BEHINDBOAT (CAM_MODE:22)
-#define CAM_MODE_CAMERA (CAM_MODE:46)
-#define CAM_MODE_ROCKETLAUNCHER_HS (CAM_MODE:51)
-#define CAM_MODE_AIMWEAPON (CAM_MODE:53)
-#define CAM_MODE_AIMWEAPON_FROMCAR (CAM_MODE:55)
-#define CAM_MODE_DW_HELI_CHASE (CAM_MODE:56)
+#define UNKNOWN_CAM_MODE                                        (CAM_MODE:-1)
+#define CAM_MODE_DISCONNECTED                                        (CAM_MODE:-1)
+#define CAM_MODE_NONE                                        (CAM_MODE:0)
+#define CAM_MODE_BEHINDCAR                                        (CAM_MODE:3)
+#define CAM_MODE_FOLLOWPED                                        (CAM_MODE:4)
+#define CAM_MODE_SNIPER                                        (CAM_MODE:7)
+#define CAM_MODE_ROCKETLAUNCHER                                        (CAM_MODE:8)
+#define CAM_MODE_FIXED                                        (CAM_MODE:15)
+#define CAM_MODE_1STPERSON                                        (CAM_MODE:16)
+#define CAM_MODE_CAM_ON_A_STRING                                        (CAM_MODE:18)
+#define CAM_MODE_BEHINDBOAT                                        (CAM_MODE:22)
+#define CAM_MODE_CAMERA                                        (CAM_MODE:46)
+#define CAM_MODE_ROCKETLAUNCHER_HS                                        (CAM_MODE:51)
+#define CAM_MODE_AIMWEAPON                                        (CAM_MODE:53)
+#define CAM_MODE_AIMWEAPON_FROMCAR                                        (CAM_MODE:55)
+#define CAM_MODE_DW_HELI_CHASE                                        (CAM_MODE:56)
 
 /// <p/>
 /**
@@ -290,11 +290,11 @@ const KEY_RIGHT                                =  128;
  */
 #define MAPICON: __TAG(MAPICON):
 
-#define UNKNOWN_MAPICON (MAPICON:-1)
-#define MAPICON_LOCAL (MAPICON:0) // Displays in the player's local area.
-#define MAPICON_GLOBAL (MAPICON:1) // Displays always.
-#define MAPICON_LOCAL_CHECKPOINT (MAPICON:2) // Displays in the player's local area and has a checkpoint marker.
-#define MAPICON_GLOBAL_CHECKPOINT (MAPICON:3) // Displays always and has a checkpoint marker.
+#define UNKNOWN_MAPICON                                        (MAPICON:-1)
+#define MAPICON_LOCAL                                        (MAPICON:0) // Displays in the player's local area.
+#define MAPICON_GLOBAL                                        (MAPICON:1) // Displays always.
+#define MAPICON_LOCAL_CHECKPOINT                                        (MAPICON:2) // Displays in the player's local area and has a checkpoint marker.
+#define MAPICON_GLOBAL_CHECKPOINT                                        (MAPICON:3) // Displays always and has a checkpoint marker.
 
 /// <p/>
 /**
@@ -303,10 +303,10 @@ const KEY_RIGHT                                =  128;
  */
 #define SPECTATE_MODE: __TAG(SPECTATE_MODE):
 
-#define UNKNOWN_SPECTATE_MODE (SPECTATE_MODE:-1)
-#define SPECTATE_MODE_NORMAL (SPECTATE_MODE:1)
-#define SPECTATE_MODE_FIXED (SPECTATE_MODE:2)
-#define SPECTATE_MODE_SIDE (SPECTATE_MODE:3)
+#define UNKNOWN_SPECTATE_MODE                                        (SPECTATE_MODE:-1)
+#define SPECTATE_MODE_NORMAL                                        (SPECTATE_MODE:1)
+#define SPECTATE_MODE_FIXED                                        (SPECTATE_MODE:2)
+#define SPECTATE_MODE_SIDE                                        (SPECTATE_MODE:3)
 
 /// <p/>
 /**
@@ -315,10 +315,10 @@ const KEY_RIGHT                                =  128;
  */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
 
-#define UNKNOWN_PLAYER_RECORDING_TYPE (PLAYER_RECORDING_TYPE:-1)
-#define PLAYER_RECORDING_TYPE_NONE (PLAYER_RECORDING_TYPE:0)
-#define PLAYER_RECORDING_TYPE_DRIVER (PLAYER_RECORDING_TYPE:1)
-#define PLAYER_RECORDING_TYPE_ONFOOT (PLAYER_RECORDING_TYPE:2)
+#define UNKNOWN_PLAYER_RECORDING_TYPE                                        (PLAYER_RECORDING_TYPE:-1)
+#define PLAYER_RECORDING_TYPE_NONE                                        (PLAYER_RECORDING_TYPE:0)
+#define PLAYER_RECORDING_TYPE_DRIVER                                        (PLAYER_RECORDING_TYPE:1)
+#define PLAYER_RECORDING_TYPE_ONFOOT                                        (PLAYER_RECORDING_TYPE:2)
 
 /// <p/>
 /**
@@ -326,11 +326,11 @@ const KEY_RIGHT                                =  128;
  */
 #define FORCE_SYNC: __TAG(FORCE_SYNC):
 
-#define UNKNOWN_FORCE_SYNC (FORCE_SYNC:-1)
-//#define REMOVE_FROM_VEHICLES (FORCE_SYNC:128) // Remove players from vehicles.
-#define SYNC_NONE (FORCE_SYNC:0) // Don't force sync to anyone else.
-#define SYNC_ALL (FORCE_SYNC:1) // Sync to all streamed-in players.
-#define SYNC_OTHER (FORCE_SYNC:2) // Sync to all streamed-in players, except the player with the animation.
+#define UNKNOWN_FORCE_SYNC                                        (FORCE_SYNC:-1)
+//#define REMOVE_FROM_VEHICLES                                        (FORCE_SYNC:128) // Remove players from vehicles.
+#define SYNC_NONE                                        (FORCE_SYNC:0) // Don't force sync to anyone else.
+#define SYNC_ALL                                        (FORCE_SYNC:1) // Sync to all streamed-in players.
+#define SYNC_OTHER                                        (FORCE_SYNC:2) // Sync to all streamed-in players, except the player with the animation.
 
 /// <p/>
 /**
@@ -338,8 +338,8 @@ const KEY_RIGHT                                =  128;
  */
 #define CLICK_SOURCE: __TAG(CLICK_SOURCE):
 
-#define UNKNOWN_CLICK_SOURCE (CLICK_SOURCE:-1)
-#define CLICK_SOURCE_SCOREBOARD (CLICK_SOURCE:0)
+#define UNKNOWN_CLICK_SOURCE                                        (CLICK_SOURCE:-1)
+#define CLICK_SOURCE_SCOREBOARD                                        (CLICK_SOURCE:0)
 
 /// <p/>
 /**
@@ -347,12 +347,12 @@ const KEY_RIGHT                                =  128;
  */
 #define BULLET_HIT_TYPE: __TAG(BULLET_HIT_TYPE):
 
-#define UNKNOWN_BULLET_HIT_TYPE (BULLET_HIT_TYPE:-1)
-#define BULLET_HIT_TYPE_NONE (BULLET_HIT_TYPE:0)
-#define BULLET_HIT_TYPE_PLAYER (BULLET_HIT_TYPE:1)
-#define BULLET_HIT_TYPE_VEHICLE (BULLET_HIT_TYPE:2)
-#define BULLET_HIT_TYPE_OBJECT (BULLET_HIT_TYPE:3)
-#define BULLET_HIT_TYPE_PLAYER_OBJECT (BULLET_HIT_TYPE:4)
+#define UNKNOWN_BULLET_HIT_TYPE                                        (BULLET_HIT_TYPE:-1)
+#define BULLET_HIT_TYPE_NONE                                        (BULLET_HIT_TYPE:0)
+#define BULLET_HIT_TYPE_PLAYER                                        (BULLET_HIT_TYPE:1)
+#define BULLET_HIT_TYPE_VEHICLE                                        (BULLET_HIT_TYPE:2)
+#define BULLET_HIT_TYPE_OBJECT                                        (BULLET_HIT_TYPE:3)
+#define BULLET_HIT_TYPE_PLAYER_OBJECT                                        (BULLET_HIT_TYPE:4)
 
 /*
                                                                            

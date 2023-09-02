@@ -74,29 +74,29 @@ const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
  */
 #define TEXT_DRAW_FONT: __TAG(TEXT_DRAW_FONT):
 
-#define UNKNOWN_TEXT_DRAW_FONT (TEXT_DRAW_FONT:-1)
+#define UNKNOWN_TEXT_DRAW_FONT                                        (TEXT_DRAW_FONT:-1)
 
 // Numbers.
-#define TEXT_DRAW_FONT_0 (TEXT_DRAW_FONT:0)
-#define TEXT_DRAW_FONT_1 (TEXT_DRAW_FONT:1)
-#define TEXT_DRAW_FONT_2 (TEXT_DRAW_FONT:2)
-#define TEXT_DRAW_FONT_3 (TEXT_DRAW_FONT:3)
-#define TEXT_DRAW_FONT_SPRITE_DRAW (TEXT_DRAW_FONT:4)
-#define TEXT_DRAW_FONT_MODEL_PREVIEW (TEXT_DRAW_FONT:5)
+#define TEXT_DRAW_FONT_0                                        (TEXT_DRAW_FONT:0)
+#define TEXT_DRAW_FONT_1                                        (TEXT_DRAW_FONT:1)
+#define TEXT_DRAW_FONT_2                                        (TEXT_DRAW_FONT:2)
+#define TEXT_DRAW_FONT_3                                        (TEXT_DRAW_FONT:3)
+#define TEXT_DRAW_FONT_SPRITE_DRAW                                        (TEXT_DRAW_FONT:4)
+#define TEXT_DRAW_FONT_MODEL_PREVIEW                                        (TEXT_DRAW_FONT:5)
 
 // From GTA.
-#define TEXT_DRAW_FONT_BANK (TEXT_DRAW_FONT:0)
-#define TEXT_DRAW_FONT_STANDARD (TEXT_DRAW_FONT:1)
-#define TEXT_DRAW_FONT_SPACEAGE (TEXT_DRAW_FONT:2)
-#define TEXT_DRAW_FONT_HEADING (TEXT_DRAW_FONT:3)
+#define TEXT_DRAW_FONT_BANK                                        (TEXT_DRAW_FONT:0)
+#define TEXT_DRAW_FONT_STANDARD                                        (TEXT_DRAW_FONT:1)
+#define TEXT_DRAW_FONT_SPACEAGE                                        (TEXT_DRAW_FONT:2)
+#define TEXT_DRAW_FONT_HEADING                                        (TEXT_DRAW_FONT:3)
 
 // From open.mp.
-#define TEXT_DRAW_FONT_BECKETT_REGULAR (TEXT_DRAW_FONT:0)
-#define TEXT_DRAW_FONT_AHARONI_BOLD (TEXT_DRAW_FONT:1)
-#define TEXT_DRAW_FONT_BANK_GOTHIC (TEXT_DRAW_FONT:2)
-#define TEXT_DRAW_FONT_PRICEDOWN (TEXT_DRAW_FONT:3)
-#define TEXT_DRAW_FONT_SPRITE (TEXT_DRAW_FONT:4)
-#define TEXT_DRAW_FONT_PREVIEW (TEXT_DRAW_FONT:5)
+#define TEXT_DRAW_FONT_BECKETT_REGULAR                                        (TEXT_DRAW_FONT:0)
+#define TEXT_DRAW_FONT_AHARONI_BOLD                                        (TEXT_DRAW_FONT:1)
+#define TEXT_DRAW_FONT_BANK_GOTHIC                                        (TEXT_DRAW_FONT:2)
+#define TEXT_DRAW_FONT_PRICEDOWN                                        (TEXT_DRAW_FONT:3)
+#define TEXT_DRAW_FONT_SPRITE                                        (TEXT_DRAW_FONT:4)
+#define TEXT_DRAW_FONT_PREVIEW                                        (TEXT_DRAW_FONT:5)
 
 /// <p/>
 /**
@@ -105,11 +105,11 @@ const PlayerText:INVALID_PLAYER_TEXT_DRAW      = PlayerText:0xFFFF;
  */
 #define TEXT_DRAW_ALIGN: __TAG(TEXT_DRAW_ALIGN):
 
-#define UNKNOWN_TEXT_DRAW_ALIGN (TEXT_DRAW_ALIGN:-1)
-#define TEXT_DRAW_ALIGN_LEFT (TEXT_DRAW_ALIGN:1)
-#define TEXT_DRAW_ALIGN_CENTRE (TEXT_DRAW_ALIGN:2)
-#define TEXT_DRAW_ALIGN_CENTER (TEXT_DRAW_ALIGN:2)
-#define TEXT_DRAW_ALIGN_RIGHT (TEXT_DRAW_ALIGN:3)
+#define UNKNOWN_TEXT_DRAW_ALIGN                                        (TEXT_DRAW_ALIGN:-1)
+#define TEXT_DRAW_ALIGN_LEFT                                        (TEXT_DRAW_ALIGN:1)
+#define TEXT_DRAW_ALIGN_CENTRE                                        (TEXT_DRAW_ALIGN:2)
+#define TEXT_DRAW_ALIGN_CENTER                                        (TEXT_DRAW_ALIGN:2)
+#define TEXT_DRAW_ALIGN_RIGHT                                        (TEXT_DRAW_ALIGN:3)
 
 /*
                                                                  

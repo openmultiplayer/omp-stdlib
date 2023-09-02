@@ -31,16 +31,16 @@
  */
 #define CP_TYPE: __TAG(CP_TYPE):
 
-#define UNKNOWN_CP_TYPE (CP_TYPE:-1)
-#define CP_TYPE_GROUND_NORMAL (CP_TYPE:0)
-#define CP_TYPE_GROUND_FINISH (CP_TYPE:1)
-#define CP_TYPE_GROUND_EMPTY (CP_TYPE:2)
-#define CP_TYPE_AIR_NORMAL (CP_TYPE:3)
-#define CP_TYPE_AIR_FINISH (CP_TYPE:4)
-#define CP_TYPE_AIR_ROTATING (CP_TYPE:5)
-#define CP_TYPE_AIR_STROBING (CP_TYPE:6)
-#define CP_TYPE_AIR_SWINGING (CP_TYPE:7)
-#define CP_TYPE_AIR_BOBBING (CP_TYPE:8)
+#define UNKNOWN_CP_TYPE                                        (CP_TYPE:-1)
+#define CP_TYPE_GROUND_NORMAL                                        (CP_TYPE:0)
+#define CP_TYPE_GROUND_FINISH                                        (CP_TYPE:1)
+#define CP_TYPE_GROUND_EMPTY                                        (CP_TYPE:2)
+#define CP_TYPE_AIR_NORMAL                                        (CP_TYPE:3)
+#define CP_TYPE_AIR_FINISH                                        (CP_TYPE:4)
+#define CP_TYPE_AIR_ROTATING                                        (CP_TYPE:5)
+#define CP_TYPE_AIR_STROBING                                        (CP_TYPE:6)
+#define CP_TYPE_AIR_SWINGING                                        (CP_TYPE:7)
+#define CP_TYPE_AIR_BOBBING                                        (CP_TYPE:8)
 
 /*
                                                                   
