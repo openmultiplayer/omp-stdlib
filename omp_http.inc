@@ -34,7 +34,7 @@
 
 const HTTP_METHOD:UNKNOWN_HTTP_METHOD          = HTTP_METHOD:-1;
 const HTTP_METHOD:HTTP_GET                     = HTTP_METHOD:1;
-const HTTP_METHOD:HTTP_POST,                   = HTTP_METHOD:2;
+const HTTP_METHOD:HTTP_POST                    = HTTP_METHOD:2;
 const HTTP_METHOD:HTTP_HEAD                    = HTTP_METHOD:3;
 
 /// <p/>
