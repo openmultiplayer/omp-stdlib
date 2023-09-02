@@ -104,7 +104,7 @@ native
 */
 ```
 
-The `#` causes Qawno to render its native heading, while the other lines are all sufficiently invalid that it will entirely ignore them.  Pawno will render all four, but the first and last are sufficiently invalid to it that they will both be blank, while the other two contain padding characters for alignment.
+The `#` causes Qawno to render its native heading, while the other lines are all sufficiently invalid that it will entirely ignore them.  Pawno will render all four, but the first and last are sufficiently invalid to it that they will both be blank, while the other two contain padding characters for alignment.  Additionally, if the heading itself has a space between words you should also use `0xA0` in the Pawno version.
 
 ## `__` prefix.
 
