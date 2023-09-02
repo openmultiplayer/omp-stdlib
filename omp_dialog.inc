@@ -45,13 +45,13 @@ const MAX_DIALOG                               = 32768;
  */
 #define DIALOG_STYLE: __TAG(DIALOG_STYLE):
 
-#define UNKNOWN_DIALOG_STYLE                                        (DIALOG_STYLE:-1)
-#define DIALOG_STYLE_MSGBOX                                        (DIALOG_STYLE:0)
-#define DIALOG_STYLE_INPUT                                        (DIALOG_STYLE:1)
-#define DIALOG_STYLE_LIST                                        (DIALOG_STYLE:2)
-#define DIALOG_STYLE_PASSWORD                                        (DIALOG_STYLE:3)
-#define DIALOG_STYLE_TABLIST                                        (DIALOG_STYLE:4)
-#define DIALOG_STYLE_TABLIST_HEADERS                                        (DIALOG_STYLE:5)
+#define UNKNOWN_DIALOG_STYLE                   (DIALOG_STYLE:-1)
+#define DIALOG_STYLE_MSGBOX                    (DIALOG_STYLE:0)
+#define DIALOG_STYLE_INPUT                     (DIALOG_STYLE:1)
+#define DIALOG_STYLE_LIST                      (DIALOG_STYLE:2)
+#define DIALOG_STYLE_PASSWORD                  (DIALOG_STYLE:3)
+#define DIALOG_STYLE_TABLIST                   (DIALOG_STYLE:4)
+#define DIALOG_STYLE_TABLIST_HEADERS           (DIALOG_STYLE:5)
 
 /*
                                                                            

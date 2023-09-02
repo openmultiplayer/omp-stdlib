@@ -34,22 +34,22 @@
 #define SERVER_VARTYPE: __TAG(VARTYPE):
 #define PLAYER_VARTYPE: __TAG(VARTYPE):
 
-#define UNKNOWN_VARTYPE                                        (VARTYPE:-1)
+#define UNKNOWN_VARTYPE                        (VARTYPE:-1)
 
-#define VARTYPE_NONE                                        (VARTYPE:0)
-#define VARTYPE_INT                                        (VARTYPE:1)
-#define VARTYPE_STRING                                        (VARTYPE:2)
-#define VARTYPE_FLOAT                                        (VARTYPE:3)
+#define VARTYPE_NONE                           (VARTYPE:0)
+#define VARTYPE_INT                            (VARTYPE:1)
+#define VARTYPE_STRING                         (VARTYPE:2)
+#define VARTYPE_FLOAT                          (VARTYPE:3)
 
-#define SERVER_VARTYPE_NONE                                        (VARTYPE:0)
-#define SERVER_VARTYPE_INT                                        (VARTYPE:1)
-#define SERVER_VARTYPE_STRING                                        (VARTYPE:2)
-#define SERVER_VARTYPE_FLOAT                                        (VARTYPE:3)
+#define SERVER_VARTYPE_NONE                    (VARTYPE:0)
+#define SERVER_VARTYPE_INT                     (VARTYPE:1)
+#define SERVER_VARTYPE_STRING                  (VARTYPE:2)
+#define SERVER_VARTYPE_FLOAT                   (VARTYPE:3)
 
-#define PLAYER_VARTYPE_NONE                                        (VARTYPE:0)
-#define PLAYER_VARTYPE_INT                                        (VARTYPE:1)
-#define PLAYER_VARTYPE_STRING                                        (VARTYPE:2)
-#define PLAYER_VARTYPE_FLOAT                                        (VARTYPE:3)
+#define PLAYER_VARTYPE_NONE                    (VARTYPE:0)
+#define PLAYER_VARTYPE_INT                     (VARTYPE:1)
+#define PLAYER_VARTYPE_STRING                  (VARTYPE:2)
+#define PLAYER_VARTYPE_FLOAT                   (VARTYPE:3)
 
 /*
                                                     

@@ -52,9 +52,9 @@ const INVALID_OBJECT_ID                        = 0xFFFF;
  */
 #define SELECT_OBJECT: __TAG(SELECT_OBJECT):
 
-#define UNKNOWN_SELECT_OBJECT                                        (SELECT_OBJECT:-1)
-#define SELECT_OBJECT_GLOBAL_OBJECT                                        (SELECT_OBJECT:1)
-#define SELECT_OBJECT_PLAYER_OBJECT                                        (SELECT_OBJECT:2)
+#define UNKNOWN_SELECT_OBJECT                  (SELECT_OBJECT:-1)
+#define SELECT_OBJECT_GLOBAL_OBJECT            (SELECT_OBJECT:1)
+#define SELECT_OBJECT_PLAYER_OBJECT            (SELECT_OBJECT:2)
 
 /// <p/>
 /**
@@ -62,21 +62,21 @@ const INVALID_OBJECT_ID                        = 0xFFFF;
  */
 #define OBJECT_MATERIAL_SIZE: __TAG(OBJECT_MATERIAL_SIZE):
 
-#define UNKNOWN_OBJECT_MATERIAL_SIZE                                        (OBJECT_MATERIAL_SIZE:-1)
-#define OBJECT_MATERIAL_SIZE_32x32                                        (OBJECT_MATERIAL_SIZE:10)
-#define OBJECT_MATERIAL_SIZE_64x32                                        (OBJECT_MATERIAL_SIZE:20)
-#define OBJECT_MATERIAL_SIZE_64x64                                        (OBJECT_MATERIAL_SIZE:30)
-#define OBJECT_MATERIAL_SIZE_128x32                                        (OBJECT_MATERIAL_SIZE:40)
-#define OBJECT_MATERIAL_SIZE_128x64                                        (OBJECT_MATERIAL_SIZE:50)
-#define OBJECT_MATERIAL_SIZE_128x128                                        (OBJECT_MATERIAL_SIZE:60)
-#define OBJECT_MATERIAL_SIZE_256x32                                        (OBJECT_MATERIAL_SIZE:70)
-#define OBJECT_MATERIAL_SIZE_256x64                                        (OBJECT_MATERIAL_SIZE:80)
-#define OBJECT_MATERIAL_SIZE_256x128                                        (OBJECT_MATERIAL_SIZE:90)
-#define OBJECT_MATERIAL_SIZE_256x256                                        (OBJECT_MATERIAL_SIZE:100)
-#define OBJECT_MATERIAL_SIZE_512x64                                        (OBJECT_MATERIAL_SIZE:110)
-#define OBJECT_MATERIAL_SIZE_512x128                                        (OBJECT_MATERIAL_SIZE:120)
-#define OBJECT_MATERIAL_SIZE_512x256                                        (OBJECT_MATERIAL_SIZE:130)
-#define OBJECT_MATERIAL_SIZE_512x512                                        (OBJECT_MATERIAL_SIZE:140)
+#define UNKNOWN_OBJECT_MATERIAL_SIZE           (OBJECT_MATERIAL_SIZE:-1)
+#define OBJECT_MATERIAL_SIZE_32x32             (OBJECT_MATERIAL_SIZE:10)
+#define OBJECT_MATERIAL_SIZE_64x32             (OBJECT_MATERIAL_SIZE:20)
+#define OBJECT_MATERIAL_SIZE_64x64             (OBJECT_MATERIAL_SIZE:30)
+#define OBJECT_MATERIAL_SIZE_128x32            (OBJECT_MATERIAL_SIZE:40)
+#define OBJECT_MATERIAL_SIZE_128x64            (OBJECT_MATERIAL_SIZE:50)
+#define OBJECT_MATERIAL_SIZE_128x128           (OBJECT_MATERIAL_SIZE:60)
+#define OBJECT_MATERIAL_SIZE_256x32            (OBJECT_MATERIAL_SIZE:70)
+#define OBJECT_MATERIAL_SIZE_256x64            (OBJECT_MATERIAL_SIZE:80)
+#define OBJECT_MATERIAL_SIZE_256x128           (OBJECT_MATERIAL_SIZE:90)
+#define OBJECT_MATERIAL_SIZE_256x256           (OBJECT_MATERIAL_SIZE:100)
+#define OBJECT_MATERIAL_SIZE_512x64            (OBJECT_MATERIAL_SIZE:110)
+#define OBJECT_MATERIAL_SIZE_512x128           (OBJECT_MATERIAL_SIZE:120)
+#define OBJECT_MATERIAL_SIZE_512x256           (OBJECT_MATERIAL_SIZE:130)
+#define OBJECT_MATERIAL_SIZE_512x512           (OBJECT_MATERIAL_SIZE:140)
 
 /// <p/>
 /**
@@ -85,14 +85,14 @@ const INVALID_OBJECT_ID                        = 0xFFFF;
 #define OBJECT_MATERIAL_TEXT_ALIGN: __TAG(OBJECT_MATERIAL_TEXT_ALIGN):
 
 #if __namemax > 31
-#define UNKNOWN_OBJECT_MATERIAL_TEXT_ALIGN                                        (OBJECT_MATERIAL_TEXT_ALIGN:-1)
-#define OBJECT_MATERIAL_TEXT_ALIGN_CENTRE                                        (OBJECT_MATERIAL_TEXT_ALIGN:1)
-#define OBJECT_MATERIAL_TEXT_ALIGN_CENTER                                        (OBJECT_MATERIAL_TEXT_ALIGN:1)
-#define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT                                        (OBJECT_MATERIAL_TEXT_ALIGN:2)
+#define UNKNOWN_OBJECT_MATERIAL_TEXT_ALIGN     (OBJECT_MATERIAL_TEXT_ALIGN:-1)
+#define OBJECT_MATERIAL_TEXT_ALIGN_CENTRE      (OBJECT_MATERIAL_TEXT_ALIGN:1)
+#define OBJECT_MATERIAL_TEXT_ALIGN_CENTER      (OBJECT_MATERIAL_TEXT_ALIGN:1)
+#define OBJECT_MATERIAL_TEXT_ALIGN_RIGHT       (OBJECT_MATERIAL_TEXT_ALIGN:2)
 #endif
-#define OBJECT_MATERIAL_TEXT_ALIGN_LEFT                                        (OBJECT_MATERIAL_TEXT_ALIGN:0)
-#define OBJECT_MATERIAL_TEXT_ALIGN_CENT                                        (OBJECT_MATERIAL_TEXT_ALIGN:1)
-#define OBJECT_MATERIAL_TEXT_ALIGN_RIGT                                        (OBJECT_MATERIAL_TEXT_ALIGN:2)
+#define OBJECT_MATERIAL_TEXT_ALIGN_LEFT        (OBJECT_MATERIAL_TEXT_ALIGN:0)
+#define OBJECT_MATERIAL_TEXT_ALIGN_CENT        (OBJECT_MATERIAL_TEXT_ALIGN:1)
+#define OBJECT_MATERIAL_TEXT_ALIGN_RIGT        (OBJECT_MATERIAL_TEXT_ALIGN:2)
 
 /// <p/>
 /**
@@ -100,10 +100,10 @@ const INVALID_OBJECT_ID                        = 0xFFFF;
  */
 #define EDIT_RESPONSE: __TAG(EDIT_RESPONSE):
 
-#define UNKNOWN_EDIT_RESPONSE                                        (EDIT_RESPONSE:-1)
-#define EDIT_RESPONSE_CANCEL                                        (EDIT_RESPONSE:0)
-#define EDIT_RESPONSE_FINAL                                        (EDIT_RESPONSE:1)
-#define EDIT_RESPONSE_UPDATE                                        (EDIT_RESPONSE:2)
+#define UNKNOWN_EDIT_RESPONSE                  (EDIT_RESPONSE:-1)
+#define EDIT_RESPONSE_CANCEL                   (EDIT_RESPONSE:0)
+#define EDIT_RESPONSE_FINAL                    (EDIT_RESPONSE:1)
+#define EDIT_RESPONSE_UPDATE                   (EDIT_RESPONSE:2)
 
 /*
                                                                            
