@@ -414,7 +414,8 @@ native NetStats_MessagesRecvPerSecond(playerid);
  * 1.0% is outright bad.</remarks>
  * <remarks>This function has been found to be currently unreliable the output is not as expected when
  * compared to the client.  Therefore this function should not be used as a packet loss kicker. </remarks>
- * <remarks>A more accurate packetloss function can be found here: <a href="https://sampforum.blast.hk/showthread.php?tid=281&pid=2488911#pid2488911">
+ * <remarks>A more accurate packetloss function can be found here:
+ * <a href="https://sampforum.blast.hk/showthread.php?tid=281&pid=2488911#pid2488911">
  * https://sampforum.blast.hk/showthread.php?tid=281&pid=2488911#pid2488911</a></remarks>
  * <returns>The percentage packet loss as a float. <b><c>0.0</c></b> if player not connected.</returns>
  */

@@ -474,7 +474,8 @@ native bool:StopAudioStreamForPlayer(playerid);
 /**
  * <library>omp_player</library>
  * <summary>Creates an explosion that is only visible to a single player.  This can be used to isolate
- * explosions from other players or to make them only appear in specific <a href="https://www.open.mp/docs/scripting/functions/SetPlayerVirtualWorld">virtual
+ * explosions from other players or to make them only appear in specific
+ * <a href="https://www.open.mp/docs/scripting/functions/SetPlayerVirtualWorld">virtual
  * worlds</a>.</summary>
  * <param name="playerid">The ID of the player to create the explosion for</param>
  * <param name="x">The x coordinate of the explosion</param>
@@ -2765,8 +2766,7 @@ forward OnPlayerStreamOut(playerid, forplayerid);
  * <param name="amount">The amount of damage the player took (health and armour combined)</param>
  * <param name="weaponid">The ID of the <a href="https://www.open.mp/docs/scripting/resources/weaponids">weapon/reason</a>
  * for the damage</param>
- * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
- *  Leave it out if using an older version!)</param>
+ * <param name="bodypart">The body part that was hit.</param>
  * <seealso name="OnPlayerGiveDamage" />
  * <seealso name="OnPlayerWeaponShot" />
  * <remarks><a href="#GetPlayerHealth">GetPlayerHealth</a> and <a href="#GetPlayerArmour">GetPlayerArmour</a>
@@ -2799,8 +2799,7 @@ forward OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bo
  * <param name="amount">The amount of health/armour damagedid has lost (combined)</param>
  * <param name="weaponid">The <a href="https://www.open.mp/docs/scripting/resources/weaponids">reason</a> that caused the
  * damage</param>
- * <param name="bodypart">The body part that was hit. (NOTE: This parameter was added in <b>0.3z</b>.
- *  Leave it out if using an older version!)</param>
+ * <param name="bodypart">The body part that was hit.</param>
  * <seealso name="OnPlayerTakeDamage" />
  * <remarks>
  *   Keep in mind this function can be inaccurate in some cases.<br />
@@ -3009,7 +3008,8 @@ forward OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
  * <summary>This callback is called when the state of any supported key is changed (pressed/released).
  *  Directional keys do not trigger OnPlayerKeyStateChange (up/down/left/right).</summary>
  * <param name="playerid">The ID of the player that pressed or released a key</param>
- * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="https://www.open.mp/docs/scripting/resources/keys">here</a></param>
+ * <param name="newkeys">A map (bitmask) of the keys currently held - see <a href="https://www.open.mp/docs/scripting/resources/keys">here</a>
+ * </param>
  * <param name="oldkeys">A map (bitmask) of the keys held prior to the current change - see
  * <a href="https://www.open.mp/docs/scripting/resources/keys">here</a></param>
  * <seealso name="GetPlayerKeys" />

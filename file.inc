@@ -257,9 +257,11 @@ native fexist(const filename[]);
  * <summary>Return the size and the time stamp of a file.</summary>
  * <param name="filename">The name of the file.</param>
  * <param name="size">If the function is successful, this param-eter holds the size of the file on return.</param>
- * <param name="timestamp">If the function is successful, this parameter holds the time of the last modification of the file on return.</param>
+ * <param name="timestamp">If the function is successful, this parameter holds the time of the last modification of the file on
+ * return.</param>
  * <param name="attrib">If the function is successful, this parameter holds the file attributes.</param>
- * <param name="inode">If the function is successful, this parameter holds inode number of the file.  An inode number is a number that uniquely identifies a file, and it usually indicates the physical position of (the start of) the file on the disk or memory card.</param>
+ * <param name="inode">If the function is successful, this parameter holds inode number of the file.  An inode number is a number that
+ * uniquely identifies a file, and it usually indicates the physical position of (the start of) the file on the disk or memory card.</param>
  * <remarks>
  * In contrast to the function flength, this function does not need the file to be opened for querying its size.
  * <p/>
@@ -312,7 +314,8 @@ native filecrc(const filename[]);
 /**
  * <library>file</library>
  * <summary>Returns the free disk space.</summary>
- * <param name="volume">The name of the volume on systems that support multiple disks or multiple memory cards.  On single-volume systems, it is optional.</param>
+ * <param name="volume">The name of the volume on systems that support multiple disks or multiple memory cards.  On single-volume systems, it
+ * is optional.</param>
  * <remarks>
  * The maximum size that can be supported 2048 GiB (2 terabyte).
  * </remarks>
@@ -324,7 +327,8 @@ forward diskfree(const volume[] = "");
  * <library>file</library>
  * <summary>Set the file attributes.</summary>
  * <param name="filename">The name of the file.</param>
- * <param name="timestamp">Time of the last modification of the file.  When this parameter is set to zero, the time stamp of the file is not changed.</param>
+ * <param name="timestamp">Time of the last modification of the file.  When this parameter is set to zero, the time stamp of the file is not
+ * changed.</param>
  * <param name="attrib">A bit mask with the new attributes of the file.  When set to 0x0F, the attributes of the file are not changed.</param>
  * <remarks>
  * The time is in number of seconds since midnight at 1 January 1970: the start of the UNIX system epoch.

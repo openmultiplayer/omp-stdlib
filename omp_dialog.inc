@@ -201,7 +201,8 @@ native GetPlayerDialog(playerid) = GetPlayerDialogID;
  * <remarks>A player's dialog doesn't hide when the gamemode restarts, causing the server to print <c>"Warning:
  * PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID"</c> if a player responded
  * to this dialog after restart.</remarks>
- * <remarks>Parameters can contain different values, based on dialog's <a href="https://open.mp/docs/scripting/resources/dialogstyles">style</a>.
+ * <remarks>Parameters can contain different values, based on dialog's
+ * <a href="https://open.mp/docs/scripting/resources/dialogstyles">style</a>.
  * </remarks>
  * <returns>
  *   Returning <b><c>0</c></b> in this callback will pass the dialog to another script in case no matching

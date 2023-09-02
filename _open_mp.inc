@@ -94,7 +94,7 @@ public const __SAMP_INCLUDES_VERSION = 0x037030;
  *   </code>
  *   Thus they are encoded here as:
  *   <code>
- *      (major << 28) | (minor << 21) | (patch << 14) | (prerel)
+ *      (major &lt;&lt; 28) | (minor &lt;&lt; 21) | (patch &lt;&lt; 14) | (prerel)
  *   </code>
  *   </remarks>
  */

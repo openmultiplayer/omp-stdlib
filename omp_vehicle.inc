@@ -1777,18 +1777,12 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
  * <param name="playerid">The ID of the player that sent a vehicle position sync update</param>
  * <param name="passenger_seat">The ID of the seat if the player is a passenger.  0=not in vehicle,
  * 1=front passenger, 2=backleft 3=backright 4+ is for coach/bus etc.  with many passenger seats</param>
- * <param name="new_x">The new X coordinate of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
- * <param name="new_y">The new Y coordinate of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
- * <param name="new_z">The new Z coordinate of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
- * <param name="vel_x">The new X velocity of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
- * <param name="vel_y">The new Y velocity of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
- * <param name="vel_z">The new Z velocity of the vehicle.</b>
- *  Leave it out if using an earlier version</param>
+ * <param name="new_x">The new X coordinate of the vehicle.</param>
+ * <param name="new_y">The new Y coordinate of the vehicle.</param>
+ * <param name="new_z">The new Z coordinate of the vehicle.</param>
+ * <param name="vel_x">The new X velocity of the vehicle.</param>
+ * <param name="vel_y">The new Y velocity of the vehicle.</param>
+ * <param name="vel_z">The new Z velocity of the vehicle.</param>
  * <seealso name="OnTrailerUpdate" />
  * <remarks>This callback is called very frequently per second per unoccupied vehicle.  You should refrain
  * from implementing intensive calculations or intensive file writing/reading operations in this callback.</remarks>

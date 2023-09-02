@@ -293,7 +293,8 @@ native bool:ispacked(const string[]);
  * <summary>Convert values to text.</summary>
  * <param name="dest">The string that will contain the formatted result.</param>
  * <param name="size">The maximum number of <em>cells</em> that the dest parameter can hold. This value includes the zero terminator.</param>
- * <param name="pack">If <c>true</c>, the string in <c>dest</c> will become a packed string. Otherwise, the string in dest will be unpacked.</param>
+ * <param name="pack">If <c>true</c>, the string in <c>dest</c> will become a packed string. Otherwise, the string in dest will be unpacked.
+ * </param>
  * <param name="format">The string to store in <c>dest</c>, which may contain placeholders (see the notes below).</param>
  * <param name="...">The parameters for the placeholders.  These values may be untagged, weakly tagged, or tagged as rational values.</param>
  * <remarks>
