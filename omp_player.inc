@@ -154,7 +154,11 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRV  = PLAYER_STATE:5;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRIVER   = PLAYER_STATE:5;
+#if __namemax > 31
+	const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_DRIVER = PLAYER_STATE:5;
+#else
+	const __PLAYER_STATE_ENTER_VD = 0;
+#endif
 #define PLAYER_STATE_ENTER_VEHICLE_DRIVER      (PLAYER_STATE:5)
 
 /**
@@ -170,7 +174,11 @@ const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASS = PLAYER_STATE:6;
  * <summary>Used internally</summary>
  */
 #pragma deprecated Used internally.
-const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASSENGER    = PLAYER_STATE:6;
+#if __namemax > 31
+	const PLAYER_STATE:PLAYER_STATE_ENTER_VEHICLE_PASSENGER = PLAYER_STATE:6;
+#else
+	const __PLAYER_STATE_ENTER_VP = 0;
+#endif
 #define PLAYER_STATE_ENTER_VEHICLE_PASSENGER   (PLAYER_STATE:6)
 
 /// <p/>
