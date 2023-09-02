@@ -51,11 +51,11 @@ enum WEAPON:MAX_WEAPONS
 	REASON_DISCONNECT                          = 201,
 	REASON_SUICIDE                             = 255,
 
-	WEAPON_UNKNOWN                             = UNKNOWN_WEAPON
-	WEAPON_VEHICLE                             = REASON_VEHICLE
-	WEAPON_DROWN                               = REASON_DROWN
-	WEAPON_COLLISION                           = REASON_COLLISION
-	WEAPON_SPLAT                               = REASON_SPLAT
+	WEAPON_UNKNOWN                             = UNKNOWN_WEAPON,
+	WEAPON_VEHICLE                             = REASON_VEHICLE,
+	WEAPON_DROWN                               = REASON_DROWN,
+	WEAPON_COLLISION                           = REASON_COLLISION,
+	WEAPON_SPLAT                               = REASON_SPLAT,
 
 	// The main weapon types.  Done after the reasons so sizes are correct.
 	WEAPON_FIST                                =  0,
