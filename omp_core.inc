@@ -37,6 +37,75 @@ const INVALID_TIMER                            = 0;
  * <summary>Weapons</summary>
  */
 #define WEAPON: __TAG(WEAPON):
+enum WEAPON:MAX_WEAPONS
+{
+	UNKNOWN_WEAPON                             = -1,
+	// Special `OnPlayerDeath` `reason` values.  NOT included in `MAX_WEAPONS`.
+	REASON_VEHICLE                             = 49,
+	REASON_HELICOPTER_BLADES                   = 50,
+	REASON_EXPLOSION                           = 51,
+	REASON_DROWN                               = 53,
+	REASON_COLLISION                           = 54,
+	REASON_SPLAT                               = 54,
+	REASON_CONNECT                             = 200,
+	REASON_DISCONNECT                          = 201,
+	REASON_SUICIDE                             = 255,
+
+	WEAPON_UNKNOWN                             = UNKNOWN_WEAPON
+	WEAPON_VEHICLE                             = REASON_VEHICLE
+	WEAPON_DROWN                               = REASON_DROWN
+	WEAPON_COLLISION                           = REASON_COLLISION
+	WEAPON_SPLAT                               = REASON_SPLAT
+
+	// The main weapon types.  Done after the reasons so sizes are correct.
+	WEAPON_FIST                                =  0,
+	WEAPON_BRASSKNUCKLE                        =  1,
+	WEAPON_GOLFCLUB                            =  2,
+	WEAPON_NITESTICK                           =  3,
+	WEAPON_NIGHTSTICK                          = WEAPON_NITESTICK,
+	WEAPON_KNIFE                               =  4,
+	WEAPON_BAT                                 =  5,
+	WEAPON_SHOVEL                              =  6,
+	WEAPON_POOLSTICK                           =  7,
+	WEAPON_KATANA                              =  8,
+	WEAPON_CHAINSAW                            =  9,
+	WEAPON_DILDO                               = 10,
+	WEAPON_DILDO2                              = 11,
+	WEAPON_VIBRATOR                            = 12,
+	WEAPON_VIBRATOR2                           = 13,
+	WEAPON_FLOWER                              = 14,
+	WEAPON_CANE                                = 15,
+	WEAPON_GRENADE                             = 16,
+	WEAPON_TEARGAS                             = 17,
+	WEAPON_MOLTOV                              = 18,
+	WEAPON_MOLOTOV                             = WEAPON_MOLTOV,
+	WEAPON_COLT45                              = 22,
+	WEAPON_SILENCED                            = 23,
+	WEAPON_DEAGLE                              = 24,
+	WEAPON_SHOTGUN                             = 25,
+	WEAPON_SAWEDOFF                            = 26,
+	WEAPON_SHOTGSPA                            = 27,
+	WEAPON_UZI                                 = 28,
+	WEAPON_MP5                                 = 29,
+	WEAPON_AK47                                = 30,
+	WEAPON_M4                                  = 31,
+	WEAPON_TEC9                                = 32,
+	WEAPON_RIFLE                               = 33,
+	WEAPON_SNIPER                              = 34,
+	WEAPON_ROCKETLAUNCHER                      = 35,
+	WEAPON_HEATSEEKER                          = 36,
+	WEAPON_FLAMETHROWER                        = 37,
+	WEAPON_MINIGUN                             = 38,
+	WEAPON_SATCHEL                             = 39,
+	WEAPON_BOMB                                = 40,
+	WEAPON_SPRAYCAN                            = 41,
+	WEAPON_FIREEXTINGUISHER                    = 42,
+	WEAPON_CAMERA                              = 43,
+	WEAPON_NIGHT_VISION_GOGGLES                = 44,
+	WEAPON_THERMAL_GOGGLES                     = 45,
+	WEAPON_PARACHUTE                           = 46
+}
+static stock WEAPON:_@WEAPON() { return MAX_WEAPONS; }
 
 #define UNKNOWN_WEAPON                         (WEAPON:-1)
 
@@ -99,8 +168,6 @@ const INVALID_TIMER                            = 0;
 #define WEAPON_THERMAL_GOGGLES                 (WEAPON:45)
 #define WEAPON_PARACHUTE                       (WEAPON:46)
 
-#define MAX_WEAPONS                            (WEAPON:47)
-
 #define WEAPON_UNKNOWN UNKNOWN_WEAPON
 #define WEAPON_VEHICLE REASON_VEHICLE
 #define WEAPON_DROWN REASON_DROWN
@@ -113,6 +180,25 @@ const INVALID_TIMER                            = 0;
  * <summary>Weapon Slots</summary>
  */
 #define WEAPON_SLOT: __TAG(WEAPON_SLOT):
+enum WEAPON_SLOT:MAX_WEAPON_SLOTS
+{
+	UNKNOWN_WEAPON_SLOT                        = -1,
+	WEAPON_SLOT_UNKNOWN                        = UNKNOWN_WEAPON_SLOT,
+	WEAPON_SLOT_UNARMED                        =  0,
+	WEAPON_SLOT_MELEE                          =  1,
+	WEAPON_SLOT_PISTOL                         =  2,
+	WEAPON_SLOT_SHOTGUN                        =  3,
+	WEAPON_SLOT_MACHINE_GUN                    =  4,
+	WEAPON_SLOT_ASSAULT_RIFLE                  =  5,
+	WEAPON_SLOT_LONG_RIFLE                     =  6,
+	WEAPON_SLOT_ARTILLERY                      =  7,
+	WEAPON_SLOT_EXPLOSIVES                     =  8,
+	WEAPON_SLOT_EQUIPMENT                      =  9,
+	WEAPON_SLOT_GIFT                           = 10,
+	WEAPON_SLOT_GADGET                         = 11,
+	WEAPON_SLOT_DETONATOR                      = 12
+}
+static stock WEAPON_SLOT:_@WEAPON_SLOT() { return MAX_WEAPON_SLOTS; }
 
 #define UNKNOWN_WEAPON_SLOT                    (WEAPON_SLOT:-1)
 #define WEAPON_SLOT_UNARMED                    (WEAPON_SLOT:0)
@@ -129,8 +215,6 @@ const INVALID_TIMER                            = 0;
 #define WEAPON_SLOT_GADGET                     (WEAPON_SLOT:11)
 #define WEAPON_SLOT_DETONATOR                  (WEAPON_SLOT:12)
 
-#define MAX_WEAPON_SLOTS                       (WEAPON_SLOT:13)
-
 #define WEAPON_SLOT_UNKNOWN UNKNOWN_WEAPON_SLOT
 
 /// <p/>
@@ -139,6 +223,15 @@ const INVALID_TIMER                            = 0;
  * <summary>Marker modes used by <c>ShowPlayerMarkers()</c></summary>
  */
 #define PLAYER_MARKERS_MODE: __TAG(PLAYER_MARKERS_MODE):
+enum PLAYER_MARKERS_MODE:__PLAYER_MARKERS_MODE
+{
+	UNKNOWN_PLAYER_MARKERS_MODE                = -1,
+	PLAYER_MARKERS_MODE_UNKNOWN                = UNKNOWN_PLAYER_MARKERS_MODE,
+	PLAYER_MARKERS_MODE_OFF                    =  0,
+	PLAYER_MARKERS_MODE_GLOBAL                 =  1,
+	PLAYER_MARKERS_MODE_STREAMED               =  2
+}
+static stock PLAYER_MARKERS_MODE:_@PLAYER_MARKERS_MODE() { return __PLAYER_MARKERS_MODE; }
 
 #define UNKNOWN_PLAYER_MARKERS_MODE            (PLAYER_MARKERS_MODE:-1)
 #define PLAYER_MARKERS_MODE_OFF                (PLAYER_MARKERS_MODE:0)

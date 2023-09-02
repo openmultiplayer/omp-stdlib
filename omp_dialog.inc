@@ -44,6 +44,17 @@ const MAX_DIALOG                               = 32768;
  * <summary>Player GUI dialog</summary>
  */
 #define DIALOG_STYLE: __TAG(DIALOG_STYLE):
+enum DIALOG_STYLE:__DIALOG_STYLE
+{
+	UNKNOWN_DIALOG_STYLE                       = -1,
+	DIALOG_STYLE_MSGBOX,
+	DIALOG_STYLE_INPUT,
+	DIALOG_STYLE_LIST,
+	DIALOG_STYLE_PASSWORD,
+	DIALOG_STYLE_TABLIST,
+	DIALOG_STYLE_TABLIST_HEADERS
+}
+static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
 
 #define UNKNOWN_DIALOG_STYLE                   (DIALOG_STYLE:-1)
 #define DIALOG_STYLE_MSGBOX                    (DIALOG_STYLE:0)
