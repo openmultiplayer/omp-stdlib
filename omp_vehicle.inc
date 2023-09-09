@@ -885,6 +885,27 @@ native bool:RemoveVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>Is this component legal on this vehicle?</summary>
+ * <param name="vehicleid">ID of the vehicle</param>
+ * <param name="component">ID of the <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component</a>
+ * to remove</param>
+ * <seealso name="AddVehicleComponent" />
+ * <seealso name="GetVehicleComponentInSlot" />
+ * <seealso name="GetVehicleComponentType" />
+ * <seealso name="OnVehicleMod" />
+ * <seealso name="OnEnterExitModShop" />
+ */
+native bool:VehicleCanHaveComponent(vehicleid, componentid);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Get the number of seats in this vehicle</summary>
+ * <param name="vehicleid">ID of the vehicle</param>
+ */
+native GetVehicleSeats(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
  * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour

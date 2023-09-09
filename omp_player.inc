@@ -738,6 +738,19 @@ native bool:GetPlayerTime(playerid, &hour, &minute);
 
 /**
  * <library>omp_player</library>
+ * <summary>Checks whether this player has their in-game clock enabled.</summary>
+ * <param name="playerid">The player whose clock you want to check</param>
+ * <remarks>Time is not synced with other players! Time can be synced using <a href="#SetPlayerTime">SetPlayerTime</a>.</remarks>
+ * <remarks>Time will automatically advance 6 hours when the player dies.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The clock is enabled.<br />
+ *   <b><c>0</c></b>: The clock isn't enabled, or the specified player does not exist.
+ * </returns>
+ */
+native bool:PlayerHasClockEnabled(playerid);
+
+/**
+ * <library>omp_player</library>
  * <summary>Toggle the in-game clock (top-right corner) for a specific player.  When this is enabled,
  * time will progress at 1 minute per second.  Weather will also interpolate (slowly change over time)
  * when set using <a href="#SetWeather">SetWeather</a>/<a href="#SetPlayerWeather">SetPlayerWeather</a>.</summary>
@@ -1739,6 +1752,14 @@ native GetPlayerColor(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Gets the default colour for this player ID.</summary>
+ * <param name="playerid">The ID of the player to get the colour of.  Doesn't need to be connected</param>
+ * <seealso name="GetPlayerColor" />
+ */
+native GetDefaultPlayerColour(playerid);
+
+/**
+ * <library>omp_player</library>
  * <summary>Sets the name of a player.</summary>
  * <param name="playerid">The ID of the player to set the name of</param>
  * <param name="name">The name to set.  Must be 1-24 characters long and only contain valid characters
@@ -1948,7 +1969,7 @@ native GetPlayerMarkerForPlayer(playerid, targetid);
  * file to npcmodes/recordings to use for playback</param>
  * <seealso name="StopRecordingPlayerData" />
  */
-forward bool:StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
+native bool:StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType, const recordFile[]);
 
 /**
  * <library>omp_player</library>
@@ -1957,7 +1978,7 @@ forward bool:StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE:recordType
  * <param name="playerid">The player you want to stop the recordings of</param>
  * <seealso name="StartRecordingPlayerData" />
  */
-forward bool:StopRecordingPlayerData(playerid);
+native bool:StopRecordingPlayerData(playerid);
 
 /**
  * <library>omp_player</library>
