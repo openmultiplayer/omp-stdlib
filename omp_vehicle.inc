@@ -53,7 +53,7 @@ const INVALID_VEHICLE_ID                       = 0xFFFF;
 #define VEHICLE_MODEL: __TAG(VEHICLE_MODEL):
 enum VEHICLE_MODEL:__VEHICLE_MODELS
 {
-	UNKNOWN_VEHICLE_MODEL                       = 0,
+	VEHICLE_MODEL_UNKNOWN                       = 0,
 	VEHICLE_MODEL_LANDSTAL                      = 400,
 	VEHICLE_MODEL_LANDSTALKER                   = VEHICLE_MODEL_LANDSTAL,
 	VEHICLE_MODEL_BRAVURA                       = 401,
