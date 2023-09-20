@@ -66,6 +66,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_DUMPER                        = 406,
 	VEHICLE_MODEL_FIRETRUK                      = 407,
 	VEHICLE_MODEL_FIRETRUCK                     = VEHICLE_MODEL_FIRETRUK,
+	VEHICLE_MODEL_FIRE_TRUCK                    = VEHICLE_MODEL_FIRETRUK,
 	VEHICLE_MODEL_TRASH                         = 408,
 	VEHICLE_MODEL_TRASHMASTER                   = VEHICLE_MODEL_TRASH,
 	VEHICLE_MODEL_STRETCH                       = 409,
@@ -87,6 +88,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_BOBCAT                        = 422,
 	VEHICLE_MODEL_MRWHOOP                       = 423,
 	VEHICLE_MODEL_MRWHOOPEE                     = VEHICLE_MODEL_MRWHOOP,
+	VEHICLE_MODEL_MR_WHOOPEE                    = VEHICLE_MODEL_MRWHOOP,
 	VEHICLE_MODEL_BFINJECT                      = 424,
 	VEHICLE_MODEL_BFINJECTION                   = VEHICLE_MODEL_BFINJECT,
 	VEHICLE_MODEL_BF_INJECTION                  = VEHICLE_MODEL_BFINJECT,
@@ -110,6 +112,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_STALLION                      = 439,
 	VEHICLE_MODEL_RUMPO                         = 440,
 	VEHICLE_MODEL_RCBANDIT                      = 441,
+	VEHICLE_MODEL_RC_BANDIT                     = 441,
 	VEHICLE_MODEL_ROMERO                        = 442,
 	VEHICLE_MODEL_PACKER                        = 443,
 	VEHICLE_MODEL_MONSTER                       = 444,
@@ -131,14 +134,18 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_CADDY                         = 457,
 	VEHICLE_MODEL_SOLAIR                        = 458,
 	VEHICLE_MODEL_TOPFUN                        = 459,
+	VEHICLE_MODEL_TOPFUN_VAN                    = VEHICLE_MODEL_TOPFUN,
 	VEHICLE_MODEL_BERKLEYSRCVAN                 = VEHICLE_MODEL_TOPFUN,
 	VEHICLE_MODEL_BERKLEYS_RC_VAN               = VEHICLE_MODEL_TOPFUN,
 	VEHICLE_MODEL_SKIMMER                       = 460,
 	VEHICLE_MODEL_PCJ600                        = 461,
+	VEHICLE_MODEL_PCJ_600                       = VEHICLE_MODEL_PCJ600,
 	VEHICLE_MODEL_FAGGIO                        = 462,
 	VEHICLE_MODEL_FREEWAY                       = 463,
 	VEHICLE_MODEL_RCBARON                       = 464,
+	VEHICLE_MODEL_RC_BARON                      = VEHICLE_MODEL_RCBARON,
 	VEHICLE_MODEL_RCRAIDER                      = 465,
+	VEHICLE_MODEL_RC_RAIDER                     = VEHICLE_MODEL_RCRAIDER,
 	VEHICLE_MODEL_GLENDALE                      = 466,
 	VEHICLE_MODEL_OCEANIC                       = 467,
 	VEHICLE_MODEL_SANCHEZ                       = 468,
@@ -152,6 +159,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_SABRE                         = 475,
 	VEHICLE_MODEL_RUSTLER                       = 476,
 	VEHICLE_MODEL_ZR350                         = 477,
+	VEHICLE_MODEL_ZR_350                        = VEHICLE_MODEL_ZR350,
 	VEHICLE_MODEL_WALTON                        = 478,
 	VEHICLE_MODEL_REGINA                        = 479,
 	VEHICLE_MODEL_COMET                         = 480,
@@ -163,10 +171,13 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_DOZER                         = 486,
 	VEHICLE_MODEL_MAVERICK                      = 487,
 	VEHICLE_MODEL_VCNMAV                        = 488,
+	VEHICLE_MODEL_VCN_MAVERICK                  = VEHICLE_MODEL_VCNMAV,
 	VEHICLE_MODEL_SANNEWSMAVERICK               = VEHICLE_MODEL_VCNMAV,
 	VEHICLE_MODEL_SAN_NEWS_MAVERICK             = VEHICLE_MODEL_VCNMAV,
+	VEHICLE_MODEL_NEWS_CHOPPER                  = VEHICLE_MODEL_VCNMAV,
 	VEHICLE_MODEL_RANCHER                       = 489,
 	VEHICLE_MODEL_FBIRANCHER                    = 490,
+	VEHICLE_MODEL_FBI_RANCHER                   = VEHICLE_MODEL_FBIRANCHER,
 	VEHICLE_MODEL_VIRGO                         = 491,
 	VEHICLE_MODEL_GREENWOO                      = 492,
 	VEHICLE_MODEL_GREENWOOD                     = VEHICLE_MODEL_GREENWOO,
@@ -185,6 +196,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_BENSON                        = 499,
 	VEHICLE_MODEL_MESA                          = 500,
 	VEHICLE_MODEL_RCGOBLIN                      = 501,
+	VEHICLE_MODEL_RC_GOBLIN                     = VEHICLE_MODEL_RCGOBLIN,
 	VEHICLE_MODEL_HOTRINA                       = 502,
 	VEHICLE_MODEL_HOTRINGRACERA                 = VEHICLE_MODEL_HOTRINA,
 	VEHICLE_MODEL_HOTRING_RACER_A               = VEHICLE_MODEL_HOTRINA,
@@ -222,12 +234,16 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_SHAMAL                        = 519,
 	VEHICLE_MODEL_HYDRA                         = 520,
 	VEHICLE_MODEL_FCR900                        = 521,
+	VEHICLE_MODEL_FCR_900                       = VEHICLE_MODEL_FCR900,
 	VEHICLE_MODEL_NRG500                        = 522,
+	VEHICLE_MODEL_NRG_500                       = VEHICLE_MODEL_NRG500,
 	VEHICLE_MODEL_HPV1000                       = 523,
+	VEHICLE_MODEL_HPV_1000                      = VEHICLE_MODEL_HPV1000,
 	VEHICLE_MODEL_CEMENT                        = 524,
 	VEHICLE_MODEL_CEMENTTRUCK                   = VEHICLE_MODEL_CEMENT,
 	VEHICLE_MODEL_CEMENT_TRUCK                  = VEHICLE_MODEL_CEMENT,
 	VEHICLE_MODEL_TOWTRUCK                      = 525,
+	VEHICLE_MODEL_TOW_TRUCK                     = VEHICLE_MODEL_TOWTRUCK,
 	VEHICLE_MODEL_FORTUNE                       = 526,
 	VEHICLE_MODEL_CADRONA                       = 527,
 	VEHICLE_MODEL_FBITRUCK                      = 528,
@@ -236,14 +252,17 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_FORKLIFT                      = 530,
 	VEHICLE_MODEL_TRACTOR                       = 531,
 	VEHICLE_MODEL_COMBINE                       = 532,
+	VEHICLE_MODEL_COMBINE_HARVESTER             = VEHICLE_MODEL_COMBINE,
 	VEHICLE_MODEL_FELTZER                       = 533,
 	VEHICLE_MODEL_REMINGTN                      = 534,
 	VEHICLE_MODEL_REMINGTON                     = VEHICLE_MODEL_REMINGTN,
 	VEHICLE_MODEL_SLAMVAN                       = 535,
 	VEHICLE_MODEL_BLADE                         = 536,
 	VEHICLE_MODEL_FREIGHT                       = 537,
+	VEHICLE_MODEL_FREIGHT_TRAIN                 = VEHICLE_MODEL_FREIGHT,
 	VEHICLE_MODEL_STREAK                        = 538,
 	VEHICLE_MODEL_BROWNSTREAK                   = VEHICLE_MODEL_STREAK,
+	VEHICLE_MODEL_BROWNSTREAK_TRAIN             = VEHICLE_MODEL_STREAK,
 	VEHICLE_MODEL_VORTEX                        = 539,
 	VEHICLE_MODEL_VINCENT                       = 540,
 	VEHICLE_MODEL_BULLET                        = 541,
@@ -252,6 +271,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_FIRELA                        = 544,
 	VEHICLE_MODEL_FIRETRUCKLA                   = VEHICLE_MODEL_FIRELA,
 	VEHICLE_MODEL_FIRETRUCK_LA                  = VEHICLE_MODEL_FIRELA,
+	VEHICLE_MODEL_FIRE_TRUCK_LA                 = VEHICLE_MODEL_FIRELA,
 	VEHICLE_MODEL_HUSTLER                       = 545,
 	VEHICLE_MODEL_INTRUDER                      = 546,
 	VEHICLE_MODEL_PRIMO                         = 547,
@@ -277,6 +297,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_RAINDANC                      = 563,
 	VEHICLE_MODEL_RAINDANCE                     = VEHICLE_MODEL_RAINDANC,
 	VEHICLE_MODEL_RCTIGER                       = 564,
+	VEHICLE_MODEL_RC_TIGER                      = VEHICLE_MODEL_RCTIGER,
 	VEHICLE_MODEL_FLASH                         = 565,
 	VEHICLE_MODEL_TAHOMA                        = 566,
 	VEHICLE_MODEL_SAVANNA                       = 567,
@@ -292,15 +313,20 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_KART                          = 571,
 	VEHICLE_MODEL_MOWER                         = 572,
 	VEHICLE_MODEL_DUNERIDE                      = 573,
+	VEHICLE_MODEL_DUNE                          = VEHICLE_MODEL_DUNERIDE,
 	VEHICLE_MODEL_SWEEPER                       = 574,
 	VEHICLE_MODEL_BROADWAY                      = 575,
 	VEHICLE_MODEL_TORNADO                       = 576,
 	VEHICLE_MODEL_AT400                         = 577,
+	VEHICLE_MODEL_AT_400                        = VEHICLE_MODEL_AT400,
 	VEHICLE_MODEL_DFT30                         = 578,
+	VEHICLE_MODEL_DFT_30                        = VEHICLE_MODEL_DFT30,
 	VEHICLE_MODEL_HUNTLEY                       = 579,
 	VEHICLE_MODEL_STAFFORD                      = 580,
 	VEHICLE_MODEL_BF400                         = 581,
+	VEHICLE_MODEL_BF_400                        = VEHICLE_MODEL_BF400,
 	VEHICLE_MODEL_NEWSVAN                       = 582,
+	VEHICLE_MODEL_NEWS_VAN                      = VEHICLE_MODEL_NEWSVAN,
 	VEHICLE_MODEL_TUG                           = 583,
 	VEHICLE_MODEL_PETROTR                       = 584,
 	VEHICLE_MODEL_PETROLTRAILER                 = VEHICLE_MODEL_PETROTR,
@@ -321,6 +347,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_ANDROMADA                     = VEHICLE_MODEL_ANDROM,
 	VEHICLE_MODEL_DODO                          = 593,
 	VEHICLE_MODEL_RCCAM                         = 594,
+	VEHICLE_MODEL_RC_CAM                        = VEHICLE_MODEL_RCCAM,
 	VEHICLE_MODEL_LAUNCH                        = 595,
 	VEHICLE_MODEL_LSPD	                      	= 596,
 	VEHICLE_MODEL_COPCARLA                      = VEHICLE_MODEL_LSPD,
@@ -340,6 +367,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_POLICE_RANGER                 = VEHICLE_MODEL_COPCARRU,
 	VEHICLE_MODEL_PICADOR                       = 600,
 	VEHICLE_MODEL_SWATVAN                       = 601,
+	VEHICLE_MODEL_SWAT_VAN                      = VEHICLE_MODEL_SWATVAN,
 	VEHICLE_MODEL_SWAT                          = VEHICLE_MODEL_SWATVAN,
 	VEHICLE_MODEL_ALPHA                         = 602,
 	VEHICLE_MODEL_PHOENIX                       = 603,
@@ -354,9 +382,9 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_BAGGAGETRAILERB               = 607,
 	VEHICLE_MODEL_BAGGAGE_TRAILER_B             = VEHICLE_MODEL_BAGGAGETRAILERB,
 	VEHICLE_MODEL_TUGSTAIR                      = 608,
-	VEHICLE_MODEL_TUGSTAIRSTRAILER              = VEHICLE_MODEL_TUGSTAIR,
-	VEHICLE_MODEL_TUGSTAIRS_TRAILER             = VEHICLE_MODEL_TUGSTAIR,
+	VEHICLE_MODEL_STAIRS_TRAILER                = VEHICLE_MODEL_TUGSTAIR,
 	VEHICLE_MODEL_BOXBURG                       = 609,
+	VEHICLE_MODEL_BURGLARY_BOXVILLE             = VEHICLE_MODEL_BOXBURG,
 	VEHICLE_MODEL_FARMTRAILER                   = 610,
 	VEHICLE_MODEL_FARM_TRAILER                  = VEHICLE_MODEL_FARMTRAILER,
 	VEHICLE_MODEL_UTILITYTRAILER                = 611,
@@ -364,15 +392,26 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 }
 static stock VEHICLE_MODEL:_@VEHICLE_MODEL() { return __VEHICLE_MODELS; }
 
-#define VEHICLE_MODELS_MIN			(_:VEHICLE_MODEL_LANDSTAL)
-#define VEHICLE_MODELS_MAX			(_:VEHICLE_MODEL_UTILITYTRAILER)
-#define VEHICLE_MODELS_COUNT		(VEHICLE_MODELS_MAX - VEHICLE_MODELS_MIN + 1)
+/**
+ * <library>omp_vehicle</library>
+ */
+const VEHICLE_MODELS_MIN = 400;
 
 /**
  * <library>omp_vehicle</library>
  */
-const MAX_VEHICLE_MODELS                       = VEHICLE_MODELS_COUNT;
-#define MAX_VEHICLE_MODELS                     VEHICLE_MODELS_COUNT
+const VEHICLE_MODELS_MAX = 611;
+
+/**
+ * <library>omp_vehicle</library>
+ */
+const VEHICLE_MODELS_COUNT = (VEHICLE_MODELS_MAX - VEHICLE_MODELS_MIN + 1);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+const MAX_VEHICLE_MODELS                        = VEHICLE_MODELS_COUNT;
+#define MAX_VEHICLE_MODELS                      VEHICLE_MODELS_COUNT
 
 /// <p/>
 /**
