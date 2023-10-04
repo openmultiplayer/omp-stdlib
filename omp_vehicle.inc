@@ -51,7 +51,7 @@ const INVALID_VEHICLE_ID                       = 0xFFFF;
  * <library>omp_vehicle</library>
  */
 #define VEHICLE_MODEL: __TAG(VEHICLE_MODEL):
-enum VEHICLE_MODEL:__VEHICLE_MODELS
+enum VEHICLE_MODEL:MAX_VEHICLE_MODELS
 {
 	VEHICLE_MODEL_UNKNOWN                       = 0,
 	VEHICLE_MODEL_LANDSTAL                      = 400,
@@ -390,7 +390,7 @@ enum VEHICLE_MODEL:__VEHICLE_MODELS
 	VEHICLE_MODEL_UTILITYTRAILER                = 611,
 	VEHICLE_MODEL_UTILITY_TRAILER               = VEHICLE_MODEL_UTILITYTRAILER
 }
-static stock VEHICLE_MODEL:_@VEHICLE_MODEL() { return __VEHICLE_MODELS; }
+static stock VEHICLE_MODEL:_@VEHICLE_MODEL() { return MAX_VEHICLE_MODELS; }
 
 /**
  * <library>omp_vehicle</library>
