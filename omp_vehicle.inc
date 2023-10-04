@@ -392,27 +392,6 @@ enum VEHICLE_MODEL:MAX_VEHICLE_MODELS
 }
 static stock VEHICLE_MODEL:_@VEHICLE_MODEL() { return MAX_VEHICLE_MODELS; }
 
-/**
- * <library>omp_vehicle</library>
- */
-const VEHICLE_MODELS_MIN = 400;
-
-/**
- * <library>omp_vehicle</library>
- */
-const VEHICLE_MODELS_MAX = 611;
-
-/**
- * <library>omp_vehicle</library>
- */
-const VEHICLE_MODELS_COUNT = (VEHICLE_MODELS_MAX - VEHICLE_MODELS_MIN + 1);
-
-/**
- * <library>omp_vehicle</library>
- */
-const MAX_VEHICLE_MODELS                        = VEHICLE_MODELS_COUNT;
-#define MAX_VEHICLE_MODELS                      VEHICLE_MODELS_COUNT
-
 /// <p/>
 /**
  * <library>omp_vehicle</library>
