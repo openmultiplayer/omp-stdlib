@@ -266,18 +266,36 @@ native GangZoneStopFlashForAll(zoneid);
  * <library>omp_gangzone</library>
  * <summary>Check if the gangzone valid.</summary>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>
  *   <b><c>1</c></b>: The gangzone is valid.
  *   <b><c>0</c></b>: The gangzone is not valid.
  * </returns>
  */
-native IsValidGangZone(zoneid);
+native bool:IsValidGangZone(zoneid);
 
 /**
  * <library>omp_gangzone</library>
  * <summary>Check if the player in gangzone.</summary>
  * <param name="playerid">The ID of the player to check if he is in a gangzone</param>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>
  *   <b><c>1</c></b>: The player is in gangzone.
  *   <b><c>0</c></b>: The player is not in gangzone.
@@ -290,6 +308,15 @@ native bool:IsPlayerInGangZone(playerid, zoneid);
  * <summary>Check if the gangzone is visible for player.</summary>
  * <param name="playerid">The ID of the player to check for</param>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>
  *   <b><c>1</c></b>: The gangzone is visible for player.
  *   <b><c>0</c></b>: The gangzone is not visible for player.
@@ -302,6 +329,15 @@ native bool:IsGangZoneVisibleForPlayer(playerid, zoneid);
  * <summary>Get the colour of a gangzone for player.</summary>
  * <param name="playerid">The ID of the player you need to get</param>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>Color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
 native GangZoneGetColourForPlayer(playerid, zoneid);
@@ -311,6 +347,15 @@ native GangZoneGetColourForPlayer(playerid, zoneid);
  * <summary>Get the flashing colour of a gangzone for player.</summary>
  * <param name="playerid">The ID of the player you need to get</param>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>Flashing color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
 native GangZoneGetFlashColourForPlayer(playerid, zoneid);
@@ -320,6 +365,15 @@ native GangZoneGetFlashColourForPlayer(playerid, zoneid);
  * <summary>Check if the gangzone is flashing for player.</summary>
  * <param name="playerid">The ID of the player to be checked</param>
  * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>
  *   <b><c>1</c></b>: The gangzone is flashing for player.
  *   <b><c>0</c></b>: The gangzone is not flashing for player.
@@ -335,6 +389,15 @@ native bool:IsGangZoneFlashingForPlayer(playerid, zoneid);
  * <param name="minY">The Y coordinate for the south side of the gangzone</param>
  * <param name="maxX">The X coordinate for the east side of the gangzone</param>
  * <param name="maxY">The Y coordinate for the north side of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
 native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX = 0.0, &Float:maxY = 0.0);
@@ -344,6 +407,15 @@ native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX =
  * <summary>Enables the callback when a player enters this zone.</summary>
  * <param name="zoneid">The ID of the zone to enable area detection for</param>
  * <param name="enable">Should entry detection be started or stopped?</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
  */
 native UseGangZoneCheck(zoneid, bool:enable);
 
