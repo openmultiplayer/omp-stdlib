@@ -4,7 +4,7 @@
 #define _INC_omp_player
 
 /**
- * <library name="omp_variable" summary="open.mp player functions.">
+ * <library name="omp_player" summary="open.mp player functions.">
  *   <license>
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
