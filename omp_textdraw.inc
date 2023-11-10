@@ -1485,7 +1485,6 @@ native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
  */
-#pragma deprecated Use `PlayerTextDrawBackgroundColour`
 native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
 
 /**
