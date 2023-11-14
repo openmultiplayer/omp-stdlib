@@ -1632,7 +1632,6 @@ native
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-#pragma deprecated Use `ChangeVehicleColours`
 native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
@@ -1642,7 +1641,6 @@ native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
-#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
 native void:EnableTirePopping(bool:enable);
 
 /**

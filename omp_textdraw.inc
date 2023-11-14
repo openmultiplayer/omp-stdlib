@@ -1361,7 +1361,6 @@ native
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
-#pragma deprecated Use `TextDrawColour`
 native bool:TextDrawColor(Text:textid, textColour);
 
 /**
@@ -1375,7 +1374,6 @@ native bool:TextDrawColor(Text:textid, textColour);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-#pragma deprecated Use `TextDrawBoxColour`
 native bool:TextDrawBoxColor(Text:textid, boxColour);
 
 /**
@@ -1392,7 +1390,6 @@ native bool:TextDrawBoxColor(Text:textid, boxColour);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-#pragma deprecated Use `TextDrawBackgroundColour`
 native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
 
 /**
@@ -1405,7 +1402,6 @@ native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
@@ -1432,7 +1428,6 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
-#pragma deprecated Use `PlayerTextDrawColour`
 native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
 
 /**
@@ -1457,7 +1452,6 @@ native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-#pragma deprecated Use `PlayerTextDrawBoxColour`
 native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
 
 /**
@@ -1503,7 +1497,6 @@ native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroun
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
-#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`
 native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
 
 /**
