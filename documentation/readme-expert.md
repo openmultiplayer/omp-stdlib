@@ -389,6 +389,14 @@ native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:dr
 
 This final example will only compile the longer name when using the 3.10.11 compiler, but the deprecation warning will always exist even on compilers with a lower limit (because you should update).
 
+### Spelling Consistency
+
+The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards; and while American spellings will continue to be supported indefinitely some have had warnings added to notify users of this consistency improvement.  if you wish to stick with the mixed spellings you can add a define to the top of your code:
+
+```pawn
+#define MIXED_SPELLINGS
+```
+
  Function Changes
 ------------------
 
