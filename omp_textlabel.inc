@@ -447,13 +447,17 @@ native
 /**
  * <library>omp_textlabel</library>
  */
-#pragma deprecated Use `Get3DTextLabelColour`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `Get3DTextLabelColour`
+#endif
 native Get3DTextLabelColor(Text3D:textid);
 
 /**
  * <library>omp_textlabel</library>
  */
-#pragma deprecated Use `GetPlayer3DTextLabelColour`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GetPlayer3DTextLabelColour`
+#endif
 native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
 
 /**

@@ -425,25 +425,33 @@ native
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `GangZoneGetColourForPlayer`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GangZoneGetColourForPlayer`
+#endif
 native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
 
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
+#endif
 native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
 
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `PlayerGangZoneGetColour`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerGangZoneGetColour`
+#endif
 native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
 
 /**
  * <library>omp_gangzone</library>
  */
-#pragma deprecated Use `PlayerGangZoneGetFlashColour`
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerGangZoneGetFlashColour`
+#endif
 native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 
 /*

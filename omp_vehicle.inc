@@ -1653,7 +1653,9 @@ native
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-#pragma deprecated Use `ChangeVehicleColours`
+#if !defined MIXED_SPELLINGS
+  #pragma deprecated Use `ChangeVehicleColours`
+#endif
 native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
