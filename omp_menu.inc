@@ -259,7 +259,7 @@ native bool:IsMenuRowDisabled(Menu:menuid, row);
  * <library>omp_menu</library>
  * <summary>Get the number of active columns.</param>
  */
-native bool:GetMenuColumns(Menu:menuid);
+native GetMenuColumns(Menu:menuid);
 
 /**
  * <library>omp_menu</library>
