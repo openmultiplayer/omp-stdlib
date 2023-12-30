@@ -1614,7 +1614,7 @@ forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Fl
  *   It is always called first in filterscripts.
  * </returns>
  */
-forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+forward OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
 
 /**
  * <summary>This callback is called when a player ends attached object edition mode.</summary>
