@@ -869,7 +869,7 @@ native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashCol
 /**
  * <summary>This callback is called when a player enters a gangzone.</summary>
  * <param name="playerid">The ID of the player that entered the gangzone</param>
- * <param name="zoneid">ID of the gangzone the player entered</param>
+ * <param name="zoneid">The ID of the gangzone the player entered</param>
  * <seealso name="GangZoneCreate" />
  * <seealso name="GangZoneDestroy" />
  * <seealso name="UseGangZoneCheck" />
@@ -883,7 +883,7 @@ forward OnPlayerEnterGangZone(playerid, zoneid);
 /**
  * <summary>This callback is called when a player exited a gangzone.</summary>
  * <param name="playerid">The ID of the player that exited the gangzone</param>
- * <param name="zoneid">ID of the gangzone the player exited</param>
+ * <param name="zoneid">The ID of the gangzone the player exited</param>
  * <seealso name="GangZoneCreate" />
  * <seealso name="GangZoneDestroy" />
  * <seealso name="UseGangZoneCheck" />
@@ -897,7 +897,7 @@ forward OnPlayerLeaveGangZone(playerid, zoneid);
 /**
  * <summary>This callback is called when a player enters a player gangzone.</summary>
  * <param name="playerid">The ID of the player that entered the player gangzone</param>
- * <param name="zoneid">ID of the player gangzone the player entered</param>
+ * <param name="zoneid">The ID of the player gangzone the player entered</param>
  * <seealso name="CreatePlayerGangZone" />
  * <seealso name="PlayerGangZoneDestroy" />
  * <seealso name="UsePlayerGangZoneCheck" />
@@ -911,7 +911,7 @@ forward OnPlayerEnterPlayerGangZone(playerid, zoneid);
 /**
  * <summary>This callback is called when a player exited a player gangzone.</summary>
  * <param name="playerid">The ID of the player that exited the player gangzone</param>
- * <param name="zoneid">ID of the player gangzone the player exited</param>
+ * <param name="zoneid">The ID of the player gangzone the player exited</param>
  * <seealso name="CreatePlayerGangZone" />
  * <seealso name="PlayerGangZoneDestroy" />
  * <seealso name="UsePlayerGangZoneCheck" />
@@ -925,7 +925,7 @@ forward OnPlayerLeavePlayerGangZone(playerid, zoneid);
 /**
  * <summary>This callback is called when a player clicked a gangzone.</summary>
  * <param name="playerid">The ID of the player that clicked a gangzone</param>
- * <param name="zoneid">ID of the gangzone the player clicked</param>
+ * <param name="zoneid">The ID of the gangzone the player clicked</param>
  * <seealso name="GangZoneCreate" />
  * <seealso name="GangZoneDestroy" />
  * <seealso name="UseGangZoneCheck" />
@@ -939,7 +939,7 @@ forward OnPlayerClickGangZone(playerid, zoneid);
 /**
  * <summary>This callback is called when a player clicked a player gangzone.</summary>
  * <param name="playerid">The ID of the player that clicked a player gangzone</param>
- * <param name="zoneid">ID of the player gangzone the player clicked</param>
+ * <param name="zoneid">The ID of the player gangzone the player clicked</param>
  * <seealso name="CreatePlayerGangZone" />
  * <seealso name="PlayerGangZoneDestroy" />
  * <seealso name="UsePlayerGangZoneCheck" />
