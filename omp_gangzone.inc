@@ -400,7 +400,7 @@ native bool:IsGangZoneFlashingForPlayer(playerid, zoneid);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX = 0.0, &Float:maxY = 0.0);
+native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
@@ -769,7 +769,7 @@ native bool:IsPlayerGangZoneFlashing(playerid, zoneid);
  * <seealso name="UsePlayerGangZoneCheck" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY = 0.0, &Float:maxX = 0.0, &Float:maxY = 0.0);
+native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
