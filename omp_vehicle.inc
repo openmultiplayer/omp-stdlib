@@ -1614,6 +1614,109 @@ native void:EnableVehicleFriendlyFire();
 native GetVehicles(vehicles[], size = sizeof (vehicles));
 
 /*
+                                                                                                                                                                        
+	88                                   88                                                                                        88                                       
+	88                                   88                                                            ,d                   ,d     ""                                       
+	88                                   88                                                            88                   88                                              
+	88  88,dPYba,,adPYba,   8b,dPPYba,   88   ,adPPYba,  88,dPYba,,adPYba,    ,adPPYba,  8b,dPPYba,  MM88MMM  ,adPPYYba,  MM88MMM  88   ,adPPYba,   8b,dPPYba,   ,adPPYba,  
+	88  88P'   "88"    "8a  88P'    "8a  88  a8P_____88  88P'   "88"    "8a  a8P_____88  88P'   `"8a   88     ""     `Y8    88     88  a8"     "8a  88P'   `"8a  I8[    ""  
+	88  88      88      88  88       d8  88  8PP"""""""  88      88      88  8PP"""""""  88       88   88     ,adPPPPP88    88     88  8b       d8  88       88   `"Y8ba,   
+	88  88      88      88  88b,   ,a8"  88  "8b,   ,aa  88      88      88  "8b,   ,aa  88       88   88,    88,    ,88    88,    88  "8a,   ,a8"  88       88  aa    ]8I  
+	88  88      88      88  88`YbbdP"'   88   `"Ybbd8"'  88      88      88   `"Ybbd8"'  88       88   "Y888  `"8bbdP"Y8    "Y888  88   `"YbbdP"'   88       88  `"YbbdP"'  
+	                        88                                                                                                                                              
+	                        88                                                                                                                                              
+
+*/
+
+/*
+native # Implementations();
+native           Implementations(
+native      ====================(
+native
+*/
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Getting the current vehicle speed.</summary>
+ * <param name="vehicleid">The ID of the vehicle to get the speed of</param>
+ * <seealso name="GetVehicleVelocity" />
+ * <seealso name="SetVehicleSpeed" />
+ * <returns>Vehicle speed or <b><c>0.0</c></b> if the vehicle does not exist.</returns>
+ */
+stock Float:GetVehicleSpeed(vehicleid)
+{
+	if(!IsValidVehicle(vehicleid))
+		return 0.0;
+
+	new Float:velocityX = 0.0, 
+        Float:velocityY = 0.0, 
+        Float:velocityZ = 0.0;
+
+    new Float:velocityPowerX = 0.0,
+        Float:velocityPowerY = 0.0,
+        Float:velocityPowerZ = 0.0,
+        Float:velocityPowerTotal = 0.0;
+
+    new Float:velocitySqroot = 0.0;
+        
+    GetVehicleVelocity(vehicleid, velocityX, velocityY, velocityZ);
+
+    velocityPowerX = floatpower(velocityX, 2.0);
+    velocityPowerY = floatpower(velocityY, 2.0);
+    velocityPowerZ = floatpower(velocityZ, 2.0);
+    velocityPowerTotal = velocityPowerX + velocityPowerY + velocityPowerZ;
+    
+    velocitySqroot = floatsqroot(velocityPowerTotal);
+
+    return floatround(velocitySqroot * 100);
+}
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Setting the vehicle speed.</summary>
+ * <param name="vehicleid">The ID of the vehicle to set the speed of</param>
+ * <param name="speed">The speed value to set</param>
+ * <seealso name="GetVehiclePos" />
+ * <seealso name="GetVehicleZAngle" />
+ * <seealso name="GetVehicleVelocity" />
+ * <seealso name="GetVehicleSpeed" />
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  The vehicle speed was successfully changed.<br
+ * />
+ *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
+ * </returns>
+ */
+stock bool:SetVehicleSpeed(vehicleid, Float:speed) 
+{
+	if(!IsValidVehicle(vehicleid))
+		return false;
+
+	new Float:posX = 0.0, 
+        Float:posY = 0.0, 
+        Float:posZ = 0.0, 
+        Float:angle = 0.0;
+
+    new Float:velocityX = 0.0, 
+        Float:velocityY = 0.0,
+        Float:velocityZ = 0.0;
+
+    GetVehiclePos(vehicleid, posX, posY, posZ);
+    GetVehicleZAngle(vehicleid, angle);
+
+    GetVehicleVelocity(vehicleid, velocityX, velocityY, velocityZ);
+    
+    angle = 360 - angle;
+
+    new Float:sine = floatsin(angle, degrees),
+        Float:cosine = floatcos(angle, degrees);
+
+    velocityX = ((sine * (speed / 100)) + ((cosine * 0) + posX)) - posX;
+    velocityY = ((cosine * (speed / 100)) + ((sine * 0) + posY)) - posY;
+
+    return SetVehicleVelocity(vehicleid, velocityX, velocityY, velocityZ);
+}
+
+/*
                                                                                                                              
     88888888ba,                                                                                                          88  
     88      `"8b                                                                              ,d                         88  
