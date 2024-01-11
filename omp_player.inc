@@ -2819,6 +2819,26 @@ native SPECTATE_TYPE:GetPlayerSpectateType(playerid);
 /**
  * <library>omp_player</library>
  */
+native GetPlayerAnimFlags(playerid);
+
+/**
+ * <library>omp_player</library>
+ */
+native GetPlayerAnimationFlags(playerid);
+
+/**
+ * <library>omp_player</library>
+ */
+native bool:IsPlayerInDriveByMode(playerid);
+
+/**
+ * <library>omp_player</library>
+ */
+native bool:IsPlayerCuffed(playerid);
+
+/**
+ * <library>omp_player</library>
+ */
 native Float:GetPlayerZAim(playerid);
 
 /**
