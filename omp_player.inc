@@ -487,6 +487,26 @@ static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
 /// <p/>
 /**
  * <library>omp_player</library>
+ * <summary>Spectating types</summary>
+ */
+#define SPECTATE_TYPE: __TAG(SPECTATE_TYPE):
+enum SPECTATE_TYPE:__SPECTATE_TYPE
+{
+	UNKNOWN_SPECTATE_TYPE                      = -1,
+	SPECTATE_TYPE_NONE                         = 0,
+	SPECTATE_TYPE_VEHICLE,
+	SPECTATE_TYPE_PLAYER
+}
+static stock SPECTATE_TYPE:_@SPECTATE_TYPE() { return __SPECTATE_TYPE; }
+
+#define UNKNOWN_SPECTATE_TYPE                  (SPECTATE_TYPE:-1)
+#define SPECTATE_TYPE_NONE                     (SPECTATE_TYPE:0)
+#define SPECTATE_TYPE_VEHICLE                  (SPECTATE_TYPE:1)
+#define SPECTATE_TYPE_PLAYER                   (SPECTATE_TYPE:2)
+
+/// <p/>
+/**
+ * <library>omp_player</library>
  * <summary>Recording for NPC playback</summary>
  */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
@@ -2794,7 +2814,7 @@ native GetPlayerSpectateID(playerid);
 /**
  * <library>omp_player</library>
  */
-native GetPlayerSpectateType(playerid);
+native SPECTATE_TYPE:GetPlayerSpectateType(playerid);
 
 /**
  * <library>omp_player</library>
