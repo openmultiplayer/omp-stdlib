@@ -1110,12 +1110,6 @@ native Float:GetPlayerObjectMoveSpeed(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native Float:GetPlayerObjectTarget(playerid, objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
 native bool:GetPlayerObjectAttachedData(playerid, objectid, &parentVehicle, &parentObject = 0, &parentPlayer = 0);
 
 /**
@@ -1483,6 +1477,13 @@ native bool:CancelEdit(playerid) = EndObjectEditing;
  */
 #pragma deprecated Use `GetObjectMovingTargetPos`
 native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+#pragma deprecated Use `GetPlayerObjectMovingTargetPos`
+native Float:GetPlayerObjectTarget(playerid, objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetPlayerObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>
