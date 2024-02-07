@@ -1952,7 +1952,7 @@ native bool:SetPlayerMarkerForPlayer(playerid, targetid, colour);
  * <library>omp_player</library>
  * <summary>Get the colour of a player's <b>nametag</b> and <b>radar blip</b> for another player.</summary>
  * <param name="playerid">The player that can see the player's changed blip/nametag colour</param>
- * <param name="targetid">The player whose colour was be changed</param>
+ * <param name="targetid">The player whose colour has been changed</param>
  * <seealso name="ShowPlayerMarkers" />
  * <seealso name="LimitPlayerMarkerRadius" />
  * <seealso name="SetPlayerColor" />
@@ -1966,7 +1966,7 @@ native GetPlayerMarkerForPlayer(playerid, targetid);
  * <summary>Starts recording a player's movements to a file, which can then be reproduced by an NPC.</summary>
  * <param name="playerid">The ID of the player to record</param>
  * <param name="recordType">The type of recording</param>
- * <param name="recordFile">The name of the file which will hold the recorded data.  It will be saved
+ * <param name="recordFile">The name of the file which will hold the recorded data. It will be saved
  * in the scriptfiles directory, with an automatically added .rec extension, you will need to move the
  * file to npcmodes/recordings to use for playback</param>
  * <seealso name="StopRecordingPlayerData" />
@@ -1984,21 +1984,44 @@ native bool:StopRecordingPlayerData(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Checks if a player is spawned.</summary>
+ * <param name="playerid">The ID of the player to check.</param>
+ * <returns><b><c>true</c></b> if the player is spawned, <b><c>false</c></b> if not.</returns>
+ * <seealso name="SpawnPlayer" />
  */
 native bool:IsPlayerSpawned(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Check if the player is controllable.</summary>
+ * <param name="playerid">The ID of the player to check.</param>
+ * <returns>
+ *   <b><c>true</c></b>: Controllable.<br />
+ *   <b><c>false</c></b>: Uncontrollable.
+ * </returns>
+ * <seealso name="SpawnPlayer" />
  */
 native bool:IsPlayerControllable(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Toggle player's ghost mode. Ghost mode disables the collision between player models.</summary>
+ * <param name="playerid">The ID of the player to toggle the ghost mode.</param>
+ * <param name="enable">true for enable and false for disable.</param>
+ * <returns>This function always returns <b><c>true</c></b>.</returns>
+ * <seealso name="GetPlayerGhostMode" />
  */
 native bool:TogglePlayerGhostMode(playerid, bool:enable);
 
 /**
  * <library>omp_player</library>
+ * <summary>Gets player's ghost mode.</summary>
+ * <param name="playerid">The ID of the player to get the ghost mode of.</param>
+ * <returns>
+ *   <b><c>true</c></b>: Controllable.<br />
+ *   <b><c>false</c></b>: Uncontrollable.
+ * </returns>
+ * <seealso name="SpawnPlayer" />
  */
 native bool:GetPlayerGhostMode(playerid);
 
@@ -2024,7 +2047,7 @@ native GetPlayerMoney(playerid);
  * <seealso name="GivePlayerMoney" />
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
+ *   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
  * </returns>
  */
 native ResetPlayerMoney(playerid);
@@ -2038,7 +2061,7 @@ native ResetPlayerMoney(playerid);
  * <seealso name="GetPlayerMoney" />
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
+ *   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.
  * </returns>
  */
 native GivePlayerMoney(playerid, money);
@@ -2056,7 +2079,7 @@ native GivePlayerMoney(playerid, money);
  * <remarks>The function's name is armour, not armor (Americanized).</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
+ *   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
  * </returns>
  */
 native SetPlayerArmour(playerid, Float:armour);
@@ -2092,7 +2115,7 @@ native GetPlayerArmour(playerid, &Float:armour);
  * <seealso name="GetPlayerWeapon" />
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.<br />
+ *   <b><c>0</c></b>: The function failed to execute. This means the player is not connected.<br />
  * </returns>
  */
 native GivePlayerWeapon(playerid, WEAPON:weaponid, ammo);
@@ -2108,7 +2131,7 @@ native GivePlayerWeapon(playerid, WEAPON:weaponid, ammo);
  * <a href="#SetPlayerAmmo">SetPlayerAmmo</a>.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully, even if they didn't have the weapon (they absolutely don't have it now)<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
+ *   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
  * </returns>
  */
 native RemovePlayerWeapon(playerid, WEAPON:weaponid);
@@ -2123,7 +2146,7 @@ native RemovePlayerWeapon(playerid, WEAPON:weaponid);
  * <remarks>Prior to version <b>0.3z R1-2</b>, when the player state is <b>PLAYER_STATE_PASSENGER</b>
  * this function returns the weapon held by the player before they entered the vehicle.  If a cheat
  * is used to spawn a weapon inside a vehicle, this function will not report it.</remarks>
- * <returns>The ID of the player's current weapon.  Returns <b><c>-1</c></b> if the player specified
+ * <returns>The ID of the player's current weapon. Returns <b><c>-1</c></b> if the player specified
  * does not exist.</returns>
  */
 native WEAPON:GetPlayerWeapon(playerid);
@@ -2138,7 +2161,7 @@ native WEAPON:GetPlayerWeapon(playerid);
  * <a href="#SetPlayerAmmo">SetPlayerAmmo</a>.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
+ *   <b><c>0</c></b>: The function failed to execute. This means the player specified does not exist.
  * </returns>
  */
 native ResetPlayerWeapons(playerid);
@@ -2157,9 +2180,9 @@ native ResetPlayerWeapons(playerid);
  * the weapon will still show up in <a href="#GetPlayerWeaponData">GetPlayerWeaponData</a>, albeit with
  * <b><c>0</c></b> ammo.</remarks>
  * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is also returned when the weapon
+ *   <b><c>1</c></b>: The function executed successfully. Success is also returned when the weapon
  * specified is invalid.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player isn't connected.<br />
+ *   <b><c>0</c></b>: The function failed to execute. The player isn't connected.<br />
  * </returns>
  */
 native SetPlayerAmmo(playerid, WEAPON:weaponid, ammo);
@@ -2176,7 +2199,7 @@ native SetPlayerAmmo(playerid, WEAPON:weaponid, ammo);
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.  Success is returned even when the function
  * fails to execute (the player doesn't have the weapon specified, or it is an invalid weapon).<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
+ *   <b><c>0</c></b>: The function failed to execute. The player is not connected.
  * </returns>
  */
 native SetPlayerArmedWeapon(playerid, WEAPON:weaponid);
@@ -2206,7 +2229,7 @@ native GetPlayerAmmo(playerid);
  * <remarks>Old weapons with no ammo left are still returned.</remarks>
  * <returns>
  *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player isn't connected and/or the weapon
+ *   <b><c>0</c></b>: The function failed to execute. The player isn't connected and/or the weapon
  * slot specified is invalid (valid is <b><c>0-12</c></b>).
  * </returns>
  */
@@ -2234,7 +2257,7 @@ native WEAPONSTATE:GetPlayerWeaponState(playerid);
 /**
  * <library>omp_player</library>
  * <summary>This function gets the ID of the vehicle the player is currently in.  Note: <b>NOT</b> the
- * model ID of the vehicle.  See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
+ * model ID of the vehicle. See <a href="#GetVehicleModel">GetVehicleModel</a> for that.</summary>
  * <param name="playerid">The ID of the player in the vehicle that you want to get the ID of</param>
  * <seealso name="IsPlayerInVehicle" />
  * <seealso name="IsPlayerInAnyVehicle" />
