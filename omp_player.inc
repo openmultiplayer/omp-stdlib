@@ -336,6 +336,7 @@ enum KEY:__KEY (<<= 1)
 	KEY_JUMP,
 	KEY_LOOK_RIGHT,
 	KEY_HANDBRAKE,
+	KEY_AIM                                    = KEY_HANDBRAKE,
 	KEY_LOOK_LEFT,
 	KEY_SUBMISSION,
 	KEY_LOOK_BEHIND                            = KEY_SUBMISSION,
@@ -365,6 +366,7 @@ static stock KEY:_@KEY() { return __KEY; }
 #define KEY_JUMP                               (KEY:0x00000020)
 #define KEY_LOOK_RIGHT                         (KEY:0x00000040)
 #define KEY_HANDBRAKE                          (KEY:0x00000080)
+#define KEY_AIM                                (KEY:0x00000080)
 #define KEY_LOOK_LEFT                          (KEY:0x00000100)
 #define KEY_SUBMISSION                         (KEY:0x00000200)
 #define KEY_LOOK_BEHIND                        (KEY:0x00000200)
