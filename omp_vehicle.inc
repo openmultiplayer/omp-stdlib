@@ -899,11 +899,10 @@ native bool:VehicleCanHaveComponent(vehicleid, componentid);
 
 /**
  * <library>omp_vehicle</library>
- * <summary>Get the number of seats in this vehicle model.</summary>
- * <param name="vehicleid">ID of the vehicle model.</param>
- * <remarks>This function does the same as GetVehicleMaxPassengers.</remarks>
+ * <summary>Get the number of seats in this vehicle</summary>
+ * <param name="vehicleid">ID of the vehicle</param>
  */
-native GetVehicleSeats(modelid);
+native GetVehicleSeats(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
