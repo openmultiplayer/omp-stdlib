@@ -1613,6 +1613,40 @@ native void:EnableVehicleFriendlyFire();
  */
 native GetVehicles(vehicles[], size = sizeof (vehicles));
 
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Retrieves the ID of the player who is sitting in the given seat.</summary>
+ * <param name="vehicleid">The ID of the vehicle.</param>
+ * <param name="seatid">The ID of the seat in which you are looking for an occupant.</param>
+ * <seealso name="CountVehicleOccupants" />
+ * <returns>
+ *   <b><c>occupant's ID</c></b>: There is a player in that seat.<br />
+ *   <b><c>INVALID_PLAYER_ID</c></b>: The seat is empty or the vehicle is not created.
+ * </returns>
+ */
+native GetVehicleOccupant(vehicleid, seatid);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Gets the number of seats for a vehicle model.</summary>
+ * <param name="modelid">The ID of the model.</param>
+ * <returns>
+ *   <b><c>number of seats</c></b>: The number of seats as an intiger.<br />
+ * </returns>
+ */
+native GetVehicleMaxPassengers(modelid);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Returns the number of occupants in the given vehicle.</summary>
+ * <param name="modelid">The ID of the vehicle.</param>
+ * <seealso name="GetVehicleOccupant" />
+ * <returns>
+ *   <b><c>occupants number</c></b>: The number of occupants as an intiger.<br />
+ * </returns>
+ */
+native CountVehicleOccupants(vehicleid);
+
 /*
                                                                                                                              
     88888888ba,                                                                                                          88  
