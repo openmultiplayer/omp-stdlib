@@ -1411,7 +1411,10 @@ native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
+
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
+#endif
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
