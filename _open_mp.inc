@@ -265,11 +265,12 @@ public const __OPEN_MP_VERSION = 0;
 
 /**
  * <summary>
- *   An invalid value (<c>-1</c>) as a boolean for some natives (most notably
- *   the vehicle param ones) that can skip `true`/`false` parameters.
+ *   An invalid value (<c>-1</c>) for some natives (most notably the vehicle
+ *   param ones) that can skip `true`/`false` parameters.  This isn't `bool`,
+ *   but those functions can also take this.
  * </summary>
  */
-const bool:undefined = bool:-1;
+const undefined:undefined = undefined:-1;
 
 // Try many places to get the latest version.
 
