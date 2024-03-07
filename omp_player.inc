@@ -1456,7 +1456,7 @@ native bool:ApplyAnimation(playerid, const animationLibrary[], const animationNa
  * <returns><b><c>0</c></b> if there is no animation applied.</returns>
  */
 native GetPlayerAnimationIndex(playerid);
-
+native bool:IsValidAnimationLibrary(const name[]);
 /**
  * <library>omp_player</library>
  * <summary>Clears all animations for the given player (it also cancels all current tasks such as jetpacking,parachuting,entering
