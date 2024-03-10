@@ -1802,7 +1802,7 @@ native SetPlayerName(playerid, const name[]);
  * and the player has to quit to choose a valid name.</remarks>
  * <returns>The length of the player's name. <b><c>0</c></b> if player specified doesn't exist.</returns>
  */
-native bool:GetPlayerName(playerid, name[], len = sizeof (name));
+native GetPlayerName(playerid, name[], len = sizeof (name));
 
 /**
  * <library>omp_player</library>
