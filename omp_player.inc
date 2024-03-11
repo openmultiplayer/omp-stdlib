@@ -1289,7 +1289,7 @@ native bool:GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
  * <library>omp_player</library>
  * <summary>Set a player's facing angle (z rotation).</summary>
  * <param name="playerid">The ID of the player to set the facing angle of</param>
- * <param name="ang">The angle the player should face</param>
+ * <param name="angle">The angle the player should face</param>
  * <seealso name="GetPlayerFacingAngle" />
  * <seealso name="SetPlayerPos" />
  * <remarks>Angles are reversed in GTA:SA; 90 degrees would be East in the real world, but in GTA:SA
@@ -1300,13 +1300,13 @@ native bool:GetPlayerPos(playerid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The player specified does not exist.
  * </returns>
  */
-native bool:SetPlayerFacingAngle(playerid, Float:ang);
+native bool:SetPlayerFacingAngle(playerid, Float:angle);
 
 /**
  * <library>omp_player</library>
  * <summary>Gets the angle a player is facing.</summary>
  * <param name="playerid">The player you want to get the angle of</param>
- * <param name="ang">The Float to store the angle in, passed by reference</param>
+ * <param name="angle">The Float to store the angle in, passed by reference</param>
  * <seealso name="GetVehicleZAngle" />
  * <seealso name="SetPlayerFacingAngle" />
  * <remarks>Angles are reversed in GTA:SA; 90 degrees would be East in the real world, but in GTA:SA
@@ -1315,7 +1315,7 @@ native bool:SetPlayerFacingAngle(playerid, Float:ang);
  * <remarks>Angles returned when inside a vehicle is rarely correct.  To get the correct facing angle
  * while inside a vehicle, use <a href="#GetVehicleZAngle">GetVehicleZAngle</a>.</remarks>
  */
-native bool:GetPlayerFacingAngle(playerid, &Float:ang);
+native bool:GetPlayerFacingAngle(playerid, &Float:angle);
 
 /**
  * <library>omp_player</library>
