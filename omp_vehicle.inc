@@ -1563,12 +1563,27 @@ native bool:GetVehicleMatrix(vehicleid, &Float:rightX, &Float:rightY, &Float:rig
 /**
  * <library>omp_vehicle</library>
  */
+native GetVehicleMaxPassengers(modelid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
 native GetVehicleModelCount(modelid);
 
 /**
  * <library>omp_vehicle</library>
  */
 native GetVehicleModelsUsed();
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native CountVehicleOccupants(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ */
+native GetVehicleOccupant(vehicleid, seatid);
 
 /**
  * <library>omp_vehicle</library>
