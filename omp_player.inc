@@ -583,6 +583,27 @@ static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return __BULLET_HIT_TYPE; }
 #define BULLET_HIT_TYPE_OBJECT                 (BULLET_HIT_TYPE:3)
 #define BULLET_HIT_TYPE_PLAYER_OBJECT          (BULLET_HIT_TYPE:4)
 
+/// <p/>
+/**
+ * <library>omp_player</library>
+ */
+#define ANIMATION_FLAGS: __TAG(ANIMATION_FLAGS):
+enum ANIMATION_FLAGS:ANIMATION_FLAGS
+{
+	UNKNOWN_ANIMATION_FLAG                   = -1,
+	ANIMATION_FLAG_FREEZE					 = 0b0000000000100,
+	ANIMATION_FLAG_LOOP						 = 0b0000100000000,
+	ANIMATION_FLAG_LOCK_Y					 = 0b0001000000000,
+	ANIMATION_FLAG_LOCK_X					 = 0b0010000000000
+}
+static stock ANIMATION_FLAGS:_@ANIMATION_FLAGS() { return ANIMATION_FLAGS; }
+
+#define UNKNOWN_ANIMATION_FLAG                (ANIMATION_FLAGS:-1)
+#define ANIMATION_FLAG_FREEZE                 (ANIMATION_FLAGS:0b0000000000100)
+#define ANIMATION_FLAG_LOOP                   (ANIMATION_FLAGS:0b0000100000000)
+#define ANIMATION_FLAG_LOCK_Y                 (ANIMATION_FLAGS:0b0001000000000)
+#define ANIMATION_FLAG_LOCK_X                 (ANIMATION_FLAGS:0b0010000000000)
+
 /*
                                                                            
     888b      88                       88                                      
@@ -2868,7 +2889,7 @@ native GetPlayerAnimFlags(playerid);
  * <seealso name="ApplyAnimation" />
  * <returns>The player animation flags as integer.</returns>
  */
-native GetPlayerAnimationFlags(playerid);
+native ANIMATION_FLAGS:GetPlayerAnimationFlags(playerid);
 
 /**
  * <library>omp_player</library>
