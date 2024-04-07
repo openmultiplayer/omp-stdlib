@@ -50,6 +50,352 @@ const INVALID_VEHICLE_ID                       = 0xFFFF;
 /**
  * <library>omp_vehicle</library>
  */
+#define VEHICLE_MODEL: __TAG(VEHICLE_MODEL):
+enum VEHICLE_MODEL:MAX_VEHICLE_MODELS
+{
+	VEHICLE_MODEL_UNKNOWN                       = 0,
+	VEHICLE_MODEL_LANDSTAL                      = 400,
+	VEHICLE_MODEL_LANDSTALKER                   = VEHICLE_MODEL_LANDSTAL,
+	VEHICLE_MODEL_BRAVURA                       = 401,
+	VEHICLE_MODEL_BUFFALO                       = 402,
+	VEHICLE_MODEL_LINERUN                       = 403,
+	VEHICLE_MODEL_LINERUNNER                    = VEHICLE_MODEL_LINERUN,
+	VEHICLE_MODEL_PEREN                         = 404,
+	VEHICLE_MODEL_PERENNIAL                     = VEHICLE_MODEL_PEREN,
+	VEHICLE_MODEL_SENTINEL                      = 405,
+	VEHICLE_MODEL_DUMPER                        = 406,
+	VEHICLE_MODEL_FIRETRUK                      = 407,
+	VEHICLE_MODEL_FIRETRUCK                     = VEHICLE_MODEL_FIRETRUK,
+	VEHICLE_MODEL_FIRE_TRUCK                    = VEHICLE_MODEL_FIRETRUK,
+	VEHICLE_MODEL_TRASH                         = 408,
+	VEHICLE_MODEL_TRASHMASTER                   = VEHICLE_MODEL_TRASH,
+	VEHICLE_MODEL_STRETCH                       = 409,
+	VEHICLE_MODEL_MANANA                        = 410,
+	VEHICLE_MODEL_INFERNUS                      = 411,
+	VEHICLE_MODEL_VOODOO                        = 412,
+	VEHICLE_MODEL_PONY                          = 413,
+	VEHICLE_MODEL_MULE                          = 414,
+	VEHICLE_MODEL_CHEETAH                       = 415,
+	VEHICLE_MODEL_AMBULAN                       = 416,
+	VEHICLE_MODEL_AMBULANCE                     = VEHICLE_MODEL_AMBULAN,
+	VEHICLE_MODEL_LEVIATHAN                     = 417,
+	VEHICLE_MODEL_MOONBEAM                      = 418,
+	VEHICLE_MODEL_ESPERANT                      = 419,
+	VEHICLE_MODEL_ESPERANTO                     = VEHICLE_MODEL_ESPERANT,
+	VEHICLE_MODEL_TAXI                          = 420,
+	VEHICLE_MODEL_WASHING                       = 421,
+	VEHICLE_MODEL_WASHINGTON                    = VEHICLE_MODEL_WASHING,
+	VEHICLE_MODEL_BOBCAT                        = 422,
+	VEHICLE_MODEL_MRWHOOP                       = 423,
+	VEHICLE_MODEL_MRWHOOPEE                     = VEHICLE_MODEL_MRWHOOP,
+	VEHICLE_MODEL_MR_WHOOPEE                    = VEHICLE_MODEL_MRWHOOP,
+	VEHICLE_MODEL_BFINJECT                      = 424,
+	VEHICLE_MODEL_BFINJECTION                   = VEHICLE_MODEL_BFINJECT,
+	VEHICLE_MODEL_BF_INJECTION                  = VEHICLE_MODEL_BFINJECT,
+	VEHICLE_MODEL_HUNTER                        = 425,
+	VEHICLE_MODEL_PREMIER                       = 426,
+	VEHICLE_MODEL_ENFORCER                      = 427,
+	VEHICLE_MODEL_SECURICA                      = 428,
+	VEHICLE_MODEL_SECURICAR                     = VEHICLE_MODEL_SECURICA,
+	VEHICLE_MODEL_BANSHEE                       = 429,
+	VEHICLE_MODEL_PREDATOR                      = 430,
+	VEHICLE_MODEL_BUS                           = 431,
+	VEHICLE_MODEL_RHINO                         = 432,
+	VEHICLE_MODEL_BARRACKS                      = 433,
+	VEHICLE_MODEL_HOTKNIFE                      = 434,
+	VEHICLE_MODEL_ARTICT1                       = 435,
+	VEHICLE_MODEL_ARTICLETRAILER1               = VEHICLE_MODEL_ARTICT1,
+	VEHICLE_MODEL_ARTICLE_TRAILER_1             = VEHICLE_MODEL_ARTICT1,
+	VEHICLE_MODEL_PREVION                       = 436,
+	VEHICLE_MODEL_COACH                         = 437,
+	VEHICLE_MODEL_CABBIE                        = 438,
+	VEHICLE_MODEL_STALLION                      = 439,
+	VEHICLE_MODEL_RUMPO                         = 440,
+	VEHICLE_MODEL_RCBANDIT                      = 441,
+	VEHICLE_MODEL_RC_BANDIT                     = 441,
+	VEHICLE_MODEL_ROMERO                        = 442,
+	VEHICLE_MODEL_PACKER                        = 443,
+	VEHICLE_MODEL_MONSTER                       = 444,
+	VEHICLE_MODEL_ADMIRAL                       = 445,
+	VEHICLE_MODEL_SQUALO                        = 446,
+	VEHICLE_MODEL_SEASPAR                       = 447,
+	VEHICLE_MODEL_SEASPARROW                    = VEHICLE_MODEL_SEASPAR,
+	VEHICLE_MODEL_PIZZABOY                      = 448,
+	VEHICLE_MODEL_TRAM                          = 449,
+	VEHICLE_MODEL_ARTICT2                       = 450,
+	VEHICLE_MODEL_ARTICLETRAILER2               = VEHICLE_MODEL_ARTICT2,
+	VEHICLE_MODEL_ARTICLE_TRAILER_2             = VEHICLE_MODEL_ARTICT2,
+	VEHICLE_MODEL_TURISMO                       = 451,
+	VEHICLE_MODEL_SPEEDER                       = 452,
+	VEHICLE_MODEL_REEFER                        = 453,
+	VEHICLE_MODEL_TROPIC                        = 454,
+	VEHICLE_MODEL_FLATBED                       = 455,
+	VEHICLE_MODEL_YANKEE                        = 456,
+	VEHICLE_MODEL_CADDY                         = 457,
+	VEHICLE_MODEL_SOLAIR                        = 458,
+	VEHICLE_MODEL_TOPFUN                        = 459,
+	VEHICLE_MODEL_TOPFUN_VAN                    = VEHICLE_MODEL_TOPFUN,
+	VEHICLE_MODEL_BERKLEYSRCVAN                 = VEHICLE_MODEL_TOPFUN,
+	VEHICLE_MODEL_BERKLEYS_RC_VAN               = VEHICLE_MODEL_TOPFUN,
+	VEHICLE_MODEL_SKIMMER                       = 460,
+	VEHICLE_MODEL_PCJ600                        = 461,
+	VEHICLE_MODEL_PCJ_600                       = VEHICLE_MODEL_PCJ600,
+	VEHICLE_MODEL_FAGGIO                        = 462,
+	VEHICLE_MODEL_FREEWAY                       = 463,
+	VEHICLE_MODEL_RCBARON                       = 464,
+	VEHICLE_MODEL_RC_BARON                      = VEHICLE_MODEL_RCBARON,
+	VEHICLE_MODEL_RCRAIDER                      = 465,
+	VEHICLE_MODEL_RC_RAIDER                     = VEHICLE_MODEL_RCRAIDER,
+	VEHICLE_MODEL_GLENDALE                      = 466,
+	VEHICLE_MODEL_OCEANIC                       = 467,
+	VEHICLE_MODEL_SANCHEZ                       = 468,
+	VEHICLE_MODEL_SPARROW                       = 469,
+	VEHICLE_MODEL_PATRIOT                       = 470,
+	VEHICLE_MODEL_QUAD                          = 471,
+	VEHICLE_MODEL_COASTG                        = 472,
+	VEHICLE_MODEL_COASTGUARD                    = VEHICLE_MODEL_COASTG,
+	VEHICLE_MODEL_DINGHY                        = 473,
+	VEHICLE_MODEL_HERMES                        = 474,
+	VEHICLE_MODEL_SABRE                         = 475,
+	VEHICLE_MODEL_RUSTLER                       = 476,
+	VEHICLE_MODEL_ZR350                         = 477,
+	VEHICLE_MODEL_ZR_350                        = VEHICLE_MODEL_ZR350,
+	VEHICLE_MODEL_WALTON                        = 478,
+	VEHICLE_MODEL_REGINA                        = 479,
+	VEHICLE_MODEL_COMET                         = 480,
+	VEHICLE_MODEL_BMX                           = 481,
+	VEHICLE_MODEL_BURRITO                       = 482,
+	VEHICLE_MODEL_CAMPER                        = 483,
+	VEHICLE_MODEL_MARQUIS                       = 484,
+	VEHICLE_MODEL_BAGGAGE                       = 485,
+	VEHICLE_MODEL_DOZER                         = 486,
+	VEHICLE_MODEL_MAVERICK                      = 487,
+	VEHICLE_MODEL_VCNMAV                        = 488,
+	VEHICLE_MODEL_VCN_MAVERICK                  = VEHICLE_MODEL_VCNMAV,
+	VEHICLE_MODEL_SANNEWSMAVERICK               = VEHICLE_MODEL_VCNMAV,
+	VEHICLE_MODEL_SAN_NEWS_MAVERICK             = VEHICLE_MODEL_VCNMAV,
+	VEHICLE_MODEL_NEWS_CHOPPER                  = VEHICLE_MODEL_VCNMAV,
+	VEHICLE_MODEL_RANCHER                       = 489,
+	VEHICLE_MODEL_FBIRANCHER                    = 490,
+	VEHICLE_MODEL_FBI_RANCHER                   = VEHICLE_MODEL_FBIRANCHER,
+	VEHICLE_MODEL_VIRGO                         = 491,
+	VEHICLE_MODEL_GREENWOO                      = 492,
+	VEHICLE_MODEL_GREENWOOD                     = VEHICLE_MODEL_GREENWOO,
+	VEHICLE_MODEL_JETMAX                        = 493,
+	VEHICLE_MODEL_HOTRING                       = 494,
+	VEHICLE_MODEL_HOTRINGRACER                  = VEHICLE_MODEL_HOTRING,
+	VEHICLE_MODEL_HOTRING_RACER                 = VEHICLE_MODEL_HOTRING,
+	VEHICLE_MODEL_SANDKING                      = 495,
+	VEHICLE_MODEL_BLISTAC                       = 496,
+	VEHICLE_MODEL_BLISTACOMPACT                 = VEHICLE_MODEL_BLISTAC,
+	VEHICLE_MODEL_BLISTA_COMPACT                = VEHICLE_MODEL_BLISTAC,
+	VEHICLE_MODEL_POLMAV                        = 497,
+	VEHICLE_MODEL_POLICEMAVERICK                = VEHICLE_MODEL_POLMAV,
+	VEHICLE_MODEL_POLICE_MAVERICK               = VEHICLE_MODEL_POLMAV,
+	VEHICLE_MODEL_BOXVILLE                      = 498,
+	VEHICLE_MODEL_BENSON                        = 499,
+	VEHICLE_MODEL_MESA                          = 500,
+	VEHICLE_MODEL_RCGOBLIN                      = 501,
+	VEHICLE_MODEL_RC_GOBLIN                     = VEHICLE_MODEL_RCGOBLIN,
+	VEHICLE_MODEL_HOTRINA                       = 502,
+	VEHICLE_MODEL_HOTRINGRACERA                 = VEHICLE_MODEL_HOTRINA,
+	VEHICLE_MODEL_HOTRING_RACER_A               = VEHICLE_MODEL_HOTRINA,
+	VEHICLE_MODEL_HOTRINB                       = 503,
+	VEHICLE_MODEL_HOTRINGRACERB                 = VEHICLE_MODEL_HOTRINB,
+	VEHICLE_MODEL_HOTRING_RACER_B               = VEHICLE_MODEL_HOTRINB,
+	VEHICLE_MODEL_BLOODRA                       = 504,
+	VEHICLE_MODEL_BLOODRINGBANGER               = VEHICLE_MODEL_BLOODRA,
+	VEHICLE_MODEL_BLOODRING_BANGER              = VEHICLE_MODEL_BLOODRA,
+	VEHICLE_MODEL_RNCHLURE                      = 505,
+	VEHICLE_MODEL_RANCHERLURE                   = VEHICLE_MODEL_RNCHLURE,
+	VEHICLE_MODEL_RANCHER_LURE                  = VEHICLE_MODEL_RNCHLURE,
+	VEHICLE_MODEL_SUPERGT                       = 506,
+	VEHICLE_MODEL_SUPER_GT                      = VEHICLE_MODEL_SUPERGT,
+	VEHICLE_MODEL_ELEGANT                       = 507,
+	VEHICLE_MODEL_JOURNEY                       = 508,
+	VEHICLE_MODEL_BIKE                          = 509,
+	VEHICLE_MODEL_MTBIKE                        = 510,
+	VEHICLE_MODEL_MOUNTAINBIKE                  = VEHICLE_MODEL_MTBIKE,
+	VEHICLE_MODEL_MOUNTAIN_BIKE                 = VEHICLE_MODEL_MTBIKE,
+	VEHICLE_MODEL_BEAGLE                        = 511,
+	VEHICLE_MODEL_CROPDUST                      = 512,
+	VEHICLE_MODEL_CROPDUSTER                    = VEHICLE_MODEL_CROPDUST,
+	VEHICLE_MODEL_STUNT                         = 513,
+	VEHICLE_MODEL_STUNTPLANE                    = VEHICLE_MODEL_STUNT,
+	VEHICLE_MODEL_STUNT_PLANE                   = VEHICLE_MODEL_STUNT,
+	VEHICLE_MODEL_PETRO                         = 514,
+	VEHICLE_MODEL_TANKER                        = VEHICLE_MODEL_PETRO,
+	VEHICLE_MODEL_RDTRAIN                       = 515,
+	VEHICLE_MODEL_ROADTRAIN                     = VEHICLE_MODEL_RDTRAIN,
+	VEHICLE_MODEL_NEBULA                        = 516,
+	VEHICLE_MODEL_MAJESTIC                      = 517,
+	VEHICLE_MODEL_BUCCANEE                      = 518,
+	VEHICLE_MODEL_BUCCANEER                     = VEHICLE_MODEL_BUCCANEE,
+	VEHICLE_MODEL_SHAMAL                        = 519,
+	VEHICLE_MODEL_HYDRA                         = 520,
+	VEHICLE_MODEL_FCR900                        = 521,
+	VEHICLE_MODEL_FCR_900                       = VEHICLE_MODEL_FCR900,
+	VEHICLE_MODEL_NRG500                        = 522,
+	VEHICLE_MODEL_NRG_500                       = VEHICLE_MODEL_NRG500,
+	VEHICLE_MODEL_HPV1000                       = 523,
+	VEHICLE_MODEL_HPV_1000                      = VEHICLE_MODEL_HPV1000,
+	VEHICLE_MODEL_CEMENT                        = 524,
+	VEHICLE_MODEL_CEMENTTRUCK                   = VEHICLE_MODEL_CEMENT,
+	VEHICLE_MODEL_CEMENT_TRUCK                  = VEHICLE_MODEL_CEMENT,
+	VEHICLE_MODEL_TOWTRUCK                      = 525,
+	VEHICLE_MODEL_TOW_TRUCK                     = VEHICLE_MODEL_TOWTRUCK,
+	VEHICLE_MODEL_FORTUNE                       = 526,
+	VEHICLE_MODEL_CADRONA                       = 527,
+	VEHICLE_MODEL_FBITRUCK                      = 528,
+	VEHICLE_MODEL_FBI_TRUCK                     = VEHICLE_MODEL_FBITRUCK,
+	VEHICLE_MODEL_WILLARD                       = 529,
+	VEHICLE_MODEL_FORKLIFT                      = 530,
+	VEHICLE_MODEL_TRACTOR                       = 531,
+	VEHICLE_MODEL_COMBINE                       = 532,
+	VEHICLE_MODEL_COMBINE_HARVESTER             = VEHICLE_MODEL_COMBINE,
+	VEHICLE_MODEL_FELTZER                       = 533,
+	VEHICLE_MODEL_REMINGTN                      = 534,
+	VEHICLE_MODEL_REMINGTON                     = VEHICLE_MODEL_REMINGTN,
+	VEHICLE_MODEL_SLAMVAN                       = 535,
+	VEHICLE_MODEL_BLADE                         = 536,
+	VEHICLE_MODEL_FREIGHT                       = 537,
+	VEHICLE_MODEL_FREIGHT_TRAIN                 = VEHICLE_MODEL_FREIGHT,
+	VEHICLE_MODEL_STREAK                        = 538,
+	VEHICLE_MODEL_BROWNSTREAK                   = VEHICLE_MODEL_STREAK,
+	VEHICLE_MODEL_BROWNSTREAK_TRAIN             = VEHICLE_MODEL_STREAK,
+	VEHICLE_MODEL_VORTEX                        = 539,
+	VEHICLE_MODEL_VINCENT                       = 540,
+	VEHICLE_MODEL_BULLET                        = 541,
+	VEHICLE_MODEL_CLOVER                        = 542,
+	VEHICLE_MODEL_SADLER                        = 543,
+	VEHICLE_MODEL_FIRELA                        = 544,
+	VEHICLE_MODEL_FIRETRUCKLA                   = VEHICLE_MODEL_FIRELA,
+	VEHICLE_MODEL_FIRETRUCK_LA                  = VEHICLE_MODEL_FIRELA,
+	VEHICLE_MODEL_FIRE_TRUCK_LA                 = VEHICLE_MODEL_FIRELA,
+	VEHICLE_MODEL_HUSTLER                       = 545,
+	VEHICLE_MODEL_INTRUDER                      = 546,
+	VEHICLE_MODEL_PRIMO                         = 547,
+	VEHICLE_MODEL_CARGOBOB                      = 548,
+	VEHICLE_MODEL_TAMPA                         = 549,
+	VEHICLE_MODEL_SUNRISE                       = 550,
+	VEHICLE_MODEL_MERIT                         = 551,
+	VEHICLE_MODEL_UTILITY                       = 552,
+	VEHICLE_MODEL_UTILITYVAN                    = VEHICLE_MODEL_UTILITY,
+	VEHICLE_MODEL_UTILITY_VAN                   = VEHICLE_MODEL_UTILITY,
+	VEHICLE_MODEL_NEVADA                        = 553,
+	VEHICLE_MODEL_YOSEMITE                      = 554,
+	VEHICLE_MODEL_WINDSOR                       = 555,
+	VEHICLE_MODEL_MONSTERA                      = 556,
+	VEHICLE_MODEL_MONSTER_A                     = VEHICLE_MODEL_MONSTERA,
+	VEHICLE_MODEL_MONSTERB                      = 557,
+	VEHICLE_MODEL_MONSTER_B                     = VEHICLE_MODEL_MONSTERB,
+	VEHICLE_MODEL_URANUS                        = 558,
+	VEHICLE_MODEL_JESTER                        = 559,
+	VEHICLE_MODEL_SULTAN                        = 560,
+	VEHICLE_MODEL_STRATUM                       = 561,
+	VEHICLE_MODEL_ELEGY                         = 562,
+	VEHICLE_MODEL_RAINDANC                      = 563,
+	VEHICLE_MODEL_RAINDANCE                     = VEHICLE_MODEL_RAINDANC,
+	VEHICLE_MODEL_RCTIGER                       = 564,
+	VEHICLE_MODEL_RC_TIGER                      = VEHICLE_MODEL_RCTIGER,
+	VEHICLE_MODEL_FLASH                         = 565,
+	VEHICLE_MODEL_TAHOMA                        = 566,
+	VEHICLE_MODEL_SAVANNA                       = 567,
+	VEHICLE_MODEL_BANDITO                       = 568,
+	VEHICLE_MODEL_FREIGHTFLAT            		= 569,
+	#if __namemax > 31
+	VEHICLE_MODEL_FREIGHTFLATTRAILER            = VEHICLE_MODEL_FREIGHTFLAT,
+	VEHICLE_MODEL_FREIGHT_FLAT_TRAILER          = VEHICLE_MODEL_FREIGHTFLAT,
+	#endif
+	VEHICLE_MODEL_STREAKC                       = 570,
+	VEHICLE_MODEL_STREAKTRAILER                 = VEHICLE_MODEL_STREAKC,
+	VEHICLE_MODEL_STREAK_TRAILER                = VEHICLE_MODEL_STREAKC,
+	VEHICLE_MODEL_KART                          = 571,
+	VEHICLE_MODEL_MOWER                         = 572,
+	VEHICLE_MODEL_DUNERIDE                      = 573,
+	VEHICLE_MODEL_DUNE                          = VEHICLE_MODEL_DUNERIDE,
+	VEHICLE_MODEL_SWEEPER                       = 574,
+	VEHICLE_MODEL_BROADWAY                      = 575,
+	VEHICLE_MODEL_TORNADO                       = 576,
+	VEHICLE_MODEL_AT400                         = 577,
+	VEHICLE_MODEL_AT_400                        = VEHICLE_MODEL_AT400,
+	VEHICLE_MODEL_DFT30                         = 578,
+	VEHICLE_MODEL_DFT_30                        = VEHICLE_MODEL_DFT30,
+	VEHICLE_MODEL_HUNTLEY                       = 579,
+	VEHICLE_MODEL_STAFFORD                      = 580,
+	VEHICLE_MODEL_BF400                         = 581,
+	VEHICLE_MODEL_BF_400                        = VEHICLE_MODEL_BF400,
+	VEHICLE_MODEL_NEWSVAN                       = 582,
+	VEHICLE_MODEL_NEWS_VAN                      = VEHICLE_MODEL_NEWSVAN,
+	VEHICLE_MODEL_TUG                           = 583,
+	VEHICLE_MODEL_PETROTR                       = 584,
+	VEHICLE_MODEL_PETROLTRAILER                 = VEHICLE_MODEL_PETROTR,
+	VEHICLE_MODEL_PETROL_TRAILER                = VEHICLE_MODEL_PETROTR,
+	VEHICLE_MODEL_EMPEROR                       = 585,
+	VEHICLE_MODEL_WAYFARER                      = 586,
+	VEHICLE_MODEL_EUROS                         = 587,
+	VEHICLE_MODEL_HOTDOG                        = 588,
+	VEHICLE_MODEL_CLUB                          = 589,
+	VEHICLE_MODEL_FREIGHTBOXTRAILER             = 590,
+	#if __namemax > 31
+	VEHICLE_MODEL_FREIGHT_BOX_TRAILER           = VEHICLE_MODEL_FREIGHTBOXTRAILER,
+	#endif
+	VEHICLE_MODEL_ARTICT3                       = 591,
+	VEHICLE_MODEL_ARTICLETRAILER3               = VEHICLE_MODEL_ARTICT3,
+	VEHICLE_MODEL_ARTICLE_TRAILER_3             = VEHICLE_MODEL_ARTICT3,
+	VEHICLE_MODEL_ANDROM                        = 592,
+	VEHICLE_MODEL_ANDROMADA                     = VEHICLE_MODEL_ANDROM,
+	VEHICLE_MODEL_DODO                          = 593,
+	VEHICLE_MODEL_RCCAM                         = 594,
+	VEHICLE_MODEL_RC_CAM                        = VEHICLE_MODEL_RCCAM,
+	VEHICLE_MODEL_LAUNCH                        = 595,
+	VEHICLE_MODEL_LSPD	                      	= 596,
+	VEHICLE_MODEL_COPCARLA                      = VEHICLE_MODEL_LSPD,
+	VEHICLE_MODEL_POLICECARLSPD                 = VEHICLE_MODEL_LSPD,
+	VEHICLE_MODEL_POLICE_CAR_LSPD               = VEHICLE_MODEL_LSPD,
+	VEHICLE_MODEL_SFPD	                      	= 597,
+	VEHICLE_MODEL_COPCARSF                      = VEHICLE_MODEL_SFPD,
+	VEHICLE_MODEL_POLICECARSFPD                 = VEHICLE_MODEL_SFPD,
+	VEHICLE_MODEL_POLICE_CAR_SFPD               = VEHICLE_MODEL_SFPD,
+	VEHICLE_MODEL_LVPD	                   	  	= 598,
+	VEHICLE_MODEL_COPCARVG                      = VEHICLE_MODEL_LVPD,
+	VEHICLE_MODEL_POLICECARLVPD                 = VEHICLE_MODEL_LVPD,
+	VEHICLE_MODEL_POLICE_CAR_LVPD               = VEHICLE_MODEL_LVPD,
+	VEHICLE_MODEL_COPCARRU                      = 599,
+	VEHICLE_MODEL_RANGER		                = VEHICLE_MODEL_COPCARRU,
+	VEHICLE_MODEL_POLICERANGER                  = VEHICLE_MODEL_COPCARRU,
+	VEHICLE_MODEL_POLICE_RANGER                 = VEHICLE_MODEL_COPCARRU,
+	VEHICLE_MODEL_PICADOR                       = 600,
+	VEHICLE_MODEL_SWATVAN                       = 601,
+	VEHICLE_MODEL_SWAT_VAN                      = VEHICLE_MODEL_SWATVAN,
+	VEHICLE_MODEL_SWAT                          = VEHICLE_MODEL_SWATVAN,
+	VEHICLE_MODEL_ALPHA                         = 602,
+	VEHICLE_MODEL_PHOENIX                       = 603,
+	VEHICLE_MODEL_GLENSHIT                      = 604,
+	VEHICLE_MODEL_GLENDALESHIT                  = VEHICLE_MODEL_GLENSHIT,
+	VEHICLE_MODEL_GLENDALE_SHIT                 = VEHICLE_MODEL_GLENSHIT,
+	VEHICLE_MODEL_SADLSHIT                      = 605,
+	VEHICLE_MODEL_SADLERSHIT                    = VEHICLE_MODEL_SADLSHIT,
+	VEHICLE_MODEL_SADLER_SHIT                   = VEHICLE_MODEL_SADLSHIT,
+	VEHICLE_MODEL_BAGGAGETRAILERA               = 606,
+	VEHICLE_MODEL_BAGGAGE_TRAILER_A             = VEHICLE_MODEL_BAGGAGETRAILERA,
+	VEHICLE_MODEL_BAGGAGETRAILERB               = 607,
+	VEHICLE_MODEL_BAGGAGE_TRAILER_B             = VEHICLE_MODEL_BAGGAGETRAILERB,
+	VEHICLE_MODEL_TUGSTAIR                      = 608,
+	VEHICLE_MODEL_STAIRS_TRAILER                = VEHICLE_MODEL_TUGSTAIR,
+	VEHICLE_MODEL_BOXBURG                       = 609,
+	VEHICLE_MODEL_BURGLARY_BOXVILLE             = VEHICLE_MODEL_BOXBURG,
+	VEHICLE_MODEL_FARMTRAILER                   = 610,
+	VEHICLE_MODEL_FARM_TRAILER                  = VEHICLE_MODEL_FARMTRAILER,
+	VEHICLE_MODEL_UTILITYTRAILER                = 611,
+	VEHICLE_MODEL_UTILITY_TRAILER               = VEHICLE_MODEL_UTILITYTRAILER
+}
+static stock VEHICLE_MODEL:_@VEHICLE_MODEL() { return MAX_VEHICLE_MODELS; }
+
+/// <p/>
+/**
+ * <library>omp_vehicle</library>
+ */
 #define CARMODTYPE: __TAG(CARMODTYPE):
 enum CARMODTYPE:MAX_CARMODS
 {
@@ -441,7 +787,7 @@ static stock LANDING_GEAR_STATE:_@LANDING_GEAR_STATE() { return __LANDING_GEAR_S
  * <seealso name="CreateVehicle" />
  * <seealso name="DestroyVehicle" />
  */
-native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
+native AddStaticVehicle(VEHICLE_MODEL:modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -473,7 +819,7 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
  * <seealso name="CreateVehicle" />
  * <seealso name="DestroyVehicle" />
  */
-native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
+native AddStaticVehicleEx(VEHICLE_MODEL:modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /**
  * <library>omp_vehicle</library>
@@ -503,7 +849,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
  * vehicle model ID passed).
  * </returns>
  */
-native CreateVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
+native CreateVehicle(VEHICLE_MODEL:modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
 
 /**
  * <library>omp_vehicle</library>
@@ -1084,7 +1430,7 @@ native bool:SetVehicleNumberPlate(vehicleid, const numberPlate[]);
  * <returns>The vehicle's <a href="https://www.open.mp/docs/scripting/resources/vehicleid">model ID</a>, or <b><c>0</c></b>
  * if the vehicle doesn't exist.</returns>
  */
-native GetVehicleModel(vehicleid);
+native VEHICLE_MODEL:GetVehicleModel(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1155,7 +1501,7 @@ native CARMODTYPE:GetVehicleComponentType(component);
  * Get random colour indexes that are valid for the given vehicle model.
  * </summary>
  */
-native GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0) = GetRandomCarColPair;
+native GetRandomVehicleColourPair(VEHICLE_MODEL:modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0) = GetRandomCarColPair;
 
 /**
  * <library>omp_vehicle</library>
@@ -1358,7 +1704,7 @@ native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VE
  *   </ul>
  * </remarks>
  */
-native bool:GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
+native bool:GetVehicleModelInfo(VEHICLE_MODEL:vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -1415,7 +1761,7 @@ native bool:GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
+native bool:SetVehicleSpawnInfo(vehicleid, VEHICLE_MODEL:modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1563,7 +1909,7 @@ native bool:GetVehicleMatrix(vehicleid, &Float:rightX, &Float:rightY, &Float:rig
 /**
  * <library>omp_vehicle</library>
  */
-native GetVehicleModelCount(modelid);
+native GetVehicleModelCount(VEHICLE_MODEL:modelid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1715,7 +2061,7 @@ native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
  * </summary>
  */
 #pragma deprecated Use `GetRandomVehicleColourPair`
-native GetRandomCarColPair(modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
+native GetRandomCarColPair(VEHICLE_MODEL:modelid, &colour1, &colour2, &colour3 = 0, &colour4 = 0);
 
 /**
  * <library>omp_vehicle</library>
