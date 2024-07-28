@@ -3133,15 +3133,6 @@ forward OnPlayerDeath(playerid, killerid, WEAPON:reason);
 forward OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /**
- * <summary>This callback is called when something in-game like casinos give the player money</summary>
- * <param name="playerid">The ID of the player who got cash from the game</param>
- * <param name="amount">The amount of cash given</param>
- * <param name="source">Where the money came from</param>
- * <remarks>Doesn't work</remarks>
- */
-forward OnScriptCash(playerid, amount, source);
-
-/**
  * <summary>OnPlayerClickMap is called when a player places a target/waypoint on the pause menu map
  * (by right-clicking).</summary>
  * <param name="playerid">The ID of the player that placed a target/waypoint</param>

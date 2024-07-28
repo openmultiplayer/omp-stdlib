@@ -507,11 +507,6 @@ stock GetActorPoolSize()
 #endif
 
 // Backwards-compatibility defines.
-#define _YSF_included
-#define _inc_ysf
-#define _INC_SAMP_Community_fixes
-#define _inc_fixes
-
 #define _actor_included
 #define _http_included
 #define _objects_included

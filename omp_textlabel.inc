@@ -374,17 +374,6 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
  * <library>omp_textlabel</library>
  */
 #if __namemax > 31
-	forward SetPlayer3DTextLabelVirtualWorld(playerid, PlayerText3D:textid, virtualWorld);
-#else
-	static stock __SetPlayer3DTextLabelVirtualW()
-	{
-	}
-#endif
-
-/**
- * <library>omp_textlabel</library>
- */
-#if __namemax > 31
 	native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid) = GetPlayer3DTextLabelAttached;
 #else
 	static stock __GetPlayer3DTextLabelAttached()

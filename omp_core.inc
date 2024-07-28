@@ -931,16 +931,6 @@ native bool:RemoveServerRule(const rule[]);
  */
 native bool:IsValidServerRule(const rule[]);
 
-/**
- * <library>omp_core</library>
- */
-forward bool:SetServerRuleFlags(const rule[], E_SERVER_RULE_FLAGS:flags);
-
-/**
- * <library>omp_core</library>
- */
-forward E_SERVER_RULE_FLAGS:GetServerRuleFlags(const rule[]);
-
 /*
 native # Client Config();
 native         Client Config(

@@ -1385,16 +1385,6 @@ native bool:IsValidVehicle(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-forward GetPlayerLastSyncedVehicleID(playerid);
-
-/**
- * <library>omp_vehicle</library>
- */
-forward GetPlayerLastSyncedTrailerID(playerid);
-
-/**
- * <library>omp_vehicle</library>
- */
 native bool:GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:spawnZ, &Float:angle, &colour1 = 0, &colour2 = 0);
 
 /**
@@ -1435,17 +1425,7 @@ native GetVehicleRespawnDelay(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:SetVehicleOccupiedTick(vehicleid, ticks);
-
-/**
- * <library>omp_vehicle</library>
- */
 native GetVehicleOccupiedTick(vehicleid);
-
-/**
- * <library>omp_vehicle</library>
- */
-forward bool:SetVehicleRespawnTick(vehicleid, ticks);
 
 /**
  * <library>omp_vehicle</library>
@@ -1507,22 +1487,12 @@ native bool:HasVehicleBeenOccupied(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:SetVehicleBeenOccupied(vehicleid, bool:occupied);
-
-/**
- * <library>omp_vehicle</library>
- */
 native bool:IsVehicleOccupied(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
 native bool:IsVehicleDead(vehicleid);
-
-/**
- * <library>omp_vehicle</library>
- */
-forward bool:SetVehicleDead(vehicleid, bool:dead);
 
 /**
  * <library>omp_vehicle</library>
