@@ -195,6 +195,11 @@ native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof (text));
 /**
  * <library>omp_textlabel</library>
  */
+native Get3DTextLabelColor(Text3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
 native Get3DTextLabelColour(Text3D:textid) = Get3DTextLabelColor;
 
 /**
@@ -320,6 +325,11 @@ native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len 
 /**
  * <library>omp_textlabel</library>
  */
+native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
+
+/**
+ * <library>omp_textlabel</library>
+ */
 native GetPlayer3DTextLabelColour(playerid, PlayerText3D:textid) = GetPlayer3DTextLabelColor;
 
 /**
@@ -384,26 +394,3 @@ native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentP
 #if __namemax > 31
 	native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid) = GetPlayer3DTextLabelAttached;
 #endif
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_textlabel</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `Get3DTextLabelColour`
-#endif
-native Get3DTextLabelColor(Text3D:textid);
-
-/**
- * <library>omp_textlabel</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GetPlayer3DTextLabelColour`
-#endif
-native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);

@@ -907,6 +907,26 @@ native GetVehicleSeats(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
+native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Change a vehicle's primary and secondary colours.</summary>
+ * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
+ * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
+ * ID</a></param>
+ * <param name="colour2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
+ * ID</a></param>
+ * <seealso name="ChangeVehiclePaintjob" />
+ * <seealso name="OnVehicleRespray" />
+ * <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all.
+ *  A few (cement, squallo) have 4 colours, of which 2 can not currently be changed.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  The vehicle's colour was successfully changed.<br
+ * />
+ *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
+ * </returns>
+ */
 native bool:ChangeVehicleColours(vehicleid, colour1, colour2) = ChangeVehicleColor;
 
 /**
@@ -1621,46 +1641,6 @@ native GetVehicleMaxPassengers(modelid);
  * </returns>
  */
 native CountVehicleOccupants(vehicleid);
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_vehicle</library>
- * <summary>Change a vehicle's primary and secondary colours.</summary>
- * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
- * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
- * ID</a></param>
- * <seealso name="ChangeVehiclePaintjob" />
- * <seealso name="OnVehicleRespray" />
- * <remarks>Some vehicles have only a primary colour and some can not have the colour changed at all.
- *  A few (cement, squallo) have 4 colours, of which 2 can not currently be changed.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  The vehicle's colour was successfully changed.<br
- * />
- *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
- * </returns>
- */
-#if !defined MIXED_SPELLINGS
-  #pragma deprecated Use `ChangeVehicleColours`
-#endif
-native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
-
-/**
- * <library>omp_vehicle</library>
- * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>Tire popping is enabled by default.  If
- * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
- * OnVehicleDamageStatusUpdate</a>.</remarks>
- */
-#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-native void:EnableTirePopping(bool:enable);
 
 /**
  * <summary>This callback is called when a player sent a trailer update.</summary>

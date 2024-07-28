@@ -329,6 +329,11 @@ native GangZoneGetColourForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ */
+native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
+
+/**
+ * <library>omp_gangzone</library>
  * <summary>Get the flashing colour of a gangzone for player.</summary>
  * <param name="playerid">The ID of the player you need to get</param>
  * <param name="zoneid">The ID of the gangzone</param>
@@ -344,6 +349,11 @@ native GangZoneGetColourForPlayer(playerid, zoneid);
  * <returns>Flashing color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
 native GangZoneGetFlashColourForPlayer(playerid, zoneid);
+
+/**
+ * <library>omp_gangzone</library>
+ */
+native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
 
 /**
  * <library>omp_gangzone</library>
@@ -670,6 +680,11 @@ native PlayerGangZoneGetColour(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ */
+native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
+
+/**
+ * <library>omp_gangzone</library>
  * <summary>Get the flashing colour of a player gangzone.</summary>
  * <param name="playerid">The ID of the player to whom player gangzone is bound</param>
  * <param name="zoneid">The ID of the player gangzone</param>
@@ -689,6 +704,11 @@ native PlayerGangZoneGetColour(playerid, zoneid);
  * <returns>Flashing color of player gangzone. <b><c>0</c></b>: Failed to execute the function. The player gangzone is not showned for the player.</returns>
  */
 native PlayerGangZoneGetFlashColour(playerid, zoneid);
+
+/**
+ * <library>omp_gangzone</library>
+ */
+native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 
 /**
  * <library>omp_gangzone</library>
@@ -766,45 +786,6 @@ native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Fl
  * </returns>
  */
 native bool:UsePlayerGangZoneCheck(playerid, zoneid, bool:enable);
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_gangzone</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GangZoneGetColourForPlayer`
-#endif
-native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
-
-/**
- * <library>omp_gangzone</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GangZoneGetFlashColourForPlayer`
-#endif
-native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
-
-/**
- * <library>omp_gangzone</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerGangZoneGetColour`
-#endif
-native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
-
-/**
- * <library>omp_gangzone</library>
- */
-#if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerGangZoneGetFlashColour`
-#endif
-native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 
 /**
  * <summary>This callback is called when a player enters a gangzone.</summary>
