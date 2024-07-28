@@ -16,8 +16,7 @@
 	// The old compiler doesn't like `#warning`, even within `#if`.
 	#endinput
 #endif
-	
+
 // This is just a backwards-compatible wrapper.
 #warning Using <a_vehicles> legacy wrapper.  Include <open.mp> directly.
 #include <open.mp>
-

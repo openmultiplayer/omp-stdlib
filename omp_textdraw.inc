@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -143,21 +143,6 @@ static stock TEXT_DRAW_ALIGN:_@TEXT_DRAW_ALIGN() { return __TEXT_DRAW_ALIGN; }
 #define TEXT_DRAW_ALIGN_CENTRE                 (TEXT_DRAW_ALIGN:2)
 #define TEXT_DRAW_ALIGN_CENTER                 (TEXT_DRAW_ALIGN:2)
 #define TEXT_DRAW_ALIGN_RIGHT                  (TEXT_DRAW_ALIGN:3)
-
-/*
-                                                                 
-      ,ad8888ba,   88               88                       88  
-     d8"'    `"8b  88               88                       88  
-    d8'            88               88                       88  
-    88             88   ,adPPYba,   88,dPPYba,   ,adPPYYba,  88  
-    88      88888  88  a8"     "8a  88P'    "8a  ""     `Y8  88  
-    Y8,        88  88  8b       d8  88       d8  ,adPPPPP88  88  
-     Y8a.    .a88  88  "8a,   ,a8"  88b,   ,a8"  88,    ,88  88  
-      `"Y88888P"   88   `"YbbdP"'   8Y"Ybbd8"'   `"8bbdP"Y8  88  
-                                                             
-                           
-
-*/
 
 /*
 native # Global();
@@ -610,21 +595,6 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
  * <library>omp_textdraw</library>
  */
 native bool:TextDrawSetStringForPlayer(Text:textid, playerid, const format[], OPEN_MP_TAGS:...);
-
-/*
-                                                                                                                
-    88888888ba                                    88888888ba   88                                                   
-    88      "8b                                   88      "8b  88                                                   
-    88      ,8P                                   88      ,8P  88                                                   
-    88aaaaaa8P'  ,adPPYba,  8b,dPPYba,            88aaaaaa8P'  88  ,adPPYYba,  8b       d8   ,adPPYba,  8b,dPPYba,  
-    88""""""'   a8P_____88  88P'   "Y8  aaaaaaaa  88""""""'    88  ""     `Y8  `8b     d8'  a8P_____88  88P'   "Y8  
-    88          8PP"""""""  88          """"""""  88           88  ,adPPPPP88   `8b   d8'   8PP"""""""  88          
-    88          "8b,   ,aa  88                    88           88  88,    ,88    `8b,d8'    "8b,   ,aa  88          
-    88           `"Ybbd8"'  88                    88           88  `"8bbdP"Y8      Y88'      `"Ybbd8"'  88          
-                                                                                   d8'                              
-                                                                                  d8'                               
-
-*/                                  
 
 /*
 native # Per-Player();
@@ -1278,21 +1248,6 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 #endif
 
 /*
-                                                                                            
-     ad88888ba               88                                   88                            
-    d8"     "8b              88                            ,d     ""                            
-    Y8,                      88                            88                                   
-    `Y8aaaaa,     ,adPPYba,  88   ,adPPYba,   ,adPPYba,  MM88MMM  88   ,adPPYba,   8b,dPPYba,   
-      `"""""8b,  a8P_____88  88  a8P_____88  a8"     ""    88     88  a8"     "8a  88P'   `"8a  
-            `8b  8PP"""""""  88  8PP"""""""  8b            88     88  8b       d8  88       88  
-    Y8a     a8P  "8b,   ,aa  88  "8b,   ,aa  "8a,   ,aa    88,    88  "8a,   ,a8"  88       88  
-     "Y88888P"    `"Ybbd8"'  88   `"Ybbd8"'   `"Ybbd8"'    "Y888  88   `"YbbdP"'   88       88  
-                                                                                            
-                                                                                            
-
-*/
-
-/*
 native # Selection();
 native           Selection(
 native      ====================(
@@ -1328,21 +1283,6 @@ native SelectTextDraw(playerid, hoverColour);
  * without catching this case will cause clients to go into an infinite loop.</remarks>
  */
 native CancelSelectTextDraw(playerid);
-
-/*
-                                                                                                                             
-    88888888ba,                                                                                                          88  
-    88      `"8b                                                                              ,d                         88  
-    88        `8b                                                                             88                         88  
-    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
-    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
-    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
-    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
-    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
-                               88                                                                                            
-                               88                                                                                            
-
-*/
 
 /*
 native # Deprecated();
@@ -1577,21 +1517,6 @@ native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
 #pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`
 native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
 
-/*
-                                                                                                  
-      ,ad8888ba,               88  88  88                                   88                    
-     d8"'    `"8b              88  88  88                                   88                    
-    d8'                        88  88  88                                   88                    
-    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
-    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
-    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
-     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
-      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
-                                                                                                  
-                                                                                                  
-
-*/
-
 /**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
  * the Escape key.</summary>
@@ -1637,4 +1562,3 @@ forward OnPlayerClickTextDraw(playerid, Text:clickedid);
  * </returns>
  */
 forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
-

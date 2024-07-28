@@ -10,7 +10,7 @@
  *     Written by Greg Garner (gmg@artran.com)
  *     Modified in March 2001 to include user defined
  *     operators for the floating point functions.
- *   
+ *
  *     This file is provided as is (no warranties).
  *   </license>
  *   <summary pawndoc="true">
@@ -620,4 +620,3 @@ forward operator%(Float:oper1, oper2);
  * <library>float</library>
  */
 forward operator%(oper1, Float:oper2);
-

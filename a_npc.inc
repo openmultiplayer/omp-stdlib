@@ -3,4 +3,3 @@
 #endif
 
 #error open.mp doesn't yet support NPC scripts.
-

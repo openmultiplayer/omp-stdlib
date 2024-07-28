@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -57,7 +57,7 @@
  *     <li><c>0.2.2 R3        - 022300</c></li>
  *   </ul>
  *   Rough rules:
- *   
+ *
  *   <p />
  *   Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
  *   <code>
@@ -68,15 +68,15 @@
  *   0x012345
  *   </code>
  *   (assuming c is the third revision)
- *   
+ *
  *   <p />
  *   0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
  *   0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
  *   use the revision method.
- *   
+ *
  *   <p />
  *   P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
- *   
+ *
  *   <p />
  *   open.mp releases can use `A` as the first digit.
  *   </remarks>
@@ -141,7 +141,7 @@ public const __OPEN_MP_VERSION = 0;
 	// down these are the most common (IMHO) tags plus those from old defines.
 	#define OPEN_MP_TAGS {Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 #endif
- 
+
 // Optionally use `void:` tags on natives - ensure they don't return anything.
 // This is not the default as it adds a tiny bit of overhead to the calls.
 #if defined VOID_TAGS
@@ -158,7 +158,7 @@ public const __OPEN_MP_VERSION = 0;
 		// This is internal and doesn't need the parameters declaring.  It is
 		// also hidden from Qawno by using `/* */` before `native`.
 		/* */ native __ShowPlayerMarkers();
-		
+
 		// This does need the parameters as it is what users call.
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
 		{
@@ -186,7 +186,7 @@ public const __OPEN_MP_VERSION = 0;
 		}
 
 		// The ideal would be:
-		#pragma naked 
+		#pragma naked
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
 		{
 			#emit POP.alt
@@ -195,7 +195,7 @@ public const __OPEN_MP_VERSION = 0;
 			#emit PROC
 			#emit RETN
 		}
-		
+
 		// But we can't do that in macros without `__pragma`.  Even if we could
 		// determine the parameter count in the macro (which we can't) the
 		// result with explicit removal of parameters and a `JUMP` instead of
@@ -535,4 +535,3 @@ stock GetActorPoolSize()
 #define _inc_a_samp
 #define _inc_a_sampdb
 #define _inc_a_vehicles
-

@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -63,21 +63,6 @@ static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
 #define DIALOG_STYLE_PASSWORD                  (DIALOG_STYLE:3)
 #define DIALOG_STYLE_TABLIST                   (DIALOG_STYLE:4)
 #define DIALOG_STYLE_TABLIST_HEADERS           (DIALOG_STYLE:5)
-
-/*
-                                                                           
-    888b      88                       88                                      
-    8888b     88                ,d     ""                                      
-    88 `8b    88                88                                             
-    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
-    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
-    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
-    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
-    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
-                                                                           
-                                                                           
-
-*/
 
 /**
  * <library>omp_dialog</library>
@@ -146,21 +131,6 @@ native bool:GetPlayerDialogData(playerid, &DIALOG_STYLE:style, title[], titleSiz
 native GetPlayerDialogID(playerid);
 
 /*
-                                                                                                                             
-    88888888ba,                                                                                                          88  
-    88      `"8b                                                                              ,d                         88  
-    88        `8b                                                                             88                         88  
-    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
-    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
-    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
-    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
-    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
-                               88                                                                                            
-                               88                                                                                            
-
-*/
-
-/*
 native # Deprecated();
 native           Deprecated(
 native      ====================(
@@ -182,21 +152,6 @@ native
  */
 #pragma deprecated Use `GetPlayerDialogID`
 native GetPlayerDialog(playerid) = GetPlayerDialogID;
-
-/*
-                                                                                                  
-      ,ad8888ba,               88  88  88                                   88                    
-     d8"'    `"8b              88  88  88                                   88                    
-    d8'                        88  88  88                                   88                    
-    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
-    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
-    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
-     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
-      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
-                                                                                                  
-                                                                                                  
-
-*/
 
 /**
  * <library>omp_dialog</library>
@@ -226,4 +181,3 @@ native GetPlayerDialog(playerid) = GetPlayerDialogID;
  * </returns>
  */
 forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
-

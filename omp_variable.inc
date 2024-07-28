@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -70,21 +70,6 @@ static stock VARTYPE:_@VARTYPE() { return __VARTYPE; }
 #define PLAYER_VARTYPE_INT                     (VARTYPE:1)
 #define PLAYER_VARTYPE_STRING                  (VARTYPE:2)
 #define PLAYER_VARTYPE_FLOAT                   (VARTYPE:3)
-
-/*
-                                                    
-     ad88888ba   8b           d8                        
-    d8"     "8b  `8b         d8'                        
-    Y8,           `8b       d8'                         
-    `Y8aaaaa,      `8b     d8'  ,adPPYYba,  8b,dPPYba,  
-      `"""""8b,     `8b   d8'   ""     `Y8  88P'   "Y8  
-            `8b      `8b d8'    ,adPPPPP88  88          
-    Y8a     a8P       `888'     88,    ,88  88          
-     "Y88888P"         `8'      `"8bbdP"Y8  88          
-                                                    
-                                                    
-
-*/
 
 /*
 native # Server Variables();
@@ -258,21 +243,6 @@ native bool:GetSVarNameAtIndex(index, output[], size = sizeof (output));
  * <returns>Returns the type of the SVar.  See table below.</returns>
  */
 native VARTYPE:GetSVarType(const svar[]);
-
-/*
-                                                    
-    88888888ba   8b           d8                        
-    88      "8b  `8b         d8'                        
-    88      ,8P   `8b       d8'                         
-    88aaaaaa8P'    `8b     d8'  ,adPPYYba,  8b,dPPYba,  
-    88""""""'       `8b   d8'   ""     `Y8  88P'   "Y8  
-    88               `8b d8'    ,adPPPPP88  88          
-    88                `888'     88,    ,88  88          
-    88                 `8'      `"8bbdP"Y8  88          
-                                                    
-                                                    
-
-*/
 
 /*
 native # Player Variables();
@@ -459,4 +429,3 @@ native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
  * <returns>Returns the type of the PVar.  See table below.</returns>
  */
 native VARTYPE:GetPVarType(playerid, const pvar[]);
-

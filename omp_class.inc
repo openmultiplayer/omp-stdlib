@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -24,21 +24,6 @@
 /// <p/>
 
 #pragma tabsize 4
-
-/*
-                                                                           
-    888b      88                       88                                      
-    8888b     88                ,d     ""                                      
-    88 `8b    88                88                                             
-    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
-    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
-    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
-    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
-    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
-                                                                           
-                                                                           
-
-*/
 
 /**
  * <library>omp_class</library>
@@ -223,21 +208,6 @@ native GetPlayerClass(classid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spa
  */
 native EditPlayerClass(classid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
 
-/*
-                                                                                                  
-      ,ad8888ba,               88  88  88                                   88                    
-     d8"'    `"8b              88  88  88                                   88                    
-    d8'                        88  88  88                                   88                    
-    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
-    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
-    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
-     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
-      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
-                                                                                                  
-                                                                                                  
-
-*/
-
 /**
  * <summary>Called when a player changes class at class selection (and when class selection first appears).</summary>
  * <param name="playerid">The ID of the player that changed class</param>
@@ -289,4 +259,3 @@ forward OnPlayerRequestSpawn(playerid);
  * </returns>
  */
 forward OnPlayerSpawn(playerid);
-

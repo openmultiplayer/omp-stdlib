@@ -125,7 +125,7 @@ forward getchar(bool:echo = true);
  * <seealso name="getchar"/>
  * <return>The number of characters read, excluding the terminating null character.</return>
  * <remarks>Function <c>getstring</c> stops reading when either the enter key is typed or the
- * maximum length is reached.  The maximum length is in cells (not characters) and it includes a 
+ * maximum length is reached.  The maximum length is in cells (not characters) and it includes a
  * terminating null character.  The function can read both packed and unpacked strings; when reading
  * a packed string, the function may read more characters than the size parameter specifies, since
  * each cell holds multiple characters.</remarks>
@@ -175,4 +175,3 @@ forward bool:gotoxy(x = 1, y = 1);
  * <c>cyan (6)</c>, and <c>white (7)</c>.</remarks>
  */
 forward setattr(foreground = -1, background = -1);
-

@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -55,21 +55,6 @@ static stock CP_TYPE:_@CP_TYPE() { return __CP_TYPE; }
 #define CP_TYPE_AIR_STROBING                   (CP_TYPE:6)
 #define CP_TYPE_AIR_SWINGING                   (CP_TYPE:7)
 #define CP_TYPE_AIR_BOBBING                    (CP_TYPE:8)
-
-/*
-                                                                  
-    88888888ba   88                                                   
-    88      "8b  88                                                   
-    88      ,8P  88                                                   
-    88aaaaaa8P'  88  ,adPPYYba,  8b       d8   ,adPPYba,  8b,dPPYba,  
-    88""""""'    88  ""     `Y8  `8b     d8'  a8P_____88  88P'   "Y8  
-    88           88  ,adPPPPP88   `8b   d8'   8PP"""""""  88          
-    88           88  88,    ,88    `8b,d8'    "8b,   ,aa  88          
-    88           88  `"8bbdP"Y8      Y88'      `"Ybbd8"'  88          
-                                     d8'                              
-                                    d8'                               
-
-*/
 
 /*
 native # Player Checkpoints();
@@ -181,21 +166,6 @@ native bool:IsPlayerCheckpointActive(playerid);
  * <returns><b><c>0</c></b> if the player isn't connected else <b><c>1</c></b>.</returns>
  */
 native bool:GetPlayerCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:radius = 0.0);
-
-/*
-                                                 
-    88888888ba                                       
-    88      "8b                                      
-    88      ,8P                                      
-    88aaaaaa8P'  ,adPPYYba,   ,adPPYba,   ,adPPYba,  
-    88""""88'    ""     `Y8  a8"     ""  a8P_____88  
-    88    `8b    ,adPPPPP88  8b          8PP"""""""  
-    88     `8b   88,    ,88  "8a,   ,aa  "8b,   ,aa  
-    88      `8b  `"8bbdP"Y8   `"Ybbd8"'   `"Ybbd8"'  
-                                                 
-                                                 
-
-*/
 
 /*
 native # Race Checkpoints();
@@ -321,21 +291,6 @@ native bool:IsPlayerRaceCheckpointActive(playerid);
  */
 native bool:GetPlayerRaceCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:nextX = 0.0, &Float:nextY = 0.0, &Float:nextZ = 0.0, &Float:radius = 0.0);
 
-/*
-                                                                                                  
-      ,ad8888ba,               88  88  88                                   88                    
-     d8"'    `"8b              88  88  88                                   88                    
-    d8'                        88  88  88                                   88                    
-    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
-    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
-    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
-     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
-      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
-                                                                                                  
-                                                                                                  
-
-*/
-
 /**
  * <summary>This callback is called when a player enters the checkpoint set for that player.</summary>
  * <param name="playerid">The player who entered the checkpoint</param>
@@ -417,4 +372,3 @@ forward OnPlayerEnterRaceCheckpoint(playerid);
  * </returns>
  */
 forward OnPlayerLeaveRaceCheckpoint(playerid);
-
