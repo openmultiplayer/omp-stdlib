@@ -325,7 +325,6 @@ native bool:ispacked(const string[]);
  * </remarks>
  * <returns>This function always returns 0.</returns>
  */
-#pragma deprecated Use `format`.
 native strformat(dest[], size = sizeof (dest), bool:pack = true, const format[], {Fixed, Float, _}:...);
 
 /**

@@ -208,6 +208,20 @@ native SendRconCommand(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_network</library>
+ * <summary>Sends an RCON (Remote Console) command.</summary>
+ * <param name="format">The RCON command to be executed.  May be optionally formatted.</param>
+ * <seealso name="IsPlayerAdmin" />
+ * <seealso name="OnRconCommand" />
+ * <seealso name="OnRconLoginAttempt" />
+ * <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
+ * <remarks>'password 0' will remove the server's password if one is set.</remarks>
+ * <returns>This function always returns <b><c>1</c></b>.</returns>
+ * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
+ */
+native SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
+
+/**
+ * <library>omp_network</library>
  * <summary>Returns the client version, as reported by the player.</summary>
  * <param name="playerid">The ID of the player to get the client version of</param>
  * <param name="version">The string to store the player's version in, passed by reference</param>
@@ -219,6 +233,15 @@ native SendRconCommand(const format[], OPEN_MP_TAGS:...);
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure (if player specified doesn't exist).</returns>
  */
 native GetPlayerVersion(playerid, version[], len = sizeof (version));
+
+/**
+ * <library>omp_network</library>
+ * <summary>Get a players unique ID.</summary>
+ * <param name="playerid">The player to get the unique ID of</param>
+ * <param name="serial">Where to save the unique ID</param>
+ * <param name="len">The size of "output" (the serial)</param>
+ */
+native gpci(playerid, serial[], len = sizeof (serial));
 
 /**
  * <library>omp_network</library>
@@ -551,38 +574,6 @@ native GetNetworkStats(output[], size = sizeof (output));
  * or has timed out.</remarks>
  */
 native GetPlayerNetworkStats(playerid, output[], size = sizeof (output));
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_network</library>
- * <summary>Sends an RCON (Remote Console) command.</summary>
- * <param name="format">The RCON command to be executed.  May be optionally formatted.</param>
- * <seealso name="IsPlayerAdmin" />
- * <seealso name="OnRconCommand" />
- * <seealso name="OnRconLoginAttempt" />
- * <remarks>Does not support login, due to the lack of a 'playerid' parameter.</remarks>
- * <remarks>'password 0' will remove the server's password if one is set.</remarks>
- * <returns>This function always returns <b><c>1</c></b>.</returns>
- * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
- */
-#pragma deprecated Use `SendRconCommand`
-native SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
-
-/**
- * <library>omp_network</library>
- * <summary>Get a players unique ID.</summary>
- * <param name="playerid">The player to get the unique ID of</param>
- * <param name="serial">Where to save the unique ID</param>
- * <param name="len">The size of "output" (the serial)</param>
- */
-#pragma deprecated Use `GPCI`.
-native gpci(playerid, serial[], len = sizeof (serial));
 
 /**
  * <summary>This callback is called when a SendClientCheck request comletes</summary>

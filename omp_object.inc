@@ -168,9 +168,7 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 #if __namemax > 31
 	native bool:SetObjectsDefaultCameraCollision(bool:disable);
 #else
-	static stock __SetObjectsDefaultCameraCol()
-	{
-	}
+	native bool:SetObjectsDefaultCameraCol(bool:disable);
 #endif
 
 /**
@@ -428,6 +426,21 @@ native GetObjectModel(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
  * </returns>
  */
+native bool:SetObjectNoCameraCol(objectid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Disable collisions between players' cameras and the specified object.</summary>
+ * <param name="objectid">The ID of the object to disable camera collisions on</param>
+ * <seealso name="SetObjectsDefaultCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
+ * </returns>
+ */
 native bool:SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
 
 /**
@@ -599,6 +612,26 @@ native bool:BeginObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
+ * User Interface).</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The ID of the object to be edited by the player</param>
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
+ * is specified, but nothing will happen.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
+ * </returns>
+ */
+native bool:EditObject(playerid, objectid) = BeginObjectEditing;
+
+/**
+ * <library>omp_object</library>
  * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
  * is called when the player selects an object.</summary>
  * <param name="playerid">The ID of the player that should be able to select the object</param>
@@ -612,6 +645,19 @@ native bool:BeginObjectSelecting(playerid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
+ * is called when the player selects an object.</summary>
+ * <param name="playerid">The ID of the player that should be able to select the object</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="CancelEdit" />
+ * <seealso name="OnPlayerSelectObject" />
+ */
+native bool:SelectObject(playerid) = BeginObjectSelecting;
+
+/**
+ * <library>omp_object</library>
  * <summary>Cancel object edition mode for a player.</summary>
  * <param name="playerid">The ID of the player to cancel edition for</param>
  * <seealso name="SelectObject" />
@@ -620,6 +666,17 @@ native bool:BeginObjectSelecting(playerid);
  * <seealso name="EditAttachedObject" />
  */
 native bool:EndObjectEditing(playerid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Cancel object edition mode for a player.</summary>
+ * <param name="playerid">The ID of the player to cancel edition for</param>
+ * <seealso name="SelectObject" />
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ */
+native bool:CancelEdit(playerid) = EndObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -644,6 +701,12 @@ native Float:GetObjectMoveSpeed(objectid);
  * <summary></summary>
  */
 native bool:GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>
@@ -688,16 +751,19 @@ native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[
  */
 native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
-/**/ native bool:__IsObjectNoCameraCol(objectid) = IsObjectNoCameraCol;
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:IsObjectNoCameraCol(objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-//native bool:HasObjectCameraCollision(objectid);
 stock bool:HasObjectCameraCollision(objectid)
 {
-	return !__IsObjectNoCameraCol(objectid);
+	return !IsObjectNoCameraCol(objectid);
 }
 
 /*
@@ -861,9 +927,7 @@ native GetPlayerObjectModel(playerid, objectid);
 #if __namemax > 31
 	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 #else
-	static stock __SetPlayerObjectNoCameraCol()
-	{
-	}
+	native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 #endif
 
 /**
@@ -1045,6 +1109,24 @@ native bool:BeginPlayerObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The object to be edited by the player</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
+ * </returns>
+ */
+native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
+
+/**
+ * <library>omp_object</library>
  * <summary></summary>
  */
 native Float:GetPlayerObjectDrawDistance(playerid, objectid);
@@ -1108,17 +1190,15 @@ native bool:GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[
  * <library>omp_object</library>
  * <summary></summary>
  */
-
-/**/ native bool:__IsPlayerObjectNoCameraCol(playerid, objectid) = IsPlayerObjectNoCameraCol;
+native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-//native bool:HasPlayerObjectCameraCollision(playerid, objectid);
 stock bool:HasPlayerObjectCameraCollision(playerid, objectid)
 {
-	return !__IsObjectNoCameraCol(playerid, objectid);
+	return !IsPlayerObjectNoCameraCol(playerid, objectid);
 }
 
 /**
@@ -1146,9 +1226,7 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
 #if __namemax > 31
 	native GetPlayerCameraTargetPlayerObject(playerid);
 #else
-	static stock __GetPlayerCameraTargetPlayerOb()
-	{
-	}
+	native GetPlayerCameraTargetPlayerObj(playerid);
 #endif
 
 /*
@@ -1313,152 +1391,6 @@ native GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPat
  * <library>omp_object</library>
  */
 native bool:IsValidCustomModel(modelid);
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_object</library>
- * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
- * is called when the player selects an object.</summary>
- * <param name="playerid">The ID of the player that should be able to select the object</param>
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="CancelEdit" />
- * <seealso name="OnPlayerSelectObject" />
- */
-#pragma deprecated Use `BeginObjectSelecting`
-native bool:SelectObject(playerid) = BeginObjectSelecting;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
- * User Interface).</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The ID of the object to be edited by the player</param>
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
- * is specified, but nothing will happen.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
- * </returns>
- */
-#pragma deprecated Use `BeginObjectEditing`
-native bool:EditObject(playerid, objectid) = BeginObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The object to be edited by the player</param>
- * <seealso name="EditObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
- * </returns>
- */
-#pragma deprecated Use `BeginPlayerObjectEditing`
-native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary>Cancel object edition mode for a player.</summary>
- * <param name="playerid">The ID of the player to cancel edition for</param>
- * <seealso name="SelectObject" />
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- */
-#pragma deprecated Use `EndObjectEditing`
-native bool:CancelEdit(playerid) = EndObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `GetObjectMovingTargetPos`
-native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
- * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
- * <b><c>0</c></b> to enable them (enabled by default)</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
- * not toggle existing objects' camera collisions.</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- */
-#pragma deprecated Use `SetObjectsDefaultCameraCollision`
-native bool:SetObjectsDefaultCameraCol(bool:disable);
-
-/**
- * <library>omp_object</library>
- * <summary>Disable collisions between players' cameras and the specified object.</summary>
- * <param name="objectid">The ID of the object to disable camera collisions on</param>
- * <seealso name="SetObjectsDefaultCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
- * </returns>
- */
-#pragma deprecated Use `SetObjectNoCameraCollision`
-native bool:SetObjectNoCameraCol(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `!HasObjectCameraCollision`
-native bool:IsObjectNoCameraCol(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Toggles a player object camera collision.</summary>
- * <param name="playerid">The playerid the object belongs to</param>
- * <param name="objectid">The ID of the object you want to toggle</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetObjectsDefaultCameraCol" />
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
- */
-#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
-native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `!HasPlayerObjectCameraCollision`
-native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`
-native GetPlayerCameraTargetPlayerObj(playerid);
 
 /**
  * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>

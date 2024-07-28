@@ -359,7 +359,6 @@ native bool:fmatch(filename[], const pattern[], index = 0, size = sizeof (filena
  * </remarks>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
-#pragma deprecated Use `fcreatedir`.
 native bool:fmkdir(const dirname[]) = fcreatedir;
 
 /**
@@ -464,13 +463,11 @@ native bool:dfind(const pattern[], filename[], size = sizeof (filename), &idx);
 /**
  * <library>file</library>
  */
-#pragma deprecated Use `fcreatedir`.
 native bool:dcreate(const name[]) = fcreatedir;
 
 /**
  * <library>file</library>
  */
-#pragma deprecated Use `frename`.
 native bool:drename(const oldname[], const newname[]) = frename;
 
 /**

@@ -472,6 +472,18 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
  * that vehicle.</summary>
  * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
+ * <param name="colour1">The primary colour ID to set the vehicle to</param>
+ * <param name="colour2">The secondary colour ID to set the vehicle to</param>
+ * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
+ * for this function to have effect.</remarks>
+ */
+native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
+ * that vehicle.</summary>
+ * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
  * <param name="colour1">The primary Colour ID to set the vehicle to</param>
  * <param name="colour2">The secondary Colour ID to set the vehicle to</param>
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
@@ -479,10 +491,6 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  */
 #if __namemax > 31
 	native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2) = TextDrawSetPreviewVehCol;
-#else
-	static stock __TextDrawSetPreviewVehCol()
-	{
-	}
 #endif
 
 /**
@@ -583,12 +591,13 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
 /**
  * <library>omp_textdraw</library>
  */
+native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ */
 #if __namemax > 31
 	native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
-#else
-	static stock __TextDrawGetPreviewVehCol()
-	{
-	}
 #endif
 
 /**
@@ -1116,6 +1125,24 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
  * <param name="playerid">The ID of the player whose player-textdraw to change</param>
  * <param name="textid">The ID of the player's player-textdraw to change</param>
+ * <param name="colour1">The <a href="https://open.mp/docs/scripting/resources/vehiclecolorid">colour</a> to set
+ * the vehicle's primary colour to</param>
+ * <param name="colour2">The <a href="https://open.mp/docs/scripting/resources/vehiclecolorid">colour</a> to set
+ * the vehicle's secondary colour to</param>
+ * <seealso name="PlayerTextDrawSetPreviewModel" />
+ * <seealso name="PlayerTextDrawSetPreviewRot" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="OnPlayerClickPlayerTextDraw" />
+ * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
+ * a vehicle in order for this function to have effect.</remarks>
+ */
+native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
+ * <param name="playerid">The ID of the player whose player-textdraw to change</param>
+ * <param name="textid">The ID of the player's player-textdraw to change</param>
  * <param name="colour1">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
  * the vehicle's primary colour to</param>
  * <param name="colour2">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
@@ -1129,10 +1156,6 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  */
 #if __namemax > 31
 	native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2) = PlayerTextDrawSetPreviewVehCol;
-#else
-	static stock __PlayerTextDrawSetPreviewVehCo()
-	{
-	}
 #endif
 
 /**
@@ -1183,12 +1206,13 @@ native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid) = PlayerTextDrawG
 /**
  * <library>omp_textdraw</library>
  */
+native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
+
+/**
+ * <library>omp_textdraw</library>
+ */
 #if __namemax > 31
 	native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid) = PlayerTextDrawGetBackgroundCol;
-#else
-	static stock __PlayerTextDrawGetBackgroundCo()
-	{
-	}
 #endif
 
 /**
@@ -1239,12 +1263,13 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 /**
  * <library>omp_textdraw</library>
  */
+native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
+
+/**
+ * <library>omp_textdraw</library>
+ */
 #if __namemax > 31
 	native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
-#else
-	static stock __PlayerTextDrawGetPreviewVehCo()
-	{
-	}
 #endif
 
 /*
@@ -1343,19 +1368,6 @@ native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
 
 /**
  * <library>omp_textdraw</library>
- * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
- * that vehicle.</summary>
- * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
- * <param name="colour1">The primary colour ID to set the vehicle to</param>
- * <param name="colour2">The secondary colour ID to set the vehicle to</param>
- * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
- * for this function to have effect.</remarks>
- */
-#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
-native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
-
-/**
- * <library>omp_textdraw</library>
  * <summary>Sets the text colour of a player-textdraw.</summary>
  * <param name="playerid">The ID of the player who's textdraw to set the colour of</param>
  * <param name="textid">The TextDraw to change</param>
@@ -1442,25 +1454,6 @@ native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroun
 
 /**
  * <library>omp_textdraw</library>
- * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
- * <param name="playerid">The ID of the player whose player-textdraw to change</param>
- * <param name="textid">The ID of the player's player-textdraw to change</param>
- * <param name="colour1">The <a href="https://open.mp/docs/scripting/resources/vehiclecolorid">colour</a> to set
- * the vehicle's primary colour to</param>
- * <param name="colour2">The <a href="https://open.mp/docs/scripting/resources/vehiclecolorid">colour</a> to set
- * the vehicle's secondary colour to</param>
- * <seealso name="PlayerTextDrawSetPreviewModel" />
- * <seealso name="PlayerTextDrawSetPreviewRot" />
- * <seealso name="PlayerTextDrawFont" />
- * <seealso name="OnPlayerClickPlayerTextDraw" />
- * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
- * a vehicle in order for this function to have effect.</remarks>
- */
-#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`
-native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
-
-/**
- * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
 	#pragma deprecated Use `TextDrawGetColour`
@@ -1486,12 +1479,6 @@ native TextDrawGetBackgroundColor(Text:textid);
 /**
  * <library>omp_textdraw</library>
  */
-#pragma deprecated Use `TextDrawGetPreviewVehicleColours`
-native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
-
-/**
- * <library>omp_textdraw</library>
- */
 #if !defined MIXED_SPELLINGS
 	#pragma deprecated Use `PlayerTextDrawGetColour`
 #endif
@@ -1504,18 +1491,6 @@ native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 	#pragma deprecated Use `PlayerTextDrawGetBoxColour`
 #endif
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
-
-/**
- * <library>omp_textdraw</library>
- */
-#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`
-native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
-
-/**
- * <library>omp_textdraw</library>
- */
-#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`
-native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
 
 /**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
