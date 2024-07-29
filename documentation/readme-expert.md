@@ -406,10 +406,6 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 * `GetPlayerPoolSize` returns `-1` when there are no players (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
 * `GetVehiclePoolSize` returns `-1` when there are no vehicles (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
 * `GetActorPoolSize` returns `-1` when there are no actors (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
-* `ClearAnimations` no longer removes players from vehicles, only stops animations returned by `GetPlayerAnimationIndex`.
-* `RemovePlayerFromVehicle` has an optional `force` parameter is stop all driving and entering vehicles instantly.
-* `OnPlayerDisconnect` is called with `reason = 4` when the script ends to distinguish it from players leaving the server.
-* `OnPlayerConnect` is called when filterscripts start, in line with the behaviour in gamemodes.
 * `GetVehicleComponentInSlot`, `AddVehicleComponent`, `RemoveVehicleComponent`, and `OnVehicleMod` have two additional slots, bringing the total number of component slots up to 16.  `CARMODTYPE_FRONT_BULLBAR` is used for components `1100`, `1115`, `1116`, `1123`, and `1125`; `CARMODTYPE_REAR_BULLBAR` is used for components `1109` and `1110`; which were all previously in slots `CARMODTYPE_FRONT_BUMPER` and `CARMODTYPE_REAR_BUMPER`.  This is because those slots could contain two mods at once, both shown but only one accessible.
 * Gang zones are clamped to the nearest whole co-ordinate and the parameters are automatially sorted to prevent visual glitches.
 * A default class is used when no player classes are ever specified.

@@ -94,22 +94,22 @@ static stock CARMODTYPE:_@CARMODTYPE() { return MAX_CARMODS; }
 #define CARMODTYPE_REAR_BULLBAR                (CARMODTYPE:15)
 
 // Backwards-compatibility.
-#define VEHICLE_PARAMS: bool:
+#define VEHICLE_PARAMS: _:
 
 /**
  * <library>omp_vehicle</library>
  */
-const bool:VEHICLE_PARAMS_UNSET = bool:-1;
+const VEHICLE_PARAMS_UNSET = -1;
 
 /**
  * <library>omp_vehicle</library>
  */
-const bool:VEHICLE_PARAMS_OFF = false;
+const VEHICLE_PARAMS_OFF = 0;
 
 /**
  * <library>omp_vehicle</library>
  */
-const bool:VEHICLE_PARAMS_ON = true;
+const VEHICLE_PARAMS_ON = 1;
 
 /// <p/>
 /**
@@ -661,7 +661,7 @@ native bool:SetVehicleZAngle(vehicleid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The player and/or vehicle specified do not exist.
  * </returns>
  */
-native bool:SetVehicleParamsForPlayer(vehicleid, playerid, bool:objective = undefined, bool:doors = undefined);
+native bool:SetVehicleParamsForPlayer(vehicleid, playerid, objective = -1, doors = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -703,7 +703,7 @@ native bool:ManualVehicleEngineAndLights();
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleParamsEx(vehicleid, bool:engine = undefined, bool:lights = undefined, bool:alarm = undefined, bool:doors = undefined, bool:bonnet = undefined, bool:boot = undefined, bool:objective = undefined);
+native bool:SetVehicleParamsEx(vehicleid, engine = -1, lights = -1, alarm = -1, doors = -1, bonnet = -1, boot = -1, objective = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -720,7 +720,7 @@ native bool:SetVehicleParamsEx(vehicleid, bool:engine = undefined, bool:lights =
  * <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b>
  * ('unset').</remarks>
  */
-native bool:GetVehicleParamsEx(vehicleid, &bool:engine = undefined, &bool:lights = undefined, &bool:alarm = undefined, &bool:doors = undefined, &bool:bonnet = undefined, &bool:boot = undefined, &bool:objective = undefined);
+native bool:GetVehicleParamsEx(vehicleid, &engine = -1, &lights = -1, &alarm = -1, &doors = -1, &bonnet = -1, &boot = -1, &objective = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -748,7 +748,7 @@ native bool:GetVehicleParamsSirenState(vehicleid);
  * <seealso name="GetVehicleParamsCarWindows" />
  * <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
  */
-native bool:SetVehicleParamsCarDoors(vehicleid, bool:frontLeft = undefined, bool:frontRight = undefined, bool:rearLeft = undefined, bool:rearRight = undefined);
+native bool:SetVehicleParamsCarDoors(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -764,7 +764,7 @@ native bool:SetVehicleParamsCarDoors(vehicleid, bool:frontLeft = undefined, bool
  * <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b>
  * if closed, <b><c>1</c></b> if open.</remarks>
  */
-native bool:GetVehicleParamsCarDoors(vehicleid, &bool:frontLeft = undefined, &bool:frontRight = undefined, &bool:rearLeft = undefined, &bool:rearRight = undefined);
+native bool:GetVehicleParamsCarDoors(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -782,7 +782,7 @@ native bool:GetVehicleParamsCarDoors(vehicleid, &bool:frontLeft = undefined, &bo
  * <seealso name="GetVehicleParamsCarDoors" />
  * <seealso name="GetVehicleParamsCarWindows" />
  */
-native bool:SetVehicleParamsCarWindows(vehicleid, bool:frontLeft = undefined, bool:frontRight = undefined, bool:rearLeft = undefined, bool:rearRight = undefined);
+native bool:SetVehicleParamsCarWindows(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -799,7 +799,7 @@ native bool:SetVehicleParamsCarWindows(vehicleid, bool:frontLeft = undefined, bo
  * if closed, <b><c>1</c></b> if open.</remarks>
  * <returns>The vehicle's windows state is stored in the specified variables.</returns>
  */
-native bool:GetVehicleParamsCarWindows(vehicleid, &bool:frontLeft = undefined, &bool:frontRight = undefined, &bool:rearLeft = undefined, &bool:rearRight = undefined);
+native bool:GetVehicleParamsCarWindows(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -1601,7 +1601,7 @@ native Float:GetVehicleTrainSpeed(vehicleid);
  * (<a href="#SetPlayerTeam">SetPlayerTeam</a> must be used!).</summary>
  * <seealso name="SetPlayerTeam" />
  */
-native void:EnableVehicleFriendlyFire();
+native EnableVehicleFriendlyFire();
 
 /**
  * <library>omp_vehicle</library>

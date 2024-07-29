@@ -113,8 +113,8 @@ public const __OPEN_MP_VERSION = 0;
 #endif
 
 // Optionally stricter tags.
-#if defined NO_TAGS
-	#define __TAG(%0) _
+#if defined WEAK_TAGS
+	#define __TAG(%0) t_%0
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) T_%0
 	#if __pawn_build >= 11
@@ -122,9 +122,9 @@ public const __OPEN_MP_VERSION = 0;
 	#else
 		#define OPEN_MP_TAGS {T_WEAPON, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#endif
-#else // if defined WEAK_TAGS
-	#define __TAG(%0) t_%0
-	#define WEAK_TAGS
+#else // if defined NO_TAGS
+	#define __TAG(%0) _
+	#define NO_TAGS
 #endif
 
 #if defined OPEN_MP_TAGS
@@ -263,13 +263,7 @@ public const __OPEN_MP_VERSION = 0;
 	#pragma warning pop
 #endif
 
-/**
- * <summary>
- *   An invalid value (<c>-1</c>) as a boolean for some natives (most notably
- *   the vehicle param ones) that can skip `true`/`false` parameters.
- * </summary>
- */
-const bool:undefined = bool:-1;
+const undefined = -1;
 
 // Try many places to get the latest version.
 
