@@ -452,7 +452,10 @@ const undefined = -1;
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
-stock GetPlayerPoolSize() return MAX_PLAYERS - 1;
+stock GetPlayerPoolSize()
+{
+	return MAX_PLAYERS - 1;
+}
 
 /**
  * <library>omp_core</library>
@@ -461,7 +464,10 @@ stock GetPlayerPoolSize() return MAX_PLAYERS - 1;
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
-stock GetVehiclePoolSize() return MAX_VEHICLES - 1;
+stock GetVehiclePoolSize()
+{
+	return MAX_VEHICLES - 1;
+}
 
 /**
  * <library>omp_core</library>
@@ -471,7 +477,10 @@ stock GetVehiclePoolSize() return MAX_VEHICLES - 1;
  * <seealso name="SetActorHealth" />
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
-stock GetActorPoolSize() return MAX_ACTORS - 1;
+stock GetActorPoolSize()
+{
+	return MAX_ACTORS - 1;
+}
 
 // Backwards-compatibility defines.
 #define _actor_included
