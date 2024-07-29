@@ -125,7 +125,7 @@ native AddPlayerClassEx(team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Fl
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SpawnPlayer" />
  */
-native bool:SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
+native SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
 
 /**
  * <library>omp_class</library>
@@ -150,7 +150,7 @@ native bool:SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SpawnPlayer" />
  */
-native bool:GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
+native GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
 
 /**
  * <library>omp_class</library>
@@ -165,7 +165,7 @@ native bool:GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native bool:SpawnPlayer(playerid);
+native SpawnPlayer(playerid);
 
 /**
  * <library>omp_class</library>
@@ -177,7 +177,7 @@ native bool:SpawnPlayer(playerid);
  * <seealso name="GetPlayerTeam" />
  * <seealso name="SetPlayerTeam" />
  */
-forward bool:SetTeamCount(count);
+forward SetTeamCount(count);
 
 /**
  * <library>omp_class</library>
@@ -190,7 +190,7 @@ forward bool:SetTeamCount(count);
  * <remarks>The player will not return to class selection until they re-spawn.  This can be achieved
  * with <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>, as seen in the below example.</remarks>
  */
-native bool:ForceClassSelection(playerid);
+native ForceClassSelection(playerid);
 
 /**
  * <library>omp_class</library>

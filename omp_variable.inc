@@ -94,7 +94,7 @@ native
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native bool:SetSVarInt(const svar[], value);
+native SetSVarInt(const svar[], value);
 
 /**
  * <library>omp_variable</library>
@@ -127,7 +127,7 @@ native GetSVarInt(const svar[]);
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native bool:SetSVarString(const svar[], const value[], OPEN_MP_TAGS:...);
+native SetSVarString(const svar[], const value[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_variable</library>
@@ -161,7 +161,7 @@ native GetSVarString(const svar[], output[], len = sizeof (output));
  *   <b><c>0</c></b>: The function failed to execute.  The variable name is null or over 40 characters.
  * </returns>
  */
-native bool:SetSVarFloat(const svar[], Float:value);
+native SetSVarFloat(const svar[], Float:value);
 
 /**
  * <library>omp_variable</library>
@@ -195,7 +195,7 @@ native Float:GetSVarFloat(const svar[]);
  *   <b><c>0</c></b>: The function failed to execute.  There is no variable set with the given name.
  * </returns>
  */
-native bool:DeleteSVar(const svar[]);
+native DeleteSVar(const svar[]);
 
 /**
  * <library>omp_variable</library>
@@ -218,7 +218,7 @@ native GetSVarsUpperIndex();
  * <seealso name="GetSVarFloat" />
  * <seealso name="GetSVarString" />
  */
-native bool:GetSVarNameAtIndex(index, output[], size = sizeof (output));
+native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 
 /**
  * <library>omp_variable</library>

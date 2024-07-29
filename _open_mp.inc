@@ -24,6 +24,26 @@
 /// <p/>
 
 #pragma tabsize 4
+
+#if defined __PawnBuild
+	#if __PawnBuild == 0
+		#undef __PawnBuild
+		#define __pawn_build 0
+	#else
+		#define __pawn_build __PawnBuild
+	#endif
+#else
+	#define __pawn_build 0
+#endif
+
+#if !defined SAMP_CONST_CORRECT \
+	&& !defined OPEN_MP_CONST_CORRECT
+	#if __pawn_build != 0
+		#pragma warning disable 214
+		#pragma warning disable 239
+	#endif
+#endif
+
 #define SAMP_CONST_CORRECT
 #define OPEN_MP_CONST_CORRECT
 
@@ -100,17 +120,6 @@ public const __SAMP_INCLUDES_VERSION = 0x037030;
  */
 public const __OPEN_MP_VERSION = 0;
 #pragma unused __OPEN_MP_VERSION
-
-#if defined __PawnBuild
-	#if __PawnBuild == 0
-		#undef __PawnBuild
-		#define __pawn_build 0
-	#else
-		#define __pawn_build __PawnBuild
-	#endif
-#else
-	#define __pawn_build 0
-#endif
 
 // Optionally stricter tags.
 #if defined WEAK_TAGS

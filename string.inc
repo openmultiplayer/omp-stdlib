@@ -393,7 +393,7 @@ native uuencode(dest[], const source[], numbytes, maxlength = sizeof (dest));
  * <seealso name="strcat"/>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
-native bool:memcpy(dest[], const source[], index = 0, numbytes, maxlength = sizeof (dest));
+native memcpy(dest[], const source[], index = 0, numbytes, maxlength = sizeof (dest));
 
 /**
  * <library>string</library>

@@ -433,7 +433,7 @@ native Format(output[], len = sizeof (output), const format[], {Float, _}:...) =
  * <remarks>The use of many timers will result in increased memory/cpu usage. </remarks>
  * <returns>The ID of the timer that was started.  Timer IDs start at <b><c>1</c></b>.</returns>
  */
-native SetTimer(const functionName[], interval, bool:repeating);
+native SetTimer(const functionName[], interval, repeating);
 
 /**
  * <library>omp_core</library>
@@ -469,7 +469,7 @@ native SetTimer(const functionName[], interval, bool:repeating);
  * reused.  There are no internal checks to verify that the parameters passed are valid (e.g.  duration
  * not a minus value).</returns>
  */
-native SetTimerEx(const functionName[], interval, bool:repeating, const specifiers[] = "", OPEN_MP_TAGS:...);
+native SetTimerEx(const functionName[], interval, repeating, const specifiers[] = "", OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -485,12 +485,12 @@ native void:KillTimer(timerid);
 /**
  * <library>omp_core</library>
  */
-native bool:IsValidTimer(timerid);
+native IsValidTimer(timerid);
 
 /**
  * <library>omp_core</library>
  */
-native bool:IsRepeatingTimer(timerid);
+native IsRepeatingTimer(timerid);
 
 /**
  * <library>omp_core</library>
@@ -649,7 +649,7 @@ native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = 
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
+native SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -663,7 +663,7 @@ native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
+native SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
 
 /**
  * <library>omp_core</library>
@@ -684,7 +684,7 @@ native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) 
  * <paramref name="reason" /> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer"
  * /> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
  */
-native bool:SendDeathMessage(killer, killee, weapon);
+native SendDeathMessage(killer, killee, weapon);
 
 /**
  * <library>omp_core</library>
@@ -700,12 +700,12 @@ native bool:SendDeathMessage(killer, killee, weapon);
  *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
  * </returns>
  */
-native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 
 /**
  * <library>omp_core</library>
  */
-native bool:IsValidNickName(const name[]);
+native IsValidNickName(const name[]);
 
 /**
  * <library>omp_core</library>
@@ -1009,7 +1009,7 @@ native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
  * <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable
  * is not a boolean or doesn't exist.</returns>
  */
-native bool:GetConsoleVarAsBool(const cvar[]);
+native GetConsoleVarAsBool(const cvar[]);
 
 /**
  * <library>omp_core</library>
@@ -1023,7 +1023,7 @@ native bool:GetConsoleVarAsBool(const cvar[]);
  * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable
  * is not a boolean or doesn't exist.</returns>
  */
-native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
+native GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
 
 /**
  * <library>omp_core</library>
@@ -1033,27 +1033,27 @@ native void:AllowNickNameCharacter(character, bool:allow);
 /**
  * <library>omp_core</library>
  */
-native bool:IsNickNameCharacterAllowed(character);
+native IsNickNameCharacterAllowed(character);
 
 /**
  * <library>omp_core</library>
  */
-native bool:AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
+native AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
  */
-native bool:SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
+native SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
  */
-native bool:RemoveServerRule(const rule[]);
+native RemoveServerRule(const rule[]);
 
 /**
  * <library>omp_core</library>
  */
-native bool:IsValidServerRule(const rule[]);
+native IsValidServerRule(const rule[]);
 
 /*
 native # Client Config();
@@ -1180,7 +1180,7 @@ native void:SetWorldTime(hour);
  * <remarks>This function can only be used in <a href="#OnGameModeInit">OnGameModeInit</a>.  For other
  * times, see <a href="#ShowPlayerNameTagForPlayer">ShowPlayerNameTagForPlayer</a>.</remarks>
  */
-native void:ShowNameTags(bool:show);
+native void:ShowNameTags(show);
 
 /**
  * <library>omp_core</library>
@@ -1250,7 +1250,7 @@ native bool:ChatTextReplacementToggled();
  * <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
  * <seealso name="EnableStuntBonusForPlayer" />
  */
-native EnableStuntBonusForAll(bool:enable);
+native EnableStuntBonusForAll(enable);
 
 /**
  * <library>omp_core</library>
@@ -1260,7 +1260,7 @@ native EnableStuntBonusForAll(bool:enable);
  * <seealso name="IsPlayerAdmin" />
  * <seealso name="AllowPlayerTeleport" />
  */
-native void:AllowAdminTeleport(bool:allow);
+native void:AllowAdminTeleport(allow);
 
 /**
  * <library>omp_core</library>
@@ -1268,7 +1268,7 @@ native void:AllowAdminTeleport(bool:allow);
  * <seealso name="AllowAdminTeleport" />
  * <seealso name="AllowPlayerTeleport" />
  */
-native bool:IsAdminTeleportAllowed();
+native IsAdminTeleportAllowed();
 
 /**
  * <library>omp_core</library>
@@ -1279,28 +1279,28 @@ native bool:IsAdminTeleportAllowed();
  * <seealso name="GetPlayerInterior" />
  * <seealso name="OnPlayerInteriorChange" />
  */
-native void:AllowInteriorWeapons(bool:allow);
+native void:AllowInteriorWeapons(allow);
 
 /**
  * <library>omp_core</library>
  * <summary>Can weapons be used in interiors?</summary>
  * <seealso name="AllowInteriorWeapons" />
  */
-native bool:AreInteriorWeaponsAllowed();
+native AreInteriorWeaponsAllowed();
 
 /**
  * <library>omp_core</library>
  * <summary>Are the animations missing from some versions enabled?</summary>
  * <seealso name="EnableAllAnimations" />
  */
-native bool:AreAllAnimationsEnabled();
+native AreAllAnimationsEnabled();
 
 /**
  * <library>omp_core</library>
  * <summary>Allow use of the animations missing from some versions.</summary>
  * <seealso name="AreAllAnimationsEnabled" />
  */
-native void:EnableAllAnimations(bool:enable);
+native void:EnableAllAnimations(enable);
 
 /**
  * <library>omp_core</library>
@@ -1309,7 +1309,7 @@ native void:EnableAllAnimations(bool:enable);
  * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
-forward void:EnableTirePopping(bool:enable);
+forward void:EnableTirePopping(enable);
 
 /**
  * <library>omp_core</library>
@@ -1327,7 +1327,7 @@ native void:SetDeathDropAmount(amount);
  * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
  * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
  */
-native EnableZoneNames(bool:enable);
+native EnableZoneNames(enable);
 
 /*
 native # NPCs();

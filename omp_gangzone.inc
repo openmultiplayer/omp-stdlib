@@ -265,7 +265,7 @@ native GangZoneStopFlashForAll(zoneid);
  *   <b><c>0</c></b>: The gangzone is not valid.
  * </returns>
  */
-native bool:IsValidGangZone(zoneid);
+native IsValidGangZone(zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -286,7 +286,7 @@ native bool:IsValidGangZone(zoneid);
  *   <b><c>0</c></b>: The player is not in gangzone.
  * </returns>
  */
-native bool:IsPlayerInGangZone(playerid, zoneid);
+native IsPlayerInGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -307,7 +307,7 @@ native bool:IsPlayerInGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The gangzone is not visible for player.
  * </returns>
  */
-native bool:IsGangZoneVisibleForPlayer(playerid, zoneid);
+native IsGangZoneVisibleForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -374,7 +374,7 @@ native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColour
  *   <b><c>0</c></b>: The gangzone is not flashing for player.
  * </returns>
  */
-native bool:IsGangZoneFlashingForPlayer(playerid, zoneid);
+native IsGangZoneFlashingForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -395,7 +395,7 @@ native bool:IsGangZoneFlashingForPlayer(playerid, zoneid);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
+native GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
@@ -604,7 +604,7 @@ native PlayerGangZoneStopFlash(playerid, zoneid);
  *   <b><c>0</c></b>: The player gangzone is not valid.
  * </returns>
  */
-native bool:IsValidPlayerGangZone(playerid, zoneid);
+native IsValidPlayerGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -629,7 +629,7 @@ native bool:IsValidPlayerGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The player is not in player gangzone.
  * </returns>
  */
-native bool:IsPlayerInPlayerGangZone(playerid, zoneid);
+native IsPlayerInPlayerGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -654,7 +654,7 @@ native bool:IsPlayerInPlayerGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The player gangzone is not visible.
  * </returns>
  */
-native bool:IsPlayerGangZoneVisible(playerid, zoneid);
+native IsPlayerGangZoneVisible(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -733,7 +733,7 @@ native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashCol
  *   <b><c>0</c></b>: The player gangzone is not flashing.
  * </returns>
  */
-native bool:IsPlayerGangZoneFlashing(playerid, zoneid);
+native IsPlayerGangZoneFlashing(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -759,7 +759,7 @@ native bool:IsPlayerGangZoneFlashing(playerid, zoneid);
  * <seealso name="UsePlayerGangZoneCheck" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
+native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
@@ -785,7 +785,7 @@ native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Fl
  *   <b><c>0</c></b>: The function failed to execute.  The gangzone specified does not exist.
  * </returns>
  */
-native bool:UsePlayerGangZoneCheck(playerid, zoneid, bool:enable);
+native UsePlayerGangZoneCheck(playerid, zoneid, bool:enable);
 
 /**
  * <summary>This callback is called when a player enters a gangzone.</summary>

@@ -155,22 +155,22 @@ native CreatePickup(model, type, Float:x, Float:y, Float:z, virtualWorld = 0);
  * <seealso name="CreatePickup" />
  * <seealso name="OnPlayerPickUpPickup" />
  */
-native bool:DestroyPickup(pickup);
+native DestroyPickup(pickup);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:IsValidPickup(pickupid);
+native IsValidPickup(pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:IsPickupStreamedIn(playerid, pickupid);
+native IsPickupStreamedIn(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:GetPickupPos(pickupid, &Float:x, &Float:y, &Float:z);
+native GetPickupPos(pickupid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_pickup</library>
@@ -190,37 +190,37 @@ native GetPickupVirtualWorld(pickupid);
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPickupPos(pickupid, Float:x, Float:y, Float:z, bool:update = true);
+native SetPickupPos(pickupid, Float:x, Float:y, Float:z, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPickupModel(pickupid, model, bool:update = true);
+native SetPickupModel(pickupid, model, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPickupType(pickupid, type, bool:update = true);
+native SetPickupType(pickupid, type, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPickupVirtualWorld(pickupid, virtualWorld);
+native SetPickupVirtualWorld(pickupid, virtualWorld);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:ShowPickupForPlayer(playerid, pickupid);
+native ShowPickupForPlayer(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:HidePickupForPlayer(playerid, pickupid);
+native HidePickupForPlayer(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:IsPickupHiddenForPlayer(playerid, pickupid);
+native IsPickupHiddenForPlayer(playerid, pickupid);
 
 /*
 native # Per-Player();
@@ -237,42 +237,42 @@ native CreatePlayerPickup(playerid, model, type, Float:x, Float:y, Float:z, virt
 /**
  * <library>omp_pickup</library>
  */
-native bool:DestroyPlayerPickup(playerid, pickupid);
+native DestroyPlayerPickup(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:IsValidPlayerPickup(playerid, pickupid);
+native IsValidPlayerPickup(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:IsPlayerPickupStreamedIn(playerid, pickupid);
+native IsPlayerPickupStreamedIn(playerid, pickupid);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:GetPlayerPickupPos(playerid, pickupid, &Float:x, &Float:y, &Float:z);
+native GetPlayerPickupPos(playerid, pickupid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPlayerPickupPos(playerid, pickupid, Float:x, Float:y, Float:z, bool:update = true);
+native SetPlayerPickupPos(playerid, pickupid, Float:x, Float:y, Float:z, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPlayerPickupModel(playerid, pickupid, model, bool:update = true);
+native SetPlayerPickupModel(playerid, pickupid, model, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPlayerPickupType(playerid, pickupid, type, bool:update = true);
+native SetPlayerPickupType(playerid, pickupid, type, bool:update = true);
 
 /**
  * <library>omp_pickup</library>
  */
-native bool:SetPlayerPickupVirtualWorld(playerid, pickupid, virtualWorld);
+native SetPlayerPickupVirtualWorld(playerid, pickupid, virtualWorld);
 
 /**
  * <library>omp_pickup</library>

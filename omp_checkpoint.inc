@@ -87,7 +87,7 @@ native
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native bool:SetPlayerCheckpoint(playerid, Float:centreX, Float:centreY, Float:centreZ, Float:radius);
+native SetPlayerCheckpoint(playerid, Float:centreX, Float:centreY, Float:centreZ, Float:radius);
 
 /**
  * <library>omp_checkpoint</library>
@@ -109,7 +109,7 @@ native bool:SetPlayerCheckpoint(playerid, Float:centreX, Float:centreY, Float:ce
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native bool:DisablePlayerCheckpoint(playerid);
+native DisablePlayerCheckpoint(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -127,7 +127,7 @@ native bool:DisablePlayerCheckpoint(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>0</c></b> if player isn't in his checkpoint else <b><c>1</c></b>.</returns>
  */
-native bool:IsPlayerInCheckpoint(playerid);
+native IsPlayerInCheckpoint(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -144,7 +144,7 @@ native bool:IsPlayerInCheckpoint(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>0</c></b> if there is no checkpoint currently shown else <b><c>1</c></b>.</returns>
  */
-native bool:IsPlayerCheckpointActive(playerid);
+native IsPlayerCheckpointActive(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -165,7 +165,7 @@ native bool:IsPlayerCheckpointActive(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>0</c></b> if the player isn't connected else <b><c>1</c></b>.</returns>
  */
-native bool:GetPlayerCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:radius = 0.0);
+native GetPlayerCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:radius = 0.0);
 
 /*
 native # Race Checkpoints();
@@ -213,7 +213,7 @@ native
  *   <b><c>0</c></b>: The function failed to execute.  This means the player specified does not exist.
  * </returns>
  */
-native bool:SetPlayerRaceCheckpoint(playerid, CP_TYPE:type, Float:centreX, Float:centreY, Float:centreZ, Float:nextX, Float:nextY, Float:nextZ, Float:radius);
+native SetPlayerRaceCheckpoint(playerid, CP_TYPE:type, Float:centreX, Float:centreY, Float:centreZ, Float:nextX, Float:nextY, Float:nextZ, Float:radius);
 
 /**
  * <library>omp_checkpoint</library>
@@ -230,7 +230,7 @@ native bool:SetPlayerRaceCheckpoint(playerid, CP_TYPE:type, Float:centreX, Float
  * <seealso name="OnPlayerEnterRaceCheckpoint" />
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  */
-native bool:DisablePlayerRaceCheckpoint(playerid);
+native DisablePlayerRaceCheckpoint(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -248,7 +248,7 @@ native bool:DisablePlayerRaceCheckpoint(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>1</c></b> is the player is in a race checkpoint, <b><c>0</c></b> if not.</returns>
  */
-native bool:IsPlayerInRaceCheckpoint(playerid);
+native IsPlayerInRaceCheckpoint(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -265,7 +265,7 @@ native bool:IsPlayerInRaceCheckpoint(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>0</c></b> if there is no checkpoint currently shown else <b><c>1</c></b>.</returns>
  */
-native bool:IsPlayerRaceCheckpointActive(playerid);
+native IsPlayerRaceCheckpointActive(playerid);
 
 /**
  * <library>omp_checkpoint</library>
@@ -289,7 +289,7 @@ native bool:IsPlayerRaceCheckpointActive(playerid);
  * <seealso name="OnPlayerLeaveRaceCheckpoint" />
  * <returns><b><c>0</c></b> if the player isn't connected else <b><c>1</c></b>.</returns>
  */
-native bool:GetPlayerRaceCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:nextX = 0.0, &Float:nextY = 0.0, &Float:nextZ = 0.0, &Float:radius = 0.0);
+native GetPlayerRaceCheckpoint(playerid, &Float:centreX = 0.0, &Float:centreY = 0.0, &Float:centreZ = 0.0, &Float:nextX = 0.0, &Float:nextY = 0.0, &Float:nextZ = 0.0, &Float:radius = 0.0);
 
 /**
  * <summary>This callback is called when a player enters the checkpoint set for that player.</summary>

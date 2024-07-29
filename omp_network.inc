@@ -170,12 +170,12 @@ native UnBlockIpAddress(const ipAddress[]);
 /**
  * <library>omp_network</library>
  */
-native bool:ClearBanList();
+native ClearBanList();
 
 /**
  * <library>omp_network</library>
  */
-native bool:IsBanned(const ipaddress[]);
+native IsBanned(const ipaddress[]);
 
 /**
  * <library>omp_network</library>
@@ -185,7 +185,7 @@ native bool:IsBanned(const ipaddress[]);
  * <seealso name="OnRconLoginAttempt" />
  * <returns><b><c>1</c></b> if the player is an RCON admin, <b><c>0</c></b> if not.</returns>
  */
-native bool:IsPlayerAdmin(playerid);
+native IsPlayerAdmin(playerid);
 
 /**
  * <library>omp_player</library>

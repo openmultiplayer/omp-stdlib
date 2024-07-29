@@ -458,7 +458,7 @@ native AddStaticVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float
  * <seealso name="CreateVehicle" />
  * <seealso name="DestroyVehicle" />
  */
-native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
+native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, addSiren = 0);
 
 /**
  * <library>omp_vehicle</library>
@@ -488,7 +488,7 @@ native AddStaticVehicleEx(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Flo
  * vehicle model ID passed).
  * </returns>
  */
-native CreateVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, bool:addSiren = false);
+native CreateVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay, addSiren = 0);
 
 /**
  * <library>omp_vehicle</library>
@@ -502,7 +502,7 @@ native CreateVehicle(modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:an
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:DestroyVehicle(vehicleid);
+native DestroyVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -521,7 +521,7 @@ native bool:DestroyVehicle(vehicleid);
  *   <b><c>1</c></b>: Vehicle is streamed in for the player.
  * </returns>
  */
-native bool:IsVehicleStreamedIn(vehicleid, playerid);
+native IsVehicleStreamedIn(vehicleid, playerid);
 
 /**
  * <library>omp_vehicle</library>
@@ -538,7 +538,7 @@ native bool:IsVehicleStreamedIn(vehicleid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native bool:GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
+native GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -556,7 +556,7 @@ native bool:GetVehiclePos(vehicleid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native bool:SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
+native SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -573,7 +573,7 @@ native bool:SetVehiclePos(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native bool:GetVehicleZAngle(vehicleid, &Float:angle);
+native GetVehicleZAngle(vehicleid, &Float:angle);
 
 /**
  * <library>omp_vehicle</library>
@@ -608,7 +608,7 @@ native bool:GetVehicleZAngle(vehicleid, &Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native bool:GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
+native GetVehicleRotationQuat(vehicleid, &Float:w, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -639,7 +639,7 @@ native Float:GetVehicleDistanceFromPoint(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle specified does not exist.
  * </returns>
  */
-native bool:SetVehicleZAngle(vehicleid, Float:angle);
+native SetVehicleZAngle(vehicleid, Float:angle);
 
 /**
  * <library>omp_vehicle</library>
@@ -661,7 +661,7 @@ native bool:SetVehicleZAngle(vehicleid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The player and/or vehicle specified do not exist.
  * </returns>
  */
-native bool:SetVehicleParamsForPlayer(vehicleid, playerid, objective = -1, doors = -1);
+native SetVehicleParamsForPlayer(vehicleid, playerid, objective = -1, doors = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -676,7 +676,7 @@ native bool:SetVehicleParamsForPlayer(vehicleid, playerid, objective = -1, doors
  * it or not use it.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.  It cannot fail to execute.</returns>
  */
-native bool:ManualVehicleEngineAndLights();
+native ManualVehicleEngineAndLights();
 
 /**
  * <library>omp_vehicle</library>
@@ -703,7 +703,7 @@ native bool:ManualVehicleEngineAndLights();
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleParamsEx(vehicleid, engine = -1, lights = -1, alarm = -1, doors = -1, bonnet = -1, boot = -1, objective = -1);
+native SetVehicleParamsEx(vehicleid, engine = -1, lights = -1, alarm = -1, doors = -1, bonnet = -1, boot = -1, objective = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -720,7 +720,7 @@ native bool:SetVehicleParamsEx(vehicleid, engine = -1, lights = -1, alarm = -1, 
  * <remarks>If a parameter is unset (SetVehicleParamsEx not used beforehand) the value will be <b><c>-1</c></b>
  * ('unset').</remarks>
  */
-native bool:GetVehicleParamsEx(vehicleid, &engine = -1, &lights = -1, &alarm = -1, &doors = -1, &bonnet = -1, &boot = -1, &objective = -1);
+native GetVehicleParamsEx(vehicleid, &engine = -1, &lights = -1, &alarm = -1, &doors = -1, &bonnet = -1, &boot = -1, &objective = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -729,7 +729,7 @@ native bool:GetVehicleParamsEx(vehicleid, &engine = -1, &lights = -1, &alarm = -
  * <seealso name="OnVehicleSirenStateChange" />
  * <returns><b><c>-1</c></b> if unset (off), <b><c>0</c></b> if off, <b><c>1</c></b> if on</returns>
  */
-native bool:GetVehicleParamsSirenState(vehicleid);
+native GetVehicleParamsSirenState(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -748,7 +748,7 @@ native bool:GetVehicleParamsSirenState(vehicleid);
  * <seealso name="GetVehicleParamsCarWindows" />
  * <remarks><b><c>1</c></b> is open, <b><c>0</c></b> is closed</remarks>
  */
-native bool:SetVehicleParamsCarDoors(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
+native SetVehicleParamsCarDoors(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -764,7 +764,7 @@ native bool:SetVehicleParamsCarDoors(vehicleid, frontLeft = -1, frontRight = -1,
  * <remarks>The values returned in each variable are as follows: <b><c>-1</c></b> if not set, <b><c>0</c></b>
  * if closed, <b><c>1</c></b> if open.</remarks>
  */
-native bool:GetVehicleParamsCarDoors(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
+native GetVehicleParamsCarDoors(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -782,7 +782,7 @@ native bool:GetVehicleParamsCarDoors(vehicleid, &frontLeft = -1, &frontRight = -
  * <seealso name="GetVehicleParamsCarDoors" />
  * <seealso name="GetVehicleParamsCarWindows" />
  */
-native bool:SetVehicleParamsCarWindows(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
+native SetVehicleParamsCarWindows(vehicleid, frontLeft = -1, frontRight = -1, rearLeft = -1, rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -799,7 +799,7 @@ native bool:SetVehicleParamsCarWindows(vehicleid, frontLeft = -1, frontRight = -
  * if closed, <b><c>1</c></b> if open.</remarks>
  * <returns>The vehicle's windows state is stored in the specified variables.</returns>
  */
-native bool:GetVehicleParamsCarWindows(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
+native GetVehicleParamsCarWindows(vehicleid, &frontLeft = -1, &frontRight = -1, &rearLeft = -1, &rearRight = -1);
 
 /**
  * <library>omp_vehicle</library>
@@ -812,7 +812,7 @@ native bool:GetVehicleParamsCarWindows(vehicleid, &frontLeft = -1, &frontRight =
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleToRespawn(vehicleid);
+native SetVehicleToRespawn(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -828,7 +828,7 @@ native bool:SetVehicleToRespawn(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.<br />
  * </returns>
  */
-native bool:LinkVehicleToInterior(vehicleid, interiorid);
+native LinkVehicleToInterior(vehicleid, interiorid);
 
 /**
  * <library>omp_vehicle</library>
@@ -852,7 +852,7 @@ native bool:LinkVehicleToInterior(vehicleid, interiorid);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:AddVehicleComponent(vehicleid, component);
+native AddVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
@@ -866,7 +866,7 @@ native bool:AddVehicleComponent(vehicleid, component);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:RemoveVehicleComponent(vehicleid, component);
+native RemoveVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
@@ -880,7 +880,7 @@ native bool:RemoveVehicleComponent(vehicleid, component);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:VehicleCanHaveComponent(vehicleid, componentid);
+native VehicleCanHaveComponent(vehicleid, componentid);
 
 /**
  * <library>omp_vehicle</library>
@@ -907,7 +907,7 @@ native GetVehicleSeats(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
+native ChangeVehicleColor(vehicleid, colour1, colour2);
 
 /**
  * <library>omp_vehicle</library>
@@ -927,7 +927,7 @@ native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:ChangeVehicleColours(vehicleid, colour1, colour2) = ChangeVehicleColor;
+native ChangeVehicleColours(vehicleid, colour1, colour2) = ChangeVehicleColor;
 
 /**
  * <library>omp_vehicle</library>
@@ -944,7 +944,7 @@ native bool:ChangeVehicleColours(vehicleid, colour1, colour2) = ChangeVehicleCol
  * <returns>This function always returns <b><c>1</c></b> (success), even if the vehicle passed is not
  * created.</returns>
  */
-native bool:ChangeVehiclePaintjob(vehicleid, paintjob);
+native ChangeVehiclePaintjob(vehicleid, paintjob);
 
 /**
  * <library>omp_vehicle</library>
@@ -973,7 +973,7 @@ native bool:ChangeVehiclePaintjob(vehicleid, paintjob);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleHealth(vehicleid, Float:health);
+native SetVehicleHealth(vehicleid, Float:health);
 
 /**
  * <library>omp_vehicle</library>
@@ -1000,7 +1000,7 @@ native bool:SetVehicleHealth(vehicleid, Float:health);
  *   <b><c>0</c></b> - failure (invalid vehicle ID).<br />
  * </returns>
  */
-native bool:GetVehicleHealth(vehicleid, &Float:health);
+native GetVehicleHealth(vehicleid, &Float:health);
 
 /**
  * <library>omp_vehicle</library>
@@ -1015,7 +1015,7 @@ native bool:GetVehicleHealth(vehicleid, &Float:health);
  * <returns>This function always returns <b><c>1</c></b>, even if neither of the vehicle IDs passed
  * are valid.</returns>
  */
-native bool:AttachTrailerToVehicle(trailerid, vehicleid);
+native AttachTrailerToVehicle(trailerid, vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1025,7 +1025,7 @@ native bool:AttachTrailerToVehicle(trailerid, vehicleid);
  * <seealso name="IsTrailerAttachedToVehicle" />
  * <seealso name="GetVehicleTrailer" />
  */
-native bool:DetachTrailerFromVehicle(vehicleid);
+native DetachTrailerFromVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1037,7 +1037,7 @@ native bool:DetachTrailerFromVehicle(vehicleid);
  * <seealso name="DetachTrailerFromVehicle" />
  * <returns><b><c>1</c></b> if the vehicle has a trailer attached, <b><c>0</c></b> if not.</returns>
  */
-native bool:IsTrailerAttachedToVehicle(vehicleid);
+native IsTrailerAttachedToVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1076,7 +1076,7 @@ native GetVehicleTrailer(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.<br />
  * </returns>
  */
-native bool:SetVehicleNumberPlate(vehicleid, const numberPlate[]);
+native SetVehicleNumberPlate(vehicleid, const numberPlate[]);
 
 /**
  * <library>omp_vehicle</library>
@@ -1198,7 +1198,7 @@ native VehicleColourIndexToColour(index, alpha = 0xFF) = CarColIndexToColour;
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native bool:RepairVehicle(vehicleid);
+native RepairVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1218,7 +1218,7 @@ native bool:RepairVehicle(vehicleid);
  * />
  * </returns>
  */
-native bool:GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
+native GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -1233,7 +1233,7 @@ native bool:GetVehicleVelocity(vehicleid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
+native SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -1250,7 +1250,7 @@ native bool:SetVehicleVelocity(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
+native SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -1302,7 +1302,7 @@ native bool:SetVehicleAngularVelocity(vehicleid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  This means the vehicle specified does not exist.
  * </returns>
  */
-native bool:GetVehicleDamageStatus(vehicleid, &VEHICLE_PANEL_STATUS:panels, &VEHICLE_DOOR_STATUS:doors, &VEHICLE_LIGHT_STATUS:lights, &VEHICLE_TYRE_STATUS:tyres);
+native GetVehicleDamageStatus(vehicleid, &VEHICLE_PANEL_STATUS:panels, &VEHICLE_DOOR_STATUS:doors, &VEHICLE_LIGHT_STATUS:lights, &VEHICLE_TYRE_STATUS:tyres);
 
 /**
  * <library>omp_vehicle</library>
@@ -1351,7 +1351,7 @@ native bool:GetVehicleDamageStatus(vehicleid, &VEHICLE_PANEL_STATUS:panels, &VEH
  *   </ul>
  * </remarks>
  */
-native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VEHICLE_DOOR_STATUS:doors, VEHICLE_LIGHT_STATUS:lights, VEHICLE_TYRE_STATUS:tires);
+native UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VEHICLE_DOOR_STATUS:doors, VEHICLE_LIGHT_STATUS:lights, VEHICLE_TYRE_STATUS:tires);
 
 /**
  * <library>omp_vehicle</library>
@@ -1379,7 +1379,7 @@ native bool:UpdateVehicleDamageStatus(vehicleid, VEHICLE_PANEL_STATUS:panels, VE
  *   </ul>
  * </remarks>
  */
-native bool:GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
+native GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_vehicle</library>
@@ -1390,7 +1390,7 @@ native bool:GetVehicleModelInfo(vehiclemodel, VEHICLE_MODEL_INFO:infotype, &Floa
  * <seealso name="GetVehicleVirtualWorld" />
  * <seealso name="SetPlayerVirtualWorld" />
  */
-native bool:SetVehicleVirtualWorld(vehicleid, virtualWorld);
+native SetVehicleVirtualWorld(vehicleid, virtualWorld);
 
 /**
  * <library>omp_vehicle</library>
@@ -1416,27 +1416,27 @@ native LANDING_GEAR_STATE:GetVehicleLandingGearState(vehicleid);
  * <seealso name="DestroyVehicle" />
  * <returns>true or false.</returns>
  */
-native bool:IsValidVehicle(vehicleid);
+native IsValidVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:spawnZ, &Float:angle, &colour1 = 0, &colour2 = 0);
+native GetVehicleSpawnInfo(vehicleid, &Float:spawnX, &Float:spawnY, &Float:spawnZ, &Float:angle, &colour1 = 0, &colour2 = 0);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
+native SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, colour1, colour2, respawnDelay = -2, interior = -2);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
+native GetVehicleColor(vehicleid, &colour1, &colour2);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleColours(vehicleid, &colour1, &colour2) = GetVehicleColor;
+native GetVehicleColours(vehicleid, &colour1, &colour2) = GetVehicleColor;
 
 /**
  * <library>omp_vehicle</library>
@@ -1451,12 +1451,12 @@ native GetVehicleInterior(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleNumberPlate(vehicleid, plate[], len = sizeof (plate));
+native GetVehicleNumberPlate(vehicleid, plate[], len = sizeof (plate));
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleRespawnDelay(vehicleid, respawnDelay);
+native SetVehicleRespawnDelay(vehicleid, respawnDelay);
 
 /**
  * <library>omp_vehicle</library>
@@ -1486,7 +1486,7 @@ native GetVehicleDriver(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:IsPlayerInModShop(playerid);
+native IsPlayerInModShop(playerid);
 
 /**
  * <library>omp_vehicle</library>
@@ -1522,38 +1522,38 @@ native GetVehicleTower(vehicleid);
 /**
  * <library>omp_vehicle</library>
  */
-native bool:HasVehicleBeenOccupied(vehicleid);
+native HasVehicleBeenOccupied(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:IsVehicleOccupied(vehicleid);
+native IsVehicleOccupied(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:IsVehicleDead(vehicleid);
+native IsVehicleDead(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:SetVehicleParamsSirenState(vehicleid, bool:enabled);
+native SetVehicleParamsSirenState(vehicleid, enabled);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:ToggleVehicleSirenEnabled(vehicleid, bool:enabled);
+native ToggleVehicleSirenEnabled(vehicleid, enabled);
 
 /**
  * <library>omp_vehicle</library>
  * <summary>Turn the siren for a vehicle on or off.</summary>
  */
-native bool:IsVehicleSirenEnabled(vehicleid);
+native IsVehicleSirenEnabled(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleMatrix(vehicleid, &Float:rightX, &Float:rightY, &Float:rightZ, &Float:upX, &Float:upY, &Float:upZ, &Float:atX, &Float:atY, &Float:atZ);
+native GetVehicleMatrix(vehicleid, &Float:rightX, &Float:rightY, &Float:rightZ, &Float:upX, &Float:upY, &Float:upZ, &Float:atX, &Float:atY, &Float:atZ);
 
 /**
  * <library>omp_vehicle</library>
@@ -1568,22 +1568,22 @@ native GetVehicleModelsUsed();
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:HideVehicle(vehicleid);
+forward HideVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:ShowVehicle(vehicleid);
+forward ShowVehicle(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-forward bool:IsVehicleHidden(vehicleid);
+forward IsVehicleHidden(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleSirenState(vehicleid);
+native GetVehicleSirenState(vehicleid);
 
 /**
  * <library>omp_vehicle</library>

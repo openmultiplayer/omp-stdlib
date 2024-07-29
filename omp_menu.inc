@@ -89,7 +89,7 @@ native Menu:CreateMenu(const title[], columns, Float:x, Float:y, Float:column1wi
  * <seealso name="OnPlayerExitedMenu" />
  * <returns><b><c>1</c></b> if the destroying was successful, otherwise <b><c>0</c></b>.</returns>
  */
-native bool:DestroyMenu(Menu:menuid);
+native DestroyMenu(Menu:menuid);
 
 /**
  * <library>omp_menu</library>
@@ -131,7 +131,7 @@ native AddMenuItem(Menu:menuid, column, const text[], OPEN_MP_TAGS:...);
  *  The 13th object of a menu would replace the header of the column which is correctly set with this
  * function.</remarks>
  */
-native bool:SetMenuColumnHeader(Menu:menuid, column, const heading[], OPEN_MP_TAGS:...);
+native SetMenuColumnHeader(Menu:menuid, column, const heading[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_menu</library>
@@ -150,7 +150,7 @@ native bool:SetMenuColumnHeader(Menu:menuid, column, const heading[], OPEN_MP_TA
  *   <b><c>0</c></b>: The function failed to execute.  Menu and/or player doesn't exist.
  * </returns>
  */
-native bool:ShowMenuForPlayer(Menu:menuid, playerid);
+native ShowMenuForPlayer(Menu:menuid, playerid);
 
 /**
  * <library>omp_menu</library>
@@ -167,7 +167,7 @@ native bool:ShowMenuForPlayer(Menu:menuid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native bool:HideMenuForPlayer(Menu:menuid, playerid);
+native HideMenuForPlayer(Menu:menuid, playerid);
 
 /**
  * <library>omp_menu</library>
@@ -177,7 +177,7 @@ native bool:HideMenuForPlayer(Menu:menuid, playerid);
  * <seealso name="DestroyMenu" />
  * <returns><b><c>1</c></b> if the menu is valid, otherwise <b><c>0</c></b>.</returns>
  */
-native bool:IsValidMenu(Menu:menuid);
+native IsValidMenu(Menu:menuid);
 
 /**
  * <library>omp_menu</library>
@@ -188,7 +188,7 @@ native bool:IsValidMenu(Menu:menuid);
  * <seealso name="AddMenuItem" />
  * <remarks>Crashes when passed an invalid menu ID.</remarks>
  */
-native bool:DisableMenu(Menu:menuid);
+native DisableMenu(Menu:menuid);
 
 /**
  * <library>omp_menu</library>
@@ -209,7 +209,7 @@ native bool:DisableMenu(Menu:menuid);
  * <returns>This function always returns <b><c>1</c></b>, even if the function fails.  If an invalid
  * row is specified, nothing will happen.  If an invalid menu ID is specified, the server will crash.</returns>
  */
-native bool:DisableMenuRow(Menu:menuid, row);
+native DisableMenuRow(Menu:menuid, row);
 
 /**
  * <library>omp_menu</library>
@@ -232,13 +232,13 @@ native Menu:GetPlayerMenu(playerid);
  * <library>omp_menu</library>
  * <summary>Is this menu disabled?</param>
  */
-native bool:IsMenuDisabled(Menu:menuid);
+native IsMenuDisabled(Menu:menuid);
 
 /**
  * <library>omp_menu</library>
  * <summary>Is this row disabled?</param>
  */
-native bool:IsMenuRowDisabled(Menu:menuid, row);
+native IsMenuRowDisabled(Menu:menuid, row);
 
 /**
  * <library>omp_menu</library>
@@ -256,25 +256,25 @@ native GetMenuItems(Menu:menuid, column);
  * <library>omp_menu</library>
  * <summary>Get the x/y screen position of the menu.</param>
  */
-native bool:GetMenuPos(Menu:menuid, &Float:x, &Float:y);
+native GetMenuPos(Menu:menuid, &Float:x, &Float:y);
 
 /**
  * <library>omp_menu</library>
  * <summary>Get the width of the one or two columns.</param>
  */
-native bool:GetMenuColumnWidth(Menu:menuid, &Float:column1Width, &Float:column2Width = 0.0);
+native GetMenuColumnWidth(Menu:menuid, &Float:column1Width, &Float:column2Width = 0.0);
 
 /**
  * <library>omp_menu</library>
  * <summary>Get the text in the header of the specified column.</param>
  */
-native bool:GetMenuColumnHeader(Menu:menuid, column, header[], len = sizeof (header));
+native GetMenuColumnHeader(Menu:menuid, column, header[], len = sizeof (header));
 
 /**
  * <library>omp_menu</library>
  * <summary>Get the text in the specified cell - addressed by column and row.</param>
  */
-native bool:GetMenuItem(Menu:menuid, column, row, cell[], len = sizeof (cell));
+native GetMenuItem(Menu:menuid, column, row, cell[], len = sizeof (cell));
 
 /**
  * <summary>This callback is called when a player selects an item from a menu (<a href="#ShowMenuForPlayer">ShowMenuForPlayer</a>).</summary>
