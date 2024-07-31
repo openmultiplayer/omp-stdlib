@@ -440,9 +440,20 @@ const undefined = -1;
 	#pragma warning pop
 #endif
 
+#if __pawn_build > 4
+	// Disable the deprecation warning.  There's a bug on some compiler versions
+	// where using a deprecated function shows two warnings - one at the call
+	// site and one at the declaration site.  There's no point having the
+	// latter, this disables that.
+	#pragma warning push
+	#pragma warning disable 234
+#endif
+
 // Some compatibility functions that need defines.  These functions don't call
 // the natives in the server because doing so would print a deprecation warning
-// in the console.
+// in the console.  Obviously we want people to have a deprecation warning, but
+// as they're using these includes they get those warnings at compile-time, and
+// we can reserve the runtime warnings for code built with other includes.
 
 /**
  * <library>omp_core</library>
@@ -452,6 +463,7 @@ const undefined = -1;
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
 stock GetPlayerPoolSize()
 {
 	return MAX_PLAYERS - 1;
@@ -464,6 +476,7 @@ stock GetPlayerPoolSize()
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
 stock GetVehiclePoolSize()
 {
 	return MAX_VEHICLES - 1;
@@ -477,10 +490,16 @@ stock GetVehiclePoolSize()
  * <seealso name="SetActorHealth" />
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
 stock GetActorPoolSize()
 {
 	return MAX_ACTORS - 1;
 }
+
+#if __pawn_build > 4
+	// Maybe re-enable the deprecation warning.
+	#pragma warning pop
+#endif
 
 // Backwards-compatibility defines.
 #define _actor_included

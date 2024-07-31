@@ -167,14 +167,16 @@ You will note that all these new features either use existing keywords, `#`, or 
 
 ### More Tags
 
-open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks:
+open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks.
+
+To make the transition easier, the default is `NO_TAGS`, but you can also make tags *weak*:
 
 ```pawn
-#define STRONG_TAGS
+#define WEAK_TAGS
 #include <open.mp>
 ```
 
-To encourage some adoption, the default is `WEAK_TAGS`.  Most old code uses will simply give a warning when the wrong tag is found:
+In this case, most old code uses will simply give a warning when the wrong tag is found:
 
 ```pawn
 // Gives a warning:
@@ -184,7 +186,7 @@ SetPlayerControllable(playerid, 1);
 SetPlayerControllable(playerid, true);
 ```
 
-Generally arameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+Generally parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
 
 ```pawn
 TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
@@ -216,17 +218,17 @@ You can enable `void:` tag warnings with a define before including `open.mp`, th
 #include <open.mp>
 ```
 
-For parameters the default is to make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning.  This second group can also be upgraded by specifying the use of *strong* tags instead:
+Again, you can make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning:
 
 ```pawn
-#define STRONG_TAGS
+#define WEAK_TAGS
 #include <open.mp>
 ```
 
-Alternatively, if you really hate help:
+This second group can also be upgraded by specifying the use of *strong* tags instead:
 
 ```pawn
-#define NO_TAGS
+#define STRONG_TAGS
 #include <open.mp>
 ```
 
@@ -236,6 +238,7 @@ The only breaking change introduced by these new tags are on callbacks.  For som
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
+
 forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 ```
 
@@ -245,6 +248,7 @@ See the end of this document for a full list of all updated callbacks.  This is 
 #if !defined CLICK_SOURCE
 	#define CLICK_SOURCE: _:
 #endif
+
 public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 {
 	return 1;
@@ -258,6 +262,7 @@ Thus writing backwards-compatible code remains possible.  Forward for ALS as nor
 	// Use the default tag (none, `_:`) when the improved includes aren't found.
 	#define PLAYER_STATE: _:
 #endif
+
 public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
 {
 	return Hooked_OnPlayerStateChange(playerid, newstate, oldstate);
@@ -347,7 +352,7 @@ forward void:EnableTirePopping(bool:enable);
 Some functions are deprecated but not removed, meaning they still work but using them isn't recommended and they may disappear at some point in the future.  For example:
 
 ```pawn
-#pragma deprecated This function is fundamentally broken.  See below.
+#pragma deprecated This function is broken.  See below.
 native GetPlayerPoolSize();
 ```
 
@@ -358,44 +363,9 @@ Some will suggest alternative methods to do the same thing:
 native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 ```
 
-Some are just replaced with new versions with better names:
-
-```pawn
-native DB_GetRowCount(DBResult:result);
-
-#pragma deprecated Use `DB_GetRowCount`
-native db_num_rows(DBResult:result);
-```
-
-Or names that are spelt correctly:
-
-```pawn
-native bool:TextDrawColour(Text:textid, textColour);
-
-#pragma deprecated Use `TextDrawColour`
-native bool:TextDrawColor(Text:textid, textColour);
-```
-
-Or less terse names thanks to the increased symbol limit:
-
-```pawn
-#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
-native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
-
-#if __namemax > 31
-	native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
-#endif
-```
-
-This final example will only compile the longer name when using the 3.10.11 compiler, but the deprecation warning will always exist even on compilers with a lower limit (because you should update).
-
 ### Spelling Consistency
 
-The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards; and while American spellings will continue to be supported indefinitely some have had warnings added to notify users of this consistency improvement.  if you wish to stick with the mixed spellings you can add a define to the top of your code:
-
-```pawn
-#define MIXED_SPELLINGS
-```
+The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards.
 
  Function Changes
 ------------------
@@ -426,6 +396,7 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 #if !defined PLAYER_STATE
 	#define PLAYER_STATE: _:
 #endif
+
 public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
 {
 }
@@ -437,6 +408,7 @@ public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstat
 #if !defined CLICK_SOURCE
 	#define CLICK_SOURCE: _:
 #endif
+
 public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 {
 }
@@ -450,6 +422,7 @@ Ideally the names of the parameters would be changed here as well to something l
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
+
 public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:rotationX, Float:rotationY, Float:rotationZ)
 {
 }
@@ -461,6 +434,7 @@ public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respon
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
+
 public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ)
 {
 }
@@ -472,6 +446,7 @@ public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, model
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
+
 public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ)
 {
 }
@@ -483,9 +458,11 @@ public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Flo
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
+
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
+
 public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
 }
@@ -497,6 +474,7 @@ public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hi
 #if !defined KEY
 	#define KEY: _:
 #endif
+
 public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
 {
 }
@@ -508,6 +486,7 @@ public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
 #if !defined DOWNLOAD_REQUEST
 	#define DOWNLOAD_REQUEST: _:
 #endif
+
 public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
 {
 }
@@ -519,6 +498,7 @@ public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
+
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -530,6 +510,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bod
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
+
 public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -541,6 +522,7 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bo
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
+
 public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -552,6 +534,7 @@ public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:w
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
+
 public OnPlayerDeath(playerid, killerid, WEAPON:reason)
 {
 }
@@ -567,6 +550,7 @@ The `WEAPON:` enum has a few extra `REASON_` values to support this use-case,  N
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
+
 public Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
 {
 }
@@ -578,6 +562,7 @@ public Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplay
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
+
 public Streamer_OnItemStreamOut(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
 {
 }

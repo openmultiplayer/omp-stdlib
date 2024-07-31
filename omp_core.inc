@@ -560,22 +560,6 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
 
 /**
  * <library>omp_core</library>
- * <summary>Hashes a password using the SHA-256 hashing algorithm.  Includes a salt.  The output is
- * always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
- * <param name="password">The password to hash</param>
- * <param name="salt">The salt to use in the hash</param>
- * <param name="output">The returned hash</param>
- * <param name="size">The returned hash maximum length</param>
- * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would
- * form 'foobar'. </remarks>
- * <remarks>The salt should be random, unique for each player and at least as long as the hashed password.
- *  It is to be stored alongside the actual hash in the player's account. </remarks>
- * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
- */
-native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
-
-/**
- * <library>omp_core</library>
  * <summary>Shows 'game text' (on-screen text) for a certain length of time for all players.</summary>
  * <param name="format">The text to be displayed or formatted</param>
  * <param name="time">The duration of the text being shown in milliseconds</param>
@@ -923,27 +907,6 @@ native GetConsoleVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 /**
  * <library>omp_core</library>
- * <summary>Get the string value of a server variable.</summary>
- * <param name="cvar">The name of the string variable to get the value of</param>
- * <param name="buffer">An array into which to store the value, passed by reference</param>
- * <param name="len">The length of the string that should be stored</param>
- * <seealso name="GetServerVarAsInt" />
- * <seealso name="GetServerVarAsBool" />
- * <remarks>This function is deprecated.  Please see
- * <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
- * <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b>
- * server variable, will <b>crash</b> your server! This is a bug.</remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <remarks>When filterscripts or plugins is specified as the cvar, this function only returns the name
- * of the first specified filterscript or plugin.  This is a bug.</remarks>
- * <returns>The length of the returned string. <b><c>0</c></b> if the specified server variable is not
- * a string or doesn't exist.</returns>
- */
-native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = GetConsoleVarAsString;
-
-/**
- * <library>omp_core</library>
  * <summary>Get the integer value of a console variable.</summary>
  * <param name="cvar">The name of the integer variable to get the value of</param>
  * <seealso name="GetConsoleVarAsString" />
@@ -955,20 +918,6 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = Get
  * is not an integer or doesn't exist.</returns>
  */
 native GetConsoleVarAsInt(const cvar[]);
-
-/**
- * <library>omp_core</library>
- * <summary>Get the integer value of a server variable.</summary>
- * <param name="cvar">The name of the integer variable to get the value of</param>
- * <seealso name="GetServerVarAsString" />
- * <seealso name="GetServerVarAsBool" />
- * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <returns>The value of the specified server variable.  0 if the specified server variable is not an
- * integer or doesn't exist.</returns>
- */
-native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
 
 /**
  * <library>omp_core</library>
@@ -986,20 +935,6 @@ native Float:GetConsoleVarAsFloat(const cvar[]);
 
 /**
  * <library>omp_core</library>
- * <summary>Get the float value of a server variable.</summary>
- * <param name="cvar">The name of the float variable to get the value of</param>
- * <seealso name="GetServerVarAsString" />
- * <seealso name="GetServerVarAsBool" />
- * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <returns>The value of the specified server variable.  0 if the specified server variable is not a
- * float or doesn't exist.</returns>
- */
-native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
-
-/**
- * <library>omp_core</library>
  * <summary>Get the boolean value of a console variable.</summary>
  * <param name="cvar">The name of the boolean variable to get the value of</param>
  * <seealso name="GetConsoleVarAsString" />
@@ -1010,20 +945,6 @@ native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
  * is not a boolean or doesn't exist.</returns>
  */
 native GetConsoleVarAsBool(const cvar[]);
-
-/**
- * <library>omp_core</library>
- * <summary>Get the boolean value of a server variable.</summary>
- * <param name="cvar">The name of the boolean variable to get the value of</param>
- * <seealso name="GetServerVarAsString" />
- * <seealso name="GetServerVarAsInt" />
- * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
- * <remarks>Type 'varlist' in the server console to display a list of available server variables and
- * their types.</remarks>
- * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable
- * is not a boolean or doesn't exist.</returns>
- */
-native GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
 
 /**
  * <library>omp_core</library>
@@ -1304,24 +1225,6 @@ native void:EnableAllAnimations(enable);
 
 /**
  * <library>omp_core</library>
- * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
- * <remarks>Tire popping is enabled by default.  If
- * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
- * OnVehicleDamageStatusUpdate</a>.</remarks>
- */
-forward void:EnableTirePopping(enable);
-
-/**
- * <library>omp_core</library>
- * <summary>Currently removed/</summary>
- * <seealso name="CreatePickup" />
- * <seealso name="GivePlayerMoney" />
- * <seealso name="OnPlayerDeath" />
- */
-native void:SetDeathDropAmount(amount);
-
-/**
- * <library>omp_core</library>
  * <summary>This function allows to turn on zone / area names such as the "Vinewood" or "Doherty" text
  * at the bottom-right of the screen as they enter the area.  This is a gamemode option and should be
  * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
@@ -1350,6 +1253,130 @@ native
  * <returns>This function always return <b><c>1</c></b>.</returns>
  */
 native ConnectNPC(const name[], const script[]);
+
+/*
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
+*/
+
+// These three functions are like this for qawno.
+/*
+native GetPlayerPoolSize();
+*/
+
+/*
+native GetVehiclePoolSize();
+*/
+
+/*
+native GetActorPoolSize();
+*/
+
+/**
+ * <library>omp_core</library>
+ * <param name="enable"><b><c>1</c></b> to enable, <b><c>0</c></b> to disable tire popping</param>
+ * <remarks>Tire popping is enabled by default.  If
+ * you want to disable tire popping, you'll have to manually script it using <a href="#OnVehicleDamageStatusUpdate">
+ * OnVehicleDamageStatusUpdate</a>.</remarks>
+ */
+#pragma deprecated Use `OnVehicleDamageStatusUpdate`.
+forward void:EnableTirePopping(enable);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the string value of a server variable.</summary>
+ * <param name="cvar">The name of the string variable to get the value of</param>
+ * <param name="buffer">An array into which to store the value, passed by reference</param>
+ * <param name="len">The length of the string that should be stored</param>
+ * <seealso name="GetServerVarAsInt" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see
+ * <a href="#GetConsoleVarAsString">GetConsoleVarAsString</a></remarks>
+ * <remarks>Using this function on anything other than a <b>string</b> (int, bool or float) or a <b>nonexistent</b>
+ * server variable, will <b>crash</b> your server! This is a bug.</remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <remarks>When filterscripts or plugins is specified as the cvar, this function only returns the name
+ * of the first specified filterscript or plugin.  This is a bug.</remarks>
+ * <returns>The length of the returned string. <b><c>0</c></b> if the specified server variable is not
+ * a string or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsString`.
+native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer)) = GetConsoleVarAsString;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the integer value of a server variable.</summary>
+ * <param name="cvar">The name of the integer variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable.  0 if the specified server variable is not an
+ * integer or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsInt`.
+native GetServerVarAsInt(const cvar[]) = GetConsoleVarAsInt;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the float value of a server variable.</summary>
+ * <param name="cvar">The name of the float variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsBool" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsInt">GetConsoleVarAsInt</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable.  0 if the specified server variable is not a
+ * float or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsFloat`.
+native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
+
+/**
+ * <library>omp_core</library>
+ * <summary>Get the boolean value of a server variable.</summary>
+ * <param name="cvar">The name of the boolean variable to get the value of</param>
+ * <seealso name="GetServerVarAsString" />
+ * <seealso name="GetServerVarAsInt" />
+ * <remarks>This function is deprecated.  Please see <a href="#GetConsoleVarAsBool">GetConsoleVarAsBool</a></remarks>
+ * <remarks>Type 'varlist' in the server console to display a list of available server variables and
+ * their types.</remarks>
+ * <returns>The value of the specified server variable. <b><c>0</c></b> if the specified server variable
+ * is not a boolean or doesn't exist.</returns>
+ */
+#pragma deprecated Use `GetConsoleVarAsBool`.
+native GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
+
+/**
+ * <library>omp_core</library>
+ * <summary>This function does not work in the current SA:MP version!/</summary>
+ * <seealso name="CreatePickup" />
+ * <seealso name="GivePlayerMoney" />
+ * <seealso name="OnPlayerDeath" />
+ */
+#pragma deprecated Use `CreatePickup`.
+forward void:SetDeathDropAmount(amount);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Hashes a password using the SHA-256 hashing algorithm.  Includes a salt.  The output is
+ * always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
+ * <param name="password">The password to hash</param>
+ * <param name="salt">The salt to use in the hash</param>
+ * <param name="output">The returned hash</param>
+ * <param name="size">The returned hash maximum length</param>
+ * <remarks>The salt is appended to the end of the password, meaning password 'foo' and salt 'bar' would
+ * form 'foobar'. </remarks>
+ * <remarks>The salt should be random, unique for each player and at least as long as the hashed password.
+ *  It is to be stored alongside the actual hash in the player's account. </remarks>
+ * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
+ */
+#pragma deprecated Use BCrypt for hashing passwords.
+native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
 
 /**
  * <summary>This callback is triggered when the gamemode starts.</summary>
