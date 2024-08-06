@@ -1534,12 +1534,6 @@ native GetVehicleCab(vehicleid);
 
 /**
  * <library>omp_vehicle</library>
- * <remarks>As in "one who tows", not "tall building".</remarks>
- */
-native GetVehicleTower(vehicleid);
-
-/**
- * <library>omp_vehicle</library>
  */
 native bool:HasVehicleBeenOccupied(vehicleid);
 
@@ -1625,6 +1619,20 @@ native GetVehicleMaxPassengers(modelid);
  * </returns>
  */
 native CountVehicleOccupants(vehicleid);
+
+/*
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
+*/
+
+/**
+ * <library>omp_vehicle</library>
+ * <remarks>As in "one who tows", not "tall building".</remarks>
+ */
+#pragma deprecated Use `GetVehicleCab`.
+native GetVehicleTower(vehicleid);
 
 /**
  * <summary>This callback is called when a player sent a trailer update.</summary>

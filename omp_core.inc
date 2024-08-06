@@ -509,11 +509,6 @@ native CountRunningTimers();
 
 /**
  * <library>omp_core</library>
- */
-native GetRunningTimers() = CountRunningTimers;
-
-/**
- * <library>omp_core</library>
  * <summary>Calls a public function in any script that is loaded.</summary>
  * <param name="functionName">Public function's name</param>
  * <param name="specifiers">Tag/format of each variable</param>
@@ -1377,6 +1372,12 @@ forward void:SetDeathDropAmount(amount);
  */
 #pragma deprecated Use BCrypt for hashing passwords.
 native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
+
+/**
+ * <library>omp_core</library>
+ */
+#pragma deprecated Use `CountRunningTimers`.
+native GetRunningTimers() = CountRunningTimers;
 
 /**
  * <summary>This callback is triggered when the gamemode starts.</summary>

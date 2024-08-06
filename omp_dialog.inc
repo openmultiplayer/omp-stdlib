@@ -130,17 +130,27 @@ native bool:GetPlayerDialogData(playerid, &DIALOG_STYLE:style, title[], titleSiz
  */
 native GetPlayerDialogID(playerid);
 
+/*
+native # Deprecated();
+native           Deprecated(
+native      ====================(
+native
+*/
+
 /**
  * <library>omp_dialog</library>
  * <summary>Get the ID of the dialog currently show to the player.</summary>
  * <param name="playerid">The ID of the player to get the ID for</param>
  * <remarks>
- * Added for fixes.inc compatibility.
+ * Added for fixes.inc compatibility, but as <c>GetPlayerDialogID</c> from YSF also exists we don't
+ * need two.  This one is thus deprecated as then we have <c>ID</c> and <c>Data</c> suffixes for
+ * differentiation and clarity.
  * </remarks>
  * <returns>
  *   The ID, or <b><c>INVALID_DIALOG_ID</c></b> if there's no player or open dialog.<br />
  * </returns>
  */
+#pragma deprecated Use `GetPlayerDialogID`.
 native GetPlayerDialog(playerid) = GetPlayerDialogID;
 
 /**
