@@ -93,7 +93,7 @@ native GangZoneCreate(Float:minX, Float:minY, Float:maxX, Float:maxY);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneDestroy(zoneid);
+native bool:GangZoneDestroy(zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -114,7 +114,7 @@ native GangZoneDestroy(zoneid);
  * <seealso name="GangZoneStopFlashForAll" />
  * <returns><b><c>1</c></b> if the gangzone was shown, otherwise <b><c>0</c></b> (non-existant).</returns>
  */
-native GangZoneShowForPlayer(playerid, zoneid, colour);
+native bool:GangZoneShowForPlayer(playerid, zoneid, colour);
 
 /**
  * <library>omp_gangzone</library>
@@ -137,7 +137,7 @@ native GangZoneShowForPlayer(playerid, zoneid, colour);
  *   <b><c>0</c></b>: The function failed to execute.  The gangzone does not exist.
  * </returns>
  */
-native GangZoneShowForAll(zoneid, colour);
+native bool:GangZoneShowForAll(zoneid, colour);
 
 /**
  * <library>omp_gangzone</library>
@@ -154,7 +154,7 @@ native GangZoneShowForAll(zoneid, colour);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneHideForPlayer(playerid, zoneid);
+native bool:GangZoneHideForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -170,7 +170,7 @@ native GangZoneHideForPlayer(playerid, zoneid);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneHideForAll(zoneid);
+native bool:GangZoneHideForAll(zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -189,7 +189,7 @@ native GangZoneHideForAll(zoneid);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneFlashForPlayer(playerid, zoneid, flashColour);
+native bool:GangZoneFlashForPlayer(playerid, zoneid, flashColour);
 
 /**
  * <library>omp_gangzone</library>
@@ -207,7 +207,7 @@ native GangZoneFlashForPlayer(playerid, zoneid, flashColour);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneFlashForAll(zoneid, flashColour);
+native bool:GangZoneFlashForAll(zoneid, flashColour);
 
 /**
  * <library>omp_gangzone</library>
@@ -224,7 +224,7 @@ native GangZoneFlashForAll(zoneid, flashColour);
  * <seealso name="GangZoneFlashForAll" />
  * <seealso name="GangZoneStopFlashForAll" />
  */
-native GangZoneStopFlashForPlayer(playerid, zoneid);
+native bool:GangZoneStopFlashForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -245,7 +245,7 @@ native GangZoneStopFlashForPlayer(playerid, zoneid);
  *   <b><c>0</c></b>: The function failed to execute.  The gangzone specified does not exist.
  * </returns>
  */
-native GangZoneStopFlashForAll(zoneid);
+native bool:GangZoneStopFlashForAll(zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -265,7 +265,7 @@ native GangZoneStopFlashForAll(zoneid);
  *   <b><c>0</c></b>: The gangzone is not valid.
  * </returns>
  */
-native IsValidGangZone(zoneid);
+native bool:IsValidGangZone(zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -286,7 +286,7 @@ native IsValidGangZone(zoneid);
  *   <b><c>0</c></b>: The player is not in gangzone.
  * </returns>
  */
-native IsPlayerInGangZone(playerid, zoneid);
+native bool:IsPlayerInGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -307,7 +307,7 @@ native IsPlayerInGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The gangzone is not visible for player.
  * </returns>
  */
-native IsGangZoneVisibleForPlayer(playerid, zoneid);
+native bool:IsGangZoneVisibleForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -374,7 +374,7 @@ native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColour
  *   <b><c>0</c></b>: The gangzone is not flashing for player.
  * </returns>
  */
-native IsGangZoneFlashingForPlayer(playerid, zoneid);
+native bool:IsGangZoneFlashingForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -395,7 +395,7 @@ native IsGangZoneFlashingForPlayer(playerid, zoneid);
  * <seealso name="GangZoneStopFlashForPlayer" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
+native bool:GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
@@ -412,7 +412,7 @@ native GangZoneGetPos(zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY
  * <seealso name="GangZoneFlashForAll" />
  * <seealso name="GangZoneStopFlashForPlayer" />
  */
-native UseGangZoneCheck(zoneid, bool:enable);
+native bool:UseGangZoneCheck(zoneid, bool:enable);
 
 /*
 native # Per-Player();
@@ -473,7 +473,7 @@ native CreatePlayerGangZone(playerid, Float:minx, Float:miny, Float:maxx, Float:
  *   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
  * </returns>
  */
-native PlayerGangZoneDestroy(playerid, zoneid);
+native bool:PlayerGangZoneDestroy(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -500,7 +500,7 @@ native PlayerGangZoneDestroy(playerid, zoneid);
  *   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
  * </returns>
  */
-native PlayerGangZoneShow(playerid, zoneid, colour);
+native bool:PlayerGangZoneShow(playerid, zoneid, colour);
 
 /**
  * <library>omp_gangzone</library>
@@ -526,7 +526,7 @@ native PlayerGangZoneShow(playerid, zoneid, colour);
  *   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
  * </returns>
  */
-native PlayerGangZoneHide(playerid, zoneid);
+native bool:PlayerGangZoneHide(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -553,7 +553,7 @@ native PlayerGangZoneHide(playerid, zoneid);
  *   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
  * </returns>
  */
-native PlayerGangZoneFlash(playerid, zoneid, flashColour);
+native bool:PlayerGangZoneFlash(playerid, zoneid, flashColour);
 
 /**
  * <library>omp_gangzone</library>
@@ -579,7 +579,7 @@ native PlayerGangZoneFlash(playerid, zoneid, flashColour);
  *   <b><c>0</c></b>: The function failed to execute. The gangzone specified does not exist.
  * </returns>
  */
-native PlayerGangZoneStopFlash(playerid, zoneid);
+native bool:PlayerGangZoneStopFlash(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -604,7 +604,7 @@ native PlayerGangZoneStopFlash(playerid, zoneid);
  *   <b><c>0</c></b>: The player gangzone is not valid.
  * </returns>
  */
-native IsValidPlayerGangZone(playerid, zoneid);
+native bool:IsValidPlayerGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -629,7 +629,7 @@ native IsValidPlayerGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The player is not in player gangzone.
  * </returns>
  */
-native IsPlayerInPlayerGangZone(playerid, zoneid);
+native bool:IsPlayerInPlayerGangZone(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -654,7 +654,7 @@ native IsPlayerInPlayerGangZone(playerid, zoneid);
  *   <b><c>0</c></b>: The player gangzone is not visible.
  * </returns>
  */
-native IsPlayerGangZoneVisible(playerid, zoneid);
+native bool:IsPlayerGangZoneVisible(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -733,7 +733,7 @@ native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashCol
  *   <b><c>0</c></b>: The player gangzone is not flashing.
  * </returns>
  */
-native IsPlayerGangZoneFlashing(playerid, zoneid);
+native bool:IsPlayerGangZoneFlashing(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
@@ -759,7 +759,7 @@ native IsPlayerGangZoneFlashing(playerid, zoneid);
  * <seealso name="UsePlayerGangZoneCheck" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
+native bool:PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:maxX, &Float:maxY);
 
 /**
  * <library>omp_gangzone</library>
@@ -785,7 +785,7 @@ native PlayerGangZoneGetPos(playerid, zoneid, &Float:minX, &Float:minY, &Float:m
  *   <b><c>0</c></b>: The function failed to execute.  The gangzone specified does not exist.
  * </returns>
  */
-native UsePlayerGangZoneCheck(playerid, zoneid, bool:enable);
+native bool:UsePlayerGangZoneCheck(playerid, zoneid, bool:enable);
 
 /**
  * <summary>This callback is called when a player enters a gangzone.</summary>

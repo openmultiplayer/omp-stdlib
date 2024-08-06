@@ -73,7 +73,7 @@ native getarg(arg, index = 0);
  * <seealso name="numargs"/>
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> if the argument or the index are invalid.</returns>
  */
-native setarg(arg, index = 0, value);
+native bool:setarg(arg, index = 0, value);
 
 /**
  * <library>core</library>
@@ -210,7 +210,7 @@ native deleteproperty(id = 0, const name[] = "", value = cellmin);
  * <seealso name="Deleteproperty"/>
  * <returns><b><c>1</c></b> if the property exists and <b><c>0</c></b> otherwise.</returns>
  */
-native existproperty(id = 0, const name[] = "", value = cellmin);
+native bool:existproperty(id = 0, const name[] = "", value = cellmin);
 
 /* */ native __unpackpubvar(dest[], const source[], maxlength = sizeof (dest)) = strunpack;
 
@@ -361,9 +361,9 @@ stock setpubvar(const __name[], __value)
  * <returns>Does the variable exist?</returns>
  */
 /*
-native existpubvar(const name[]);
+native bool:existpubvar(const name[]);
 */
-stock existpubvar(const __name[])
+stock bool:existpubvar(const __name[])
 {
 	return __findpubvar(__name) != 0;
 }

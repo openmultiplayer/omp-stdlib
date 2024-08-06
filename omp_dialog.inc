@@ -87,7 +87,7 @@ static stock DIALOG_STYLE:_@DIALOG_STYLE() { return __DIALOG_STYLE; }
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.<br />
  * </returns>
  */
-native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const title[], const body[], const button1[], const button2[], OPEN_MP_TAGS:...);
+native bool:ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const title[], const body[], const button1[], const button2[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_dialog</library>
@@ -100,7 +100,7 @@ native ShowPlayerDialog(playerid, dialogid, DIALOG_STYLE:style, const title[], c
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected or they aren't looking at a dialog.<br />
  * </returns>
  */
-native HidePlayerDialog(playerid);
+native bool:HidePlayerDialog(playerid);
 
 /**
  * <library>omp_dialog</library>
@@ -118,7 +118,7 @@ native HidePlayerDialog(playerid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected or they don't have a dialog open.<br />
  * </returns>
  */
-native GetPlayerDialogData(playerid, &DIALOG_STYLE:style, title[], titleSize = sizeof (title), body[], bodySize = sizeof (body), button1[], button1Size = sizeof (button1), button2[], button2Size = sizeof (button2));
+native bool:GetPlayerDialogData(playerid, &DIALOG_STYLE:style, title[], titleSize = sizeof (title), body[], bodySize = sizeof (body), button1[], button1Size = sizeof (button1), button2[], button2Size = sizeof (button2));
 
 /**
  * <library>omp_dialog</library>

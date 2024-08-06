@@ -146,7 +146,6 @@ The only breaking change introduced by these new tags are on callbacks.  The bes
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
-
 forward OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 ```
 
@@ -241,7 +240,6 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 #if !defined PLAYER_STATE
 	#define PLAYER_STATE: _:
 #endif
-
 public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstate)
 {
 }
@@ -253,7 +251,6 @@ public OnPlayerStateChange(playerid, PLAYER_STATE:newstate, PLAYER_STATE:oldstat
 #if !defined CLICK_SOURCE
 	#define CLICK_SOURCE: _:
 #endif
-
 public OnPlayerClickPlayer(playerid, clickedplayerid, CLICK_SOURCE:source)
 {
 }
@@ -267,7 +264,6 @@ Ideally the names of the parameters would be changed here as well to something l
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
-
 public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:response, Float:fX, Float:fY, Float:fZ, Float:rotationX, Float:rotationY, Float:rotationZ)
 {
 }
@@ -279,7 +275,6 @@ public OnPlayerEditObject(playerid, playerobject, objectid, EDIT_RESPONSE:respon
 #if !defined EDIT_RESPONSE
 	#define EDIT_RESPONSE: _:
 #endif
-
 public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ)
 {
 }
@@ -291,7 +286,6 @@ public OnPlayerEditAttachedObject(playerid, EDIT_RESPONSE:response, index, model
 #if !defined SELECT_OBJECT
 	#define SELECT_OBJECT: _:
 #endif
-
 public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Float:fX, Float:fY, Float:fZ)
 {
 }
@@ -303,11 +297,9 @@ public OnPlayerSelectObject(playerid, SELECT_OBJECT:type, objectid, modelid, Flo
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
-
 #if !defined BULLET_HIT_TYPE
 	#define BULLET_HIT_TYPE: _:
 #endif
-
 public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ)
 {
 }
@@ -319,7 +311,6 @@ public OnPlayerWeaponShot(playerid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hi
 #if !defined KEY
 	#define KEY: _:
 #endif
-
 public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
 {
 }
@@ -331,7 +322,6 @@ public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
 #if !defined DOWNLOAD_REQUEST
 	#define DOWNLOAD_REQUEST: _:
 #endif
-
 public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
 {
 }
@@ -343,7 +333,6 @@ public OnPlayerRequestDownload(playerid, DOWNLOAD_REQUEST:type, crc)
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
-
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -355,7 +344,6 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, WEAPON:weaponid, bod
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
-
 public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -367,7 +355,6 @@ public OnPlayerGiveDamage(playerid, damagedid, Float:amount, WEAPON:weaponid, bo
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
-
 public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:weaponid, bodypart)
 {
 }
@@ -379,7 +366,6 @@ public OnPlayerGiveDamageActor(playerid, damaged_actorid, Float:amount, WEAPON:w
 #if !defined WEAPON
 	#define WEAPON: _:
 #endif
-
 public OnPlayerDeath(playerid, killerid, WEAPON:reason)
 {
 }
@@ -395,7 +381,6 @@ The `WEAPON:` enum has a few extra `REASON_` values to support this use-case,  N
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
-
 public Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
 {
 }
@@ -407,7 +392,6 @@ public Streamer_OnItemStreamIn(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplay
 #if !defined STREAMER_TYPE
 	#define STREAMER_TYPE: _:
 #endif
-
 public Streamer_OnItemStreamOut(STREAMER_TYPE:type, STREAMER_ALL_TAGS:id, forplayerid)
 {
 }

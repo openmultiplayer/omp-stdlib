@@ -119,12 +119,12 @@ native DB:db_open(const name[]) = DB_Open;
  * not open.
  * </returns>
  */
-native DB_Close(DB:db);
+native bool:DB_Close(DB:db);
 
 /**
  * <library>omp_database</library>
  */
-native db_close(DB:db) = DB_Close;
+native bool:db_close(DB:db) = DB_Close;
 
 /**
  * <library>omp_database</library>
@@ -153,17 +153,17 @@ native DBResult:db_query(DB:db, const query[]) = DB_ExecuteQuery;
  * <returns>If <b><c>DBResult:dbhandle</c></b> is a valid handle, it returns <b><c>1</c></b>, otherwise
  * <b><c>0</c></b> if <b><c>DBResult:dbhandle</c></b> is a <b><c>NULL</c></b> reference.</returns>
  */
-native DB_FreeResultSet(DBResult:result);
+native bool:DB_FreeResultSet(DBResult:result);
 
 /**
  * <library>omp_database</library>
  */
-native DB_FreeResult(DBResult:result) = DB_FreeResultSet;
+native bool:DB_FreeResult(DBResult:result) = DB_FreeResultSet;
 
 /**
  * <library>omp_database</library>
  */
-native db_free_result(DBResult:result) = DB_FreeResultSet;
+native bool:db_free_result(DBResult:result) = DB_FreeResultSet;
 
 /**
  * <library>omp_database</library>
@@ -194,17 +194,17 @@ native db_num_rows(DBResult:result) = DB_GetRowCount;
  * <returns>Returns <b><c>1</c></b> on success, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the last row is reached.</returns>
  */
-native DB_SelectNextRow(DBResult:result);
+native bool:DB_SelectNextRow(DBResult:result);
 
 /**
  * <library>omp_database</library>
  */
-native DB_NextRow(DBResult:result) = DB_SelectNextRow;
+native bool:DB_NextRow(DBResult:result) = DB_SelectNextRow;
 
 /**
  * <library>omp_database</library>
  */
-native db_next_row(DBResult:result) = DB_SelectNextRow;
+native bool:db_next_row(DBResult:result) = DB_SelectNextRow;
 
 /**
  * <library>omp_database</library>
@@ -238,17 +238,17 @@ native db_num_fields(DBResult:result) = DB_GetFieldCount;
  * <returns>Returns <b><c>1</c></b>, if the function was successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native DB_GetFieldName(DBResult:result, field, output[], size = sizeof (output));
+native bool:DB_GetFieldName(DBResult:result, field, output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
  */
-native DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
+native bool:DB_FieldName(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
 
 /**
  * <library>omp_database</library>
  */
-native db_field_name(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
+native bool:db_field_name(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldName;
 
 /**
  * <library>omp_database</library>
@@ -262,17 +262,17 @@ native db_field_name(DBResult:result, field, output[], size = sizeof (output)) =
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native DB_GetFieldString(DBResult:result, field, output[], size = sizeof (output));
+native bool:DB_GetFieldString(DBResult:result, field, output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
  */
-native DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
+native bool:DB_GetField(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
 
 /**
  * <library>omp_database</library>
  */
-native db_get_field(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
+native bool:db_get_field(DBResult:result, field, output[], size = sizeof (output)) = DB_GetFieldString;
 
 /**
  * <library>omp_database</library>
@@ -318,17 +318,17 @@ native Float:db_get_field_float(DBResult:result, field = 0) = DB_GetFieldFloat;
  * <returns>Returns <b><c>1</c></b> if successful, otherwise <b><c>0</c></b> if <b><c>DBResult:result</c></b>
  * is a <b><c>NULL</c></b> reference or the column index not available.</returns>
  */
-native DB_GetFieldStringByName(DBResult:result, const field[], output[], size = sizeof (output));
+native bool:DB_GetFieldStringByName(DBResult:result, const field[], output[], size = sizeof (output));
 
 /**
  * <library>omp_database</library>
  */
-native DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
+native bool:DB_GetFieldAssoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
 
 /**
  * <library>omp_database</library>
  */
-native db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
+native bool:db_get_field_assoc(DBResult:result, const field[], output[], size = sizeof (output)) = DB_GetFieldStringByName;
 
 /**
  * <library>omp_database</library>

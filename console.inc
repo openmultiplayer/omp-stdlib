@@ -158,7 +158,7 @@ forward getvalue(base = 10, end = '\r', ...);
  * <return><c>true</c> if the cursor moved and <c>false</c> if the requested position is invalid.</return>
  * <remarks>Sets the cursor position on the console.  The upper left corner is at <c>(1,1)</c>.</remarks>
  */
-forward gotoxy(x = 1, y = 1);
+forward bool:gotoxy(x = 1, y = 1);
 
 /**
  * <library>console</library>

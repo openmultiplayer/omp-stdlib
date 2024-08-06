@@ -100,7 +100,7 @@ native CreateActor(skin, Float:x, Float:y, Float:z, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The actor with the ID specified does not exist.
  * </returns>
  */
-native DestroyActor(actorid);
+native bool:DestroyActor(actorid);
 
 /**
  * <library>omp_actor</library>
@@ -112,7 +112,7 @@ native DestroyActor(actorid);
  * <returns><b><c>1</c></b> if the actor is streamed in for the player, or <b><c>0</c></b> if it is
  * not.</returns>
  */
-native IsActorStreamedIn(actorid, playerid);
+native bool:IsActorStreamedIn(actorid, playerid);
 
 /**
  * <library>omp_actor</library>
@@ -127,7 +127,7 @@ native IsActorStreamedIn(actorid, playerid);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorVirtualWorld(actorid, virtualWorld);
+native bool:SetActorVirtualWorld(actorid, virtualWorld);
 
 /**
  * <library>omp_actor</library>
@@ -164,7 +164,7 @@ native GetActorVirtualWorld(actorid);
  * <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, loop, lockX, lockY, freeze, time);
+native bool:ApplyActorAnimation(actorid, const animationLibrary[], const animationName[], Float:delta, bool:loop, bool:lockX, bool:lockY, bool:freeze, time);
 
 /**
  * <library>omp_actor</library>
@@ -177,7 +177,7 @@ native ApplyActorAnimation(actorid, const animationLibrary[], const animationNam
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native ClearActorAnimations(actorid);
+native bool:ClearActorAnimations(actorid);
 
 /**
  * <library>omp_actor</library>
@@ -195,7 +195,7 @@ native ClearActorAnimations(actorid);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorPos(actorid, Float:x, Float:y, Float:z);
+native bool:SetActorPos(actorid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_actor</library>
@@ -213,7 +213,7 @@ native SetActorPos(actorid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.<br />
  * </returns>
  */
-native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
+native bool:GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_actor</library>
@@ -230,7 +230,7 @@ native GetActorPos(actorid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native SetActorFacingAngle(actorid, Float:angle);
+native bool:SetActorFacingAngle(actorid, Float:angle);
 
 /**
  * <library>omp_actor</library>
@@ -245,7 +245,7 @@ native SetActorFacingAngle(actorid, Float:angle);
  *   <b><c>0</c></b>: The function failed to execute.  The actor specified does not exist.
  * </returns>
  */
-native GetActorFacingAngle(actorid, &Float:angle);
+native bool:GetActorFacingAngle(actorid, &Float:angle);
 
 /**
  * <library>omp_actor</library>
@@ -257,7 +257,7 @@ native GetActorFacingAngle(actorid, &Float:angle);
  *   <b><c>0</c></b> on failure (i.e.  actor is not created).
  * </returns>
  */
-native SetActorHealth(actorid, Float:health);
+native bool:SetActorHealth(actorid, Float:health);
 
 /**
  * <library>omp_actor</library>
@@ -269,7 +269,7 @@ native SetActorHealth(actorid, Float:health);
  *   <b><c>0</c></b> - failure (i.e.  actor is not created).<br />
  * </returns>
  */
-native GetActorHealth(actorid, &Float:health);
+native bool:GetActorHealth(actorid, &Float:health);
 
 /**
  * <library>omp_actor</library>
@@ -284,7 +284,7 @@ native GetActorHealth(actorid, &Float:health);
  *   <b><c>0</c></b> - Failure (i.e.  Actor is not created).
  * </returns>
  */
-native SetActorInvulnerable(actorid, invulnerable = true);
+native bool:SetActorInvulnerable(actorid, bool:invulnerable = true);
 
 /**
  * <library>omp_actor</library>
@@ -295,7 +295,7 @@ native SetActorInvulnerable(actorid, invulnerable = true);
  * <seealso name="SetActorHealth" />
  * <returns><b><c>1</c></b> if the actor is invulnerable, <b><c>0</c></b> otherwise.</returns>
  */
-native IsActorInvulnerable(actorid);
+native bool:IsActorInvulnerable(actorid);
 
 /**
  * <library>omp_actor</library>
@@ -303,7 +303,7 @@ native IsActorInvulnerable(actorid);
  * <param name="actorid">The ID of the actor to check</param>
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
-native IsValidActor(actorid);
+native bool:IsValidActor(actorid);
 
 /**
  * <library>omp_actor</library>
@@ -312,7 +312,7 @@ native IsValidActor(actorid);
  * <param name="skin">The ID of the skin to give them</param>
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
-native SetActorSkin(actorid, skin);
+native bool:SetActorSkin(actorid, skin);
 
 /**
  * <library>omp_actor</library>
@@ -340,7 +340,7 @@ native GetActorSkin(actorid);
  * <param name="time">Timer in milliseconds.  For a never-ending loop it should be <b><c>0</c></b></param>
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
-native GetActorAnimation(actorid, animationLibrary[], librarySize = sizeof (animationLibrary), animationName[], nameSize = sizeof (animationName), &Float:delta, &loop = 0, &lockX = 0, &lockY = 0, &freeze = 0, &time = 0);
+native bool:GetActorAnimation(actorid, animationLibrary[], librarySize = sizeof (animationLibrary), animationName[], nameSize = sizeof (animationName), &Float:delta, &bool:loop = false, &bool:lockX = false, &bool:lockY = false, &bool:freeze = false, &time = 0);
 
 /**
  * <library>omp_actor</library>
@@ -353,7 +353,7 @@ native GetActorAnimation(actorid, animationLibrary[], librarySize = sizeof (anim
  * <param name="spawnAngle">The angle</param>
  * <returns><b><c>1</c></b> if the actor is valid, <b><c>0</c></b> if not.</returns>
  */
-native GetActorSpawnInfo(actorid, &skin, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:spawnAngle = 0.0);
+native bool:GetActorSpawnInfo(actorid, &skin, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:spawnAngle = 0.0);
 
 /**
  * <library>omp_actor</library>

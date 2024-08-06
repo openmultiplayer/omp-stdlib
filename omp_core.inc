@@ -433,7 +433,7 @@ native Format(output[], len = sizeof (output), const format[], {Float, _}:...) =
  * <remarks>The use of many timers will result in increased memory/cpu usage. </remarks>
  * <returns>The ID of the timer that was started.  Timer IDs start at <b><c>1</c></b>.</returns>
  */
-native SetTimer(const functionName[], interval, repeating);
+native SetTimer(const functionName[], interval, bool:repeating);
 
 /**
  * <library>omp_core</library>
@@ -469,7 +469,7 @@ native SetTimer(const functionName[], interval, repeating);
  * reused.  There are no internal checks to verify that the parameters passed are valid (e.g.  duration
  * not a minus value).</returns>
  */
-native SetTimerEx(const functionName[], interval, repeating, const specifiers[] = "", OPEN_MP_TAGS:...);
+native SetTimerEx(const functionName[], interval, bool:repeating, const specifiers[] = "", OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -485,12 +485,12 @@ native void:KillTimer(timerid);
 /**
  * <library>omp_core</library>
  */
-native IsValidTimer(timerid);
+native bool:IsValidTimer(timerid);
 
 /**
  * <library>omp_core</library>
  */
-native IsRepeatingTimer(timerid);
+native bool:IsRepeatingTimer(timerid);
 
 /**
  * <library>omp_core</library>
@@ -633,7 +633,7 @@ native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = 
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
+native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -647,7 +647,7 @@ native SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
-native SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
+native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
 
 /**
  * <library>omp_core</library>
@@ -668,7 +668,7 @@ native SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = Sen
  * <paramref name="reason" /> is invalid, a generic skull-and-crossbones icon is shown. <paramref name="killer"
  * /> being invalid (<b><c>INVALID_PLAYER_ID</c></b>) is valid.</returns>
  */
-native SendDeathMessage(killer, killee, weapon);
+native bool:SendDeathMessage(killer, killee, weapon);
 
 /**
  * <library>omp_core</library>
@@ -684,12 +684,12 @@ native SendDeathMessage(killer, killee, weapon);
  *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
  * </returns>
  */
-native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 
 /**
  * <library>omp_core</library>
  */
-native IsValidNickName(const name[]);
+native bool:IsValidNickName(const name[]);
 
 /**
  * <library>omp_core</library>
@@ -869,7 +869,7 @@ native GetMaxPlayers();
  * <library>omp_core</library>
  * <param name="seconds">The delay between loading main scripts, in seconds.</param>
  */
-native SetModeRestartTime(Float:seconds);
+native bool:SetModeRestartTime(Float:seconds);
 
 /**
  * <library>omp_core</library>
@@ -944,7 +944,7 @@ native Float:GetConsoleVarAsFloat(const cvar[]);
  * <returns>The value of the specified console variable. <b><c>0</c></b> if the specified console variable
  * is not a boolean or doesn't exist.</returns>
  */
-native GetConsoleVarAsBool(const cvar[]);
+native bool:GetConsoleVarAsBool(const cvar[]);
 
 /**
  * <library>omp_core</library>
@@ -954,27 +954,27 @@ native void:AllowNickNameCharacter(character, bool:allow);
 /**
  * <library>omp_core</library>
  */
-native IsNickNameCharacterAllowed(character);
+native bool:IsNickNameCharacterAllowed(character);
 
 /**
  * <library>omp_core</library>
  */
-native AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
+native bool:AddServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
  */
-native SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
+native bool:SetServerRule(const rule[], const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
  */
-native RemoveServerRule(const rule[]);
+native bool:RemoveServerRule(const rule[]);
 
 /**
  * <library>omp_core</library>
  */
-native IsValidServerRule(const rule[]);
+native bool:IsValidServerRule(const rule[]);
 
 /*
 native # Client Config();
@@ -994,7 +994,7 @@ native
  * to use it in OnGameModeInit).  It will not remove a connected player's markers.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native DisableInteriorEnterExits();
+native void:DisableInteriorEnterExits();
 
 /**
  * <library>omp_core</library>
@@ -1003,7 +1003,7 @@ native DisableInteriorEnterExits();
  * <seealso name="ShowPlayerNameTagForPlayer" />
  * <remarks>This can not be reversed until the server restarts.</remarks>
  */
-native DisableNameTagLOS();
+native void:DisableNameTagLOS();
 
 /**
  * <library>omp_core</library>
@@ -1016,7 +1016,7 @@ native DisableNameTagLOS();
  * <seealso name="SendPlayerMessageToAll" />
  * <seealso name="OnPlayerText" />
  */
-native LimitGlobalChatRadius(Float:chatRadius);
+native void:LimitGlobalChatRadius(Float:chatRadius);
 
 /**
  * <library>omp_core</library>
@@ -1026,14 +1026,14 @@ native LimitGlobalChatRadius(Float:chatRadius);
  * <seealso name="SetPlayerMarkerForPlayer" />
  * <seealso name="LimitGlobalChatRadius" />
  */
-native LimitPlayerMarkerRadius(Float:markerRadius);
+native void:LimitPlayerMarkerRadius(Float:markerRadius);
 
 /**
  * <library>omp_core</library>
  * <summary>Set the name of the game mode, which appears in the server browser.</summary>
  * <param name="format">The gamemode name to display.  May be optionally formatted.</param>
  */
-native SetGameModeText(const format[], OPEN_MP_TAGS:...);
+native void:SetGameModeText(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -1101,7 +1101,7 @@ native void:SetWorldTime(hour);
  * <remarks>This function can only be used in <a href="#OnGameModeInit">OnGameModeInit</a>.  For other
  * times, see <a href="#ShowPlayerNameTagForPlayer">ShowPlayerNameTagForPlayer</a>.</remarks>
  */
-native void:ShowNameTags(show);
+native void:ShowNameTags(bool:show);
 
 /**
  * <library>omp_core</library>
@@ -1136,7 +1136,7 @@ native void:ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode);
  * <remarks>Not using this function causes two-handed weapons (not dual-handed - a single weapon that
  * is held by both hands) to be held in only one hand.</remarks>
  */
-native UsePlayerPedAnims();
+native void:UsePlayerPedAnims();
 
 /**
  * <library>omp_core</library>
@@ -1157,7 +1157,7 @@ native GetWorldTime();
 /**
  * <library>omp_core</library>
  */
-native ToggleChatTextReplacement(bool:enable);
+native void:ToggleChatTextReplacement(bool:enable);
 
 /**
  * <library>omp_core</library>
@@ -1171,7 +1171,7 @@ native bool:ChatTextReplacementToggled();
  * <param name="enable"><b><c>1</c></b> to enable stunt bonuses or <b><c>0</c></b> to disable them</param>
  * <seealso name="EnableStuntBonusForPlayer" />
  */
-native EnableStuntBonusForAll(enable);
+native void:EnableStuntBonusForAll(bool:enable);
 
 /**
  * <library>omp_core</library>
@@ -1181,7 +1181,7 @@ native EnableStuntBonusForAll(enable);
  * <seealso name="IsPlayerAdmin" />
  * <seealso name="AllowPlayerTeleport" />
  */
-native void:AllowAdminTeleport(allow);
+native void:AllowAdminTeleport(bool:allow);
 
 /**
  * <library>omp_core</library>
@@ -1189,7 +1189,7 @@ native void:AllowAdminTeleport(allow);
  * <seealso name="AllowAdminTeleport" />
  * <seealso name="AllowPlayerTeleport" />
  */
-native IsAdminTeleportAllowed();
+native bool:IsAdminTeleportAllowed();
 
 /**
  * <library>omp_core</library>
@@ -1200,28 +1200,28 @@ native IsAdminTeleportAllowed();
  * <seealso name="GetPlayerInterior" />
  * <seealso name="OnPlayerInteriorChange" />
  */
-native void:AllowInteriorWeapons(allow);
+native void:AllowInteriorWeapons(bool:allow);
 
 /**
  * <library>omp_core</library>
  * <summary>Can weapons be used in interiors?</summary>
  * <seealso name="AllowInteriorWeapons" />
  */
-native AreInteriorWeaponsAllowed();
-
-/**
- * <library>omp_core</library>
- * <summary>Are the animations missing from some versions enabled?</summary>
- * <seealso name="EnableAllAnimations" />
- */
-native AreAllAnimationsEnabled();
+native bool:AreInteriorWeaponsAllowed();
 
 /**
  * <library>omp_core</library>
  * <summary>Allow use of the animations missing from some versions.</summary>
  * <seealso name="AreAllAnimationsEnabled" />
  */
-native void:EnableAllAnimations(enable);
+native void:EnableAllAnimations(bool:enable);
+
+/**
+ * <library>omp_core</library>
+ * <summary>Are the animations missing from some versions enabled?</summary>
+ * <seealso name="EnableAllAnimations" />
+ */
+native bool:AreAllAnimationsEnabled();
 
 /**
  * <library>omp_core</library>
@@ -1230,7 +1230,7 @@ native void:EnableAllAnimations(enable);
  * set in the callback <a href="#OnGameModeInit">OnGameModeInit</a>.</summary>
  * <param name="enable">A toggle option for whether or not you'd like zone names on or off</param>
  */
-native EnableZoneNames(enable);
+native void:EnableZoneNames(bool:enable);
 
 /*
 native # NPCs();
@@ -1282,7 +1282,7 @@ native GetActorPoolSize();
  * OnVehicleDamageStatusUpdate</a>.</remarks>
  */
 #pragma deprecated Use `OnVehicleDamageStatusUpdate`.
-forward void:EnableTirePopping(enable);
+forward void:EnableTirePopping(bool:enable);
 
 /**
  * <library>omp_core</library>
@@ -1349,7 +1349,7 @@ native Float:GetServerVarAsFloat(const cvar[]) = GetConsoleVarAsFloat;
  * is not a boolean or doesn't exist.</returns>
  */
 #pragma deprecated Use `GetConsoleVarAsBool`.
-native GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
+native bool:GetServerVarAsBool(const cvar[]) = GetConsoleVarAsBool;
 
 /**
  * <library>omp_core</library>

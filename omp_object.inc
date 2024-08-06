@@ -166,52 +166,16 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  * units on the x and/or y axis).</remarks>
  */
 #if __namemax > 31
-	native SetObjectsDefaultCameraCollision(disable);
+	native bool:SetObjectsDefaultCameraCollision(bool:disable);
 #else
-	native SetObjectsDefaultCameraCol(disable);
+	native bool:SetObjectsDefaultCameraCol(bool:disable);
 #endif
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native HideObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native ShowObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native HideNewObjectsForPlayer(playerid, bool:toggle);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native IsObjectHiddenForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native NewObjectsHiddenForPlayer(playerid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
 native GetObjectType(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, syncRotation = 1);
 
 /*
 native # Global();
@@ -285,7 +249,7 @@ native CreateObject(modelid, Float:x, Float:y, Float:z, Float:rotationX, Float:r
  * it; they will remain stationary at the position the vehicle disappeared and be reattached to the
  * next vehicle to claim the vehicle ID that the objects were attached to.</remarks>
  */
-native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -317,7 +281,7 @@ native AttachObjectToVehicle(objectid, parentid, Float:offsetX, Float:offsetY, F
  * />) exists.
  * </returns>
  */
-native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, syncRotation = 1);
+native bool:AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
 
 /**
  * <library>omp_object</library>
@@ -337,7 +301,7 @@ native AttachObjectToObject(objectid, parentid, Float:offsetX, Float:offsetY, Fl
  * <seealso name="CreateObject" />
  * <returns>This function always returns <b><c>0</c></b>.</returns>
  */
-native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -352,7 +316,7 @@ native AttachObjectToPlayer(objectid, parentid, Float:offsetX, Float:offsetY, Fl
  * <seealso name="CreateObject" />
  * <returns>This function always returns <b><c>1</c></b>, even if the object specified does not exist.</returns>
  */
-native SetObjectPos(objectid, Float:x, Float:y, Float:z);
+native bool:SetObjectPos(objectid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_object</library>
@@ -370,7 +334,7 @@ native SetObjectPos(objectid, Float:x, Float:y, Float:z);
  *   <b><c>0</c></b>: The function failed to execute.  The specified object does not exist.
  * </returns>
  */
-native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
+native bool:GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_object</library>
@@ -385,7 +349,7 @@ native GetObjectPos(objectid, &Float:x, &Float:y, &Float:z);
  * <seealso name="SetPlayerObjectRot" />
  * <returns>This function always returns <b><c>1</c></b>, even if the object doesn't exist.</returns>
  */
-native SetObjectRot(objectid, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:SetObjectRot(objectid, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -401,7 +365,7 @@ native SetObjectRot(objectid, Float:rotationX, Float:rotationY, Float:rotationZ)
  * <seealso name="CreateObject" />
  * <returns>The object's rotation is stored in the referenced variables, not in the return value.</returns>
  */
-native GetObjectRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+native bool:GetObjectRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -426,7 +390,7 @@ native GetObjectModel(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
  * </returns>
  */
-native SetObjectNoCameraCol(objectid);
+native bool:SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
 
 /**
  * <library>omp_object</library>
@@ -441,7 +405,7 @@ native SetObjectNoCameraCol(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
  * </returns>
  */
-native SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
+native bool:SetObjectNoCameraCol(objectid);
 
 /**
  * <library>omp_object</library>
@@ -453,7 +417,7 @@ native SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
  * <remarks>This is to check if an object exists, not if a model is valid.</remarks>
  * <returns><b><c>1</c></b> if the object exists, <b><c>0</c></b> if not.</returns>
  */
-native IsValidObject(objectid);
+native bool:IsValidObject(objectid);
 
 /**
  * <library>omp_object</library>
@@ -463,7 +427,7 @@ native IsValidObject(objectid);
  * <seealso name="IsValidObject" />
  * <seealso name="DestroyPlayerObject" />
  */
-native DestroyObject(objectid);
+native bool:DestroyObject(objectid);
 
 /**
  * <library>omp_object</library>
@@ -492,7 +456,7 @@ native DestroyObject(objectid);
  * the x, y or z will not rotate the object. </remarks>
  * <returns>The time it will take for the object to move in milliseconds.</returns>
  */
-native MoveObject(objectid, Float:targetX, Float:targetY, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
+native bool:MoveObject(objectid, Float:targetX, Float:targetY, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
 
 /**
  * <library>omp_object</library>
@@ -515,7 +479,7 @@ native MoveObject(objectid, Float:targetX, Float:targetY, Float:targetZ, Float:s
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
+native bool:SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /**
  * <library>omp_object</library>
@@ -565,7 +529,7 @@ native SetObjectMaterial(objectid, materialIndex, modelid, const textureLibrary[
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bold = 1, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
+native bool:SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_object</library>
@@ -576,7 +540,7 @@ native SetObjectMaterialText(objectid, const text[], materialIndex = 0, OBJECT_M
  * <seealso name="OnObjectMoved" />
  * <seealso name="StopPlayerObject" />
  */
-native StopObject(objectid);
+native bool:StopObject(objectid);
 
 /**
  * <library>omp_object</library>
@@ -588,7 +552,7 @@ native StopObject(objectid);
  * <seealso name="IsPlayerObjectMoving" />
  * <returns><b><c>1</c></b> if the object is moving, <b><c>0</c></b> if not.</returns>
  */
-native IsObjectMoving(objectid);
+native bool:IsObjectMoving(objectid);
 
 /**
  * <library>omp_object</library>
@@ -608,7 +572,7 @@ native IsObjectMoving(objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-native BeginObjectEditing(playerid, objectid);
+native bool:BeginObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -628,7 +592,7 @@ native BeginObjectEditing(playerid, objectid);
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-native EditObject(playerid, objectid) = BeginObjectEditing;
+native bool:EditObject(playerid, objectid) = BeginObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -641,7 +605,7 @@ native EditObject(playerid, objectid) = BeginObjectEditing;
  * <seealso name="CancelEdit" />
  * <seealso name="OnPlayerSelectObject" />
  */
-native BeginObjectSelecting(playerid);
+native bool:BeginObjectSelecting(playerid);
 
 /**
  * <library>omp_object</library>
@@ -654,7 +618,7 @@ native BeginObjectSelecting(playerid);
  * <seealso name="CancelEdit" />
  * <seealso name="OnPlayerSelectObject" />
  */
-native SelectObject(playerid) = BeginObjectSelecting;
+native bool:SelectObject(playerid) = BeginObjectSelecting;
 
 /**
  * <library>omp_object</library>
@@ -665,7 +629,7 @@ native SelectObject(playerid) = BeginObjectSelecting;
  * <seealso name="EditPlayerObject" />
  * <seealso name="EditAttachedObject" />
  */
-native EndObjectEditing(playerid);
+native bool:EndObjectEditing(playerid);
 
 /**
  * <library>omp_object</library>
@@ -676,7 +640,7 @@ native EndObjectEditing(playerid);
  * <seealso name="EditPlayerObject" />
  * <seealso name="EditAttachedObject" />
  */
-native CancelEdit(playerid) = EndObjectEditing;
+native bool:CancelEdit(playerid) = EndObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -688,7 +652,7 @@ native Float:GetObjectDrawDistance(objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native SetObjectMoveSpeed(objectid, Float:speed);
+native bool:SetObjectMoveSpeed(objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
@@ -700,68 +664,68 @@ native Float:GetObjectMoveSpeed(objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+native bool:GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
+native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectMovingTargetRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+native bool:GetObjectMovingTargetRot(objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectAttachedData(objectid, &parentVehicle = 0, &parentObject = 0, &parentPlayer = 0);
+native bool:GetObjectAttachedData(objectid, &parentVehicle = 0, &parentObject = 0, &parentPlayer = 0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectAttachedOffset(objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
+native bool:GetObjectAttachedOffset(objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectSyncRotation(objectid);
+native bool:GetObjectSyncRotation(objectid);
 
 /**
  * <library>omp_object</library>
  * <remarks>This is NOT a boolean return.</remarks>
  * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native _:IsObjectMaterialSlotUsed(objectid, materialIndex);
+native IsObjectMaterialSlotUsed(objectid, materialIndex);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
+native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bold = 1, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native IsObjectNoCameraCol(objectid);
+native bool:IsObjectNoCameraCol(objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-stock HasObjectCameraCollision(objectid)
+stock bool:HasObjectCameraCollision(objectid)
 {
 	return !IsObjectNoCameraCol(objectid);
 }
@@ -820,7 +784,32 @@ native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:ro
  * <seealso name="AttachObjectToVehicle" />
  * <remarks>You need to create the object before attempting to attach it to a vehicle.</remarks>
  */
-native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
+
+/**
+ * <library>omp_object</library>
+ * <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
+ * <param name="playerid">The ID of the player which is linked with the object</param>
+ * <param name="objectid">The objectid you want to attach to the player</param>
+ * <param name="parentid">The ID of the player you want to attach to the object</param>
+ * <param name="offsetX">The distance between the player and the object in the x direction</param>
+ * <param name="offsetY">The distance between the player and the object in the y direction</param>
+ * <param name="offsetZ">The distance between the player and the object in the z direction</param>
+ * <param name="rotationX">The x rotation</param>
+ * <param name="rotationY">The y rotation</param>
+ * <param name="rotationZ">The z rotation</param>
+ * <seealso name="SetPlayerAttachedObject" />
+ * <seealso name="AttachPlayerObjectToVehicle" />
+ * <seealso name="AttachObjectToPlayer" />
+ * <seealso name="CreatePlayerObject" />
+ */
+native bool:AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -840,7 +829,7 @@ native AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, 
  *   <b><c>0</c></b>: The function failed to execute.  Player and/or object do not exist.
  * </returns>
  */
-native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
+native bool:SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
 
 /**
  * <library>omp_object</library>
@@ -862,7 +851,7 @@ native SetPlayerObjectPos(playerid, objectid, Float:x, Float:y, Float:z);
  *   The object's position is stored in the specified variables.
  * </returns>
  */
-native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
+native bool:GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_object</library>
@@ -882,7 +871,7 @@ native GetPlayerObjectPos(playerid, objectid, &Float:x, &Float:y, &Float:z);
  *   <b><c>0</c></b>: The function failed to execute.
  * </returns>
  */
-native SetPlayerObjectRot(playerid, objectid, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:SetPlayerObjectRot(playerid, objectid, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -899,7 +888,7 @@ native SetPlayerObjectRot(playerid, objectid, Float:rotationX, Float:rotationY, 
  * <seealso name="CreatePlayerObject" />
  * <returns>The object's rotation is stored in the specified variables.</returns>
  */
-native GetPlayerObjectRot(playerid, objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+native bool:GetPlayerObjectRot(playerid, objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -925,9 +914,9 @@ native GetPlayerObjectModel(playerid, objectid);
  * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
  */
 #if __namemax > 31
-	native SetPlayerObjectNoCameraCollision(playerid, objectid);
+	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 #else
-	native SetPlayerObjectNoCameraCol(playerid, objectid);
+	native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 #endif
 
 /**
@@ -940,7 +929,7 @@ native GetPlayerObjectModel(playerid, objectid);
  * <seealso name="DestroyPlayerObject" />
  * <returns><b><c>1</c></b> if the object exists, <b><c>0</c></b> if not.</returns>
  */
-native IsValidPlayerObject(playerid, objectid);
+native bool:IsValidPlayerObject(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -951,7 +940,7 @@ native IsValidPlayerObject(playerid, objectid);
  * <seealso name="IsValidPlayerObject" />
  * <seealso name="DestroyObject" />
  */
-native DestroyPlayerObject(playerid, objectid);
+native bool:DestroyPlayerObject(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -975,7 +964,7 @@ native DestroyPlayerObject(playerid, objectid);
  * <seealso name="CreatePlayerObject" />
  * <returns>The time it will take for the object to move in milliseconds.</returns>
  */
-native MovePlayerObject(playerid, objectid, Float:targetX, Float:targetY, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
+native bool:MovePlayerObject(playerid, objectid, Float:targetX, Float:targetY, Float:targetZ, Float:speed, Float:rotationX = -1000.0, Float:rotationY = -1000.0, Float:rotationZ = -1000.0);
 
 /**
  * <library>omp_object</library>
@@ -988,7 +977,7 @@ native MovePlayerObject(playerid, objectid, Float:targetX, Float:targetY, Float:
  * <seealso name="OnPlayerObjectMoved" />
  * <seealso name="StopObject" />
  */
-native StopPlayerObject(playerid, objectid);
+native bool:StopPlayerObject(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1001,26 +990,7 @@ native StopPlayerObject(playerid, objectid);
  * <seealso name="IsObjectMoving" />
  * <returns><b><c>1</c></b> if the player object is moving, <b><c>0</c></b> if not.</returns>
  */
-native IsPlayerObjectMoving(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
- * <param name="playerid">The ID of the player which is linked with the object</param>
- * <param name="objectid">The objectid you want to attach to the player</param>
- * <param name="parentid">The ID of the player you want to attach to the object</param>
- * <param name="offsetX">The distance between the player and the object in the x direction</param>
- * <param name="offsetY">The distance between the player and the object in the y direction</param>
- * <param name="offsetZ">The distance between the player and the object in the z direction</param>
- * <param name="rotationX">The x rotation</param>
- * <param name="rotationY">The y rotation</param>
- * <param name="rotationZ">The z rotation</param>
- * <seealso name="SetPlayerAttachedObject" />
- * <seealso name="AttachPlayerObjectToVehicle" />
- * <seealso name="AttachObjectToPlayer" />
- * <seealso name="CreatePlayerObject" />
- */
-native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+native bool:IsPlayerObjectMoving(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1040,7 +1010,7 @@ native AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, F
  * <seealso name="SetPlayerObjectMaterialText" />
  * <remarks>Vertex lightning of the object will disappear if material colour is changed.</remarks>
  */
-native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
+native bool:SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const textureLibrary[], const textureName[], materialColour = 0);
 
 /**
  * <library>omp_object</library>
@@ -1087,7 +1057,7 @@ native SetPlayerObjectMaterial(playerid, objectid, materialIndex, modelid, const
  *   </ul>
  * </remarks>
  */
-native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bold = 1, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
+native bool:SetPlayerObjectMaterialText(playerid, objectid, const text[], materialIndex = 0, OBJECT_MATERIAL_SIZE:materialSize = OBJECT_MATERIAL_SIZE_256x128, const fontFace[] = "Arial", fontSize = 24, bool:bold = true, fontColour = 0xFFFFFFFF, backgroundColour = 0, OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_object</library>
@@ -1105,7 +1075,7 @@ native SetPlayerObjectMaterialText(playerid, objectid, const text[], materialInd
  *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
  * </returns>
  */
-native BeginPlayerObjectEditing(playerid, objectid);
+native bool:BeginPlayerObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1123,7 +1093,7 @@ native BeginPlayerObjectEditing(playerid, objectid);
  *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
  * </returns>
  */
-native EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
+native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -1135,7 +1105,7 @@ native Float:GetPlayerObjectDrawDistance(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
+native bool:SetPlayerObjectMoveSpeed(playerid, objectid, Float:speed);
 
 /**
  * <library>omp_object</library>
@@ -1153,50 +1123,50 @@ native Float:GetPlayerObjectTarget(playerid, objectid, &Float:targetX = 0.0, &Fl
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectAttachedData(playerid, objectid, &parentVehicle, &parentObject = 0, &parentPlayer = 0);
+native bool:GetPlayerObjectAttachedData(playerid, objectid, &parentVehicle, &parentObject = 0, &parentPlayer = 0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectAttachedOffset(playerid, objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
+native bool:GetPlayerObjectAttachedOffset(playerid, objectid, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectSyncRotation(playerid, objectid);
+native bool:GetPlayerObjectSyncRotation(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <remarks>This is NOT a boolean return.</remarks>
  * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native _:IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
+native IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectMaterial(playerid, objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
+native bool:GetPlayerObjectMaterial(playerid, objectid, materialIndex, &modelid, textureLibrary[], textureLibrarySize = sizeof (textureLibrary), textureName[], textureNameSize = sizeof (textureName), &materialColour = 0);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bold = 1, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
+native bool:GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native IsPlayerObjectNoCameraCol(playerid, objectid);
+native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-stock HasPlayerObjectCameraCollision(playerid, objectid)
+stock bool:HasPlayerObjectCameraCollision(playerid, objectid)
 {
 	return !IsPlayerObjectNoCameraCol(playerid, objectid);
 }
@@ -1211,13 +1181,13 @@ native GetPlayerSurfingPlayerObjectID(playerid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectMovingTargetPos(playerid, objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+native bool:GetPlayerObjectMovingTargetPos(playerid, objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
+native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX, &Float:rotationY, &Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -1240,7 +1210,7 @@ native
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0, &Float:scaleX = 0.0, &Float:scaleY = 0.0, &Float:scaleZ = 0.0, &materialColour1 = 0, &materialColour2 = 0);
+native bool:GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float:offsetX = 0.0, &Float:offsetY = 0.0, &Float:offsetZ = 0.0, &Float:rotationX = 0.0, &Float:rotationY = 0.0, &Float:rotationZ = 0.0, &Float:scaleX = 0.0, &Float:scaleY = 0.0, &Float:scaleZ = 0.0, &materialColour1 = 0, &materialColour2 = 0);
 
 /**
  * <library>omp_object</library>
@@ -1291,7 +1261,7 @@ native GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float:offs
  * </remarks>
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  */
-native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotationX = 0.0, Float:rotationY = 0.0, Float:rotationZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
+native bool:SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotationX = 0.0, Float:rotationY = 0.0, Float:rotationZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
 
 /**
  * <library>omp_object</library>
@@ -1302,7 +1272,7 @@ native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0
  * <seealso name="IsPlayerAttachedObjectSlotUsed" />
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  */
-native RemovePlayerAttachedObject(playerid, index);
+native bool:RemovePlayerAttachedObject(playerid, index);
 
 /**
  * <library>omp_object</library>
@@ -1313,7 +1283,7 @@ native RemovePlayerAttachedObject(playerid, index);
  * <seealso name="RemovePlayerAttachedObject" />
  * <returns><b><c>1</c></b> if used, <b><c>0</c></b> if not.</returns>
  */
-native IsPlayerAttachedObjectSlotUsed(playerid, index);
+native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
 
 /**
  * <library>omp_object</library>
@@ -1343,7 +1313,7 @@ native IsPlayerAttachedObjectSlotUsed(playerid, index);
  * to abort the edit.</remarks>
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
  */
-native EditAttachedObject(playerid, index);
+native bool:EditAttachedObject(playerid, index);
 
 /*
 native # DL();
@@ -1355,17 +1325,17 @@ native
 /**
  * <library>omp_object</library>
  */
-native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+native bool:AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_object</library>
  */
-native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+native bool:AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_object</library>
  */
-native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+native bool:AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
 
 /**
  * <library>omp_object</library>
@@ -1380,17 +1350,17 @@ native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
 /**
  * <library>omp_object</library>
  */
-native RedirectDownload(playerid, const url[]);
+native bool:RedirectDownload(playerid, const url[]);
 
 /**
  * <library>omp_object</library>
  */
-native GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPath[], txdSize = sizeof (txdPath));
+native bool:GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPath[], txdSize = sizeof (txdPath));
 
 /**
  * <library>omp_object</library>
  */
-native IsValidCustomModel(modelid);
+native bool:IsValidCustomModel(modelid);
 
 /**
  * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>

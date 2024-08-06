@@ -283,7 +283,7 @@ native bool:fstat(const filename[], &size = 0, &timestamp = 0, &attrib = 0, &ino
  * </remarks>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
-native frename(const oldname[], const newname[]);
+native bool:frename(const oldname[], const newname[]);
 
 /**
  * <library>file</library>
@@ -359,7 +359,7 @@ native bool:fmatch(filename[], const pattern[], index = 0, size = sizeof (filena
  * </remarks>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
-native fmkdir(const dirname[]) = fcreatedir;
+native bool:fmkdir(const dirname[]) = fcreatedir;
 
 /**
  * <library>file</library>
@@ -453,27 +453,27 @@ native bool:writecfgvalue(const filename[] = "", const section[] = "", const key
 /**
  * <library>file</library>
  */
-native ffind(const pattern[], filename[], size = sizeof (filename), &idx);
+native bool:ffind(const pattern[], filename[], size = sizeof (filename), &idx);
 
 /**
  * <library>file</library>
  */
-native dfind(const pattern[], filename[], size = sizeof (filename), &idx);
+native bool:dfind(const pattern[], filename[], size = sizeof (filename), &idx);
 
 /**
  * <library>file</library>
  */
-native dcreate(const name[]) = fcreatedir;
+native bool:dcreate(const name[]) = fcreatedir;
 
 /**
  * <library>file</library>
  */
-native drename(const oldname[], const newname[]) = frename;
+native bool:drename(const oldname[], const newname[]) = frename;
 
 /**
  * <library>file</library>
  */
-native ftouch(const filename[]);
+native bool:ftouch(const filename[]);
 
 /**
  * <library>file</library>

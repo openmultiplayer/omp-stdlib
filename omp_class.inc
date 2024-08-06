@@ -125,7 +125,7 @@ native AddPlayerClassEx(team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Fl
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SpawnPlayer" />
  */
-native SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
+native bool:SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
 
 /**
  * <library>omp_class</library>
@@ -150,7 +150,7 @@ native SetSpawnInfo(playerid, team, skin, Float:spawnX, Float:spawnY, Float:spaw
  * <seealso name="SetPlayerTeam" />
  * <seealso name="SpawnPlayer" />
  */
-native GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
+native bool:GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
 
 /**
  * <library>omp_class</library>
@@ -165,7 +165,7 @@ native GetSpawnInfo(playerid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spaw
  *   <b><c>0</c></b>: The function failed to execute.  This means the player is not connected.
  * </returns>
  */
-native SpawnPlayer(playerid);
+native bool:SpawnPlayer(playerid);
 
 /**
  * <library>omp_class</library>
@@ -177,7 +177,7 @@ native SpawnPlayer(playerid);
  * <seealso name="GetPlayerTeam" />
  * <seealso name="SetPlayerTeam" />
  */
-forward SetTeamCount(count);
+forward void:SetTeamCount(count);
 
 /**
  * <library>omp_class</library>
@@ -190,7 +190,7 @@ forward SetTeamCount(count);
  * <remarks>The player will not return to class selection until they re-spawn.  This can be achieved
  * with <a href="#TogglePlayerSpectating">TogglePlayerSpectating</a>, as seen in the below example.</remarks>
  */
-native ForceClassSelection(playerid);
+native bool:ForceClassSelection(playerid);
 
 /**
  * <library>omp_class</library>
@@ -201,12 +201,12 @@ native GetAvailableClasses();
 /**
  * <library>omp_class</library>
  */
-native GetPlayerClass(classid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
+native bool:GetPlayerClass(classid, &team, &skin = 0, &Float:spawnX = 0.0, &Float:spawnY = 0.0, &Float:spawnZ = 0.0, &Float:angle = 0.0, &WEAPON:weapon1 = WEAPON_FIST, &ammo1 = 0, &WEAPON:weapon2 = WEAPON_FIST, &ammo2 = 0, &WEAPON:weapon3 = WEAPON_FIST, &ammo3 = 0);
 
 /**
  * <library>omp_class</library>
  */
-native EditPlayerClass(classid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
+native bool:EditPlayerClass(classid, team, skin, Float:spawnX, Float:spawnY, Float:spawnZ, Float:angle, WEAPON:weapon1 = WEAPON_FIST, ammo1 = 0, WEAPON:weapon2 = WEAPON_FIST, ammo2 = 0, WEAPON:weapon3 = WEAPON_FIST, ammo3 = 0);
 
 /**
  * <summary>Called when a player changes class at class selection (and when class selection first appears).</summary>

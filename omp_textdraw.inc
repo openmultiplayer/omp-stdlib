@@ -191,7 +191,7 @@ native Text:TextDrawCreate(Float:x, Float:y, const format[], OPEN_MP_TAGS:...);
  * <summary>Destroys a previously-created textdraw.</summary>
  * <param name="textid">The ID of the textdraw to destroy.  Returned by <a href="#TextDrawCreate">TextDrawCreate</a></param>
  */
-native TextDrawDestroy(Text:textid);
+native bool:TextDrawDestroy(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -210,7 +210,7 @@ native TextDrawDestroy(Text:textid);
  * <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b>
  * (e.g.  if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>). </remarks>
  */
-native TextDrawLetterSize(Text:textid, Float:width, Float:height);
+native bool:TextDrawLetterSize(Text:textid, Float:width, Float:height);
 
 /**
  * <library>omp_textdraw</library>
@@ -244,7 +244,7 @@ native TextDrawLetterSize(Text:textid, Float:width, Float:height);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawTextSize(Text:textid, Float:width, Float:height);
+native bool:TextDrawTextSize(Text:textid, Float:width, Float:height);
 
 /**
  * <library>omp_textdraw</library>
@@ -255,7 +255,7 @@ native TextDrawTextSize(Text:textid, Float:width, Float:height);
  * need to be swapped, see notes at <a href="#TextDrawTextSize">TextDrawTextSize</a>, also position
  * coordinate become position of center of textdraw and not left/top edges. </remarks>
  */
-native TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
+native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
 
 /**
  * <library>omp_textdraw</library>
@@ -267,7 +267,7 @@ native TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
-native TextDrawColor(Text:textid, textColour);
+native bool:TextDrawColor(Text:textid, textColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -279,7 +279,7 @@ native TextDrawColor(Text:textid, textColour);
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
-native TextDrawColour(Text:textid, textColour) = TextDrawColor;
+native bool:TextDrawColour(Text:textid, textColour) = TextDrawColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -293,7 +293,7 @@ native TextDrawColour(Text:textid, textColour) = TextDrawColor;
  *   <b><c>0</c></b>: The function failed to execute.  This means the textdraw specified does not exist.
  * </returns>
  */
-native TextDrawUseBox(Text:textid, enableBox);
+native bool:TextDrawUseBox(Text:textid, bool:enableBox);
 
 /**
  * <library>omp_textdraw</library>
@@ -306,7 +306,7 @@ native TextDrawUseBox(Text:textid, enableBox);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawBoxColor(Text:textid, boxColour);
+native bool:TextDrawBoxColor(Text:textid, boxColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -319,7 +319,7 @@ native TextDrawBoxColor(Text:textid, boxColour);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawBoxColour(Text:textid, boxColour) = TextDrawBoxColor;
+native bool:TextDrawBoxColour(Text:textid, boxColour) = TextDrawBoxColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -336,7 +336,7 @@ native TextDrawBoxColour(Text:textid, boxColour) = TextDrawBoxColor;
  *   <b><c>0</c></b>: The function failed to execute.  The textdraw does not exist.
  * </returns>
  */
-native TextDrawSetShadow(Text:textid, shadowSize);
+native bool:TextDrawSetShadow(Text:textid, shadowSize);
 
 /**
  * <library>omp_textdraw</library>
@@ -348,7 +348,7 @@ native TextDrawSetShadow(Text:textid, shadowSize);
  * recreate it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawSetOutline(Text:textid, outlineSize);
+native bool:TextDrawSetOutline(Text:textid, outlineSize);
 
 /**
  * <library>omp_textdraw</library>
@@ -364,7 +364,7 @@ native TextDrawSetOutline(Text:textid, outlineSize);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawBackgroundColor(Text:textid, backgroundColour);
+native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -380,7 +380,7 @@ native TextDrawBackgroundColor(Text:textid, backgroundColour);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawBackgroundColour(Text:textid, backgroundColour) = TextDrawBackgroundColor;
+native bool:TextDrawBackgroundColour(Text:textid, backgroundColour) = TextDrawBackgroundColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -395,7 +395,7 @@ native TextDrawBackgroundColour(Text:textid, backgroundColour) = TextDrawBackgro
  * it.  Simply use <a href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>/<a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native TextDrawFont(Text:textid, TEXT_DRAW_FONT:font);
+native bool:TextDrawFont(Text:textid, TEXT_DRAW_FONT:font);
 
 /**
  * <library>omp_textdraw</library>
@@ -410,7 +410,7 @@ native TextDrawFont(Text:textid, TEXT_DRAW_FONT:font);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible. </remarks>
  */
-native TextDrawSetProportional(Text:textid, proportional);
+native bool:TextDrawSetProportional(Text:textid, bool:proportional);
 
 /**
  * <library>omp_textdraw</library>
@@ -421,7 +421,7 @@ native TextDrawSetProportional(Text:textid, proportional);
  * is shown to players for it to be selectable.</remarks>
  * <remarks>Use <a href="#TextDrawTextSize">TextDrawTextSize</a> to define the clickable area.</remarks>
  */
-native TextDrawSetSelectable(Text:textid, selectable);
+native bool:TextDrawSetSelectable(Text:textid, bool:selectable);
 
 /**
  * <library>omp_textdraw</library>
@@ -436,7 +436,7 @@ native TextDrawSetSelectable(Text:textid, selectable);
  * specified does not exist.
  * </returns>
  */
-native TextDrawShowForPlayer(playerid, Text:textid);
+native bool:TextDrawShowForPlayer(playerid, Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -447,7 +447,7 @@ native TextDrawShowForPlayer(playerid, Text:textid);
  * <seealso name="TextDrawShowForPlayer" />
  * <seealso name="TextDrawShowForAll" />
  */
-native TextDrawHideForPlayer(playerid, Text:textid);
+native bool:TextDrawHideForPlayer(playerid, Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -461,7 +461,7 @@ native TextDrawHideForPlayer(playerid, Text:textid);
  *   <b><c>0</c></b>: The function failed to execute.  This means the textdraw specified does not exist.
  * </returns>
  */
-native TextDrawShowForAll(Text:textid);
+native bool:TextDrawShowForAll(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -471,7 +471,7 @@ native TextDrawShowForAll(Text:textid);
  * <seealso name="TextDrawHideForPlayer" />
  * <seealso name="TextDrawShowForAll" />
  */
-native TextDrawHideForAll(Text:textid);
+native bool:TextDrawHideForAll(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -481,7 +481,7 @@ native TextDrawHideForAll(Text:textid);
  * <remarks>There are limits to the length of textdraw strings - see <a href="https://open.mp/docs/scripting/resources/limits">here</a>
  * for more info.</remarks>
  */
-native TextDrawSetString(Text:textid, const format[], OPEN_MP_TAGS:...);
+native bool:TextDrawSetString(Text:textid, const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>
@@ -493,7 +493,7 @@ native TextDrawSetString(Text:textid, const format[], OPEN_MP_TAGS:...);
  * <remarks>Use <a href="#TextDrawBackgroundColor">TextDrawBackgroundColor</a> to set the background
  * colour behind the model.</remarks>
  */
-native TextDrawSetPreviewModel(Text:textid, model);
+native bool:TextDrawSetPreviewModel(Text:textid, model);
 
 /**
  * <library>omp_textdraw</library>
@@ -506,7 +506,7 @@ native TextDrawSetPreviewModel(Text:textid, model);
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-native TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY, Float:rotationZ, Float:zoom = 1.0);
+native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY, Float:rotationZ, Float:zoom = 1.0);
 
 /**
  * <library>omp_textdraw</library>
@@ -518,7 +518,7 @@ native TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY, Floa
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
-native TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
+native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
  * <library>omp_textdraw</library>
@@ -531,43 +531,43 @@ native TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  * for this function to have effect.</remarks>
  */
 #if __namemax > 31
-	native TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2) = TextDrawSetPreviewVehCol;
+	native bool:TextDrawSetPreviewVehicleColours(Text:textid, colour1, colour2) = TextDrawSetPreviewVehCol;
 #endif
 
 /**
  * <library>omp_textdraw</library>
  */
-native IsValidTextDraw(Text:textid);
+native bool:IsValidTextDraw(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native IsTextDrawVisibleForPlayer(playerid, Text:textid);
+native bool:IsTextDrawVisibleForPlayer(playerid, Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetString(Text:textid, string[], stringSize = sizeof (string));
+native bool:TextDrawGetString(Text:textid, string[], stringSize = sizeof (string));
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawSetPos(Text:textid, Float:x, Float:y);
+native bool:TextDrawSetPos(Text:textid, Float:x, Float:y);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetLetterSize(Text:textid, &Float:width, &Float:height);
+native bool:TextDrawGetLetterSize(Text:textid, &Float:width, &Float:height);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetTextSize(Text:textid, &Float:width, &Float:height);
+native bool:TextDrawGetTextSize(Text:textid, &Float:width, &Float:height);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetPos(Text:textid, &Float:x, &Float:y);
+native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
 
 /**
  * <library>omp_textdraw</library>
@@ -617,17 +617,17 @@ native TEXT_DRAW_FONT:TextDrawGetFont(Text:textid);
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawIsBox(Text:textid);
+native bool:TextDrawIsBox(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawIsProportional(Text:textid);
+native bool:TextDrawIsProportional(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawIsSelectable(Text:textid);
+native bool:TextDrawIsSelectable(Text:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -642,24 +642,24 @@ native TextDrawGetPreviewModel(Text:textid);
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
+native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
+native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
 
 /**
  * <library>omp_textdraw</library>
  */
 #if __namemax > 31
-	native TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
+	native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
 #endif
 
 /**
  * <library>omp_textdraw</library>
  */
-native TextDrawSetStringForPlayer(Text:textid, playerid, const format[], OPEN_MP_TAGS:...);
+native bool:TextDrawSetStringForPlayer(Text:textid, playerid, const format[], OPEN_MP_TAGS:...);
 
 /*
 native # Per-Player();
@@ -740,7 +740,7 @@ native PlayerText:CreatePlayerTextDraw(playerid, Float:x, Float:y, const format[
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawDestroy(playerid, PlayerText:textid);
+native bool:PlayerTextDrawDestroy(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -769,7 +769,7 @@ native PlayerTextDrawDestroy(playerid, PlayerText:textid);
  * <remarks>Fonts appear to look the best with an x to y ratio of <b><c>1</c></b> to <b><c>4</c></b>
  * (e.g.  if x is <b><c>0.5</c></b> then y should be <b><c>2</c></b>).</remarks>
  */
-native PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, Float:height);
+native bool:PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, Float:height);
 
 /**
  * <library>omp_textdraw</library>
@@ -815,7 +815,7 @@ native PlayerTextDrawLetterSize(playerid, PlayerText:textid, Float:width, Float:
  * whether a box is shown or not.
  * </remarks>
  */
-native PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Float:height);
+native bool:PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Float:height);
 
 /**
  * <library>omp_textdraw</library>
@@ -841,7 +841,7 @@ native PlayerTextDrawTextSize(playerid, PlayerText:textid, Float:width, Float:he
  * <remarks>For alignment <b><c>2</c></b> (center) the x and y values of TextSize need to be swapped,
  * see notes at <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a>. </remarks>
  */
-native PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN:alignment);
+native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN:alignment);
 
 /**
  * <library>omp_textdraw</library>
@@ -867,7 +867,7 @@ native PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN:alig
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
-native PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
+native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -893,7 +893,7 @@ native PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
-native PlayerTextDrawColour(playerid, PlayerText:textid, textColour) = PlayerTextDrawColor;
+native bool:PlayerTextDrawColour(playerid, PlayerText:textid, textColour) = PlayerTextDrawColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -917,7 +917,7 @@ native PlayerTextDrawColour(playerid, PlayerText:textid, textColour) = PlayerTex
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawUseBox(playerid, PlayerText:textid, boxEnabled);
+native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
 
 /**
  * <library>omp_textdraw</library>
@@ -941,7 +941,7 @@ native PlayerTextDrawUseBox(playerid, PlayerText:textid, boxEnabled);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
+native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -965,7 +965,7 @@ native PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour) = PlayerTextDrawBoxColor;
+native bool:PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour) = PlayerTextDrawBoxColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -989,7 +989,7 @@ native PlayerTextDrawBoxColour(playerid, PlayerText:textid, boxColour) = PlayerT
  * <seealso name="PlayerTextDrawUseBox" />
  * <seealso name="PlayerTextDrawSetString" />
  */
-native PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
+native bool:PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
 
 /**
  * <library>omp_textdraw</library>
@@ -1015,7 +1015,7 @@ native PlayerTextDrawSetShadow(playerid, PlayerText:textid, shadowSize);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
+native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
 
 /**
  * <library>omp_textdraw</library>
@@ -1042,7 +1042,7 @@ native PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
  */
-native PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
+native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -1069,7 +1069,7 @@ native PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColo
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColour">PlayerTextDrawBackgroundColour</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColour">PlayerTextDrawColour</a></remarks>
  */
-native PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundColour) = PlayerTextDrawBackgroundColor;
+native bool:PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundColour) = PlayerTextDrawBackgroundColor;
 
 /**
  * <library>omp_textdraw</library>
@@ -1095,7 +1095,7 @@ native PlayerTextDrawBackgroundColour(playerid, PlayerText:textid, backgroundCol
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font);
+native bool:PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font);
 
 /**
  * <library>omp_textdraw</library>
@@ -1121,7 +1121,7 @@ native PlayerTextDrawFont(playerid, PlayerText:textid, TEXT_DRAW_FONT:font);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native PlayerTextDrawSetProportional(playerid, PlayerText:textid, proportional);
+native bool:PlayerTextDrawSetProportional(playerid, PlayerText:textid, bool:proportional);
 
 /**
  * <library>omp_textdraw</library>
@@ -1138,7 +1138,7 @@ native PlayerTextDrawSetProportional(playerid, PlayerText:textid, proportional);
  * <remarks>Use <a href="#PlayerTextDrawTextSize">PlayerTextDrawTextSize</a> to define the clickable
  * area.</remarks>
  */
-native PlayerTextDrawSetSelectable(playerid, PlayerText:textid, selectable);
+native bool:PlayerTextDrawSetSelectable(playerid, PlayerText:textid, bool:selectable);
 
 /**
  * <library>omp_textdraw</library>
@@ -1161,7 +1161,7 @@ native PlayerTextDrawSetSelectable(playerid, PlayerText:textid, selectable);
  * <seealso name="PlayerTextDrawUseBox" />
  * <seealso name="PlayerTextDrawSetString" />
  */
-native PlayerTextDrawShow(playerid, PlayerText:textid);
+native bool:PlayerTextDrawShow(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -1184,7 +1184,7 @@ native PlayerTextDrawShow(playerid, PlayerText:textid);
  * <seealso name="PlayerTextDrawUseBox" />
  * <seealso name="PlayerTextDrawSetString" />
  */
-native PlayerTextDrawHide(playerid, PlayerText:textid);
+native bool:PlayerTextDrawHide(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -1211,7 +1211,7 @@ native PlayerTextDrawHide(playerid, PlayerText:textid);
  * for more info.</remarks>
  * <remarks>You don't have to show the TextDraw again in order to apply the changes.</remarks>
  */
-native PlayerTextDrawSetString(playerid, PlayerText:textid, const format[], OPEN_MP_TAGS:...);
+native bool:PlayerTextDrawSetString(playerid, PlayerText:textid, const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_textdraw</library>
@@ -1231,7 +1231,7 @@ native PlayerTextDrawSetString(playerid, PlayerText:textid, const format[], OPEN
  *   <b><c>0</c></b>: The function failed to execute.  Player and/or textdraw do not exist.
  * </returns>
  */
-native PlayerTextDrawSetPreviewModel(playerid, PlayerText:textid, model);
+native bool:PlayerTextDrawSetPreviewModel(playerid, PlayerText:textid, model);
 
 /**
  * <library>omp_textdraw</library>
@@ -1251,7 +1251,7 @@ native PlayerTextDrawSetPreviewModel(playerid, PlayerText:textid, model);
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and already
  * have a model set in order for this function to have effect.</remarks>
  */
-native PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
+native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX, Float:rotY, Float:rotZ, Float:zoom = 1.0);
 
 /**
  * <library>omp_textdraw</library>
@@ -1269,7 +1269,7 @@ native PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX, Floa
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
-native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
+native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
 
 /**
  * <library>omp_textdraw</library>
@@ -1288,43 +1288,43 @@ native PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colo
  * a vehicle in order for this function to have effect.</remarks>
  */
 #if __namemax > 31
-	native PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2) = PlayerTextDrawSetPreviewVehCol;
+	native bool:PlayerTextDrawSetPreviewVehicleColours(playerid, PlayerText:textid, colour1, colour2) = PlayerTextDrawSetPreviewVehCol;
 #endif
 
 /**
  * <library>omp_textdraw</library>
  */
-native IsValidPlayerTextDraw(playerid, PlayerText:textid);
+native bool:IsValidPlayerTextDraw(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native IsPlayerTextDrawVisible(playerid, PlayerText:textid);
+native bool:IsPlayerTextDrawVisible(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetString(playerid, PlayerText:textid, string[], stringSize = sizeof (string));
+native bool:PlayerTextDrawGetString(playerid, PlayerText:textid, string[], stringSize = sizeof (string));
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawSetPos(playerid, PlayerText:textid, Float:x, Float:y);
+native bool:PlayerTextDrawSetPos(playerid, PlayerText:textid, Float:x, Float:y);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetLetterSize(playerid, PlayerText:textid, &Float:width, &Float:height);
+native bool:PlayerTextDrawGetLetterSize(playerid, PlayerText:textid, &Float:width, &Float:height);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetTextSize(playerid, PlayerText:textid, &Float:width, &Float:height);
+native bool:PlayerTextDrawGetTextSize(playerid, PlayerText:textid, &Float:width, &Float:height);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y);
+native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y);
 
 /**
  * <library>omp_textdraw</library>
@@ -1376,17 +1376,17 @@ native TEXT_DRAW_FONT:PlayerTextDrawGetFont(playerid, PlayerText:textid);
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawIsBox(playerid, PlayerText:textid);
+native bool:PlayerTextDrawIsBox(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawIsProportional(playerid, PlayerText:textid);
+native bool:PlayerTextDrawIsProportional(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawIsSelectable(playerid, PlayerText:textid);
+native bool:PlayerTextDrawIsSelectable(playerid, PlayerText:textid);
 
 /**
  * <library>omp_textdraw</library>
@@ -1401,18 +1401,18 @@ native PlayerTextDrawGetPreviewModel(playerid, PlayerText:textid);
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
+native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rotationX, &Float:rotationY, &Float:rotationZ, &Float:zoom);
 
 /**
  * <library>omp_textdraw</library>
  */
-native PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
+native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
 
 /**
  * <library>omp_textdraw</library>
  */
 #if __namemax > 31
-	native PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
+	native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
 #endif
 
 /*
@@ -1437,7 +1437,7 @@ native
  * MUST be used first, to allow a textdraw to be selectable.</remarks>
  * <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
  */
-native SelectTextDraw(playerid, hoverColour);
+native bool:SelectTextDraw(playerid, hoverColour);
 
 /**
  * <library>omp_textdraw</library>
@@ -1450,7 +1450,7 @@ native SelectTextDraw(playerid, hoverColour);
  * (<b><c>65535</c></b>).  Using this function inside <a href="#OnPlayerClickTextDraw">OnPlayerClickTextDraw</a>
  * without catching this case will cause clients to go into an infinite loop.</remarks>
  */
-native CancelSelectTextDraw(playerid);
+native bool:CancelSelectTextDraw(playerid);
 
 /**
  * <summary>This callback is called when a player clicks on a textdraw or cancels the select mode with
