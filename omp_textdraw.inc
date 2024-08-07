@@ -1497,3 +1497,4 @@ forward OnPlayerClickTextDraw(playerid, Text:clickedid);
  * </returns>
  */
 forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
+

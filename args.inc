@@ -88,3 +88,4 @@ native bool:argstr(skip = 0, const argument[] = "", value[] = "", size = sizeof 
  * <return><c>true</c> - the argument was found with value, <c>false</c> - it wasn't.</return>
  */
 native bool:argvalue(skip = 0, const argument[] = "", &value = cellmin);
+

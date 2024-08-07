@@ -1475,3 +1475,4 @@ forward OnObjectMoved(objectid);
  * </returns>
  */
 forward OnPlayerObjectMoved(playerid, objectid);
+

@@ -1905,3 +1905,4 @@ forward OnVehicleDamageStatusUpdate(vehicleid, playerid);
  * </returns>
  */
 forward OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z);
+

@@ -620,3 +620,4 @@ forward operator%(Float:oper1, oper2);
  * <library>float</library>
  */
 forward operator%(oper1, Float:oper2);
+

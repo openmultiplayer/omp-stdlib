@@ -181,3 +181,4 @@ native GetPlayerDialog(playerid) = GetPlayerDialogID;
  * </returns>
  */
 forward OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
+

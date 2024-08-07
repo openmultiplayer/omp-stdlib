@@ -308,3 +308,4 @@ forward OnPlayerSelectedMenuRow(playerid, row);
  * </returns>
  */
 forward OnPlayerExitedMenu(playerid);
+

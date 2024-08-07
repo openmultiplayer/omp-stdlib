@@ -259,3 +259,4 @@ forward OnPlayerRequestSpawn(playerid);
  * </returns>
  */
 forward OnPlayerSpawn(playerid);
+

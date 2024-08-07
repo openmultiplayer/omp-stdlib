@@ -98,3 +98,4 @@ forward @receivestring(const message[], const source[]);
  */
 #pragma deprecated Just doesn't work.  Use the "Requests" plugin.
 forward @receivepacket(const packet[], size, const source[]);
+

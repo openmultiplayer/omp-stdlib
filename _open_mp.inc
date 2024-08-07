@@ -525,3 +525,4 @@ stock GetActorPoolSize()
 #define _inc_a_samp
 #define _inc_a_sampdb
 #define _inc_a_vehicles
+

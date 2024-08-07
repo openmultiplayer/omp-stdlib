@@ -372,3 +372,4 @@ forward OnPlayerEnterRaceCheckpoint(playerid);
  * </returns>
  */
 forward OnPlayerLeaveRaceCheckpoint(playerid);
+

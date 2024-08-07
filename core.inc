@@ -404,3 +404,4 @@ stock numpubvars()
 	#emit STOR.S.pri   __end
 	return __end / __defsize;
 }
+

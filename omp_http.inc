@@ -114,3 +114,4 @@ static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
  * </example>
  */
 native HTTP(index, HTTP_METHOD:method, const url[], const data[], const callback[]);
+

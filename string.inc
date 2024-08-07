@@ -426,3 +426,4 @@ stock bool:strequal(const __string1[], const __string2[], bool:__ignorecase = fa
 	}
 	return strcmp(__string1, __string2, __ignorecase, __length) == 0;
 }
+

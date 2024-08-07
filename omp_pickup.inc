@@ -366,3 +366,4 @@ forward OnPlayerPickupStreamIn(pickupid, playerid);
  * </returns>
  */
 forward OnPlayerPickupStreamOut(pickupid, playerid);
+
