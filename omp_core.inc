@@ -1011,7 +1011,7 @@ native void:DisableNameTagLOS();
  * <seealso name="SendPlayerMessageToAll" />
  * <seealso name="OnPlayerText" />
  */
-native void:LimitGlobalChatRadius(Float:chatRadius);
+native bool:LimitGlobalChatRadius(Float:chatRadius);
 
 /**
  * <library>omp_core</library>
@@ -1021,14 +1021,14 @@ native void:LimitGlobalChatRadius(Float:chatRadius);
  * <seealso name="SetPlayerMarkerForPlayer" />
  * <seealso name="LimitGlobalChatRadius" />
  */
-native void:LimitPlayerMarkerRadius(Float:markerRadius);
+native bool:LimitPlayerMarkerRadius(Float:markerRadius);
 
 /**
  * <library>omp_core</library>
  * <summary>Set the name of the game mode, which appears in the server browser.</summary>
  * <param name="format">The gamemode name to display.  May be optionally formatted.</param>
  */
-native void:SetGameModeText(const format[], OPEN_MP_TAGS:...);
+native bool:SetGameModeText(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
