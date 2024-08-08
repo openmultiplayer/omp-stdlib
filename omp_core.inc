@@ -480,7 +480,7 @@ native SetTimerEx(const functionName[], interval, bool:repeating, const specifie
  * <seealso name="SetTimerEx" />
  * <returns>This function always returns <b><c>0</c></b>.</returns>
  */
-native void:KillTimer(timerid);
+native bool:KillTimer(timerid);
 
 /**
  * <library>omp_core</library>
@@ -563,7 +563,7 @@ native CallLocalFunction(const functionName[], const specifiers[] = "", OPEN_MP_
  * <seealso name="TextDrawShowForAll" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
+native bool:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_core</library>
@@ -575,7 +575,7 @@ native void:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
  * <seealso name="TextDrawShowForAll" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...) = GameTextForAll;
+native bool:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...) = GameTextForAll;
 
 /**
  * <library>omp_player</library>
@@ -586,7 +586,7 @@ native void:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...) = Gam
  * <seealso name="HideGameTextForPlayer" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:HideGameTextForAll(style);
+native bool:HideGameTextForAll(style);
 
 /**
  * <library>omp_core</library>
@@ -600,7 +600,7 @@ native void:HideGameTextForAll(style);
  *  It will result in crashes otherwise.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:SendClientMessageToAll(colour, const format[], OPEN_MP_TAGS:...);
+native bool:SendClientMessageToAll(colour, const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_player</library>
@@ -614,7 +614,7 @@ native void:SendClientMessageToAll(colour, const format[], OPEN_MP_TAGS:...);
  *  It will result in crashes otherwise.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = SendClientMessageToAll;
+native bool:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = SendClientMessageToAll;
 
 /**
  * <library>omp_core</library>
@@ -718,7 +718,7 @@ native GetAnimationName(index, animationLibrary[], len1 = sizeof (animationLibra
  * <returns>This function always returns <b><c>1</c></b>, even when the explosion type and/or radius
  * values are invalid.</returns>
  */
-native void:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
+native bool:CreateExplosion(Float:x, Float:y, Float:z, type, Float:radius);
 
 /*
 native # Maths();

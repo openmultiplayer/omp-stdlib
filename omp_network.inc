@@ -156,7 +156,7 @@ native bool:BanEx(playerid, const reason[]);
  * will block all IPs where the first two octets are <b><c>6</c></b> and <b><c>9</c></b> respectively.
  *  Any number can be in place of an asterisk.</remarks>
  */
-native void:BlockIpAddress(const ipAddress[], timeMS);
+native bool:BlockIpAddress(const ipAddress[], timeMS);
 
 /**
  * <library>omp_network</library>
@@ -165,7 +165,7 @@ native void:BlockIpAddress(const ipAddress[], timeMS);
  * <seealso name="BlockIpAddress" />
  * <seealso name="OnIncomingConnection" />
  */
-native void:UnBlockIpAddress(const ipAddress[]);
+native bool:UnBlockIpAddress(const ipAddress[]);
 
 /**
  * <library>omp_network</library>
@@ -204,7 +204,7 @@ native bool:SetPlayerAdmin(playerid, bool:admin);
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
  */
-native void:SendRconCommand(const format[], OPEN_MP_TAGS:...);
+native bool:SendRconCommand(const format[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_network</library>
@@ -218,7 +218,7 @@ native void:SendRconCommand(const format[], OPEN_MP_TAGS:...);
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
  */
-native void:SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
+native bool:SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
 
 /**
  * <library>omp_network</library>
@@ -551,7 +551,7 @@ native
  * </remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
-native void:GetNetworkStats(output[], size = sizeof (output));
+native bool:GetNetworkStats(output[], size = sizeof (output));
 
 /**
  * <library>omp_network</library>
