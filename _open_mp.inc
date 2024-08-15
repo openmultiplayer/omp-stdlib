@@ -114,8 +114,8 @@ public const __OPEN_MP_VERSION = 0;
 #endif
 
 // Optionally stricter tags.
-#if defined WEAK_TAGS
-	#define __TAG(%0) t_%0
+#if defined NO_TAGS
+	#define __TAG(%0) _
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) T_%0
 	#if __pawn_build >= 11
@@ -123,9 +123,9 @@ public const __OPEN_MP_VERSION = 0;
 	#else
 		#define OPEN_MP_TAGS {T_WEAPON, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#endif
-#else // if defined NO_TAGS
-	#define __TAG(%0) _
-	#define NO_TAGS
+#else // if defined WEAK_TAGS
+	#define __TAG(%0) t_%0
+	#define WEAK_TAGS
 #endif
 
 #if defined OPEN_MP_TAGS
@@ -264,7 +264,6 @@ public const __OPEN_MP_VERSION = 0;
 	#pragma warning pop
 #endif
 
-const undefined = -1;
 
 // Try many places to get the latest version.
 
@@ -525,4 +524,3 @@ stock GetActorPoolSize()
 #define _inc_a_samp
 #define _inc_a_sampdb
 #define _inc_a_vehicles
-
