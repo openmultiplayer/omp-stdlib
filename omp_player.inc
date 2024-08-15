@@ -489,6 +489,26 @@ static stock SPECTATE_MODE:_@SPECTATE_MODE() { return __SPECTATE_MODE; }
 /// <p/>
 /**
  * <library>omp_player</library>
+ * <summary>Spectating types</summary>
+ */
+#define SPECTATE_TYPE: __TAG(SPECTATE_TYPE):
+enum SPECTATE_TYPE:__SPECTATE_TYPE
+{
+	UNKNOWN_SPECTATE_TYPE                      = -1,
+	SPECTATE_TYPE_NONE                         = 0,
+	SPECTATE_TYPE_VEHICLE,
+	SPECTATE_TYPE_PLAYER
+}
+static stock SPECTATE_TYPE:_@SPECTATE_TYPE() { return __SPECTATE_TYPE; }
+
+#define UNKNOWN_SPECTATE_TYPE                  (SPECTATE_TYPE:-1)
+#define SPECTATE_TYPE_NONE                     (SPECTATE_TYPE:0)
+#define SPECTATE_TYPE_VEHICLE                  (SPECTATE_TYPE:1)
+#define SPECTATE_TYPE_PLAYER                   (SPECTATE_TYPE:2)
+
+/// <p/>
+/**
+ * <library>omp_player</library>
  * <summary>Recording for NPC playback</summary>
  */
 #define PLAYER_RECORDING_TYPE: __TAG(PLAYER_RECORDING_TYPE):
@@ -564,6 +584,27 @@ static stock BULLET_HIT_TYPE:_@BULLET_HIT_TYPE() { return __BULLET_HIT_TYPE; }
 #define BULLET_HIT_TYPE_VEHICLE                (BULLET_HIT_TYPE:2)
 #define BULLET_HIT_TYPE_OBJECT                 (BULLET_HIT_TYPE:3)
 #define BULLET_HIT_TYPE_PLAYER_OBJECT          (BULLET_HIT_TYPE:4)
+
+/// <p/>
+/**
+ * <library>omp_player</library>
+ */
+#define ANIMATION_FLAGS: __TAG(ANIMATION_FLAGS):
+enum ANIMATION_FLAGS:ANIMATION_FLAGS
+{
+	UNKNOWN_ANIMATION_FLAG                   = -1,
+	ANIMATION_FLAG_FREEZE					 = 0b0000000000100,
+	ANIMATION_FLAG_LOOP						 = 0b0000100000000,
+	ANIMATION_FLAG_LOCK_Y					 = 0b0001000000000,
+	ANIMATION_FLAG_LOCK_X					 = 0b0010000000000
+}
+static stock ANIMATION_FLAGS:_@ANIMATION_FLAGS() { return ANIMATION_FLAGS; }
+
+#define UNKNOWN_ANIMATION_FLAG                (ANIMATION_FLAGS:-1)
+#define ANIMATION_FLAG_FREEZE                 (ANIMATION_FLAGS:0b0000000000100)
+#define ANIMATION_FLAG_LOOP                   (ANIMATION_FLAGS:0b0000100000000)
+#define ANIMATION_FLAG_LOCK_Y                 (ANIMATION_FLAGS:0b0001000000000)
+#define ANIMATION_FLAG_LOCK_X                 (ANIMATION_FLAGS:0b0010000000000)
 
 /*
                                                                            
@@ -2798,41 +2839,134 @@ native Float:GetPlayerCameraZoom(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Check if the player camera target is enabled.</summary>
+ * <param name="playerid">The ID of the player to check the camera target is enabled</param>
+ * <seealso name="EnablePlayerCameraTarget" />
+ * <returns>
+ *   <b><c>1</c></b>: Is camera target enable.<br />
+ *   <b><c>0</c></b>: Is camera target not enable or the player specified does not exist.
+ * </returns>
  */
 native bool:IsPlayerCameraTargetEnabled(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Toggle player's widescreen.</summary>
+ * <param name="playerid">The ID of the player to check the camera target is enabled</param>
+ * <param name="enable">Enable or disable toggle player widescreen</param>
+ * <seealso name="IsPlayerWidescreenToggled" />
+ * <returns>
+ *   <b><c>1</c></b>: The function was executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute. The player specified does not exist.
+ * </returns>
  */
-native bool:TogglePlayerWidescreen(playerid, bool:wide);
+native bool:TogglePlayerWidescreen(playerid, bool:enable);
 
 /**
  * <library>omp_player</library>
+ * <summary>Checks if the player widescreen is ON or OFF.</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <seealso name="TogglePlayerWidescreen" />
+ * <returns>
+ *   <b><c>1</c></b>: The player widescreen is ON<br />
+ *   <b><c>0</c></b>: The player widescreen is OFF or the player specified does not exist.
+ * </returns>
  */
 native bool:IsPlayerWidescreenToggled(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Get the ID of the player or vehicle the player is spectating.</summary>
+ * <param name="playerid">The ID of the player to check</param>
+ * <seealso name="PlayerSpectatePlayer" />
+ * <seealso name="PlayerSpectateVehicle" />
+ * <seealso name="TogglePlayerSpectating" />
+ * <seealso name="GetPlayerSpectateType" />
+ * <returns>ID of the player or vehicle.</returns>
  */
 native GetPlayerSpectateID(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Get the player spectate type.</summary>
+ * <param name="playerid">The ID of the player to get spectate type of</param>
+ * <seealso name="PlayerSpectatePlayer" />
+ * <seealso name="PlayerSpectateVehicle" />
+ * <seealso name="TogglePlayerSpectating" />
+ * <seealso name="GetPlayerSpectateID" />
+ * <returns>The spectate type as integer.</returns>
  */
-native GetPlayerSpectateType(playerid);
+native SPECTATE_TYPE:GetPlayerSpectateType(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Get the player animation flags.</summary>
+ * <param name="playerid">The ID of the player to get animation flags of</param>
+ * <seealso name="ApplyAnimation" />
+ * <returns>The player animation flags as integer.</returns>
+ */
+native GetPlayerAnimFlags(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Get the player animation flags.</summary>
+ * <param name="playerid">The ID of the player to get animation flags of</param>
+ * <seealso name="ApplyAnimation" />
+ * <returns>The player animation flags as integer.</returns>
+ */
+native ANIMATION_FLAGS:GetPlayerAnimationFlags(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Check if the player is in driveby mode.</summary>
+ * <param name="playerid">The ID of the player to check is in driveby mode of</param>
+ * <returns>
+ *   <b><c>1</c></b>: The player is in driveby mode.<br />
+ *   <b><c>0</c></b>: The player is not in driveby mode or the player specified does not exist.
+ * </returns>
+ */
+native bool:IsPlayerInDriveByMode(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Check if the player special action is cuffed.</summary>
+ * <param name="playerid">The ID of the player to check is cuffed</param>
+ * <returns>
+ *   <b><c>1</c></b>: The player is cuffed.<br />
+ *   <b><c>0</c></b>: The player is not cuffed or the player specified does not exist.
+ * </returns>
+ */
+native bool:IsPlayerCuffed(playerid);
+
+/**
+ * <library>omp_player</library>
+ * <summary>Get the player ZAim (related to the camera and aiming).</summary>
+ * <param name="playerid">The ID of the player to get of</param>
+ * <seealso name="GetPlayerCameraPos" />
+ * <returns>The player ZAim as float.</returns>
  */
 native Float:GetPlayerZAim(playerid);
 
 /**
  * <library>omp_player</library>
+ * <summary>Get an array variable of the IDs of the current players on the server.</summary>
+ * <param name="players">An array into which to store the player IDs, passed by reference</param>
+ * <param name="size">The length of the string that should be stored</param>
+ * <seealso name="GetVehicles" />
+ * <seealso name="GetActors" />
+ * <returns>The <b><c>0</c></b> if there are no players on the server.</returns>
  */
 native GetPlayers(players[], size = sizeof (players));
 
 /**
  * <library>omp_player</library>
+ * <summary>Check if the player is using the official SA-MP client.</summary>
+ * <param name="playerid">The ID of the player to check of</param>
+ * <seealso name="SendClientCheck" />
+ * <returns>
+ *   <b><c>1</c></b>: The player is using official client.<br />
+ *   <b><c>0</c></b>: The player is not using official client or the player specified does not exist.
+ * </returns>
  */
 native bool:IsPlayerUsingOfficialClient(playerid);
 
