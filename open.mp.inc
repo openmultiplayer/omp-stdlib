@@ -11,4 +11,3 @@
 #if !defined _INC_open_mp
 	#error Could not find the latest version of the open.mp includes.
 #endif
-
