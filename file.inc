@@ -359,6 +359,7 @@ native bool:fmatch(const filename[], const pattern[], index = 0, size = sizeof (
  * </remarks>
  * <returns><b><c>true</c></b> on success, <b><c>false</c></b> on failure.</returns>
  */
+#pragma deprecated Use `fcreatedir`.
 native bool:fmkdir(const dirname[]) = fcreatedir;
 
 /**
@@ -587,4 +588,3 @@ forward bool:operator>=(_:a, File:b);
  * <library>file</library>
  */
 forward bool:operator>=(File:a, _:b);
-

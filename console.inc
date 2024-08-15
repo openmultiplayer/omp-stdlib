@@ -175,4 +175,3 @@ forward bool:gotoxy(x = 1, y = 1);
  * <c>cyan (6)</c>, and <c>white (7)</c>.</remarks>
  */
 forward setattr(foreground = -1, background = -1);
-

@@ -258,4 +258,3 @@ stock settimestamp(__seconds1970)
 	settime(__hour, __minute, __second);
 	return 0;
 }
-
