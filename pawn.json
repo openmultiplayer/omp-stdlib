@@ -1,5 +1,11 @@
 {
-    "user": "openmultiplayer",
-    "repo": "omp-stdlib",
-    "contributors": ["ITB CompuPhase", "Ron Cain", "James Hendrix"]
+  "user": "openmultiplayer",
+  "repo": "omp-stdlib",
+  "contributors": [
+    "ITB CompuPhase",
+    "Ron Cain",
+    "James Hendrix",
+    "Alex (Y_Less) Cole",
+    "Amyr (iAmir) Ahmady"
+  ]
 }

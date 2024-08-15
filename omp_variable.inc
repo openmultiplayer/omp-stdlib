@@ -444,4 +444,3 @@ native bool:GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output)
  * <returns>Returns the type of the PVar.  See table below.</returns>
  */
 native VARTYPE:GetPVarType(playerid, const pvar[]);
-

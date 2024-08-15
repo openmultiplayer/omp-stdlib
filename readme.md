@@ -33,4 +33,3 @@ https://github.com/samp-incognito/samp-streamer-plugin/pull/435 - A streamer plu
 https://github.com/pawn-lang/compiler/wiki/Const-Correctness - More information on const-correctness and updating code.  
 https://github.com/pawn-lang/sa-mp-fixes/ - Origin of many fixes, including several trivial ones integrated in to open.mp but not listed here.  
 https://github.com/pawn-lang/compiler/raw/master/doc/pawn-lang.pdf - For more information on strong and weak tags.  
-
