@@ -1385,8 +1385,22 @@ forward void:SetDeathDropAmount(amount);
  *  It is to be stored alongside the actual hash in the player's account. </remarks>
  * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
  */
-#pragma deprecated Use BCrypt for hashing passwords.
+#pragma deprecated Use BCrypt for hashing passwords. For other purposes use SHA256_Hash
 native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (output));
+
+/**
+ * <library>omp_core</library>
+ * <summary>Hashes a string using the SHA-256 hashing algorithm.  Includes a salt.  The output is
+ * always 256 bytes in length, or the equivalent of 64 Pawn cells.</summary>
+ * <param name="content">The string content to hash</param>
+ * <param name="salt">The salt to use in the hash</param>
+ * <param name="output">The returned hash</param>
+ * <param name="size">The returned hash maximum length</param>
+ * <remarks>The salt is appended to the end of the string content, meaning string 'foo' and salt 'bar' would
+ * form 'foobar'. </remarks>
+ * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
+ */
+native SHA256_Hash(const content[], const salt[], output[], size = sizeof (output)) = native SHA256_PassHash;
 
 /**
  * <library>omp_core</library>
