@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -153,21 +153,6 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 #define EDIT_RESPONSE_FINAL                    (EDIT_RESPONSE:1)
 #define EDIT_RESPONSE_UPDATE                   (EDIT_RESPONSE:2)
 
-/*
-                                                                           
-    888b      88                       88                                      
-    8888b     88                ,d     ""                                      
-    88 `8b    88                88                                             
-    88  `8b   88  ,adPPYYba,  MM88MMM  88  8b       d8   ,adPPYba,  ,adPPYba,  
-    88   `8b  88  ""     `Y8    88     88  `8b     d8'  a8P_____88  I8[    ""  
-    88    `8b 88  ,adPPPPP88    88     88   `8b   d8'   8PP"""""""   `"Y8ba,   
-    88     `8888  88,    ,88    88,    88    `8b,d8'    "8b,   ,aa  aa    ]8I  
-    88      `888  `"8bbdP"Y8    "Y888  88      "8"       `"Ybbd8"'  `"YbbdP"'  
-                                                                           
-                                                                           
-
-*/
-
 /**
  * <library>omp_object</library>
  * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
@@ -183,67 +168,14 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 #if __namemax > 31
 	native bool:SetObjectsDefaultCameraCollision(bool:disable);
 #else
-	static stock __SetObjectsDefaultCameraCol()
-	{
-	}
+	native bool:SetObjectsDefaultCameraCol(bool:disable);
 #endif
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-native bool:HideObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:ShowObjectForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:HideNewObjectsForPlayer(playerid, bool:toggle);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:IsObjectHiddenForPlayer(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:NewObjectsHiddenForPlayer(playerid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
 native GetObjectType(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
-
-/*
-                                                                 
-      ,ad8888ba,   88               88                       88  
-     d8"'    `"8b  88               88                       88  
-    d8'            88               88                       88  
-    88             88   ,adPPYba,   88,dPPYba,   ,adPPYYba,  88  
-    88      88888  88  a8"     "8a  88P'    "8a  ""     `Y8  88  
-    Y8,        88  88  8b       d8  88       d8  ,adPPPPP88  88  
-     Y8a.    .a88  88  "8a,   ,a8"  88b,   ,a8"  88,    ,88  88  
-      `"Y88888P"   88   `"YbbdP"'   8Y"Ybbd8"'   `"8bbdP"Y8  88  
-                                                             
-                           
-
-*/
 
 /*
 native # Global();
@@ -462,6 +394,21 @@ native bool:SetObjectNoCameraCollision(objectid) = SetObjectNoCameraCol;
 
 /**
  * <library>omp_object</library>
+ * <summary>Disable collisions between players' cameras and the specified object.</summary>
+ * <param name="objectid">The ID of the object to disable camera collisions on</param>
+ * <seealso name="SetObjectsDefaultCameraCol" />
+ * <seealso name="SetPlayerObjectNoCameraCol" />
+ * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
+ * units on the x and/or y axis).</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
+ * </returns>
+ */
+native bool:SetObjectNoCameraCol(objectid);
+
+/**
+ * <library>omp_object</library>
  * <summary>Checks if an object with the ID provided exists.</summary>
  * <param name="objectid">The ID of the object to check the existence of</param>
  * <seealso name="IsValidPlayerObject" />
@@ -629,6 +576,26 @@ native bool:BeginObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
+ * User Interface).</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The ID of the object to be edited by the player</param>
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
+ * is specified, but nothing will happen.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
+ * </returns>
+ */
+native bool:EditObject(playerid, objectid) = BeginObjectEditing;
+
+/**
+ * <library>omp_object</library>
  * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
  * is called when the player selects an object.</summary>
  * <param name="playerid">The ID of the player that should be able to select the object</param>
@@ -642,6 +609,19 @@ native bool:BeginObjectSelecting(playerid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
+ * is called when the player selects an object.</summary>
+ * <param name="playerid">The ID of the player that should be able to select the object</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="CancelEdit" />
+ * <seealso name="OnPlayerSelectObject" />
+ */
+native bool:SelectObject(playerid) = BeginObjectSelecting;
+
+/**
+ * <library>omp_object</library>
  * <summary>Cancel object edition mode for a player.</summary>
  * <param name="playerid">The ID of the player to cancel edition for</param>
  * <seealso name="SelectObject" />
@@ -650,6 +630,17 @@ native bool:BeginObjectSelecting(playerid);
  * <seealso name="EditAttachedObject" />
  */
 native bool:EndObjectEditing(playerid);
+
+/**
+ * <library>omp_object</library>
+ * <summary>Cancel object edition mode for a player.</summary>
+ * <param name="playerid">The ID of the player to cancel edition for</param>
+ * <seealso name="SelectObject" />
+ * <seealso name="EditObject" />
+ * <seealso name="EditPlayerObject" />
+ * <seealso name="EditAttachedObject" />
+ */
+native bool:CancelEdit(playerid) = EndObjectEditing;
 
 /**
  * <library>omp_object</library>
@@ -674,6 +665,12 @@ native Float:GetObjectMoveSpeed(objectid);
  * <summary></summary>
  */
 native bool:GetObjectMovingTargetPos(objectid, &Float:targetX, &Float:targetY, &Float:targetZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>
@@ -704,7 +701,7 @@ native bool:GetObjectSyncRotation(objectid);
  * <remarks>This is NOT a boolean return.</remarks>
  * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native _:IsObjectMaterialSlotUsed(objectid, materialIndex);
+native IsObjectMaterialSlotUsed(objectid, materialIndex);
 
 /**
  * <library>omp_object</library>
@@ -718,32 +715,20 @@ native bool:GetObjectMaterial(objectid, materialIndex, &modelid, textureLibrary[
  */
 native bool:GetObjectMaterialText(objectid, materialIndex, text[], textSize = sizeof (text), &OBJECT_MATERIAL_SIZE:materialSize, fontFace[], fontFaceSize = sizeof (fontFace), &fontSize = 0, &bool:bold = true, &fontColour = 0xFFFFFFFF, &backgroundColour = 0, &OBJECT_MATERIAL_TEXT_ALIGN:textAlignment = OBJECT_MATERIAL_TEXT_ALIGN_LEFT);
 
-/**/ native bool:__IsObjectNoCameraCol(objectid) = IsObjectNoCameraCol;
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:IsObjectNoCameraCol(objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-//native bool:HasObjectCameraCollision(objectid);
 stock bool:HasObjectCameraCollision(objectid)
 {
-	return !__IsObjectNoCameraCol(objectid);
+	return !IsObjectNoCameraCol(objectid);
 }
-
-/*
-                                                                                                                
-    88888888ba                                    88888888ba   88                                                   
-    88      "8b                                   88      "8b  88                                                   
-    88      ,8P                                   88      ,8P  88                                                   
-    88aaaaaa8P'  ,adPPYba,  8b,dPPYba,            88aaaaaa8P'  88  ,adPPYYba,  8b       d8   ,adPPYba,  8b,dPPYba,  
-    88""""""'   a8P_____88  88P'   "Y8  aaaaaaaa  88""""""'    88  ""     `Y8  `8b     d8'  a8P_____88  88P'   "Y8  
-    88          8PP"""""""  88          """"""""  88           88  ,adPPPPP88   `8b   d8'   8PP"""""""  88          
-    88          "8b,   ,aa  88                    88           88  88,    ,88    `8b,d8'    "8b,   ,aa  88          
-    88           `"Ybbd8"'  88                    88           88  `"8bbdP"Y8      Y88'      `"Ybbd8"'  88          
-                                                                                   d8'                              
-                                                                                  d8'                               
-
-*/                                  
 
 /*
 native # Per-Player();
@@ -800,6 +785,31 @@ native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:ro
  * <remarks>You need to create the object before attempting to attach it to a vehicle.</remarks>
  */
 native bool:AttachPlayerObjectToVehicle(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
+
+/**
+ * <library>omp_object</library>
+ * <summary></summary>
+ */
+native bool:AttachPlayerObjectToObject(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ, bool:syncRotation = true);
+
+/**
+ * <library>omp_object</library>
+ * <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
+ * <param name="playerid">The ID of the player which is linked with the object</param>
+ * <param name="objectid">The objectid you want to attach to the player</param>
+ * <param name="parentid">The ID of the player you want to attach to the object</param>
+ * <param name="offsetX">The distance between the player and the object in the x direction</param>
+ * <param name="offsetY">The distance between the player and the object in the y direction</param>
+ * <param name="offsetZ">The distance between the player and the object in the z direction</param>
+ * <param name="rotationX">The x rotation</param>
+ * <param name="rotationY">The y rotation</param>
+ * <param name="rotationZ">The z rotation</param>
+ * <seealso name="SetPlayerAttachedObject" />
+ * <seealso name="AttachPlayerObjectToVehicle" />
+ * <seealso name="AttachObjectToPlayer" />
+ * <seealso name="CreatePlayerObject" />
+ */
+native bool:AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -906,9 +916,7 @@ native GetPlayerObjectModel(playerid, objectid);
 #if __namemax > 31
 	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
 #else
-	static stock __SetPlayerObjectNoCameraCol()
-	{
-	}
+	native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 #endif
 
 /**
@@ -983,25 +991,6 @@ native bool:StopPlayerObject(playerid, objectid);
  * <returns><b><c>1</c></b> if the player object is moving, <b><c>0</c></b> if not.</returns>
  */
 native bool:IsPlayerObjectMoving(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>The same as AttachObjectToPlayer but for objects which were created for player.</summary>
- * <param name="playerid">The ID of the player which is linked with the object</param>
- * <param name="objectid">The objectid you want to attach to the player</param>
- * <param name="parentid">The ID of the player you want to attach to the object</param>
- * <param name="offsetX">The distance between the player and the object in the x direction</param>
- * <param name="offsetY">The distance between the player and the object in the y direction</param>
- * <param name="offsetZ">The distance between the player and the object in the z direction</param>
- * <param name="rotationX">The x rotation</param>
- * <param name="rotationY">The y rotation</param>
- * <param name="rotationZ">The z rotation</param>
- * <seealso name="SetPlayerAttachedObject" />
- * <seealso name="AttachPlayerObjectToVehicle" />
- * <seealso name="AttachObjectToPlayer" />
- * <seealso name="CreatePlayerObject" />
- */
-native bool:AttachPlayerObjectToPlayer(playerid, objectid, parentid, Float:offsetX, Float:offsetY, Float:offsetZ, Float:rotationX, Float:rotationY, Float:rotationZ);
 
 /**
  * <library>omp_object</library>
@@ -1090,6 +1079,24 @@ native bool:BeginPlayerObjectEditing(playerid, objectid);
 
 /**
  * <library>omp_object</library>
+ * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
+ * <param name="playerid">The ID of the player that should edit the object</param>
+ * <param name="objectid">The object to be edited by the player</param>
+ * <seealso name="EditObject" />
+ * <seealso name="EditAttachedObject" />
+ * <seealso name="SelectObject" />
+ * <seealso name="CancelEdit" />
+ * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
+ * in vehicle) and moving your mouse.</remarks>
+ * <returns>
+ *   <b><c>1</c></b>: The function executed successfully.<br />
+ *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
+ * </returns>
+ */
+native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
+
+/**
+ * <library>omp_object</library>
  * <summary></summary>
  */
 native Float:GetPlayerObjectDrawDistance(playerid, objectid);
@@ -1128,14 +1135,14 @@ native bool:GetPlayerObjectAttachedOffset(playerid, objectid, &Float:offsetX = 0
  * <library>omp_object</library>
  * <summary></summary>
  */
-native GetPlayerObjectSyncRotation(playerid, objectid);
+native bool:GetPlayerObjectSyncRotation(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <remarks>This is NOT a boolean return.</remarks>
  * <summary>Get the type of material slot usage.  0 - None, 1 - Material, 2 - Text.</summary>
  */
-native _:IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
+native IsPlayerObjectMaterialSlotUsed(playerid, objectid, materialIndex);
 
 /**
  * <library>omp_object</library>
@@ -1153,17 +1160,15 @@ native bool:GetPlayerObjectMaterialText(playerid, objectid, materialIndex, text[
  * <library>omp_object</library>
  * <summary></summary>
  */
-
-/**/ native bool:__IsPlayerObjectNoCameraCol(playerid, objectid) = IsPlayerObjectNoCameraCol;
+native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
  * <library>omp_object</library>
  * <summary></summary>
  */
-//native bool:HasPlayerObjectCameraCollision(playerid, objectid);
 stock bool:HasPlayerObjectCameraCollision(playerid, objectid)
 {
-	return !__IsObjectNoCameraCol(playerid, objectid);
+	return !IsPlayerObjectNoCameraCol(playerid, objectid);
 }
 
 /**
@@ -1191,25 +1196,8 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
 #if __namemax > 31
 	native GetPlayerCameraTargetPlayerObject(playerid);
 #else
-	static stock __GetPlayerCameraTargetPlayerOb()
-	{
-	}
+	native GetPlayerCameraTargetPlayerObj(playerid);
 #endif
-
-/*
-                                                                                                                                       
-           db                                                 88                                                                           
-          d88b        ,d       ,d                             88                                                         ,d                
-         d8'`8b       88       88                             88                                                         88                
-        d8'  `8b    MM88MMM  MM88MMM  ,adPPYYba,   ,adPPYba,  88,dPPYba,   88,dPYba,,adPYba,    ,adPPYba,  8b,dPPYba,  MM88MMM  ,adPPYba,  
-       d8YaaaaY8b     88       88     ""     `Y8  a8"     ""  88P'    "8a  88P'   "88"    "8a  a8P_____88  88P'   `"8a   88     I8[    ""  
-      d8""""""""8b    88       88     ,adPPPPP88  8b          88       88  88      88      88  8PP"""""""  88       88   88      `"Y8ba,   
-     d8'        `8b   88,      88,    88,    ,88  "8a,   ,aa  88       88  88      88      88  "8b,   ,aa  88       88   88,    aa    ]8I  
-    d8'          `8b  "Y888    "Y888  `"8bbdP"Y8   `"Ybbd8"'  88       88  88      88      88   `"Ybbd8"'  88       88   "Y888  `"YbbdP"'  
-                                                                                                                                       
-                                                                                                                                       
-
-*/
 
 /*
 native # Attachments();
@@ -1273,7 +1261,7 @@ native bool:GetPlayerAttachedObject(playerid, index, &modelid, &bone = 0, &Float
  * </remarks>
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  */
-native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotationX = 0.0, Float:rotationY = 0.0, Float:rotationZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
+native bool:SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:rotationX = 0.0, Float:rotationY = 0.0, Float:rotationZ = 0.0, Float:scaleX = 1.0, Float:scaleY = 1.0, Float:scaleZ = 1.0, materialColour1 = 0, materialColour2 = 0);
 
 /**
  * <library>omp_object</library>
@@ -1284,7 +1272,7 @@ native SetPlayerAttachedObject(playerid, index, modelid, bone, Float:offsetX = 0
  * <seealso name="IsPlayerAttachedObjectSlotUsed" />
  * <returns><b><c>1</c></b> on success, <b><c>0</c></b> on failure.</returns>
  */
-native RemovePlayerAttachedObject(playerid, index);
+native bool:RemovePlayerAttachedObject(playerid, index);
 
 /**
  * <library>omp_object</library>
@@ -1325,22 +1313,7 @@ native bool:IsPlayerAttachedObjectSlotUsed(playerid, index);
  * to abort the edit.</remarks>
  * <returns><b><c>1</c></b> on success and <b><c>0</c></b> on failure.</returns>
  */
-native EditAttachedObject(playerid, index);
-
-/*
-                            
-    88888888ba,    88           
-    88      `"8b   88           
-    88        `8b  88           
-    88         88  88           
-    88         88  88           
-    88         8P  88           
-    88      .a8P   88           
-    88888888Y"'    88888888888  
-                            
-                            
-
-*/
+native bool:EditAttachedObject(playerid, index);
 
 /*
 native # DL();
@@ -1352,17 +1325,17 @@ native
 /**
  * <library>omp_object</library>
  */
-native AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
+native bool:AddCharModel(baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_object</library>
  */
-native AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
+native bool:AddSimpleModel(virtualWorld, baseid, newid, const dff[], const textureLibrary[]);
 
 /**
  * <library>omp_object</library>
  */
-native AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
+native bool:AddSimpleModelTimed(virtualWorld, baseid, newid, const dff[], const textureLibrary[], timeOn, timeOff);
 
 /**
  * <library>omp_object</library>
@@ -1377,193 +1350,17 @@ native FindTextureFileNameFromCRC(crc, output[], size = sizeof (output));
 /**
  * <library>omp_object</library>
  */
-native RedirectDownload(playerid, const url[]);
+native bool:RedirectDownload(playerid, const url[]);
 
 /**
  * <library>omp_object</library>
  */
-native GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPath[], txdSize = sizeof (txdPath));
+native bool:GetCustomModelPath(modelid, dffPath[], dffSize = sizeof (dffPath), txdPath[], txdSize = sizeof (txdPath));
 
 /**
  * <library>omp_object</library>
  */
 native bool:IsValidCustomModel(modelid);
-
-/*
-                                                                                                                             
-    88888888ba,                                                                                                          88  
-    88      `"8b                                                                              ,d                         88  
-    88        `8b                                                                             88                         88  
-    88         88   ,adPPYba,  8b,dPPYba,   8b,dPPYba,   ,adPPYba,   ,adPPYba,  ,adPPYYba,  MM88MMM  ,adPPYba,   ,adPPYb,88  
-    88         88  a8P_____88  88P'    "8a  88P'   "Y8  a8P_____88  a8"     ""  ""     `Y8    88    a8P_____88  a8"    `Y88  
-    88         8P  8PP"""""""  88       d8  88          8PP"""""""  8b          ,adPPPPP88    88    8PP"""""""  8b       88  
-    88      .a8P   "8b,   ,aa  88b,   ,a8"  88          "8b,   ,aa  "8a,   ,aa  88,    ,88    88,   "8b,   ,aa  "8a,   ,d88  
-    88888888Y"'     `"Ybbd8"'  88`YbbdP"'   88           `"Ybbd8"'   `"Ybbd8"'  `"8bbdP"Y8    "Y888  `"Ybbd8"'   `"8bbdP"Y8  
-                               88                                                                                            
-                               88                                                                                            
-
-*/
-
-/*
-native # Deprecated();
-native           Deprecated(
-native      ====================(
-native
-*/
-
-/**
- * <library>omp_object</library>
- * <summary>Display the cursor and allow the player to select an object. <a href="#OnPlayerSelectObject">OnPlayerSelectObject</a>
- * is called when the player selects an object.</summary>
- * <param name="playerid">The ID of the player that should be able to select the object</param>
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="CancelEdit" />
- * <seealso name="OnPlayerSelectObject" />
- */
-#pragma deprecated Use `BeginObjectSelecting`
-native bool:SelectObject(playerid) = BeginObjectSelecting;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows a player to edit an object (position and rotation) using their mouse on a GUI (Graphical
- * User Interface).</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The ID of the object to be edited by the player</param>
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.  Success is reported when a non-existent object
- * is specified, but nothing will happen.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
- * </returns>
- */
-#pragma deprecated Use `BeginObjectEditing`
-native bool:EditObject(playerid, objectid) = BeginObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows players to edit a player-object (position and rotation) with a GUI and their mouse.</summary>
- * <param name="playerid">The ID of the player that should edit the object</param>
- * <param name="objectid">The object to be edited by the player</param>
- * <seealso name="EditObject" />
- * <seealso name="EditAttachedObject" />
- * <seealso name="SelectObject" />
- * <seealso name="CancelEdit" />
- * <remarks>You can move the camera while editing by pressing and holding the <b>spacebar</b> (or <b>W</b>
- * in vehicle) and moving your mouse.</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  Player or object not valid.
- * </returns>
- */
-#pragma deprecated Use `BeginPlayerObjectEditing`
-native bool:EditPlayerObject(playerid, objectid) = BeginPlayerObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary>Cancel object edition mode for a player.</summary>
- * <param name="playerid">The ID of the player to cancel edition for</param>
- * <seealso name="SelectObject" />
- * <seealso name="EditObject" />
- * <seealso name="EditPlayerObject" />
- * <seealso name="EditAttachedObject" />
- */
-#pragma deprecated Use `EndObjectEditing`
-native bool:CancelEdit(playerid) = EndObjectEditing;
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `GetObjectMovingTargetPos`
-native bool:GetObjectTarget(objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetObjectMovingTargetPos;
-
-/**
- * <library>omp_object</library>
- * <summary>Allows camera collisions with newly created objects to be disabled by default.</summary>
- * <param name="disable"><b><c>1</c></b> to disable camera collisions for newly created objects and
- * <b><c>0</c></b> to enable them (enabled by default)</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This function only affects the camera collision of objects created AFTER its use - it does
- * not toggle existing objects' camera collisions.</remarks>
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- */
-#pragma deprecated Use `SetObjectsDefaultCameraCollision`
-native bool:SetObjectsDefaultCameraCol(bool:disable);
-
-/**
- * <library>omp_object</library>
- * <summary>Disable collisions between players' cameras and the specified object.</summary>
- * <param name="objectid">The ID of the object to disable camera collisions on</param>
- * <seealso name="SetObjectsDefaultCameraCol" />
- * <seealso name="SetPlayerObjectNoCameraCol" />
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- * <returns>
- *   <b><c>1</c></b>: The function executed successfully.<br />
- *   <b><c>0</c></b>: The function failed to execute.  The object specified does not exist.
- * </returns>
- */
-#pragma deprecated Use `SetObjectNoCameraCollision`
-native bool:SetObjectNoCameraCol(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `!HasObjectCameraCollision`
-native bool:IsObjectNoCameraCol(objectid);
-
-/**
- * <library>omp_object</library>
- * <summary>Toggles a player object camera collision.</summary>
- * <param name="playerid">The playerid the object belongs to</param>
- * <param name="objectid">The ID of the object you want to toggle</param>
- * <seealso name="SetObjectNoCameraCol" />
- * <seealso name="SetObjectsDefaultCameraCol" />
- * <remarks>This only works outside the map boundaries (past <b><c>-3000</c></b>/<b><c>3000</c></b>
- * units on the x and/or y axis).</remarks>
- * <returns><b><c>1</c></b> regardless of if the object exists or not.</returns>
- */
-#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
-native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `!HasPlayerObjectCameraCollision`
-native bool:IsPlayerObjectNoCameraCol(playerid, objectid);
-
-/**
- * <library>omp_object</library>
- * <summary></summary>
- */
-#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`
-native GetPlayerCameraTargetPlayerObj(playerid);
-
-/*
-                                                                                                  
-      ,ad8888ba,               88  88  88                                   88                    
-     d8"'    `"8b              88  88  88                                   88                    
-    d8'                        88  88  88                                   88                    
-    88             ,adPPYYba,  88  88  88,dPPYba,   ,adPPYYba,   ,adPPYba,  88   ,d8   ,adPPYba,  
-    88             ""     `Y8  88  88  88P'    "8a  ""     `Y8  a8"     ""  88 ,a8"    I8[    ""  
-    Y8,            ,adPPPPP88  88  88  88       d8  ,adPPPPP88  8b          8888[       `"Y8ba,   
-     Y8a.    .a8P  88,    ,88  88  88  88b,   ,a8"  88,    ,88  "8a,   ,aa  88`"Yba,   aa    ]8I  
-      `"Y8888Y"'   `"8bbdP"Y8  88  88  8Y"Ybbd8"'   `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  `"YbbdP"'  
-                                                                                                  
-                                                                                                  
-
-*/
 
 /**
  * <summary>This callback is called when a player selects an object after <a href="#SelectObject">SelectObject</a>

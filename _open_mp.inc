@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -24,6 +24,7 @@
 /// <p/>
 
 #pragma tabsize 4
+
 #define SAMP_CONST_CORRECT
 #define OPEN_MP_CONST_CORRECT
 
@@ -57,7 +58,7 @@
  *     <li><c>0.2.2 R3        - 022300</c></li>
  *   </ul>
  *   Rough rules:
- *   
+ *
  *   <p />
  *   Uses (roughtly) BCD.  Special versions are denoted outside 0-9.
  *   <code>
@@ -68,15 +69,15 @@
  *   0x012345
  *   </code>
  *   (assuming c is the third revision)
- *   
+ *
  *   <p />
  *   0.2X becomes 02A000 because it is basically 0.2.3, but not, while higher than
  *   0.2.2 so can't be 020400 (for example).  Also, its a capital letter, so doesn't
  *   use the revision method.
- *   
+ *
  *   <p />
  *   P.S.  Making a consistent scheme for SA:MP versions is REALLY hard.
- *   
+ *
  *   <p />
  *   open.mp releases can use `A` as the first digit.
  *   </remarks>
@@ -113,8 +114,8 @@ public const __OPEN_MP_VERSION = 0;
 #endif
 
 // Optionally stricter tags.
-#if defined NO_TAGS
-	#define __TAG(%0) _
+#if defined WEAK_TAGS
+	#define __TAG(%0) t_%0
 #elseif defined STRONG_TAGS
 	#define __TAG(%0) T_%0
 	#if __pawn_build >= 11
@@ -122,9 +123,9 @@ public const __OPEN_MP_VERSION = 0;
 	#else
 		#define OPEN_MP_TAGS {T_WEAPON, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#endif
-#else // if defined WEAK_TAGS
-	#define __TAG(%0) t_%0
-	#define WEAK_TAGS
+#else // if defined NO_TAGS
+	#define __TAG(%0) _
+	#define NO_TAGS
 #endif
 
 #if defined OPEN_MP_TAGS
@@ -141,7 +142,7 @@ public const __OPEN_MP_VERSION = 0;
 	// down these are the most common (IMHO) tags plus those from old defines.
 	#define OPEN_MP_TAGS {Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 #endif
- 
+
 // Optionally use `void:` tags on natives - ensure they don't return anything.
 // This is not the default as it adds a tiny bit of overhead to the calls.
 #if defined VOID_TAGS
@@ -158,7 +159,7 @@ public const __OPEN_MP_VERSION = 0;
 		// This is internal and doesn't need the parameters declaring.  It is
 		// also hidden from Qawno by using `/* */` before `native`.
 		/* */ native __ShowPlayerMarkers();
-		
+
 		// This does need the parameters as it is what users call.
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
 		{
@@ -186,7 +187,7 @@ public const __OPEN_MP_VERSION = 0;
 		}
 
 		// The ideal would be:
-		#pragma naked 
+		#pragma naked
 		stock ShowPlayerMarkers(PLAYER_MARKERS_MODE:mode)
 		{
 			#emit POP.alt
@@ -195,7 +196,7 @@ public const __OPEN_MP_VERSION = 0;
 			#emit PROC
 			#emit RETN
 		}
-		
+
 		// But we can't do that in macros without `__pragma`.  Even if we could
 		// determine the parameter count in the macro (which we can't) the
 		// result with explicit removal of parameters and a `JUMP` instead of
@@ -263,13 +264,7 @@ public const __OPEN_MP_VERSION = 0;
 	#pragma warning pop
 #endif
 
-/**
- * <summary>
- *   An invalid value (<c>-1</c>) as a boolean for some natives (most notably
- *   the vehicle param ones) that can skip `true`/`false` parameters.
- * </summary>
- */
-const bool:undefined = bool:-1;
+const undefined = -1;
 
 // Try many places to get the latest version.
 
@@ -468,7 +463,7 @@ const bool:undefined = bool:-1;
  * <returns>The highest playerid currently in use on the server or <b><c>0</c></b> if there are no connected
  * players.</returns>
  */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetPlayerPoolSize
 stock GetPlayerPoolSize()
 {
 	return MAX_PLAYERS - 1;
@@ -481,7 +476,7 @@ stock GetPlayerPoolSize()
  * <returns>The highest vehicleid currently in use on the server or <b><c>0</c></b> if there are no
  * created vehicles.</returns>
  */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetVehiclePoolSize
 stock GetVehiclePoolSize()
 {
 	return MAX_VEHICLES - 1;
@@ -495,7 +490,7 @@ stock GetVehiclePoolSize()
  * <seealso name="SetActorHealth" />
  * <returns>The highest actorid created on the server or <b><c>0</c></b> if there are no created actors.</returns>
  */
-#pragma deprecated This function is fundamentally broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
+#pragma deprecated This function is broken.  See: open.mp/docs/scripting/functions/GetActorPoolSize
 stock GetActorPoolSize()
 {
 	return MAX_ACTORS - 1;
@@ -507,11 +502,6 @@ stock GetActorPoolSize()
 #endif
 
 // Backwards-compatibility defines.
-#define _YSF_included
-#define _inc_ysf
-#define _INC_SAMP_Community_fixes
-#define _inc_fixes
-
 #define _actor_included
 #define _http_included
 #define _objects_included

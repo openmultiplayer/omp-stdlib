@@ -27,10 +27,10 @@ All other dependencies go ***after*** these three lines.
  Further Reading
 -----------------
 
-https://github.com/pawn-lang/samp-stdlib/tree/consistency-overhaul - The SA:MP includes updated with const-correctness and more tags.
-https://github.com/samp-incognito/samp-streamer-plugin/pull/435 - A streamer plugin PR with more information on this tag system.
-[https://github.com/pawn-lang/compiler/wiki/What's-new#const-correctness](https://github.com/pawn-lang/compiler/wiki/What's-new#const-correctness) - Compiler changes, incorrectly lists const-correctness as a "breaking" change.
-https://github.com/pawn-lang/compiler/wiki/Const-Correctness - More information on const-correctness and updating code.
-https://github.com/pawn-lang/sa-mp-fixes/ - Origin of many fixes, including several trivial ones integrated in to open.mp but not listed here.
-https://github.com/pawn-lang/compiler/raw/master/doc/pawn-lang.pdf - For more information on strong and weak tags.
+https://github.com/pawn-lang/samp-stdlib/tree/consistency-overhaul - The SA:MP includes updated with const-correctness and more tags.  
+https://github.com/samp-incognito/samp-streamer-plugin/pull/435 - A streamer plugin PR with more information on this tag system.  
+[https://github.com/pawn-lang/compiler/wiki/What's-new#const-correctness](https://github.com/pawn-lang/compiler/wiki/What's-new#const-correctness) - Compiler changes, incorrectly lists const-correctness as a "breaking" change.  
+https://github.com/pawn-lang/compiler/wiki/Const-Correctness - More information on const-correctness and updating code.  
+https://github.com/pawn-lang/sa-mp-fixes/ - Origin of many fixes, including several trivial ones integrated in to open.mp but not listed here.  
+https://github.com/pawn-lang/compiler/raw/master/doc/pawn-lang.pdf - For more information on strong and weak tags.  
 

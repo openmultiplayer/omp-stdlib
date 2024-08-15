@@ -167,14 +167,16 @@ You will note that all these new features either use existing keywords, `#`, or 
 
 ### More Tags
 
-open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks:
+open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks.
+
+To make the transition easier, the default is `NO_TAGS`, but you can also make tags *weak*:
 
 ```pawn
-#define STRONG_TAGS
+#define WEAK_TAGS
 #include <open.mp>
 ```
 
-To encourage some adoption, the default is `WEAK_TAGS`.  Most old code uses will simply give a warning when the wrong tag is found:
+In this case, most old code uses will simply give a warning when the wrong tag is found:
 
 ```pawn
 // Gives a warning:
@@ -184,7 +186,7 @@ SetPlayerControllable(playerid, 1);
 SetPlayerControllable(playerid, true);
 ```
 
-Generally arameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
+Generally parameters that only accept a limited range of values (for example, object attachment bones) are now all enumerations so that passing invalid values gives a warning:
 
 ```pawn
 TextDrawAlignment(textid, TEXT_DRAW_ALIGN_LEFT); // Fine
@@ -216,17 +218,17 @@ You can enable `void:` tag warnings with a define before including `open.mp`, th
 #include <open.mp>
 ```
 
-For parameters the default is to make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning.  This second group can also be upgraded by specifying the use of *strong* tags instead:
+Again, you can make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning:
 
 ```pawn
-#define STRONG_TAGS
+#define WEAK_TAGS
 #include <open.mp>
 ```
 
-Alternatively, if you really hate help:
+This second group can also be upgraded by specifying the use of *strong* tags instead:
 
 ```pawn
-#define NO_TAGS
+#define STRONG_TAGS
 #include <open.mp>
 ```
 
@@ -347,7 +349,7 @@ forward void:EnableTirePopping(bool:enable);
 Some functions are deprecated but not removed, meaning they still work but using them isn't recommended and they may disappear at some point in the future.  For example:
 
 ```pawn
-#pragma deprecated This function is fundamentally broken.  See below.
+#pragma deprecated This function is broken.  See below.
 native GetPlayerPoolSize();
 ```
 
@@ -358,44 +360,9 @@ Some will suggest alternative methods to do the same thing:
 native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 ```
 
-Some are just replaced with new versions with better names:
-
-```pawn
-native DB_GetRowCount(DBResult:result);
-
-#pragma deprecated Use `DB_GetRowCount`
-native db_num_rows(DBResult:result);
-```
-
-Or names that are spelt correctly:
-
-```pawn
-native bool:TextDrawColour(Text:textid, textColour);
-
-#pragma deprecated Use `TextDrawColour`
-native bool:TextDrawColor(Text:textid, textColour);
-```
-
-Or less terse names thanks to the increased symbol limit:
-
-```pawn
-#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
-native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
-
-#if __namemax > 31
-	native bool:SetPlayer3DTextLabelDrawDistance(playerid, PlayerText3D:textid, Float:drawDistance);
-#endif
-```
-
-This final example will only compile the longer name when using the 3.10.11 compiler, but the deprecation warning will always exist even on compilers with a lower limit (because you should update).
-
 ### Spelling Consistency
 
-The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards; and while American spellings will continue to be supported indefinitely some have had warnings added to notify users of this consistency improvement.  if you wish to stick with the mixed spellings you can add a define to the top of your code:
-
-```pawn
-#define MIXED_SPELLINGS
-```
+The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards.
 
  Function Changes
 ------------------
@@ -406,10 +373,7 @@ A list of function behaviour changes between SA:MP and open.mp.  Most of these c
 * `GetPlayerPoolSize` returns `-1` when there are no players (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
 * `GetVehiclePoolSize` returns `-1` when there are no vehicles (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
 * `GetActorPoolSize` returns `-1` when there are no actors (thus no upper ID).  This function is also now deprecated because so many people were using it wrong that fixing it safely became impossible.
-* `ClearAnimations` no longer removes players from vehicles, only stops animations returned by `GetPlayerAnimationIndex`.
 * `RemovePlayerFromVehicle` has an optional `force` parameter is stop all driving and entering vehicles instantly.
-* `OnPlayerDisconnect` is called with `reason = 4` when the script ends to distinguish it from players leaving the server.
-* `OnPlayerConnect` is called when filterscripts start, in line with the behaviour in gamemodes.
 * `GetVehicleComponentInSlot`, `AddVehicleComponent`, `RemoveVehicleComponent`, and `OnVehicleMod` have two additional slots, bringing the total number of component slots up to 16.  `CARMODTYPE_FRONT_BULLBAR` is used for components `1100`, `1115`, `1116`, `1123`, and `1125`; `CARMODTYPE_REAR_BULLBAR` is used for components `1109` and `1110`; which were all previously in slots `CARMODTYPE_FRONT_BUMPER` and `CARMODTYPE_REAR_BUMPER`.  This is because those slots could contain two mods at once, both shown but only one accessible.
 * Gang zones are clamped to the nearest whole co-ordinate and the parameters are automatially sorted to prevent visual glitches.
 * A default class is used when no player classes are ever specified.

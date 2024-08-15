@@ -178,7 +178,7 @@ stock cvttimestamp(__seconds1970, &__year = 0, &__month = 0, &__day = 0, &__hour
 		}
 		__seconds1970 -= __seconds;
 	}
-	
+
 	// Find the month.
 	for (__month = 1; ; ++__month)
 	{

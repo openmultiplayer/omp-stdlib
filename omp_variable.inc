@@ -9,7 +9,7 @@
  *     This Source Code Form is subject to the terms of the Mozilla Public License,
  *     v. 2.0. If a copy of the MPL was not distributed with this file, You can
  *     obtain one at http://mozilla.org/MPL/2.0/.
- *    
+ *
  *     The original code is copyright (c) 2023, open.mp team and contributors.
  *   </license>
  *   <summary pawndoc="true">
@@ -70,21 +70,6 @@ static stock VARTYPE:_@VARTYPE() { return __VARTYPE; }
 #define PLAYER_VARTYPE_INT                     (VARTYPE:1)
 #define PLAYER_VARTYPE_STRING                  (VARTYPE:2)
 #define PLAYER_VARTYPE_FLOAT                   (VARTYPE:3)
-
-/*
-                                                    
-     ad88888ba   8b           d8                        
-    d8"     "8b  `8b         d8'                        
-    Y8,           `8b       d8'                         
-    `Y8aaaaa,      `8b     d8'  ,adPPYYba,  8b,dPPYba,  
-      `"""""8b,     `8b   d8'   ""     `Y8  88P'   "Y8  
-            `8b      `8b d8'    ,adPPPPP88  88          
-    Y8a     a8P       `888'     88,    ,88  88          
-     "Y88888P"         `8'      `"8bbdP"Y8  88          
-                                                    
-                                                    
-
-*/
 
 /*
 native # Server Variables();
@@ -260,21 +245,6 @@ native bool:GetSVarNameAtIndex(index, output[], size = sizeof (output));
 native VARTYPE:GetSVarType(const svar[]);
 
 /*
-                                                    
-    88888888ba   8b           d8                        
-    88      "8b  `8b         d8'                        
-    88      ,8P   `8b       d8'                         
-    88aaaaaa8P'    `8b     d8'  ,adPPYYba,  8b,dPPYba,  
-    88""""""'       `8b   d8'   ""     `Y8  88P'   "Y8  
-    88               `8b d8'    ,adPPPPP88  88          
-    88                `888'     88,    ,88  88          
-    88                 `8'      `"8bbdP"Y8  88          
-                                                    
-                                                    
-
-*/
-
-/*
 native # Player Variables();
 native        Player Variables(
 native      ====================(
@@ -301,7 +271,7 @@ native
  * or the variable name is null or over 40 characters.
  * </returns>
  */
-native SetPVarInt(playerid, const pvar[], value);
+native bool:SetPVarInt(playerid, const pvar[], value);
 
 /**
  * <library>omp_variable</library>
@@ -332,7 +302,7 @@ native GetPVarInt(playerid, const pvar[]);
  * <seealso name="GetPVarFloat" />
  * <seealso name="DeletePVar" />
  */
-native SetPVarString(playerid, const pvar[], const value[], OPEN_MP_TAGS:...);
+native bool:SetPVarString(playerid, const pvar[], const value[], OPEN_MP_TAGS:...);
 
 /**
  * <library>omp_variable</library>
@@ -372,7 +342,7 @@ native GetPVarString(playerid, const pvar[], output[], len = sizeof (output));
  * or the variable name is null or over 40 characters.
  * </returns>
  */
-native SetPVarFloat(playerid, const pvar[], Float:value);
+native bool:SetPVarFloat(playerid, const pvar[], Float:value);
 
 /**
  * <library>omp_variable</library>
@@ -408,7 +378,7 @@ native Float:GetPVarFloat(playerid, const pvar[]);
  * there is no variable set with the given name.
  * </returns>
  */
-native DeletePVar(playerid, const pvar[]);
+native bool:DeletePVar(playerid, const pvar[]);
 
 /**
  * <library>omp_variable</library>
@@ -433,7 +403,7 @@ native GetPVarsUpperIndex(playerid);
  * <seealso name="GetPVarFloat" />
  * <seealso name="GetPVarString" />
  */
-native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
+native bool:GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 
 /**
  * <library>omp_variable</library>

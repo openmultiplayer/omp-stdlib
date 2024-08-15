@@ -126,17 +126,17 @@ main()
 }
 ```
 
-The tags are all *weak* - passing an integer instead of an enum value is a warning, but the reverse isn't.  The latter can be enabled by making the tags *strong*:
+To make the transition easier, the default is `NO_TAGS`.  The tags can also be *weak* - passing an integer instead of an enum value is a warning, but the reverse isn't:
 
 ```pawn
-#define STRONG_TAGS
+#define WEAK_TAGS
 #include <open.mp>
 ```
 
-Alternatively, if you really hate help:
+The latter can be enabled by making the tags *strong*:
 
 ```pawn
-#define NO_TAGS
+#define STRONG_TAGS
 #include <open.mp>
 ```
 
@@ -218,7 +218,7 @@ forward void:AllowAdminTeleport(bool:allow);
 Some functions are deprecated but not removed, meaning they still work but using them isn't recommended and they may disappear at some point in the future.  For example:
 
 ```pawn
-#pragma deprecated This function is fundamentally broken.  See below.
+#pragma deprecated This function is broken.  See below.
 native GetPlayerPoolSize();
 ```
 
@@ -227,27 +227,6 @@ Some will suggest alternative methods to do the same thing:
 ```pawn
 #pragma deprecated Use `GetConsoleVarAsString`.
 native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
-```
-
-Some are just replaced with new versions with better names:
-
-```pawn
-#pragma deprecated Use `DB_GetRowCount`
-native db_num_rows(DBResult:result);
-```
-
-Or names that are spelt correctly:
-
-```pawn
-#pragma deprecated Use `TextDrawColour`
-native bool:TextDrawColor(Text:textid, textColour);
-```
-
-Or less terse names thanks to the increased symbol limit:
-
-```pawn
-#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
-native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
 ```
 
  Appendix
