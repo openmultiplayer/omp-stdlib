@@ -233,6 +233,7 @@ native bool:SendRconCommand(const format[], OPEN_MP_TAGS:...);
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  * <remarks>This function will result in <a href="#OnRconCommand">OnRconCommand</a> being called.</remarks>
  */
+#pragma deprecated Use `SendRconCommand`.
 native bool:SendRconCommandf(const format[], OPEN_MP_TAGS:...) = SendRconCommand;
 
 /**

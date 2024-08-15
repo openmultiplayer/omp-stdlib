@@ -1590,6 +1590,7 @@ native bool:SendClientMessage(playerid, colour, const format[], OPEN_MP_TAGS:...
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
+#pragma deprecated Use `SendClientMessagef`
 native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:...) = SendClientMessage;
 
 /**
@@ -1626,6 +1627,7 @@ native bool:GameTextForPlayer(playerid, const format[], time, style, OPEN_MP_TAG
  * is not connected.
  * </returns>
  */
+#pragma deprecated Use `GameTextForPlayerf`
 native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TAGS:...) = GameTextForPlayer;
 
 /**
@@ -1727,6 +1729,7 @@ native bool:SendPlayerMessageToPlayer(playerid, senderid, const format[], OPEN_M
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
+#pragma deprecated Use `SendPlayerMessageToPlayer`
 native bool:SendPlayerMessageToPlayerf(playerid, senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToPlayer;
 
 /**
