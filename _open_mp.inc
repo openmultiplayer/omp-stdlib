@@ -113,6 +113,20 @@ public const __OPEN_MP_VERSION = 0;
 	#define __pawn_build 0
 #endif
 
+#if defined SAMP_COMPAT
+	#if !defined NO_TAGS
+		#define NO_TAGS
+	#endif
+
+	#if !defined MIXED_SPELLINGS
+		#define MIXED_SPELLINGS
+	#endif
+
+	#if !defined OPEN_MP_NO_WRAPPER_WARNING
+		#define OPEN_MP_NO_WRAPPER_WARNING
+	#endif
+#endif
+
 // Optionally stricter tags.
 #if defined NO_TAGS
 	#define __TAG(%0) _
