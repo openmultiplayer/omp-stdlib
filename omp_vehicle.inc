@@ -928,7 +928,7 @@ native GetVehicleSeats(vehicleid);
  * </returns>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `ChangeVehicleColours`.
+	#pragma deprecated Use `ChangeVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:ChangeVehicleColor(vehicleid, color1, color2);
 
@@ -1200,7 +1200,7 @@ native bool:GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0
  * </summary>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GetRandomVehicleColourPair`.
+	#pragma deprecated Use `GetRandomVehicleColourPair`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:GetRandomVehicleColorPair(modelid, &color1, &color2, &color3 = 0, &color4 = 0) = GetRandomCarColPair;
 
@@ -1481,7 +1481,7 @@ native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, 
  * <library>omp_vehicle</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GetVehicleColours`.
+	#pragma deprecated Use `GetVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:GetVehicleColor(vehicleid, &color1, &color2);
 
@@ -1665,7 +1665,7 @@ native
  * <remarks>As in "one who tows", not "tall building".</remarks>
  */
 #if !defined LEGACY_SCRIPTING_API
-	#pragma deprecated Use `GetVehicleCab`.
+	#pragma deprecated Use `GetVehicleCab`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native GetVehicleTower(vehicleid);
 

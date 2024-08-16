@@ -186,7 +186,7 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
 
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `SetObjectsDefaultCameraCollision`
+		#pragma deprecated Use `SetObjectsDefaultCameraCollision`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:SetObjectsDefaultCameraCol(bool:disable);
@@ -939,7 +939,7 @@ native GetPlayerObjectModel(playerid, objectid);
 
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
+		#pragma deprecated Use `SetPlayerObjectNoCameraCollision`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
@@ -1224,7 +1224,7 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
 
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`
+		#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native GetPlayerCameraTargetPlayerObj(playerid);

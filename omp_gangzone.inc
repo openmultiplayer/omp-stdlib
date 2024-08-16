@@ -359,7 +359,7 @@ native GangZoneGetColourForPlayer(playerid, zoneid);
  * <returns>Color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GangZoneGetColourForPlayer`.
+	#pragma deprecated Use `GangZoneGetColourForPlayer`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
 
@@ -398,7 +398,7 @@ native GangZoneGetFlashColourForPlayer(playerid, zoneid);
  * <returns>Flashing color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GangZoneGetFlashColourForPlayer`.
+	#pragma deprecated Use `GangZoneGetFlashColourForPlayer`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
 
@@ -746,7 +746,7 @@ native PlayerGangZoneGetColour(playerid, zoneid);
  * <returns>Color of player gangzone. <b><c>0</c></b>: Failed to execute the function. The player gangzone is not showned for the player.</returns>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerGangZoneGetColour`.
+	#pragma deprecated Use `PlayerGangZoneGetColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
 
@@ -793,7 +793,7 @@ native PlayerGangZoneGetFlashColour(playerid, zoneid);
  * <returns>Flashing color of player gangzone. <b><c>0</c></b>: Failed to execute the function. The player gangzone is not showned for the player.</returns>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerGangZoneGetFlashColour`.
+	#pragma deprecated Use `PlayerGangZoneGetFlashColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 

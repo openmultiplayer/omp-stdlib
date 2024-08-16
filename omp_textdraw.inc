@@ -283,7 +283,7 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * effect.</remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawColour`.
+	#pragma deprecated Use `TextDrawColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:TextDrawColor(Text:textid, textColor);
 
@@ -325,7 +325,7 @@ native bool:TextDrawUseBox(Text:textid, bool:enableBox);
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawBoxColour`.
+	#pragma deprecated Use `TextDrawBoxColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:TextDrawBoxColor(Text:textid, boxColor);
 
@@ -386,7 +386,7 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawBackgroundColor`.
+	#pragma deprecated Use `TextDrawBackgroundColor`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:TextDrawBackgroundColor(Text:textid, backgroundColor);
 
@@ -544,7 +544,7 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
+		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
@@ -575,7 +575,7 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
  */
 #if __namemax > 31
 	#if !defined MIXED_SPELLINGS
-		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`.
+		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 	native bool:TextDrawSetPreviewVehicleColors(Text:textid, colour1, colour2) = TextDrawSetPreviewVehCol;
 #endif
@@ -619,7 +619,7 @@ native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
  * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawGetColour`.
+	#pragma deprecated Use `TextDrawGetColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native TextDrawGetColor(Text:textid);
 
@@ -632,7 +632,7 @@ native TextDrawGetColour(Text:textid) = TextDrawGetColor;
  * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawGetBoxColour`.
+	#pragma deprecated Use `TextDrawGetBoxColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native TextDrawGetBoxColor(Text:textid);
 
@@ -645,7 +645,7 @@ native TextDrawGetBoxColour(Text:textid) = TextDrawGetBoxColor;
  * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawGetBackgroundColour`.
+	#pragma deprecated Use `TextDrawGetBackgroundColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native TextDrawGetBackgroundColor(Text:textid);
 
@@ -704,7 +704,7 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`
+		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
@@ -721,7 +721,7 @@ native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
  */
 #if __namemax > 31
 	#if !defined MIXED_SPELLINGS
-		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`.
+		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 	native bool:TextDrawGetPreviewVehicleColors(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
 #endif
@@ -938,7 +938,7 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerTextDrawColour`.
+	#pragma deprecated Use `PlayerTextDrawColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColor);
 
@@ -1015,7 +1015,7 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
  * <seealso name="PlayerTextDrawHide" />
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerTextDrawBoxColour`.
+	#pragma deprecated Use `PlayerTextDrawBoxColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColor);
 
@@ -1119,7 +1119,7 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerTextDrawBackgroundColour`.
+	#pragma deprecated Use `PlayerTextDrawBackgroundColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColor);
 
@@ -1350,7 +1350,7 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`
+		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
@@ -1393,7 +1393,7 @@ native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1,
  */
 #if __namemax > 31
 	#if !defined MIXED_SPELLINGS
-		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`.
+		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 	native bool:PlayerTextDrawSetPreviewVehicleColors(playerid, PlayerText:textid, colour1, colour2) = PlayerTextDrawSetPreviewVehCol;
 #endif
@@ -1437,7 +1437,7 @@ native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y
  * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerTextDrawGetColour`.
+	#pragma deprecated Use `PlayerTextDrawGetColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 
@@ -1450,7 +1450,7 @@ native PlayerTextDrawGetColour(playerid, PlayerText:textid) = PlayerTextDrawGetC
  * <library>omp_textdraw</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `PlayerTextDrawGetBoxColour`.
+	#pragma deprecated Use `PlayerTextDrawGetBoxColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
 
@@ -1464,7 +1464,7 @@ native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid) = PlayerTextDrawG
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`
+		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
@@ -1481,7 +1481,7 @@ native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
  */
 #if __namemax > 31
 	#if !defined MIXED_SPELLINGS
-		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`.
+		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 	native PlayerTextDrawGetBackgroundColor(playerid, PlayerText:textid) = PlayerTextDrawGetBackgroundCol;
 #endif
@@ -1536,7 +1536,7 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`
+		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
@@ -1553,7 +1553,7 @@ native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1
  */
 #if __namemax > 31
 	#if !defined MIXED_SPELLINGS
-		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`.
+		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 	native bool:PlayerTextDrawGetPreviewVehicleColors(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
 #endif

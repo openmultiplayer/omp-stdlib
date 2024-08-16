@@ -211,7 +211,7 @@ native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof (text));
  * <library>omp_textlabel</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `Get3DTextLabelColour`.
+	#pragma deprecated Use `Get3DTextLabelColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native Get3DTextLabelColor(Text3D:textid);
 
@@ -344,7 +344,7 @@ native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len 
  * <library>omp_textlabel</library>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `GetPlayer3DTextLabelColour`.
+	#pragma deprecated Use `GetPlayer3DTextLabelColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
 
@@ -363,7 +363,7 @@ native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Fl
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `GetPlayer3DTextLabelDrawDistance`
+		#pragma deprecated Use `GetPlayer3DTextLabelDrawDistance`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
@@ -380,7 +380,7 @@ native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
+		#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
@@ -407,7 +407,7 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `GetPlayer3DTextLabelVirtualWorld`
+		#pragma deprecated Use `GetPlayer3DTextLabelVirtualWorld`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
@@ -424,7 +424,7 @@ native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
  */
 #if !defined LEGACY_SCRIPTING_API
 	#if __namemax > 31
-		#pragma deprecated Use `GetPlayer3DTextLabelAttachedData`
+		#pragma deprecated Use `GetPlayer3DTextLabelAttachedData`. To silence this warning define `LEGACY_SCRIPTING_API` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 	#endif
 #endif
 native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
