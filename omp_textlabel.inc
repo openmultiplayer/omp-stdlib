@@ -409,4 +409,3 @@ native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentP
 #if __namemax > 31
 	native bool:GetPlayer3DTextLabelAttachedData(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid) = GetPlayer3DTextLabelAttached;
 #endif
-

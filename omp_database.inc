@@ -440,4 +440,3 @@ native DB_DebugOpenResults() = DB_GetDatabaseResultSetCount;
  * <library>omp_database</library>
  */
 native db_debug_openresults() = DB_GetDatabaseResultSetCount;
-
