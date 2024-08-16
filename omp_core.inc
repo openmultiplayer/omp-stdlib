@@ -1400,7 +1400,7 @@ native SHA256_PassHash(const password[], const salt[], output[], size = sizeof (
  * form 'foobar'. </remarks>
  * <remarks>The result is 64 charaters long, so the output array must be at least 65 cells big.</remarks>
  */
-native SHA256_Hash(const content[], const salt[], output[], size = sizeof (output)) = native SHA256_PassHash;
+native SHA256_Hash(const content[], const salt[], output[], size = sizeof (output)) = SHA256_PassHash;
 
 /**
  * <library>omp_core</library>
