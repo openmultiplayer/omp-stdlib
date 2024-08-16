@@ -1646,7 +1646,9 @@ native
  * <library>omp_vehicle</library>
  * <remarks>As in "one who tows", not "tall building".</remarks>
  */
-#pragma deprecated Use `GetVehicleCab`.
+#if !defined LEGACY_SCRIPTING_API
+	#pragma deprecated Use `GetVehicleCab`.
+#endif
 native GetVehicleTower(vehicleid);
 
 /*

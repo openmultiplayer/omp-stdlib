@@ -182,9 +182,14 @@ static stock EDIT_RESPONSE:_@EDIT_RESPONSE() { return __EDIT_RESPONSE; }
  */
 #if __namemax > 31
 	native bool:SetObjectsDefaultCameraCollision(bool:disable);
-#else
-	native bool:SetObjectsDefaultCameraCol(bool:disable);
 #endif
+
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `SetObjectsDefaultCameraCollision`
+	#endif
+#endif
+native bool:SetObjectsDefaultCameraCol(bool:disable);
 
 /**
  * <library>omp_object</library>
@@ -930,9 +935,14 @@ native GetPlayerObjectModel(playerid, objectid);
  */
 #if __namemax > 31
 	native bool:SetPlayerObjectNoCameraCollision(playerid, objectid);
-#else
-	native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 #endif
+
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `SetPlayerObjectNoCameraCollision`
+	#endif
+#endif
+native bool:SetPlayerObjectNoCameraCol(playerid, objectid);
 
 /**
  * <library>omp_object</library>
@@ -1210,9 +1220,14 @@ native bool:GetPlayerObjectMovingTargetRot(playerid, objectid, &Float:rotationX,
  */
 #if __namemax > 31
 	native GetPlayerCameraTargetPlayerObject(playerid);
-#else
-	native GetPlayerCameraTargetPlayerObj(playerid);
 #endif
+
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `GetPlayerCameraTargetPlayerObject`
+	#endif
+#endif
+native GetPlayerCameraTargetPlayerObj(playerid);
 
 /*
 native # Attachments();

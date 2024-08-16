@@ -533,6 +533,11 @@ native bool:TextDrawSetPreviewRot(Text:textid, Float:rotationX, Float:rotationY,
  * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
  * for this function to have effect.</remarks>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`
+	#endif
+#endif
 native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
@@ -662,6 +667,11 @@ native bool:TextDrawGetPreviewRot(Text:textid, &Float:rotationX, &Float:rotation
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`
+	#endif
+#endif
 native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
 
 /**
@@ -1284,6 +1294,11 @@ native bool:PlayerTextDrawSetPreviewRot(playerid, PlayerText:textid, Float:rotX,
  * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
  * a vehicle in order for this function to have effect.</remarks>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`
+	#endif
+#endif
 native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1, colour2);
 
 /**
@@ -1364,6 +1379,11 @@ native PlayerTextDrawGetBoxColour(playerid, PlayerText:textid) = PlayerTextDrawG
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`
+	#endif
+#endif
 native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
 
 /**
@@ -1421,6 +1441,11 @@ native bool:PlayerTextDrawGetPreviewRot(playerid, PlayerText:textid, &Float:rota
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`
+	#endif
+#endif
 native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1, &colour2);
 
 /**

@@ -125,6 +125,10 @@ public const __OPEN_MP_VERSION = 0;
 	#if !defined OPEN_MP_NO_WRAPPER_WARNING
 		#define OPEN_MP_NO_WRAPPER_WARNING
 	#endif
+
+	#if !defined LEGACY_SCRIPTING_API
+		#define LEGACY_SCRIPTING_API
+	#endif
 #endif
 
 // Optionally stricter tags.

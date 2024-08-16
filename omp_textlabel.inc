@@ -355,6 +355,11 @@ native bool:GetPlayer3DTextLabelPos(playerid, PlayerText3D:textid, &Float:x, &Fl
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `GetPlayer3DTextLabelDrawDistance`
+	#endif
+#endif
 native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
 
 /**
@@ -367,6 +372,11 @@ native Float:GetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid);
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `SetPlayer3DTextLabelDrawDistance`
+	#endif
+#endif
 native bool:SetPlayer3DTextLabelDrawDist(playerid, PlayerText3D:textid, Float:drawDistance);
 
 /**
@@ -389,6 +399,11 @@ native bool:SetPlayer3DTextLabelLOS(playerid, PlayerText3D:textid, bool:enable);
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `GetPlayer3DTextLabelVirtualWorld`
+	#endif
+#endif
 native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
 
 /**
@@ -401,6 +416,11 @@ native GetPlayer3DTextLabelVirtualW(playerid, PlayerText3D:textid);
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined LEGACY_SCRIPTING_API
+	#if __namemax > 31
+		#pragma deprecated Use `GetPlayer3DTextLabelAttachedData`
+	#endif
+#endif
 native bool:GetPlayer3DTextLabelAttached(playerid, PlayerText3D:textid, &parentPlayerid, &parentVehicleid);
 
 /**
