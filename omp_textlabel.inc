@@ -210,6 +210,9 @@ native bool:Get3DTextLabelText(Text3D:textid, text[], len = sizeof (text));
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `Get3DTextLabelColour`.
+#endif
 native Get3DTextLabelColor(Text3D:textid);
 
 /**
@@ -340,6 +343,9 @@ native bool:GetPlayer3DTextLabelText(playerid, PlayerText3D:textid, text[], len 
 /**
  * <library>omp_textlabel</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GetPlayer3DTextLabelColour`.
+#endif
 native GetPlayer3DTextLabelColor(playerid, PlayerText3D:textid);
 
 /**

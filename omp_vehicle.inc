@@ -913,9 +913,9 @@ native GetVehicleSeats(vehicleid);
  * <library>omp_vehicle</library>
  * <summary>Change a vehicle's primary and secondary colours.</summary>
  * <param name="vehicleid">The ID of the vehicle to change the colours of</param>
- * <param name="colour1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
+ * <param name="color1">The new vehicle's primary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
- * <param name="colour2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
+ * <param name="color2">The new vehicle's secondary <a href="https://www.open.mp/docs/scripting/resources/vehiclecolorid">colour
  * ID</a></param>
  * <seealso name="ChangeVehiclePaintjob" />
  * <seealso name="OnVehicleRespray" />
@@ -927,7 +927,10 @@ native GetVehicleSeats(vehicleid);
  *   <b><c>0</c></b>: The function failed to execute.  The vehicle does not exist.
  * </returns>
  */
-native bool:ChangeVehicleColor(vehicleid, colour1, colour2);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `ChangeVehicleColours`.
+#endif
+native bool:ChangeVehicleColor(vehicleid, color1, color2);
 
 /**
  * <library>omp_vehicle</library>
@@ -1193,9 +1196,21 @@ native bool:GetRandomVehicleColourPair(modelid, &colour1, &colour2, &colour3 = 0
 /**
  * <library>omp_vehicle</library>
  * <summary>
+ * Get random colour indexes that are valid for the given vehicle model.
+ * </summary>
+ */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GetRandomVehicleColourPair`.
+#endif
+native bool:GetRandomVehicleColorPair(modelid, &color1, &color2, &color3 = 0, &color4 = 0) = GetRandomCarColPair;
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>
  * Convert a car colour index to a HEX colour (RGBA).
  * </summary>
  */
+#pragma deprecated Use `VehicleColourIndexToColour`
 native CarColIndexToColour(index, alpha = 0xFF);
 
 /**
@@ -1465,7 +1480,10 @@ native bool:SetVehicleSpawnInfo(vehicleid, modelid, Float:spawnX, Float:spawnY, 
 /**
  * <library>omp_vehicle</library>
  */
-native bool:GetVehicleColor(vehicleid, &colour1, &colour2);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GetVehicleColours`.
+#endif
+native bool:GetVehicleColor(vehicleid, &color1, &color2);
 
 /**
  * <library>omp_vehicle</library>

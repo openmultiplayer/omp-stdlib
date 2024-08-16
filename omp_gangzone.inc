@@ -344,7 +344,23 @@ native GangZoneGetColourForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ * <summary>Get the colour of a gangzone for player.</summary>
+ * <param name="playerid">The ID of the player you need to get</param>
+ * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
+ * <returns>Color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GangZoneGetColourForPlayer`.
+#endif
 native GangZoneGetColorForPlayer(playerid, zoneid) = GangZoneGetColourForPlayer;
 
 /**
@@ -367,7 +383,23 @@ native GangZoneGetFlashColourForPlayer(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ * <summary>Get the flashing colour of a gangzone for player.</summary>
+ * <param name="playerid">The ID of the player you need to get</param>
+ * <param name="zoneid">The ID of the gangzone</param>
+ * <seealso name="GangZoneCreate" />
+ * <seealso name="GangZoneDestroy" />
+ * <seealso name="GangZoneShowForPlayer" />
+ * <seealso name="GangZoneShowForAll" />
+ * <seealso name="GangZoneHideForPlayer" />
+ * <seealso name="GangZoneHideForAll" />
+ * <seealso name="GangZoneFlashForPlayer" />
+ * <seealso name="GangZoneFlashForAll" />
+ * <seealso name="GangZoneStopFlashForPlayer" />
+ * <returns>Flashing color of gangzone for player. <b><c>0</c></b>: Failed to execute the function. The gangzone is not showned for the player.</returns>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `GangZoneGetFlashColourForPlayer`.
+#endif
 native GangZoneGetFlashColorForPlayer(playerid, zoneid) = GangZoneGetFlashColourForPlayer;
 
 /**
@@ -695,7 +727,27 @@ native PlayerGangZoneGetColour(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ * <summary>Get the colour of a player gangzone.</summary>
+ * <param name="playerid">The ID of the player to whom player gangzone is bound</param>
+ * <param name="zoneid">The ID of the player gangzone</param>
+ * <seealso name="CreatePlayerGangZone" />
+ * <seealso name="PlayerGangZoneDestroy" />
+ * <seealso name="PlayerGangZoneShow" />
+ * <seealso name="PlayerGangZoneHide" />
+ * <seealso name="PlayerGangZoneFlash" />
+ * <seealso name="PlayerGangZoneStopFlash" />
+ * <seealso name="PlayerGangZoneGetFlashColour" />
+ * <seealso name="PlayerGangZoneGetPos" />
+ * <seealso name="IsValidPlayerGangZone" />
+ * <seealso name="IsPlayerInPlayerGangZone" />
+ * <seealso name="IsPlayerGangZoneVisible" />
+ * <seealso name="IsPlayerGangZoneFlashing" />
+ * <seealso name="UsePlayerGangZoneCheck" />
+ * <returns>Color of player gangzone. <b><c>0</c></b>: Failed to execute the function. The player gangzone is not showned for the player.</returns>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerGangZoneGetColour`.
+#endif
 native PlayerGangZoneGetColor(playerid, zoneid) = PlayerGangZoneGetColour;
 
 /**
@@ -722,7 +774,27 @@ native PlayerGangZoneGetFlashColour(playerid, zoneid);
 
 /**
  * <library>omp_gangzone</library>
+ * <summary>Get the flashing colour of a player gangzone.</summary>
+ * <param name="playerid">The ID of the player to whom player gangzone is bound</param>
+ * <param name="zoneid">The ID of the player gangzone</param>
+ * <seealso name="CreatePlayerGangZone" />
+ * <seealso name="PlayerGangZoneDestroy" />
+ * <seealso name="PlayerGangZoneShow" />
+ * <seealso name="PlayerGangZoneHide" />
+ * <seealso name="PlayerGangZoneFlash" />
+ * <seealso name="PlayerGangZoneStopFlash" />
+ * <seealso name="PlayerGangZoneGetColour" />
+ * <seealso name="PlayerGangZoneGetPos" />
+ * <seealso name="IsValidPlayerGangZone" />
+ * <seealso name="IsPlayerInPlayerGangZone" />
+ * <seealso name="IsPlayerGangZoneVisible" />
+ * <seealso name="IsPlayerGangZoneFlashing" />
+ * <seealso name="UsePlayerGangZoneCheck" />
+ * <returns>Flashing color of player gangzone. <b><c>0</c></b>: Failed to execute the function. The player gangzone is not showned for the player.</returns>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerGangZoneGetFlashColour`.
+#endif
 native PlayerGangZoneGetFlashColor(playerid, zoneid) = PlayerGangZoneGetFlashColour;
 
 /**

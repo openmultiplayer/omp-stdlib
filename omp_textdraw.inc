@@ -282,7 +282,10 @@ native bool:TextDrawAlignment(Text:textid, TEXT_DRAW_ALIGN:alignment);
  * href="#TextDrawShowForPlayer">TextDrawShowForPlayer</a>) for the changes of this function to take
  * effect.</remarks>
  */
-native bool:TextDrawColor(Text:textid, textColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawColour`.
+#endif
+native bool:TextDrawColor(Text:textid, textColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -321,7 +324,10 @@ native bool:TextDrawUseBox(Text:textid, bool:enableBox);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native bool:TextDrawBoxColor(Text:textid, boxColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawBoxColour`.
+#endif
+native bool:TextDrawBoxColor(Text:textid, boxColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -379,7 +385,10 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
  * <a href="#TextDrawShowForAll">TextDrawShowForAll</a>
  * after modifying the textdraw and the change will be visible.</remarks>
  */
-native bool:TextDrawBackgroundColor(Text:textid, backgroundColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawBackgroundColor`.
+#endif
+native bool:TextDrawBackgroundColor(Text:textid, backgroundColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -556,6 +565,23 @@ native bool:TextDrawSetPreviewVehCol(Text:textid, colour1, colour2);
 
 /**
  * <library>omp_textdraw</library>
+ * <summary>If a vehicle model is used in a 3D preview textdraw, this sets the two colour values for
+ * that vehicle.</summary>
+ * <param name="textid">The textdraw ID that is set to display a 3D vehicle model preview</param>
+ * <param name="colour1">The primary Colour ID to set the vehicle to</param>
+ * <param name="colour2">The secondary Colour ID to set the vehicle to</param>
+ * <remarks>The textdraw MUST use the font type <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> in order
+ * for this function to have effect.</remarks>
+ */
+#if __namemax > 31
+	#if !defined MIXED_SPELLINGS
+		#pragma deprecated Use `TextDrawSetPreviewVehicleColours`.
+	#endif
+	native bool:TextDrawSetPreviewVehicleColors(Text:textid, colour1, colour2) = TextDrawSetPreviewVehCol;
+#endif
+
+/**
+ * <library>omp_textdraw</library>
  */
 native bool:IsValidTextDraw(Text:textid);
 
@@ -592,6 +618,9 @@ native bool:TextDrawGetPos(Text:textid, &Float:x, &Float:y);
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawGetColour`.
+#endif
 native TextDrawGetColor(Text:textid);
 
 /**
@@ -602,6 +631,9 @@ native TextDrawGetColour(Text:textid) = TextDrawGetColor;
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawGetBoxColour`.
+#endif
 native TextDrawGetBoxColor(Text:textid);
 
 /**
@@ -612,6 +644,9 @@ native TextDrawGetBoxColour(Text:textid) = TextDrawGetBoxColor;
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `TextDrawGetBackgroundColour`.
+#endif
 native TextDrawGetBackgroundColor(Text:textid);
 
 /**
@@ -679,6 +714,16 @@ native bool:TextDrawGetPreviewVehCol(Text:textid, &colour1, &colour2);
  */
 #if __namemax > 31
 	native bool:TextDrawGetPreviewVehicleColours(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
+#endif
+
+/**
+ * <library>omp_textdraw</library>
+ */
+#if __namemax > 31
+	#if !defined MIXED_SPELLINGS
+		#pragma deprecated Use `TextDrawGetPreviewVehicleColours`.
+	#endif
+	native bool:TextDrawGetPreviewVehicleColors(Text:textid, &colour1, &colour2) = TextDrawGetPreviewVehCol;
 #endif
 
 /**
@@ -892,7 +937,10 @@ native bool:PlayerTextDrawAlignment(playerid, PlayerText:textid, TEXT_DRAW_ALIGN
  * <remarks>You can also use Gametext colours in textdraws.</remarks>
  * <remarks>The textdraw must be re-shown to the player in order to update the colour.</remarks>
  */
-native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerTextDrawColour`.
+#endif
+native bool:PlayerTextDrawColor(playerid, PlayerText:textid, textColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -966,7 +1014,10 @@ native bool:PlayerTextDrawUseBox(playerid, PlayerText:textid, bool:boxEnabled);
  * <seealso name="PlayerTextDrawShow" />
  * <seealso name="PlayerTextDrawHide" />
  */
-native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerTextDrawBoxColour`.
+#endif
+native bool:PlayerTextDrawBoxColor(playerid, PlayerText:textid, boxColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -1067,7 +1118,10 @@ native bool:PlayerTextDrawSetOutline(playerid, PlayerText:textid, outlineSize);
  * 0, the outline colour will match the colour used in <a href="#PlayerTextDrawBackgroundColor">PlayerTextDrawBackgroundColor</a>.
  *  Changing the value of colour seems to alter the colour used in <a href="#PlayerTextDrawColor">PlayerTextDrawColor</a></remarks>
  */
-native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColour);
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerTextDrawBackgroundColour`.
+#endif
+native bool:PlayerTextDrawBackgroundColor(playerid, PlayerText:textid, backgroundColor);
 
 /**
  * <library>omp_textdraw</library>
@@ -1323,6 +1377,29 @@ native bool:PlayerTextDrawSetPreviewVehCol(playerid, PlayerText:textid, colour1,
 
 /**
  * <library>omp_textdraw</library>
+ * <summary>Set the colour of a vehicle in a player-textdraw model preview (if a vehicle is shown).</summary>
+ * <param name="playerid">The ID of the player whose player-textdraw to change</param>
+ * <param name="textid">The ID of the player's player-textdraw to change</param>
+ * <param name="colour1">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
+ * the vehicle's primary colour to</param>
+ * <param name="colour2">The <a href="https://open.mp/docs/scripting/resources/vehicleColourid">colour</a> to set
+ * the vehicle's secondary colour to</param>
+ * <seealso name="PlayerTextDrawSetPreviewModel" />
+ * <seealso name="PlayerTextDrawSetPreviewRot" />
+ * <seealso name="PlayerTextDrawFont" />
+ * <seealso name="OnPlayerClickPlayerTextDraw" />
+ * <remarks>The textdraw MUST use the font <b><c>TEXT_DRAW_FONT_MODEL_PREVIEW</c></b> and be showing
+ * a vehicle in order for this function to have effect.</remarks>
+ */
+#if __namemax > 31
+	#if !defined MIXED_SPELLINGS
+		#pragma deprecated Use `PlayerTextDrawSetPreviewVehicleColours`.
+	#endif
+	native bool:PlayerTextDrawSetPreviewVehicleColors(playerid, PlayerText:textid, colour1, colour2) = PlayerTextDrawSetPreviewVehCol;
+#endif
+
+/**
+ * <library>omp_textdraw</library>
  */
 native bool:IsValidPlayerTextDraw(playerid, PlayerText:textid);
 
@@ -1359,6 +1436,9 @@ native bool:PlayerTextDrawGetPos(playerid, PlayerText:textid, &Float:x, &Float:y
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerTextDrawGetColour`.
+#endif
 native PlayerTextDrawGetColor(playerid, PlayerText:textid);
 
 /**
@@ -1369,6 +1449,9 @@ native PlayerTextDrawGetColour(playerid, PlayerText:textid) = PlayerTextDrawGetC
 /**
  * <library>omp_textdraw</library>
  */
+#if !defined MIXED_SPELLINGS
+	#pragma deprecated Use `PlayerTextDrawGetBoxColour`.
+#endif
 native PlayerTextDrawGetBoxColor(playerid, PlayerText:textid);
 
 /**
@@ -1391,6 +1474,16 @@ native PlayerTextDrawGetBackgroundCol(playerid, PlayerText:textid);
  */
 #if __namemax > 31
 	native PlayerTextDrawGetBackgroundColour(playerid, PlayerText:textid) = PlayerTextDrawGetBackgroundCol;
+#endif
+
+/**
+ * <library>omp_textdraw</library>
+ */
+#if __namemax > 31
+	#if !defined MIXED_SPELLINGS
+		#pragma deprecated Use `PlayerTextDrawGetBackgroundColour`.
+	#endif
+	native PlayerTextDrawGetBackgroundColor(playerid, PlayerText:textid) = PlayerTextDrawGetBackgroundCol;
 #endif
 
 /**
@@ -1455,6 +1548,16 @@ native bool:PlayerTextDrawGetPreviewVehCol(playerid, PlayerText:textid, &colour1
 	native bool:PlayerTextDrawGetPreviewVehicleColours(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
 #endif
 
+/**
+ * <library>omp_textdraw</library>
+ */
+#if __namemax > 31
+	#if !defined MIXED_SPELLINGS
+		#pragma deprecated Use `PlayerTextDrawGetPreviewVehicleColours`.
+	#endif
+	native bool:PlayerTextDrawGetPreviewVehicleColors(playerid, PlayerText:textid, &colour1, &colour2) = PlayerTextDrawGetPreviewVehCol;
+#endif
+
 /*
 native # Selection();
 native           Selection(
@@ -1477,7 +1580,7 @@ native
  * MUST be used first, to allow a textdraw to be selectable.</remarks>
  * <remarks>It is the TEXT which will be highlighted when hovered over, NOT the box (if one is shown).</remarks>
  */
-native bool:SelectTextDraw(playerid, hoverColour);
+native bool:SelectTextDraw(playerid, hoverColor);
 
 /**
  * <library>omp_textdraw</library>
