@@ -590,6 +590,7 @@ native bool:GameTextForAll(const format[], time, style, OPEN_MP_TAGS:...);
  * <seealso name="TextDrawShowForAll" />
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
+#pragma deprecated Use `GameTextForAll`
 native bool:GameTextForAllf(const format[], time, style, OPEN_MP_TAGS:...) = GameTextForAll;
 
 /**
@@ -629,6 +630,7 @@ native bool:SendClientMessageToAll(colour, const format[], OPEN_MP_TAGS:...);
  *  It will result in crashes otherwise.</remarks>
  * <returns>This function always returns <b><c>1</c></b>.</returns>
  */
+#pragma deprecated Use `SendClientMessageToAll`
 native bool:SendClientMessageToAllf(colour, const format[], OPEN_MP_TAGS:...) = SendClientMessageToAll;
 
 /**
@@ -657,6 +659,7 @@ native bool:SendPlayerMessageToAll(senderid, const format[], OPEN_MP_TAGS:...);
  * <remarks>Avoid using format specifiers in your messages without formatting the string that is sent.
  *  It will result in crashes otherwise.</remarks>
  */
+#pragma deprecated Use `SendPlayerMessageToAll`
 native bool:SendPlayerMessageToAllf(senderid, const format[], OPEN_MP_TAGS:...) = SendPlayerMessageToAll;
 
 /**
