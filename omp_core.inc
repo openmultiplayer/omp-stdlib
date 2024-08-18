@@ -1484,3 +1484,23 @@ forward OnFilterScriptInit();
  * <returns>This callback does not handle returns.</returns>
  */
 forward OnFilterScriptExit();
+
+/**
+ * <summary>This callback is called for each connected player when a script is loaded.</summary>
+ * <seealso name="OnFilterScriptInit" />
+ * <seealso name="OnFilterScriptExit" />
+ * <seealso name="OnGameModeInit" />
+ * <seealso name="OnGameModeExit" />
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnScriptLoadPlayer(playerid, bool:isEntryScript);
+
+/**
+ * <summary>This callback is called for each connected player when a script is unloaded.</summary>
+ * <seealso name="OnFilterScriptInit" />
+ * <seealso name="OnFilterScriptExit" />
+ * <seealso name="OnGameModeInit" />
+ * <seealso name="OnGameModeExit" />
+ * <returns>This callback does not handle returns.</returns>
+ */
+forward OnScriptUnloadPlayer(playerid, bool:isEntryScript);
