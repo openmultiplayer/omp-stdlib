@@ -1629,6 +1629,12 @@ native void:EnableVehicleFriendlyFire();
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>Get an array variable of the IDs of the created vehicles on the server.</summary>
+ * <param name="vehicles">An array into which to store the vehicle IDs, passed by reference.</param>
+ * <param name="size">The size of the array.</param>
+ * <seealso name="GetPlayers" />
+ * <seealso name="GetActors" />
+ * <returns>The number of vehicles stored in the array.</returns>
  */
 native GetVehicles(vehicles[], size = sizeof (vehicles));
 
