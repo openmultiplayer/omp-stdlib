@@ -1590,7 +1590,7 @@ native bool:SendClientMessage(playerid, colour, const format[], OPEN_MP_TAGS:...
  *   <b><c>0</c></b>: The function failed to execute.  The player is not connected.
  * </returns>
  */
-#pragma deprecated Use `SendClientMessagef`
+#pragma deprecated Use `SendClientMessage`
 native bool:SendClientMessagef(playerid, colour, const format[], OPEN_MP_TAGS:...) = SendClientMessage;
 
 /**
@@ -1627,7 +1627,7 @@ native bool:GameTextForPlayer(playerid, const format[], time, style, OPEN_MP_TAG
  * is not connected.
  * </returns>
  */
-#pragma deprecated Use `GameTextForPlayerf`
+#pragma deprecated Use `GameTextForPlayer`
 native bool:GameTextForPlayerf(playerid, const format[], time, style, OPEN_MP_TAGS:...) = GameTextForPlayer;
 
 /**

@@ -386,7 +386,7 @@ native bool:TextDrawSetOutline(Text:textid, outlineSize);
  * after modifying the textdraw and the change will be visible.</remarks>
  */
 #if !defined MIXED_SPELLINGS
-	#pragma deprecated Use `TextDrawBackgroundColor`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
+	#pragma deprecated Use `TextDrawBackgroundColour`. To silence this warning and use different spellings define `MIXED_SPELLINGS` or define `SAMP_COMPAT` for general SA-MP API compatibility.
 #endif
 native bool:TextDrawBackgroundColor(Text:textid, backgroundColor);
 
