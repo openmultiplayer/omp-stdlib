@@ -877,9 +877,9 @@ native bool:AddVehicleComponent(vehicleid, component);
 /**
  * <library>omp_vehicle</library>
  * <summary>Remove a component from a vehicle.</summary>
- * <param name="vehicleid">ID of the vehicle</param>
+ * <param name="vehicleid">ID of the vehicle.</param>
  * <param name="component">ID of the <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component</a>
- * to remove</param>
+ * to remove.</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="GetVehicleComponentInSlot" />
  * <seealso name="GetVehicleComponentType" />
@@ -891,9 +891,9 @@ native bool:RemoveVehicleComponent(vehicleid, component);
 /**
  * <library>omp_vehicle</library>
  * <summary>Is this component legal on this vehicle?</summary>
- * <param name="vehicleid">ID of the vehicle</param>
+ * <param name="vehicleid">ID of the vehicle.</param>
  * <param name="component">ID of the <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component</a>
- * to remove</param>
+ * to check.</param>
  * <seealso name="AddVehicleComponent" />
  * <seealso name="GetVehicleComponentInSlot" />
  * <seealso name="GetVehicleComponentType" />
@@ -904,10 +904,23 @@ native bool:VehicleCanHaveComponent(vehicleid, componentid);
 
 /**
  * <library>omp_vehicle</library>
- * <summary>Get the number of seats in this vehicle</summary>
- * <param name="vehicleid">ID of the vehicle</param>
+ * <summary>Gets the number of seats for a vehicle model.</summary>
+ * <param name="vehicleid">ID of the vehicle model.</param>
+ * <returns>
+ *   <b><c>number of seats</c></b>: The number of seats as an integer.<br />
+ * </returns>
  */
 native GetVehicleSeats(vehicleid);
+
+/**
+ * <library>omp_vehicle</library>
+ * <summary>Gets the number of seats for a vehicle model.</summary>
+ * <param name="modelid">The ID of the vehicle model.</param>
+ * <returns>
+ *   <b><c>number of seats</c></b>: The number of seats as an integer.<br />
+ * </returns>
+ */
+native GetVehicleMaxPassengers(vehicleid) = GetVehicleSeats;
 
 /**
  * <library>omp_vehicle</library>
@@ -1616,6 +1629,12 @@ native void:EnableVehicleFriendlyFire();
 
 /**
  * <library>omp_vehicle</library>
+ * <summary>Get an array variable of the IDs of the created vehicles on the server.</summary>
+ * <param name="vehicles">An array into which to store the vehicle IDs, passed by reference.</param>
+ * <param name="size">The size of the array.</param>
+ * <seealso name="GetPlayers" />
+ * <seealso name="GetActors" />
+ * <returns>The number of vehicles stored in the array.</returns>
  */
 native GetVehicles(vehicles[], size = sizeof (vehicles));
 
@@ -1631,16 +1650,6 @@ native GetVehicles(vehicles[], size = sizeof (vehicles));
  * </returns>
  */
 native GetVehicleOccupant(vehicleid, seatid);
-
-/**
- * <library>omp_vehicle</library>
- * <summary>Gets the number of seats for a vehicle model.</summary>
- * <param name="modelid">The ID of the model.</param>
- * <returns>
- *   <b><c>number of seats</c></b>: The number of seats as an intiger.<br />
- * </returns>
- */
-native GetVehicleMaxPassengers(modelid);
 
 /**
  * <library>omp_vehicle</library>

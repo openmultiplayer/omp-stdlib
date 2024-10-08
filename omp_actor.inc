@@ -372,6 +372,12 @@ native bool:GetActorSpawnInfo(actorid, &skin, &Float:spawnX = 0.0, &Float:spawnY
 
 /**
  * <library>omp_actor</library>
+ * <summary>Get an array variable of the IDs of the created actors on the server.</summary>
+ * <param name="actors">An array into which to store the actor IDs, passed by reference.</param>
+ * <param name="size">The size of the array.</param>
+ * <seealso name="GetPlayers" />
+ * <seealso name="GetVehicles" />
+ * <returns>The number of actors stored in the array.</returns>
  */
 native GetActors(actors[], size = sizeof (actors));
 

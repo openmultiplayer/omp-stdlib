@@ -1142,7 +1142,7 @@ native Float:GetPlayerObjectMoveSpeed(playerid, objectid);
  * <library>omp_object</library>
  * <summary></summary>
  */
-native Float:GetPlayerObjectTarget(playerid, objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0);
+native bool:GetPlayerObjectTarget(playerid, objectid, &Float:targetX = 0.0, &Float:targetY = 0.0, &Float:targetZ = 0.0) = GetPlayerObjectMovingTargetPos;
 
 /**
  * <library>omp_object</library>

@@ -503,6 +503,20 @@ native CONNECTION_STATUS:NetStats_ConnectionStatus(playerid);
 
 /**
  * <library>omp_network</library>
+ * <summary>Gets the player's current connection status.</summary>
+ * <param name="playerid">The ID of the player to get the connection status of</param>
+ * <seealso name="NetStats_ConnectionStatus" />
+ * <seealso name="GetPlayerNetworkStats" />
+ * <seealso name="GetNetworkStats" />
+ * <seealso name="IsPlayerConnected" />
+ * <seealso name="OnPlayerConnect" />
+ * <seealso name="OnPlayerDisconnect" />
+ * <returns>The player's connection status, as an integer value.</returns>
+ */
+native CONNECTION_STATUS:GetPlayerConnectMode(playerid) = NetStats_ConnectionStatus;
+
+/**
+ * <library>omp_network</library>
  * <summary>Get a player's IP and port.</summary>
  * <param name="playerid">The ID of the player to get the IP and port of</param>
  * <param name="output">A string array to store the IP and port in, passed by reference</param>

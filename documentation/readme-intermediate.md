@@ -126,17 +126,17 @@ main()
 }
 ```
 
-To make the transition easier, the default is `NO_TAGS`.  The tags can also be *weak* - passing an integer instead of an enum value is a warning, but the reverse isn't:
-
-```pawn
-#define WEAK_TAGS
-#include <open.mp>
-```
-
-The latter can be enabled by making the tags *strong*:
+The tags are all *weak* - passing an integer instead of an enum value is a warning, but the reverse isn't.  The latter can be enabled by making the tags *strong*:
 
 ```pawn
 #define STRONG_TAGS
+#include <open.mp>
+```
+
+Alternatively, if you need to move your legacy codebase as is:
+
+```pawn
+#define NO_TAGS
 #include <open.mp>
 ```
 

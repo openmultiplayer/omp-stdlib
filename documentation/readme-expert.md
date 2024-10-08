@@ -167,16 +167,14 @@ You will note that all these new features either use existing keywords, `#`, or 
 
 ### More Tags
 
-open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks.
-
-To make the transition easier, the default is `NO_TAGS`, but you can also make tags *weak*:
+open.mp includes introduce many more tags to functions and callbacks.  These are useful in the long run, but slightly annoying to upgrade to.  There are three symbols:  `NO_TAGS`, `WEAK_TAGS`, and `STRONG_TAGS`; that you can define before including `<open.mp>`, each one enabling progressively more checks:
 
 ```pawn
-#define WEAK_TAGS
+#define STRONG_TAGS
 #include <open.mp>
 ```
 
-In this case, most old code uses will simply give a warning when the wrong tag is found:
+To encourage some adoption, the default is `WEAK_TAGS`.  Most old code uses will simply give a warning when the wrong tag is found:
 
 ```pawn
 // Gives a warning:
@@ -218,17 +216,17 @@ You can enable `void:` tag warnings with a define before including `open.mp`, th
 #include <open.mp>
 ```
 
-Again, you can make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning:
-
-```pawn
-#define WEAK_TAGS
-#include <open.mp>
-```
-
-This second group can also be upgraded by specifying the use of *strong* tags instead:
+For parameters the default is to make these new tags *weak*, meaning that you get warnings when passing untagged values to tagged parameters, but not the other way around.  This applies to function returns so saving a tag result in an untagged variable will not give a warning.  This second group can also be upgraded by specifying the use of *strong* tags instead:
 
 ```pawn
 #define STRONG_TAGS
+#include <open.mp>
+```
+
+Alternatively, if you need to move your legacy codebase as is:
+
+```pawn
+#define NO_TAGS
 #include <open.mp>
 ```
 
@@ -362,7 +360,11 @@ native GetServerVarAsString(const cvar[], buffer[], len = sizeof (buffer));
 
 ### Spelling Consistency
 
-The SA:MP includes had a mixture of both English (`Bumper`, `Armour`, `Petrol`, etc) and American (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the English spellings are the preferred variants going forwards.
+The SA:MP includes had a mixture of both British English (`Bumper`, `Armour`, `Petrol`, etc) and American English (`Color`, `Hood`, `Stereo`, etc) spellings of words.  The open.mp includes have introduced *more* variants, for example `Trunk` has now been added as an alternative spelling to `Boot`; but along-side this change have settled on canonical and deprecated variants.  In line with the code in the server itself, the British spellings are the preferred variants going forwards; and while American spellings will continue to be supported indefinitely some have had warnings added to notify users of this consistency improvement.  if you wish to stick with the mixed spellings you can add a define to the top of your code:
+
+```pawn
+#define MIXED_SPELLINGS
+```
 
  Function Changes
 ------------------
