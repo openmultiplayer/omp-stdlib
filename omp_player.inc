@@ -3036,6 +3036,18 @@ native bool:AllowPlayerWeapons(playerid, bool:allow);
  */
 native bool:ArePlayerWeaponsAllowed(playerid);
 
+/**
+ * <library>omp_player</library>
+ * <summary>Check if the player is using the open.mp launcher.</summary>
+ * <param name="playerid">The ID of the player to check.</param>
+ * <seealso name="IsPlayerUsingOfficialClient" />
+ * <returns>
+ *   <b><c>true</c></b>: The player is using open.mp launcher.<br />
+ *   <b><c>false</c></b>: The player is not using open.mp launcher or the player specified does not exist.
+ * </returns>
+ */
+native bool:IsPlayerUsingOmp(playerid);
+
 /*
                                                                                                   
       ,ad8888ba,               88  88  88                                   88                    
