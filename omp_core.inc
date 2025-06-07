@@ -697,7 +697,7 @@ native bool:SendDeathMessage(killer, killee, weapon);
  *   <b><c>0</c></b>: The function failed to execute.  The weapon specified does not exist.
  * </returns>
  */
-native bool:GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
+native GetWeaponName(WEAPON:weaponid, weapon[], len = sizeof (weapon));
 
 /**
  * <library>omp_core</library>
