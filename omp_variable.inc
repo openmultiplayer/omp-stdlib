@@ -233,7 +233,7 @@ native GetSVarsUpperIndex();
  * <seealso name="GetSVarFloat" />
  * <seealso name="GetSVarString" />
  */
-native bool:GetSVarNameAtIndex(index, output[], size = sizeof (output));
+native GetSVarNameAtIndex(index, output[], size = sizeof (output));
 
 /**
  * <library>omp_variable</library>
@@ -418,7 +418,7 @@ native GetPVarsUpperIndex(playerid);
  * <seealso name="GetPVarFloat" />
  * <seealso name="GetPVarString" />
  */
-native bool:GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
+native GetPVarNameAtIndex(playerid, index, output[], size = sizeof (output));
 
 /**
  * <library>omp_variable</library>
