@@ -299,7 +299,7 @@ native NPC_GetFacingAngle(npcid, &Float:angle);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetVirtualWorld(npcid, vw);
+native NPC_SetVirtualWorld(npcid, virtualWorld);
 
 /**
  * <library>omp_npc</library>
@@ -395,7 +395,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetSkin(npcid, model);
+native NPC_SetSkin(npcid, skinid);
 
 /**
  * <library>omp_npc</library>
@@ -474,7 +474,7 @@ native bool:NPC_IsInvulnerable(npcid);
  * <seealso name="NPC_IsDead" />
  * <seealso name="NPC_SetHealth" />
  */
-native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, reason = 0);
+native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 0);
 
 /*
 native # Weapons & Combat();
@@ -486,7 +486,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeapon(npcid, weapon);
+native NPC_SetWeapon(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
@@ -593,7 +593,7 @@ native NPC_SetWeaponState(npcid, weaponState);
  * <library>omp_npc</library>
  * <summary>Makes an NPC fire a weapon shot.</summary>
  * <param name="npcid">The ID of the NPC</param>
- * <param name="weapon">The weapon ID to use for shooting</param>
+ * <param name="weaponid">The weapon ID to use for shooting</param>
  * <param name="hitId">The ID of the target entity being shot</param>
  * <param name="hitType">The type of entity being hit (player, NPC, vehicle, etc.)</param>
  * <param name="endPointX">X coordinate of the bullet end point</param>
@@ -608,7 +608,7 @@ native NPC_SetWeaponState(npcid, weaponState);
  * <seealso name="NPC_AimAt" />
  * <seealso name="NPC_SetWeapon" />
  */
-native NPC_Shoot(npcid, weapon, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX, Float:offsetY, Float:offsetZ, bool:isHit, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
+native NPC_Shoot(npcid, WEAPON:weaponid, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX, Float:offsetY, Float:offsetZ, bool:isHit, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
 
 /**
  * <library>omp_npc</library>
@@ -665,52 +665,52 @@ native NPC_GetPlayerMovingTo(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponAccuracy(npcid, weaponid, Float:accuracy);
+native NPC_SetWeaponAccuracy(npcid, WEAPON:weaponid, Float:accuracy);
 
 /**
  * <library>omp_npc</library>
  */
-native Float:NPC_GetWeaponAccuracy(npcid, weaponid);
+native Float:NPC_GetWeaponAccuracy(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponReloadTime(npcid, weaponid, time);
+native NPC_SetWeaponReloadTime(npcid, WEAPON:weaponid, time);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponReloadTime(npcid, weaponid);
+native NPC_GetWeaponReloadTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponActualReloadTime(npcid, weaponid);
+native NPC_GetWeaponActualReloadTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponShootTime(npcid, weaponid, time);
+native NPC_SetWeaponShootTime(npcid, WEAPON:weaponid, time);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponShootTime(npcid, weaponid);
+native NPC_GetWeaponShootTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponClipSize(npcid, weaponid, size);
+native NPC_SetWeaponClipSize(npcid, WEAPON:weaponid, size);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponClipSize(npcid, weaponid);
+native NPC_GetWeaponClipSize(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponActualClipSize(npcid, weaponid);
+native NPC_GetWeaponActualClipSize(npcid, WEAPON:weaponid);
 
 /*
 native # Vehicles();
@@ -859,7 +859,7 @@ native NPC_ClearAnimations(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetSpecialAction(npcid, action);
+native NPC_SetSpecialAction(npcid, actionid);
 
 /**
  * <library>omp_npc</library>
@@ -1186,12 +1186,12 @@ forward OnNPCWeaponStateChange(npcid, newState, oldState);
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCTakeDamage(npcid, damagerid, Float:damage, WEAPON:weapon, bodypart);
+forward OnNPCTakeDamage(npcid, issuerid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCGiveDamage(npcid, damagedid, Float:damage, WEAPON:weapon, bodypart);
+forward OnNPCGiveDamage(npcid, damagedid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <library>omp_npc</library>
