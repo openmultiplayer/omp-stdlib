@@ -49,6 +49,24 @@ const INVALID_NPC_ID                           = -1;
 /**
  * <library>omp_npc</library>
  */
+const INVALID_PATH_ID                          = -1;
+#define INVALID_PATH_ID                        (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
+const INVALID_NODE_ID                          = -1;
+#define INVALID_NODE_ID                        (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
+const INVALID_RECORD_ID                        = -1;
+#define INVALID_RECORD_ID                      (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
 const NPC_MAX_NODES                            = 64;
 #define NPC_MAX_NODES                          64
 
