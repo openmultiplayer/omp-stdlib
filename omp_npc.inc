@@ -541,7 +541,7 @@ native bool:NPC_IsMeleeAttacking(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetFightingStyle(npcid, style);
+native NPC_SetFightingStyle(npcid, FIGHT_STYLE:style);
 
 /**
  * <library>omp_npc</library>
@@ -587,7 +587,7 @@ native NPC_GetWeaponState(npcid);
  * <seealso name="NPC_GetWeaponState" />
  * <seealso name="NPC_SetWeapon" />
  */
-native NPC_SetWeaponState(npcid, weaponState);
+native NPC_SetWeaponState(npcid, WEAPONSTATE:weaponState);
 
 /**
  * <library>omp_npc</library>
@@ -859,7 +859,7 @@ native NPC_ClearAnimations(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetSpecialAction(npcid, actionid);
+native NPC_SetSpecialAction(npcid, SPECIAL_ACTION:actionid);
 
 /**
  * <library>omp_npc</library>
