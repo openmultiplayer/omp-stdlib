@@ -67,12 +67,6 @@ const INVALID_RECORD_ID                        = -1;
 /**
  * <library>omp_npc</library>
  */
-const INVALID_WEAPON_SKILL_LEVEL               = -1;
-#define INVALID_WEAPON_SKILL_LEVEL             (-1)
-
-/**
- * <library>omp_npc</library>
- */
 const NPC_MAX_NODES                            = 64;
 #define NPC_MAX_NODES                          64
 
@@ -475,12 +469,12 @@ native bool:NPC_IsInvulnerable(npcid);
  * <summary>Kills an NPC with a specific weapon/reason.</summary>
  * <param name="npcid">The ID of the NPC to kill</param>
  * <param name="killerid">The ID of the player who killed the NPC (optional, use INVALID_PLAYER_ID for no killer)</param>
- * <param name="reason">The weapon ID or reason for death</param>
+ * <param name="reason">The weapon ID or reason for death (default: 255 for suicide)</param>
  * <returns>Returns true on success, false on failure.</returns>
  * <seealso name="NPC_IsDead" />
  * <seealso name="NPC_SetHealth" />
  */
-native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 0);
+native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 255);
 
 /*
 native # Weapons & Combat();
@@ -722,22 +716,22 @@ native NPC_GetWeaponActualClipSize(npcid, WEAPON:weaponid);
  * <library>omp_npc</library>
  * <summary>Sets the weapon skill level for an NPC.</summary>
  * <param name="npcid">The ID of the NPC</param>
- * <param name="skill">The weapon skill type</param>
+ * <param name="skill">The weapon skill type (WEAPONSKILL)</param>
  * <param name="level">The skill level to set (0-999)</param>
  * <returns>Returns true on success, false on failure.</returns>
  * <seealso name="NPC_GetWeaponSkillLevel" />
  */
-native bool:NPC_SetWeaponSkillLevel(npcid, skill, level);
+native bool:NPC_SetWeaponSkillLevel(npcid, WEAPONSKILL:skill, level);
 
 /**
  * <library>omp_npc</library>
  * <summary>Gets the weapon skill level of an NPC.</summary>
  * <param name="npcid">The ID of the NPC</param>
- * <param name="skill">The weapon skill type</param>
- * <returns>Returns the weapon skill level (0-999), or <b><c>INVALID_WEAPON_SKILL_LEVEL</c></b> on failure.</returns>
+ * <param name="skill">The weapon skill type (WEAPONSKILL)</param>
+ * <returns>Returns the weapon skill level (0-999), or UNKNOWN_WEAPONSKILL on failure.</returns>
  * <seealso name="NPC_SetWeaponSkillLevel" />
  */
-native NPC_GetWeaponSkillLevel(npcid, skill);
+native NPC_GetWeaponSkillLevel(npcid, WEAPONSKILL:skill);
 
 /*
 native # Vehicles();
@@ -749,7 +743,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType);
+native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG);
 
 /**
  * <library>omp_npc</library>
