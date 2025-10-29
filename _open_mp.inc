@@ -452,6 +452,12 @@ public const __OPEN_MP_VERSION = 0;
 	#error cannot read from file: "omp_textlabel"
 #endif
 
+#tryinclude "omp_npc"
+#tryinclude <omp_npc>
+#if !defined _INC_omp_npc
+	#error cannot read from file: "omp_npc"
+#endif
+
 #if defined VOID_TAGS
 	// Maybe re-enable the unused parameters warning.
 	#pragma warning pop
