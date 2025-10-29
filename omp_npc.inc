@@ -833,7 +833,7 @@ native NPC_SetVehicleGearState(npcid, gearState);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetVehicleGearState(npcid);
+native LANDING_GEAR_STATE:NPC_GetVehicleGearState(npcid);
 
 /**
  * <library>omp_npc</library>
@@ -1217,7 +1217,7 @@ forward OnNPCGiveDamage(npcid, damagedid, Float:amount, WEAPON:weaponid, bodypar
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCDeath(npcid, killerid, WEAPON:reason);
+forward OnNPCDeath(npcid, killerid, reason);
 
 /**
  * <library>omp_npc</library>
@@ -1232,7 +1232,7 @@ forward OnNPCPlaybackEnd(npcid, recordid);
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCWeaponShot(npcid, WEAPON:weaponid, BULLET_HIT_TYPE:hittype, hitid, Float:fX, Float:fY, Float:fZ);
+forward OnNPCWeaponShot(npcid, weaponid, hittype, hitid, Float:fX, Float:fY, Float:fZ);
 
 /**
  * <library>omp_npc</library>
