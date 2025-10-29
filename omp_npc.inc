@@ -49,6 +49,24 @@ const INVALID_NPC_ID                           = -1;
 /**
  * <library>omp_npc</library>
  */
+const INVALID_PATH_ID                          = -1;
+#define INVALID_PATH_ID                        (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
+const INVALID_NODE_ID                          = -1;
+#define INVALID_NODE_ID                        (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
+const INVALID_RECORD_ID                        = -1;
+#define INVALID_RECORD_ID                      (-1)
+
+/**
+ * <library>omp_npc</library>
+ */
 const NPC_MAX_NODES                            = 64;
 #define NPC_MAX_NODES                          64
 
@@ -205,6 +223,17 @@ native NPC_Respawn(npcid);
 
 /**
  * <library>omp_npc</library>
+ * <summary>Checks if an NPC is spawned in the game world.</summary>
+ * <param name="npcid">The ID of the NPC to check</param>
+ * <returns>Returns true if the NPC is spawned, false otherwise.</returns>
+ * <seealso name="NPC_Spawn" />
+ * <seealso name="NPC_Respawn" />
+ * <seealso name="NPC_IsDead" />
+ */
+native bool:NPC_IsSpawned(npcid);
+
+/**
+ * <library>omp_npc</library>
  * <summary>Gets all NPC IDs and stores them in an array.</summary>
  * <param name="npcs">Array to store the NPC IDs</param>
  * <param name="size">Size of the array (default: sizeof(npcs))</param>
@@ -270,7 +299,7 @@ native NPC_GetFacingAngle(npcid, &Float:angle);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetVirtualWorld(npcid, vw);
+native NPC_SetVirtualWorld(npcid, virtualWorld);
 
 /**
  * <library>omp_npc</library>
@@ -319,6 +348,43 @@ native bool:NPC_StopMove(npcid);
  */
 native bool:NPC_IsMoving(npcid);
 
+/**
+ * <library>omp_npc</library>
+ * <summary>Checks if an NPC is moving toward a specific player.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="playerid">The ID of the player to check</param>
+ * <returns>Returns true if the NPC is moving toward the specified player, false otherwise.</returns>
+ * <seealso name="NPC_MoveToPlayer" />
+ * <seealso name="NPC_IsMoving" />
+ */
+native bool:NPC_IsMovingToPlayer(npcid, playerid);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Sets the velocity of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="x">The X velocity component</param>
+ * <param name="y">The Y velocity component</param>
+ * <param name="z">The Z velocity component</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_GetVelocity" />
+ * <seealso name="NPC_SetPos" />
+ */
+native NPC_SetVelocity(npcid, Float:x, Float:y, Float:z);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the velocity of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="x">Variable to store the X velocity component, passed by reference</param>
+ * <param name="y">Variable to store the Y velocity component, passed by reference</param>
+ * <param name="z">Variable to store the Z velocity component, passed by reference</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_SetVelocity" />
+ * <seealso name="NPC_GetPos" />
+ */
+native NPC_GetVelocity(npcid, &Float:x, &Float:y, &Float:z);
+
 /*
 native # Appearance();
 native          Appearance(
@@ -329,7 +395,17 @@ native
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetSkin(npcid, model);
+native NPC_SetSkin(npcid, skinid);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the skin/model ID of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <returns>Returns the skin/model ID of the NPC, or -1 if invalid.</returns>
+ * <seealso name="NPC_SetSkin" />
+ * <seealso name="NPC_IsValid" />
+ */
+native NPC_GetSkin(npcid);
 
 /**
  * <library>omp_npc</library>
@@ -388,6 +464,18 @@ native NPC_SetInvulnerable(npcid, bool:toggle);
  */
 native bool:NPC_IsInvulnerable(npcid);
 
+/**
+ * <library>omp_npc</library>
+ * <summary>Kills an NPC with a specific weapon/reason.</summary>
+ * <param name="npcid">The ID of the NPC to kill</param>
+ * <param name="killerid">The ID of the player who killed the NPC (optional, use INVALID_PLAYER_ID for no killer)</param>
+ * <param name="reason">The weapon ID or reason for death (default: 255 for suicide)</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_IsDead" />
+ * <seealso name="NPC_SetHealth" />
+ */
+native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 255);
+
 /*
 native # Weapons & Combat();
 native                Weapons & Combat(
@@ -398,7 +486,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeapon(npcid, weapon);
+native NPC_SetWeapon(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
@@ -453,7 +541,7 @@ native bool:NPC_IsMeleeAttacking(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetFightingStyle(npcid, style);
+native NPC_SetFightingStyle(npcid, FIGHT_STYLE:style);
 
 /**
  * <library>omp_npc</library>
@@ -492,9 +580,20 @@ native NPC_GetWeaponState(npcid);
 
 /**
  * <library>omp_npc</library>
+ * <summary>Sets the weapon state of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="weaponState">The weapon state to set</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_GetWeaponState" />
+ * <seealso name="NPC_SetWeapon" />
+ */
+native NPC_SetWeaponState(npcid, WEAPONSTATE:weaponState);
+
+/**
+ * <library>omp_npc</library>
  * <summary>Makes an NPC fire a weapon shot.</summary>
  * <param name="npcid">The ID of the NPC</param>
- * <param name="weapon">The weapon ID to use for shooting</param>
+ * <param name="weaponid">The weapon ID to use for shooting</param>
  * <param name="hitId">The ID of the target entity being shot</param>
  * <param name="hitType">The type of entity being hit (player, NPC, vehicle, etc.)</param>
  * <param name="endPointX">X coordinate of the bullet end point</param>
@@ -509,7 +608,7 @@ native NPC_GetWeaponState(npcid);
  * <seealso name="NPC_AimAt" />
  * <seealso name="NPC_SetWeapon" />
  */
-native NPC_Shoot(npcid, weapon, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX, Float:offsetY, Float:offsetZ, bool:isHit, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
+native NPC_Shoot(npcid, WEAPON:weaponid, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX, Float:offsetY, Float:offsetZ, bool:isHit, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
 
 /**
  * <library>omp_npc</library>
@@ -543,53 +642,96 @@ native bool:NPC_IsAimingAtPlayer(npcid, playerid);
 
 /**
  * <library>omp_npc</library>
+ * <summary>Gets the ID of the player that an NPC is currently aiming at.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <returns>Returns the ID of the player being aimed at, or INVALID_PLAYER_ID if not aiming at anyone.</returns>
+ * <seealso name="NPC_AimAtPlayer" />
+ * <seealso name="NPC_IsAiming" />
+ * <seealso name="NPC_GetPlayerMovingTo" />
  */
-native NPC_SetWeaponAccuracy(npcid, weaponid, Float:accuracy);
+native NPC_GetPlayerAimingAt(npcid);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the ID of the player that an NPC is currently moving toward.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <returns>Returns the ID of the player being moved toward, or INVALID_PLAYER_ID if not moving toward anyone.</returns>
+ * <seealso name="NPC_MoveToPlayer" />
+ * <seealso name="NPC_IsMovingToPlayer" />
+ * <seealso name="NPC_GetPlayerAimingAt" />
+ */
+native NPC_GetPlayerMovingTo(npcid);
 
 /**
  * <library>omp_npc</library>
  */
-native Float:NPC_GetWeaponAccuracy(npcid, weaponid);
+native NPC_SetWeaponAccuracy(npcid, WEAPON:weaponid, Float:accuracy);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponReloadTime(npcid, weaponid, time);
+native Float:NPC_GetWeaponAccuracy(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponReloadTime(npcid, weaponid);
+native NPC_SetWeaponReloadTime(npcid, WEAPON:weaponid, time);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponActualReloadTime(npcid, weaponid);
+native NPC_GetWeaponReloadTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponShootTime(npcid, weaponid, time);
+native NPC_GetWeaponActualReloadTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponShootTime(npcid, weaponid);
+native NPC_SetWeaponShootTime(npcid, WEAPON:weaponid, time);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetWeaponClipSize(npcid, weaponid, size);
+native NPC_GetWeaponShootTime(npcid, WEAPON:weaponid);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponClipSize(npcid, weaponid);
+native NPC_SetWeaponClipSize(npcid, WEAPON:weaponid, size);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponActualClipSize(npcid, weaponid);
+native NPC_GetWeaponClipSize(npcid, WEAPON:weaponid);
+
+/**
+ * <library>omp_npc</library>
+ */
+native NPC_GetWeaponActualClipSize(npcid, WEAPON:weaponid);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Sets the weapon skill level for an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="skill">The weapon skill type (WEAPONSKILL)</param>
+ * <param name="level">The skill level to set (0-999)</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_GetWeaponSkillLevel" />
+ */
+native bool:NPC_SetWeaponSkillLevel(npcid, WEAPONSKILL:skill, level);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the weapon skill level of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="skill">The weapon skill type (WEAPONSKILL)</param>
+ * <returns>Returns the weapon skill level (0-999), or UNKNOWN_WEAPONSKILL on failure.</returns>
+ * <seealso name="NPC_SetWeaponSkillLevel" />
+ */
+native NPC_GetWeaponSkillLevel(npcid, WEAPONSKILL:skill);
 
 /*
 native # Vehicles();
@@ -601,7 +743,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType);
+native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG);
 
 /**
  * <library>omp_npc</library>
@@ -738,7 +880,7 @@ native NPC_ClearAnimations(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetSpecialAction(npcid, action);
+native NPC_SetSpecialAction(npcid, SPECIAL_ACTION:actionid);
 
 /**
  * <library>omp_npc</library>
@@ -1065,12 +1207,12 @@ forward OnNPCWeaponStateChange(npcid, newState, oldState);
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCTakeDamage(npcid, damagerid, Float:damage, WEAPON:weapon, bodypart);
+forward OnNPCTakeDamage(npcid, issuerid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <library>omp_npc</library>
  */
-forward OnNPCGiveDamage(npcid, damagedid, Float:damage, WEAPON:weapon, bodypart);
+forward OnNPCGiveDamage(npcid, damagedid, Float:amount, WEAPON:weaponid, bodypart);
 
 /**
  * <library>omp_npc</library>
