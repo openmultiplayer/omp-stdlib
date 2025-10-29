@@ -474,7 +474,7 @@ native bool:NPC_IsInvulnerable(npcid);
  * <seealso name="NPC_IsDead" />
  * <seealso name="NPC_SetHealth" />
  */
-native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 255);
+native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = REASON_SUICIDE);
 
 /*
 native # Weapons & Combat();
