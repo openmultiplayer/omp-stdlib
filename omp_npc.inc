@@ -1043,7 +1043,7 @@ native bool:NPC_AddPointToPath(pathid, Float:x, Float:y, Float:z, Float:stopRang
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_RemovePointFromPath(pathid, point_index);
+native bool:NPC_RemovePointFromPath(pathid, pointIndex);
 
 /**
  * <library>omp_npc</library>
@@ -1058,7 +1058,7 @@ native NPC_GetPathPointCount(pathid);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_GetPathPoint(pathid, point_index, &Float:x, &Float:y, &Float:z, &Float:stopRange);
+native bool:NPC_GetPathPoint(pathid, pointIndex, &Float:x, &Float:y, &Float:z, &Float:stopRange);
 
 /**
  * <library>omp_npc</library>
@@ -1130,7 +1130,7 @@ native bool:NPC_GetNodeInfo(nodeid, &vehnodes, &pednodes, &navinode);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_PlayNode(npcid, nodeid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:speed = NPC_MOVE_SPEED_AUTO, Float:radius = 0.0, bool:setangle = true);
+native bool:NPC_PlayNode(npcid, nodeid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:speed = NPC_MOVE_SPEED_AUTO, Float:radius = 0.0, bool:setAngle = true);
 
 /**
  * <library>omp_npc</library>
