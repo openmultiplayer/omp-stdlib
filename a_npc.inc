@@ -2,4 +2,4 @@
 	#endinput
 #endif
 
-#error open.mp doesn't yet support NPC scripts.
+#error open.mp doesn't support NPC scripts.
