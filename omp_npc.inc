@@ -1258,22 +1258,3 @@ forward OnNPCFinishMovePath(npcid, pathid);
  * <library>omp_npc</library>
  */
 forward OnNPCFinishMovePathPoint(npcid, pathid, pointid);
-
-/*
-native # Streamer Support();
-native          Streamer Support(
-native      ================================(
-native
-*/
-
-#if defined _streamer_included
-	stock NPC_SetSurfingDynamicObject(npcid, objectid)
-	{
-		return NPC_SetSurfingPlayerObject(npcid, Streamer_GetItemInternalID(npcid, STREAMER_TYPE_OBJECT, objectid));
-	}
-
-	stock NPC_GetSurfingDynamicObject(npcid)
-	{
-		return Streamer_GetItemStreamerID(npcid, STREAMER_TYPE_OBJECT, NPC_GetSurfingPlayerObject(npcid));
-	}
-#endif
