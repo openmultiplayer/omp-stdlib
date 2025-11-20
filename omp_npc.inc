@@ -474,7 +474,7 @@ native bool:NPC_IsInvulnerable(npcid);
  * <seealso name="NPC_IsDead" />
  * <seealso name="NPC_SetHealth" />
  */
-native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = 255);
+native NPC_Kill(npcid, killerid = INVALID_PLAYER_ID, WEAPON:reason = REASON_SUICIDE);
 
 /*
 native # Weapons & Combat();
@@ -833,7 +833,7 @@ native NPC_SetVehicleGearState(npcid, gearState);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetVehicleGearState(npcid);
+native LANDING_GEAR_STATE:NPC_GetVehicleGearState(npcid);
 
 /**
  * <library>omp_npc</library>
