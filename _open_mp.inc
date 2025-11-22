@@ -139,7 +139,7 @@ public const __OPEN_MP_VERSION = 0;
 	#if __pawn_build >= 11
 		#define OPEN_MP_TAGS {LANDING_GEAR_STATE, T_CONNECTION_STATUS, T_CP_TYPE, T_WEAPON, T_PLAYER_MARKERS_MODE, T_DIALOG_STYLE, T_HTTP_METHOD, T_HTTP_ERROR, T_DOWNLOAD_REQUEST, T_SELECT_OBJECT, T_OBJECT_MATERIAL_SIZE, T_OBJECT_MATERIAL_TEXT_ALIGN, T_EDIT_RESPONSE, T_PLAYER_STATE, T_SPECIAL_ACTION, T_FIGHT_STYLE, T_WEAPONSKILL, T_WEAPONSTATE, T_KEY, T_CAM_MODE, T_MAPICON, T_SPECTATE_MODE, T_PLAYER_RECORDING_TYPE, T_FORCE_SYNC, T_CLICK_SOURCE, T_BULLET_HIT_TYPE, T_TEXT_DRAW_FONT, T_TEXT_DRAW_ALIGN, T_VARTYPE, T_CARMODTYPE, T_VEHICLE_MODEL_INFO, T_VEHICLE_PANEL_STATUS, T_VEHICLE_DOOR_STATUS, T_VEHICLE_LIGHT_STATUS, T_VEHICLE_TYRE_STATUS, T_WEAPON_SLOT, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#else
-		#define OPEN_MP_TAGS {T_WEAPON, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+		#define OPEN_MP_TAGS {Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 	#endif
 #else // if defined WEAK_TAGS
 	#define __TAG(%0) t_%0
@@ -153,7 +153,7 @@ public const __OPEN_MP_VERSION = 0;
 	// but not for YSI internal tags.  Not having them here would be a change
 	// for many existing scripts that didn't previously have to specify those
 	// tags.  Having more here isn't a problem, so they're just all here.
-	#define OPEN_MP_TAGS {LANDING_GEAR_STATE, Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
+	#define OPEN_MP_TAGS {Bit, Bitmap, XML, XMLEntry, Group, INI, Language, Style, DB, DBResult, Menu, Text, PlayerText, Text3D, PlayerText3D, File, Float, CUSTOM_TAG_TYPES, _}
 #else
 	// I say it isn't a problem - the old compiler is limited to only 16 tags,
 	// thus `CUSTOM_TAG_TYPES` is limited to eight tags.  To keep the numbers
