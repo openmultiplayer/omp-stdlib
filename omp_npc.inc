@@ -385,6 +385,20 @@ native NPC_SetVelocity(npcid, Float:x, Float:y, Float:z);
  */
 native NPC_GetVelocity(npcid, &Float:x, &Float:y, &Float:z);
 
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the position that the NPC is currently moving toward.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="x">Variable to store the X coordinate of the target position, passed by reference</param>
+ * <param name="y">Variable to store the Y coordinate of the target position, passed by reference</param>
+ * <param name="z">Variable to store the Z coordinate of the target position, passed by reference</param>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_Move" />
+ * <seealso name="NPC_IsMoving" />
+ * <seealso name="NPC_GetPos" />
+ */
+native NPC_GetPosMovingTo(npcid, &Float:x, &Float:y, &Float:z);
+
 /*
 native # Appearance();
 native          Appearance(
@@ -406,6 +420,16 @@ native NPC_SetSkin(npcid, skinid);
  * <seealso name="NPC_IsValid" />
  */
 native NPC_GetSkin(npcid);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the custom skin ID of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <returns>Returns the custom skin ID of the NPC, or -1 if the NPC has no custom skin or is invalid.</returns>
+ * <seealso name="NPC_SetSkin" />
+ * <seealso name="NPC_GetSkin" />
+ */
+native NPC_GetCustomSkin(npcid);
 
 /**
  * <library>omp_npc</library>
