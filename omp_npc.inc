@@ -313,21 +313,21 @@ native NPC_GetVirtualWorld(npcid);
  * <param name="x">The X coordinate to move to</param>
  * <param name="y">The Y coordinate to move to</param>
  * <param name="z">The Z coordinate to move to</param>
- * <param name="moveType">The movement type (default: NPC_MOVE_TYPE_JOG)</param>
+ * <param name="moveType">The movement type (default: NPC_MOVE_TYPE_AUTO)</param>
  * <param name="moveSpeed">Movement speed (default: NPC_MOVE_SPEED_AUTO)</param>
  * <param name="stopRange">Distance to target before stopping (default: 0.2)</param>
  * <returns>Returns true on success, false on failure.</returns>
  * <seealso name="NPC_StopMove" />
  * <seealso name="NPC_IsMoving" />
  */
-native NPC_Move(npcid, Float:x, Float:y, Float:z, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, Float:stopRange = 0.2);
+native NPC_Move(npcid, Float:x, Float:y, Float:z, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_AUTO, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, Float:stopRange = 0.2);
 
 /**
  * <library>omp_npc</library>
  * <summary>Makes an NPC move toward and follow a player.</summary>
  * <param name="npcid">The ID of the NPC</param>
  * <param name="playerid">The ID of the player to move toward</param>
- * <param name="moveType">Movement type (default: NPC_MOVE_TYPE_JOG)</param>
+ * <param name="moveType">Movement type (default: NPC_MOVE_TYPE_AUTO)</param>
  * <param name="moveSpeed">Movement speed (default: NPC_MOVE_SPEED_AUTO)</param>
  * <param name="stopRange">Distance to stop from player (default: 0.2)</param>
  * <param name="updateDelayMS">Position check update delay in milliseconds (default: 500)</param>
@@ -336,7 +336,7 @@ native NPC_Move(npcid, Float:x, Float:y, Float:z, NPC_MOVE_TYPE:moveType = NPC_M
  * <seealso name="NPC_Move" />
  * <seealso name="NPC_StopMove" />
  */
-native NPC_MoveToPlayer(npcid, playerid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, Float:stopRange = 0.2, updateDelayMS = 500, autoRestart = false);
+native NPC_MoveToPlayer(npcid, playerid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_AUTO, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, Float:stopRange = 0.2, updateDelayMS = 500, autoRestart = false);
 
 /**
  * <library>omp_npc</library>
@@ -767,7 +767,7 @@ native
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG);
+native bool:NPC_EnterVehicle(npcid, vehicleid, seatid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_AUTO);
 
 /**
  * <library>omp_npc</library>
@@ -1097,7 +1097,7 @@ native NPC_GetCurrentPathPointIndex(npcid);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_MoveByPath(npcid, pathid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, bool:reversed = false);
+native bool:NPC_MoveByPath(npcid, pathid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_AUTO, Float:moveSpeed = NPC_MOVE_SPEED_AUTO, bool:reversed = false);
 
 /**
  * <library>omp_npc</library>
@@ -1154,7 +1154,7 @@ native bool:NPC_GetNodeInfo(nodeid, &vehnodes, &pednodes, &navinode);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_PlayNode(npcid, nodeid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_JOG, Float:speed = NPC_MOVE_SPEED_AUTO, Float:radius = 0.0, bool:setAngle = true);
+native bool:NPC_PlayNode(npcid, nodeid, NPC_MOVE_TYPE:moveType = NPC_MOVE_TYPE_AUTO, Float:speed = NPC_MOVE_SPEED_AUTO, Float:radius = 0.0, bool:setAngle = true);
 
 /**
  * <library>omp_npc</library>
