@@ -294,6 +294,16 @@ native NPC_SetFacingAngle(npcid, Float:angle);
 /**
  * <library>omp_npc</library>
  */
+native NPC_SetAngleToPos(npcid, Float:x, Float:y, Float:z);
+
+/**
+ * <library>omp_npc</library>
+ */
+native NPC_SetAngleToPlayer(npcid, playerid);
+
+/**
+ * <library>omp_npc</library>
+ */
 native NPC_GetFacingAngle(npcid, &Float:angle);
 
 /**
