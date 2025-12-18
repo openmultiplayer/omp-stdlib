@@ -560,7 +560,7 @@ native NPC_GetKeys(npcid, &upAnddown, &leftandRight, &keys);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_MeleeAttack(npcid, time, bool:secondaryAttack = false);
+native bool:NPC_MeleeAttack(npcid, time = -1, bool:secondaryAttack = false);
 
 /**
  * <library>omp_npc</library>
@@ -642,7 +642,7 @@ native NPC_SetWeaponState(npcid, WEAPONSTATE:weaponState);
  * <seealso name="NPC_AimAt" />
  * <seealso name="NPC_SetWeapon" />
  */
-native NPC_Shoot(npcid, WEAPON:weaponid, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX, Float:offsetY, Float:offsetZ, bool:isHit, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
+native NPC_Shoot(npcid, WEAPON:weaponid, hitId, hitType, Float:endPointX, Float:endPointY, Float:endPointZ, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, bool:isHit = true, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
 
 /**
  * <library>omp_npc</library>
@@ -652,12 +652,12 @@ native bool:NPC_IsShooting(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_AimAt(npcid, Float:pointX, Float:pointY, Float:pointZ, bool:shoot, shootDelay, bool:updateAngle, Float:offsetFromX, Float:offsetFromY, Float:offsetFromZ, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
+native NPC_AimAt(npcid, Float:pointX, Float:pointY, Float:pointZ, bool:shoot = false, shootDelay = -1, bool:updateAngle = true, Float:offsetFromX = 0.0, Float:offsetFromY = 0.0, Float:offsetFromZ = 0.0, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
 
 /**
  * <library>omp_npc</library>
  */
-native NPC_AimAtPlayer(npcid, playerid, bool:shoot, shootDelay, bool:updateAngle, Float:offsetX, Float:offsetY, Float:offsetZ, Float:offsetFromX, Float:offsetFromY, Float:offsetFromZ, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
+native NPC_AimAtPlayer(npcid, playerid, bool:shoot = false, shootDelay = -1, bool:updateAngle = true, Float:offsetX = 0.0, Float:offsetY = 0.0, Float:offsetZ = 0.0, Float:offsetFromX = 0.0, Float:offsetFromY = 0.0, Float:offsetFromZ = 0.0, NPC_ENTITY_CHECK:checkInBetweenFlags = NPC_ENTITY_CHECK_ALL);
 
 /**
  * <library>omp_npc</library>
