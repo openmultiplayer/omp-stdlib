@@ -890,8 +890,8 @@ native bool:RemoveVehicleComponent(vehicleid, component);
 
 /**
  * <library>omp_vehicle</library>
- * <summary>Is this component legal on this vehicle?</summary>
- * <param name="vehicleid">ID of the vehicle.</param>
+ * <summary>Is this component legal on this vehicle model?</summary>
+ * <param name="modelid">ID of the vehicle model.</param>
  * <param name="component">ID of the <a href="https://www.open.mp/docs/scripting/resources/carcomponentid">component</a>
  * to check.</param>
  * <seealso name="AddVehicleComponent" />
@@ -900,7 +900,7 @@ native bool:RemoveVehicleComponent(vehicleid, component);
  * <seealso name="OnVehicleMod" />
  * <seealso name="OnEnterExitModShop" />
  */
-native bool:VehicleCanHaveComponent(vehicleid, componentid);
+native bool:VehicleCanHaveComponent(modelid, componentid);
 
 /**
  * <library>omp_vehicle</library>
