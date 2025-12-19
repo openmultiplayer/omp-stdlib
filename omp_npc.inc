@@ -919,7 +919,7 @@ native NPC_SetSpecialAction(npcid, SPECIAL_ACTION:actionid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetSpecialAction(npcid);
+native SPECIAL_ACTION:NPC_GetSpecialAction(npcid);
 
 /*
 native # Playback();
