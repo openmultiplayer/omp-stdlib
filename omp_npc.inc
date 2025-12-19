@@ -491,7 +491,7 @@ native Float:NPC_GetArmour(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetInvulnerable(npcid, bool:toggle);
+native NPC_SetInvulnerable(npcid, bool:toggle = true);
 
 /**
  * <library>omp_npc</library>
@@ -525,7 +525,7 @@ native NPC_SetWeapon(npcid, WEAPON:weaponid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeapon(npcid);
+native WEAPON:NPC_GetWeapon(npcid);
 
 /**
  * <library>omp_npc</library>
@@ -580,12 +580,12 @@ native NPC_SetFightingStyle(npcid, FIGHT_STYLE:style);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetFightingStyle(npcid);
+native FIGHT_STYLE:NPC_GetFightingStyle(npcid);
 
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_EnableReloading(npcid, bool:enable);
+native bool:NPC_EnableReloading(npcid, bool:enable = true);
 
 /**
  * <library>omp_npc</library>
@@ -600,7 +600,7 @@ native bool:NPC_IsReloading(npcid);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_EnableInfiniteAmmo(npcid, bool:enable);
+native bool:NPC_EnableInfiniteAmmo(npcid, bool:enable = true);
 
 /**
  * <library>omp_npc</library>
@@ -610,7 +610,7 @@ native bool:NPC_IsInfiniteAmmoEnabled(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_GetWeaponState(npcid);
+native WEAPONSTATE:NPC_GetWeaponState(npcid);
 
 /**
  * <library>omp_npc</library>
@@ -862,7 +862,7 @@ native NPC_GetVehicleHydraThrusters(npcid);
 /**
  * <library>omp_npc</library>
  */
-native NPC_SetVehicleGearState(npcid, gearState);
+native NPC_SetVehicleGearState(npcid, LANDING_GEAR_STATE:gearState);
 
 /**
  * <library>omp_npc</library>
@@ -931,12 +931,12 @@ native
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_StartPlayback(npcid, const recordName[], bool:autoUnload, Float:startX, Float:startY, Float:startZ, Float:rotX, Float:rotY, Float:rotZ);
+native bool:NPC_StartPlayback(npcid, const recordName[], bool:autoUnload = false, Float:startX = 0.0, Float:startY = 0.0, Float:startZ = 0.0, Float:rotX = 0.0, Float:rotY = 0.0, Float:rotZ = 0.0);
 
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_StartPlaybackEx(npcid, recordId, bool:autoUnload, Float:startX, Float:startY, Float:startZ, Float:rotX, Float:rotY, Float:rotZ);
+native bool:NPC_StartPlaybackEx(npcid, recordId, bool:autoUnload = false, Float:startX = 0.0, Float:startY = 0.0, Float:startZ = 0.0, Float:rotX = 0.0, Float:rotY = 0.0, Float:rotZ = 0.0);
 
 /**
  * <library>omp_npc</library>
@@ -946,7 +946,7 @@ native bool:NPC_StopPlayback(npcid);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_PausePlayback(npcid, bool:paused);
+native bool:NPC_PausePlayback(npcid, bool:paused = true);
 
 /**
  * <library>omp_npc</library>
@@ -1072,7 +1072,7 @@ native NPC_GetPathCount();
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_AddPointToPath(pathid, Float:x, Float:y, Float:z, Float:stopRange);
+native bool:NPC_AddPointToPath(pathid, Float:x, Float:y, Float:z, Float:stopRange = 0.2);
 
 /**
  * <library>omp_npc</library>
@@ -1092,7 +1092,7 @@ native NPC_GetPathPointCount(pathid);
 /**
  * <library>omp_npc</library>
  */
-native bool:NPC_GetPathPoint(pathid, pointIndex, &Float:x, &Float:y, &Float:z, &Float:stopRange);
+native bool:NPC_GetPathPoint(pathid, pointIndex, &Float:x, &Float:y, &Float:z, &Float:stopRange = 0.2);
 
 /**
  * <library>omp_npc</library>
