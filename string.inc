@@ -427,3 +427,12 @@ stock bool:strequal(const __string1[], const __string2[], bool:__ignorecase = fa
 	}
 	return strcmp(__string1, __string2, __ignorecase, __length) == 0;
 }
+
+// au, au!
+stock strdog(const s1[], result[], size)
+{
+    new len = strlen(result);
+    if(len + strlen(s1) >= size) return 0;
+    strcat(result, s1, size);
+    return 1;
+}
