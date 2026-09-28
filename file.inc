@@ -313,18 +313,6 @@ native filecrc(const filename[]);
 
 /**
  * <library>file</library>
- * <summary>Returns the free disk space.</summary>
- * <param name="volume">The name of the volume on systems that support multiple disks or multiple memory cards.  On single-volume systems, it
- * is optional.</param>
- * <remarks>
- * The maximum size that can be supported 2048 GiB (2 terabyte).
- * </remarks>
- * <returns>The amount of free space in KiB.</returns>
- */
-forward diskfree(const volume[] = "");
-
-/**
- * <library>file</library>
  * <summary>Set the file attributes.</summary>
  * <param name="filename">The name of the file.</param>
  * <param name="timestamp">Time of the last modification of the file.  When this parameter is set to zero, the time stamp of the file is not
