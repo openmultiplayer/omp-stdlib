@@ -36,7 +36,11 @@ enum HTTP_METHOD:__HTTP_METHOD
 	UNKNOWN_HTTP_METHOD                        = -1,
 	HTTP_GET                                   = 1,
 	HTTP_POST,
-	HTTP_HEAD
+	HTTP_HEAD,
+	HTTP_PUT,
+	HTTP_PATCH,
+	HTTP_DELETE,
+	HTTP_OPTIONS
 }
 static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 
@@ -44,6 +48,11 @@ static stock HTTP_METHOD:_@HTTP_METHOD() { return __HTTP_METHOD; }
 #define HTTP_GET                               (HTTP_METHOD:1)
 #define HTTP_POST                              (HTTP_METHOD:2)
 #define HTTP_HEAD                              (HTTP_METHOD:3)
+#define HTTP_PUT                               (HTTP_METHOD:4)
+#define HTTP_PATCH                             (HTTP_METHOD:5)
+#define HTTP_DELETE                            (HTTP_METHOD:6)
+#define HTTP_OPTIONS                           (HTTP_METHOD:7)
+
 
 /// <p/>
 /**
@@ -107,6 +116,10 @@ static stock HTTP_ERROR:_@HTTP_ERROR() { return __HTTP_ERROR; }
  *     <li><b><c>HTTP_GET</c></b></li>
  *     <li><b><c>HTTP_POST</c></b></li>
  *     <li><b><c>HTTP_HEAD</c></b></li>
+ *     <li><b><c>HTTP_PUT</c></b></li>
+ *     <li><b><c>HTTP_PATCH</c></b></li>
+ *     <li><b><c>HTTP_DELETE</c></b></li>
+ *     <li><b><c>HTTP_OPTIONS</c></b></li>
  *   </ul>
  * </remarks>
  * <remarks>
