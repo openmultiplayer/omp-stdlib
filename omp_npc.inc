@@ -278,6 +278,20 @@ native NPC_GetPos(npcid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_npc</library>
+ * <summary>Gets the vehicle position of an NPC.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="x">Variable to store the X coordinate in, passed by reference</param>
+ * <param name="y">Variable to store the Y coordinate in, passed by reference</param>
+ * <param name="z">Variable to store the Z coordinate in, passed by reference</param>
+ * <remarks>The coordinates are zero when the NPC is not in a vehicle.</remarks>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_GetPos" />
+ * <seealso name="NPC_GetVehicle" />
+ */
+native bool:NPC_GetVehiclePos(npcid, &Float:x, &Float:y, &Float:z);
+
+/**
+ * <library>omp_npc</library>
  */
 native NPC_SetRot(npcid, Float:x, Float:y, Float:z);
 
@@ -285,6 +299,20 @@ native NPC_SetRot(npcid, Float:x, Float:y, Float:z);
  * <library>omp_npc</library>
  */
 native NPC_GetRot(npcid, &Float:x, &Float:y, &Float:z);
+
+/**
+ * <library>omp_npc</library>
+ * <summary>Gets the vehicle rotation of an NPC as Euler angles.</summary>
+ * <param name="npcid">The ID of the NPC</param>
+ * <param name="x">Variable to store the X rotation in, passed by reference</param>
+ * <param name="y">Variable to store the Y rotation in, passed by reference</param>
+ * <param name="z">Variable to store the Z rotation in, passed by reference</param>
+ * <remarks>The angles are zero when the NPC is not in a vehicle.</remarks>
+ * <returns>Returns true on success, false on failure.</returns>
+ * <seealso name="NPC_GetRot" />
+ * <seealso name="NPC_GetVehicle" />
+ */
+native bool:NPC_GetVehicleRot(npcid, &Float:x, &Float:y, &Float:z);
 
 /**
  * <library>omp_npc</library>
